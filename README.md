@@ -2,15 +2,37 @@
 
 This library provides support for a separate tracing channel, different from the standard output or error streams. The API is similar to the standard functions:
 
-```c++
-os::trace::printf("Hello %s\n", name);
-```
+### C++ API
 
-All functions have a C equivalent:
+All functions have C equivalents:
 
-```c
-trace_printf("Hello %s\n", name);
-```
+`int 	os::trace::printf (const char *format,...)`
+ Write a formatted string to the trace device.
+ 
+`int 	os::trace::putchar (int c)`
+ Write the single character to the trace device.
+ 
+`int 	os::trace::puts (const char *s)`
+ Write the string and a line terminator to the trace device.
+ 
+`int 	os::trace::vprintf (const char *format, std::va_list args)`
+ Write a formatted variable arguments list to the trace device.
+ 
+ ### C API
+
+The following functions are available:
+
+`int 	trace_printf (const char *format,...)`
+ Write a formatted string to the trace device.
+ 
+`int 	trace_putchar (int c)`
+ Write the single character to the trace device.
+ 
+`int 	trace_puts (const char *s)`
+ Write the string and a line terminator to the trace device.
+ 
+`int 	trace_vprintf (const char *format, std::va_list args)`
+ Write a formatted variable arguments list to the trace device.
 
 ## Developer info
 
