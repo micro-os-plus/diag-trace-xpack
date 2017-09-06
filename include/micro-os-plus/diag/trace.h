@@ -126,7 +126,7 @@ namespace os
 
     /**
      * @brief Write the string and a line terminator to the trace device.
-     * @param s A null terminated string.
+     * @param [in] s A null terminated string.
      * @return A nonnegative number for success.
      *
      * @ingroup micro-os-plus-diag
@@ -136,7 +136,7 @@ namespace os
 
     /**
      * @brief Write the single character to the trace device.
-     * @param c A single byte character.
+     * @param [in] c A single byte character.
      * @return The written character.
      *
      * @ingroup micro-os-plus-diag
@@ -146,8 +146,8 @@ namespace os
 
     /**
      * @brief Write the argv[] array to the trace device.
-     * @param argc The number of argv[] strings.
-     * @param argv An array of pointer to args.
+     * @param [in] argc The number of argv[] strings.
+     * @param [in] argv An array of pointer to args.
      *
      * @ingroup micro-os-plus-diag
      */
