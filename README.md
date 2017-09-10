@@ -1,6 +1,6 @@
 ## The µOS++ trace::printf() tracing infrastructure
 
-This library provides support for a separate tracing channel, different from the standard output or error streams. The API is similar to the standard functions:
+This project provides support for a separate tracing channel, different from the standard output or error streams. The API is similar to the standard functions:
 
 ### C++ API
 
@@ -36,7 +36,7 @@ The following functions are available:
 
 ## Developer info
 
-This section is intended to developers that plan to include DRTM in their own GDB servers.
+This section is intended to developers who plan to include this library in their own projects.
 
 ### Easy install
 
@@ -106,5 +106,4 @@ The source code require a modern C++ compiler, preferably GCC 5 or higher, but w
 
 ## License
 
-The original content is released under the MIT License, with
-all rights reserved to Liviu Ionescu.
+The original content is released under the MIT License, with all rights reserved to Liviu Ionescu.
