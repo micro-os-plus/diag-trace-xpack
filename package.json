@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/micro-os-plus/diag-trace.git"
+    "url": "git+https://github.com/micro-os-plus/diag-trace-xpack.git"
   },
-  "homepage": "https://github.com/micro-os-plus/diag-trace",
+  "homepage": "https://github.com/micro-os-plus/diag-trace-xpack",
   "keywords": [
     "xpack",
     "c++",
@@ -25,7 +25,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/micro-os-plus/diag-trace/issues"
+    "url": "https://github.com/micro-os-plus/diag-trace-xpack/issues"
   },
   "config": {},
   "dependencies": {},
