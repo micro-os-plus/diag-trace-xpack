@@ -102,7 +102,7 @@ Without them the application still compiles, but there is no functionality, by d
 
 ### Prerequisites
 
-Installing from `npm` registry requires a recent [nodejs](https://nodejs.org) (>7.x); the 6.x LTS version is not compatible, and the `xpm` tool (https://www.npmjs.com/package/xpm).
+Installing from `npm` registry requires a recent [Node.js](https://nodejs.org) (>7.x; the 6.x LTS version is not compatible), and the `xpm` tool (https://www.npmjs.com/package/xpm).
 
 ```console
 $ sudo npm install xpm --global
