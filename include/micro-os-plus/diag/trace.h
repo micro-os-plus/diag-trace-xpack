@@ -221,83 +221,83 @@ namespace os
   {
     namespace trace
       {
-	// --------------------------------------------------------------------
+        // --------------------------------------------------------------------
 
-	inline void
-	initialize (void);
+        inline void
+        initialize (void);
 
-	inline ssize_t
-	write (const void* buf, std::size_t nbyte);
+        inline ssize_t
+        write (const void* buf, std::size_t nbyte);
 
-	// --------------------------------------------------------------------
+        // --------------------------------------------------------------------
 
-	inline int
-	printf (const char* format, ...);
+        inline int
+        printf (const char* format, ...);
 
-	inline int
-	vprintf (const char* format, std::va_list args);
+        inline int
+        vprintf (const char* format, std::va_list args);
 
-	inline int
-	puts (const char* s);
+        inline int
+        puts (const char* s);
 
-	inline int
-	putchar (int c);
+        inline int
+        putchar (int c);
 
-	inline void
-	dump_args (int argc, char* argv[]);
+        inline void
+        dump_args (int argc, char* argv[]);
 
-	// --------------------------------------------------------------------
+        // --------------------------------------------------------------------
 
-	inline void __attribute__((always_inline))
-	initialize (void)
-	  {
-	    ;
-	  }
+        inline void __attribute__((always_inline))
+        initialize (void)
+          {
+            ;
+          }
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-	inline ssize_t __attribute__((always_inline))
-	write (const void* buf, std::size_t nbyte)
-	  {
-	    return static_cast<ssize_t> (nbyte);
-	  }
+        inline ssize_t __attribute__((always_inline))
+        write (const void* buf, std::size_t nbyte)
+          {
+            return static_cast<ssize_t> (nbyte);
+          }
 
-	inline void __attribute__((always_inline))
-	flush (void)
-	  {
-	    ;
-	  }
+        inline void __attribute__((always_inline))
+        flush (void)
+          {
+            ;
+          }
 
-	inline int __attribute__((always_inline))
-	printf (const char* format, ...)
-	  {
-	    return 0;
-	  }
+        inline int __attribute__((always_inline))
+        printf (const char* format, ...)
+          {
+            return 0;
+          }
 
-	inline int __attribute__((always_inline))
-	vprintf (const char* format, std::va_list args)
-	  {
-	    return 0;
-	  }
+        inline int __attribute__((always_inline))
+        vprintf (const char* format, std::va_list args)
+          {
+            return 0;
+          }
 
-	inline int __attribute__((always_inline))
-	puts (const char* s)
-	  {
-	    return 0;
-	  }
+        inline int __attribute__((always_inline))
+        puts (const char* s)
+          {
+            return 0;
+          }
 
-	inline int __attribute__((always_inline))
-	putchar (int c)
-	  {
-	    return c;
-	  }
+        inline int __attribute__((always_inline))
+        putchar (int c)
+          {
+            return c;
+          }
 
-	inline void __attribute__((always_inline))
-	dump_args (int argc, char* argv[])
-	  {
-	    ;
-	  }
+        inline void __attribute__((always_inline))
+        dump_args (int argc, char* argv[])
+          {
+            ;
+          }
 
 #pragma GCC diagnostic pop
 

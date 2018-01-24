@@ -97,10 +97,10 @@ namespace os
       int ret = ::vsnprintf (buf, sizeof(buf), format, args);
 #pragma GCC diagnostic pop
       if (ret > 0)
-	{
-	  // Transfer the buffer to the device.
-	  ret = static_cast<int> (write (buf, static_cast<size_t> (ret)));
-	}
+        {
+          // Transfer the buffer to the device.
+          ret = static_cast<int> (write (buf, static_cast<size_t> (ret)));
+        }
       return ret;
     }
 
@@ -109,17 +109,17 @@ namespace os
     {
       int ret = static_cast<int> (write (s, strlen (s)));
       if (ret >= 0)
-	{
-	  ret = static_cast<int> (write ("\n", 1)); // Add a line terminator
-	}
+        {
+          ret = static_cast<int> (write ("\n", 1)); // Add a line terminator
+        }
       if (ret > 0)
-	{
-	  return ret;
-	}
+        {
+          return ret;
+        }
       else
-	{
-	  return EOF;
-	}
+        {
+          return EOF;
+        }
     }
 
     int __attribute__((weak))
@@ -127,13 +127,13 @@ namespace os
     {
       int ret = static_cast<int> (write (reinterpret_cast<const char*> (&c), 1));
       if (ret > 0)
-	{
-	  return c;
-	}
+        {
+          return c;
+        }
       else
-	{
-	  return EOF;
-	}
+        {
+          return EOF;
+        }
     }
 
     void __attribute__((weak))
@@ -141,17 +141,17 @@ namespace os
     {
       printf ("main(argc=%d, argv=[", argc);
       for (int i = 0; i < argc; ++i)
-	{
-	  if (i != 0)
-	    {
-	      printf (", ");
-	    }
-	  printf ("\"%s\"", argv[i]);
-	}
-      printf ("]);\n");
+        {
+          if (i != 0)
+            {
+              printf (", ");
+            }
+          printf ("\"%s\"", argv[i]);
+        }
+      printf ("])\n");
     }
 
-    // --------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
   } /* namespace trace */
 } /* namespace os */
 
