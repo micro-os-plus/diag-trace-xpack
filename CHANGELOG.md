@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v1.0.4 (2018-01-23)
+
+* reformat
+
 ### v1.0.3 (2018-01-09)
 
 * README updates
