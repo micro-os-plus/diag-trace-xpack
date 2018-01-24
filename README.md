@@ -40,7 +40,7 @@ This section is intended to developers who plan to include this library in their
 
 ### Easy install
 
-This package can be installed from the `npm` [registry](https://www.npmjs.com/package/@smicro-os-plus/diag-trace).
+This package can be installed from the `npm` [registry](https://www.npmjs.com/package/@micro-os-plus/diag-trace).
 
 ```console
 $ xpm install @micro-os-plus/diag-trace
