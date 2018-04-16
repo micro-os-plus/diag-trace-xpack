@@ -29,7 +29,5 @@
   },
   "config": {},
   "dependencies": {},
-  "xpack": {
-    "dependencies": {}
-  }
+  "xpack": {}
 }
