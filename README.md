@@ -2,6 +2,30 @@
 
 This project provides support for a separate tracing channel, different from the standard output or error streams. The API is similar to the standard functions:
 
+## Developer info
+
+This section is intended to developers who plan to include this library in their own projects.
+
+### Prerequisites
+
+A recent [`xpm`](https://www.npmjs.com/package/xpm), which is a portable [Node.js](https://nodejs.org/) command line application.
+
+Compiling the source code requires a modern C++ compiler, preferably GCC 5 or higher. 
+
+### Easy install
+
+This package is available as [`@micro-os-plus/diag-trace`](https://www.npmjs.com/package/@micro-os-plus/diag-trace) from the `npmjs.com` registry; with `xpm` available, installing the latest version of the package is quite easy:
+
+```console
+$ xpm install @micro-os-plus/diag-trace
+```
+
+This package is also available from [GitHub](https://github.com/micro-os-plus/diag-trace-xpack):
+
+```console
+$ git clone https://github.com/micro-os-plus/diag-trace-xpack.git diag-trace-xpack.git
+```
+
 ### C++ API
 
 All functions have C equivalents:
@@ -34,27 +58,9 @@ The following functions are available:
 `int 	trace_vprintf (const char *format, std::va_list args)`
  Write a formatted variable arguments list to the trace device.
 
-## Developer info
-
-This section is intended to developers who plan to include this library in their own projects.
-
-### Easy install
-
-This package can be installed from the `npm` [registry](https://www.npmjs.com/package/@micro-os-plus/diag-trace).
-
-```console
-$ xpm install @micro-os-plus/diag-trace
-```
-
-This package is also available from [GitHub](https://github.com/micro-os-plus/diag-trace-xpack):
-
-```console
-$ git clone https://github.com/micro-os-plus/diag-trace-xpack.git diag-trace-xpack.git
-```
-
 ### Implementation
 
-The application should provide an implementation for the following basic functions.
+The application should provide an implementation for the following basic functions:
 
 ```c++
 namespace os
@@ -100,17 +106,7 @@ namespace os
 
 Without them the application still compiles, but there is no functionality, by default all the above are implemented as weak empty functions.
 
-### Prerequisites
-
-Installing from `npm` registry requires a recent [Node.js](https://nodejs.org) (>7.x; the 6.x LTS version is not compatible), and the `xpm` tool (https://www.npmjs.com/package/xpm).
-
-```console
-$ sudo npm install xpm --global
-```
-
-On Windows, global packages are installed in the user home folder, and do not require `sudo`.
-
-Compiling the source code require a modern C++ compiler, preferably GCC 5 or higher, but was also compiled with GCC 4.8. 
+## Maintainer info
 
 ### How to publish
 
