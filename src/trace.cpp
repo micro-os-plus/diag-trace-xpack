@@ -197,7 +197,7 @@ int __attribute__((weak, alias ("_ZN2os5trace7vprintfEPKcSt9__va_list")))
 #elif defined(__riscv)
 int __attribute__((weak, alias ("_ZN2os5trace7vprintfEPKcPv")))
 #endif /* defined(__ARM_EABI__) */
-trace_vprintf (const char* format, ...);
+trace_vprintf (const char* format, std::va_list args);
 
 int __attribute__((weak, alias("_ZN2os5trace4putsEPKc")))
 trace_puts (const char *s);
