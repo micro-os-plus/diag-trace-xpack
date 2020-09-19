@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v1.0.7 (2020-09-19)
+
+- [#1] Remove non-portable aliases from C to C++
+
 ### v1.0.6 (2018-04-16)
 
 * move deps back to npm
