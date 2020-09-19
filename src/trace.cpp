@@ -187,39 +187,39 @@ trace_flush (void)
 
 int
 trace_printf (const char* format, ...)
-  {
-    std::va_list args;
-    va_start(args, format);
+{
+  std::va_list args;
+  va_start(args, format);
 
-    int ret = trace::vprintf (format, args);
+  int ret = trace::vprintf (format, args);
 
-    va_end(args);
-    return ret;
-  }
+  va_end(args);
+  return ret;
+}
 
 int
 trace_vprintf (const char* format, va_list args)
-  {
-    return trace::vprintf (format, args);
-  }
+{
+  return trace::vprintf (format, args);
+}
 
 int
 trace_puts (const char* s)
-  {
-    return trace::puts (s);
-  }
+{
+  return trace::puts (s);
+}
 
 int
 trace_putchar (int c)
-  {
-    return trace::putchar (c);
-  }
+{
+  return trace::putchar (c);
+}
 
 void
 trace_dump_args (int argc, char* argv[])
-  {
-    trace::dump_args (argc, argv);
-  }
+{
+  trace::dump_args (argc, argv);
+}
 
 // ----------------------------------------------------------------------------
 
