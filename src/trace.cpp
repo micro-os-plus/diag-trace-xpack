@@ -182,34 +182,6 @@ trace_flush (void)
 
 // ----------------------------------------------------------------------------
 
-#if defined(__ARM_EABI__) || defined(__riscv)
-
-// For embedded platforms, optimise with aliases.
-//
-// Aliases can only refer symbols defined in the same translation unit
-// and C++ de-mangling must be done manually.
-
-int __attribute__((weak, alias ("_ZN2os5trace6printfEPKcz")))
-trace_printf (const char* format, ...);
-
-#if defined(__ARM_EABI__)
-int __attribute__((weak, alias ("_ZN2os5trace7vprintfEPKcSt9__va_list")))
-#elif defined(__riscv)
-int __attribute__((weak, alias ("_ZN2os5trace7vprintfEPKcPv")))
-#endif /* defined(__ARM_EABI__) */
-trace_vprintf (const char* format, std::va_list args);
-
-int __attribute__((weak, alias("_ZN2os5trace4putsEPKc")))
-trace_puts (const char *s);
-
-int __attribute__((weak, alias("_ZN2os5trace7putcharEi")))
-trace_putchar (int c);
-
-void __attribute__((weak, alias("_ZN2os5trace9dump_argsEiPPc")))
-trace_dump_args (int argc, char* argv[]);
-
-#else
-
 // For non-embedded platforms, to remain compatible with OS X which does
 // not support aliases, redefine the C functions to call the C++ versions.
 
@@ -248,8 +220,6 @@ trace_dump_args (int argc, char* argv[])
   {
     trace::dump_args (argc, argv);
   }
-
-#endif /* __ARM_EABI__ __riscv */
 
 // ----------------------------------------------------------------------------
 
