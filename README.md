@@ -1,4 +1,8 @@
-## The µOS++ `trace::printf()` tracing infrastructure
+[![license](https://img.shields.io/github/license/micro-os-plus/diag-trace-xpack)](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/micro-os-plus/diag-trace-xpack.svg)](https://github.com/micro-os-plus/diag-trace-xpack/issues)
+[![GitHub pulls](https://img.shields.io/github/issues-pr/micro-os-plus/diag-trace-xpack.svg)](https://github.com/micro-os-plus/diag-trace-xpack/pulls)
+
+# The µOS++ `trace::printf()` tracing infrastructure
 
 This project provides support for a separate tracing channel, different
 from the standard output or error streams. The API is similar to the
