@@ -1,6 +1,8 @@
-## Change log
+# Change & release log
 
-Changes in reverse chronological order.
+Releases in reverse chronological order.
+
+Please check [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/) and close existing issues and pull requests.
 
 ### v1.0.7 (2020-09-19)
 
