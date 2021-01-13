@@ -41,118 +41,105 @@
 
 namespace os
 {
-  namespace trace
-  {
-    // ------------------------------------------------------------------------
+namespace trace
+{
+// ----------------------------------------------------------------------------
 
-    // Weak empty defaults, in case no output is defined.
-    void __attribute__((weak))
-    initialize (void)
-    {
-      ;
-    }
+// Weak empty defaults, in case no output is defined.
+void __attribute__ ((weak)) initialize (void) { ; }
 
-    /**
-     * @brief Write the given number of bytes to the trace output channel.
-     * @return  The number of characters actually written, or -1 if error.
-     */
-    ssize_t __attribute__((weak))
-    write (const void* buf __attribute__((unused)), std::size_t nbyte)
-    {
-      return static_cast<ssize_t> (nbyte);
-    }
+/**
+ * @brief Write the given number of bytes to the trace output channel.
+ * @return  The number of characters actually written, or -1 if error.
+ */
+ssize_t __attribute__ ((weak))
+write (const void* buf __attribute__ ((unused)), std::size_t nbyte)
+{
+  return static_cast<ssize_t> (nbyte);
+}
 
-    void __attribute__((weak))
-    flush (void)
-    {
-      ;
-    }
+void __attribute__ ((weak)) flush (void) { ; }
 
-    // ------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
-    int __attribute__((weak))
-    printf (const char* format, ...)
-    {
-      std::va_list args;
-      va_start(args, format);
+int __attribute__ ((weak)) printf (const char* format, ...)
+{
+  std::va_list args;
+  va_start (args, format);
 
-      int ret = vprintf (format, args);
+  int ret = vprintf (format, args);
 
-      va_end(args);
-      return ret;
-    }
+  va_end (args);
+  return ret;
+}
 
-    int __attribute__((weak))
-    vprintf (const char* format, std::va_list args)
-    {
-      // Caution: allocated on the stack!
-      char buf[OS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE];
+int __attribute__ ((weak)) vprintf (const char* format, std::va_list args)
+{
+  // Caution: allocated on the stack!
+  char buf[OS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE];
 
-      // TODO: possibly rewrite it to no longer use newlib,
-      // (although the nano version is no longer very heavy).
+  // TODO: possibly rewrite it to no longer use newlib,
+  // (although the nano version is no longer very heavy).
 
-      // Print to the local buffer
+  // Print to the local buffer
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-      int ret = ::vsnprintf (buf, sizeof(buf), format, args);
+  int ret = ::vsnprintf (buf, sizeof (buf), format, args);
 #pragma GCC diagnostic pop
-      if (ret > 0)
-        {
-          // Transfer the buffer to the device.
-          ret = static_cast<int> (write (buf, static_cast<size_t> (ret)));
-        }
+  if (ret > 0)
+    {
+      // Transfer the buffer to the device.
+      ret = static_cast<int> (write (buf, static_cast<size_t> (ret)));
+    }
+  return ret;
+}
+
+int __attribute__ ((weak)) puts (const char* s)
+{
+  int ret = static_cast<int> (write (s, strlen (s)));
+  if (ret >= 0)
+    {
+      ret = static_cast<int> (write ("\n", 1)); // Add a line terminator
+    }
+  if (ret > 0)
+    {
       return ret;
     }
-
-    int __attribute__((weak))
-    puts (const char* s)
+  else
     {
-      int ret = static_cast<int> (write (s, strlen (s)));
-      if (ret >= 0)
-        {
-          ret = static_cast<int> (write ("\n", 1)); // Add a line terminator
-        }
-      if (ret > 0)
-        {
-          return ret;
-        }
-      else
-        {
-          return EOF;
-        }
+      return EOF;
     }
+}
 
-    int __attribute__((weak))
-    putchar (int c)
+int __attribute__ ((weak)) putchar (int c)
+{
+  int ret = static_cast<int> (write (reinterpret_cast<const char*> (&c), 1));
+  if (ret > 0)
     {
-      int ret = static_cast<int> (write (reinterpret_cast<const char*> (&c), 1));
-      if (ret > 0)
-        {
-          return c;
-        }
-      else
-        {
-          return EOF;
-        }
+      return c;
     }
-
-    void __attribute__((weak))
-    dump_args (int argc, char* argv[])
+  else
     {
-      printf ("main(argc=%d, argv=[", argc);
-      for (int i = 0; i < argc; ++i)
-        {
-          if (i != 0)
-            {
-              printf (", ");
-            }
-          printf ("\"%s\"", argv[i]);
-        }
-      printf ("])\n");
+      return EOF;
     }
+}
 
-  // --------------------------------------------------------------------------
-  } /* namespace trace */
+void __attribute__ ((weak)) dump_args (int argc, char* argv[])
+{
+  printf ("main(argc=%d, argv=[", argc);
+  for (int i = 0; i < argc; ++i)
+    {
+      if (i != 0)
+        {
+          printf (", ");
+        }
+      printf ("\"%s\"", argv[i]);
+    }
+  printf ("])\n");
+}
+
+// ----------------------------------------------------------------------------
+} /* namespace trace */
 } /* namespace os */
 
 // ----------------------------------------------------------------------------
@@ -162,23 +149,14 @@ using namespace os;
 // These cannot be aliased, since they usually are defined
 // in a different translation unit.
 
-void __attribute__((weak))
-trace_initialize (void)
-{
-  trace::initialize ();
-}
+void __attribute__ ((weak)) trace_initialize (void) { trace::initialize (); }
 
-ssize_t __attribute__((weak))
-trace_write (const void* buf, std::size_t nbyte)
+ssize_t __attribute__ ((weak)) trace_write (const void* buf, std::size_t nbyte)
 {
   return trace::write (buf, nbyte);
 }
 
-void __attribute__((weak))
-trace_flush (void)
-{
-  return trace::flush ();
-}
+void __attribute__ ((weak)) trace_flush (void) { return trace::flush (); }
 
 // ----------------------------------------------------------------------------
 
@@ -189,11 +167,11 @@ int
 trace_printf (const char* format, ...)
 {
   std::va_list args;
-  va_start(args, format);
+  va_start (args, format);
 
   int ret = trace::vprintf (format, args);
 
-  va_end(args);
+  va_end (args);
   return ret;
 }
 
