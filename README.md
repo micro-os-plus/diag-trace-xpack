@@ -114,8 +114,8 @@ namespace os
     }
 
   // --------------------------------------------------------------------------
-  } /* namespace trace */
-} /* namespace os */
+  }
+}
 ```
 
 Without them the application still compiles, but there is no

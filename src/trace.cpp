@@ -27,6 +27,8 @@
 
 #if defined(TRACE)
 
+// ----------------------------------------------------------------------------
+
 #include <micro-os-plus/diag/trace.h>
 
 #include <cstdarg>
@@ -46,8 +48,7 @@ namespace os
     // ------------------------------------------------------------------------
 
     // Weak empty defaults, in case no output is defined.
-    void __attribute__((weak))
-    initialize (void)
+    void __attribute__ ((weak)) initialize (void)
     {
       ;
     }
@@ -56,34 +57,31 @@ namespace os
      * @brief Write the given number of bytes to the trace output channel.
      * @return  The number of characters actually written, or -1 if error.
      */
-    ssize_t __attribute__((weak))
-    write (const void* buf __attribute__((unused)), std::size_t nbyte)
+    ssize_t __attribute__ ((weak))
+    write (const void* buf __attribute__ ((unused)), std::size_t nbyte)
     {
       return static_cast<ssize_t> (nbyte);
     }
 
-    void __attribute__((weak))
-    flush (void)
+    void __attribute__ ((weak)) flush (void)
     {
       ;
     }
 
     // ------------------------------------------------------------------------
 
-    int __attribute__((weak))
-    printf (const char* format, ...)
+    int __attribute__ ((weak)) printf (const char* format, ...)
     {
       std::va_list args;
-      va_start(args, format);
+      va_start (args, format);
 
       int ret = vprintf (format, args);
 
-      va_end(args);
+      va_end (args);
       return ret;
     }
 
-    int __attribute__((weak))
-    vprintf (const char* format, std::va_list args)
+    int __attribute__ ((weak)) vprintf (const char* format, std::va_list args)
     {
       // Caution: allocated on the stack!
       char buf[OS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE];
@@ -94,7 +92,7 @@ namespace os
       // Print to the local buffer
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-      int ret = ::vsnprintf (buf, sizeof(buf), format, args);
+      int ret = ::vsnprintf (buf, sizeof (buf), format, args);
 #pragma GCC diagnostic pop
       if (ret > 0)
         {
@@ -104,8 +102,7 @@ namespace os
       return ret;
     }
 
-    int __attribute__((weak))
-    puts (const char* s)
+    int __attribute__ ((weak)) puts (const char* s)
     {
       int ret = static_cast<int> (write (s, strlen (s)));
       if (ret >= 0)
@@ -122,10 +119,10 @@ namespace os
         }
     }
 
-    int __attribute__((weak))
-    putchar (int c)
+    int __attribute__ ((weak)) putchar (int c)
     {
-      int ret = static_cast<int> (write (reinterpret_cast<const char*> (&c), 1));
+      int ret
+          = static_cast<int> (write (reinterpret_cast<const char*> (&c), 1));
       if (ret > 0)
         {
           return c;
@@ -136,8 +133,7 @@ namespace os
         }
     }
 
-    void __attribute__((weak))
-    dump_args (int argc, char* argv[])
+    void __attribute__ ((weak)) dump_args (int argc, char* argv[])
     {
       printf ("main(argc=%d, argv=[", argc);
       for (int i = 0; i < argc; ++i)
@@ -151,9 +147,9 @@ namespace os
       printf ("])\n");
     }
 
-  // --------------------------------------------------------------------------
-  } /* namespace trace */
-} /* namespace os */
+    // ------------------------------------------------------------------------
+  } // namespace trace
+} // namespace os
 
 // ----------------------------------------------------------------------------
 
@@ -162,20 +158,17 @@ using namespace os;
 // These cannot be aliased, since they usually are defined
 // in a different translation unit.
 
-void __attribute__((weak))
-trace_initialize (void)
+void __attribute__ ((weak)) trace_initialize (void)
 {
   trace::initialize ();
 }
 
-ssize_t __attribute__((weak))
-trace_write (const void* buf, std::size_t nbyte)
+ssize_t __attribute__ ((weak)) trace_write (const void* buf, std::size_t nbyte)
 {
   return trace::write (buf, nbyte);
 }
 
-void __attribute__((weak))
-trace_flush (void)
+void __attribute__ ((weak)) trace_flush (void)
 {
   return trace::flush ();
 }
@@ -189,11 +182,11 @@ int
 trace_printf (const char* format, ...)
 {
   std::va_list args;
-  va_start(args, format);
+  va_start (args, format);
 
   int ret = trace::vprintf (format, args);
 
-  va_end(args);
+  va_end (args);
   return ret;
 }
 
