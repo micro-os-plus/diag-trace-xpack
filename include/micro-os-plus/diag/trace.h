@@ -39,7 +39,7 @@
 #include <stdint.h>
 #include <stdarg.h>
 #include <stdlib.h>
-#endif /* __cplusplus */
+#endif // __cplusplus
 
 #include <sys/types.h>
 
@@ -53,9 +53,9 @@
 // the use of putchar() in other name spaces.
 #if defined(putchar)
 #undef putchar
-#endif /* defined(putchar) */
+#endif // defined(putchar)
 
-#endif /* __cplusplus */
+#endif // __cplusplus
 
 // ----------------------------------------------------------------------------
 
@@ -168,12 +168,12 @@ namespace os
   } // namespace trace
 } // namespace os
 
-#endif /* defined(__cplusplus) */
+#endif // defined(__cplusplus)
 
 #if defined(__cplusplus)
 extern "C"
 {
-#endif /* defined(__cplusplus) */
+#endif // defined(__cplusplus)
 
   // ----- Implementation -----------------------------------------------------
   // These functions must be implemented for a specific trace channel.
@@ -209,7 +209,7 @@ extern "C"
 
 #if defined(__cplusplus)
 }
-#endif /* defined(__cplusplus) */
+#endif // defined(__cplusplus)
 
 #else /* !defined(TRACE) */
 
@@ -304,12 +304,12 @@ namespace os
   } // namespace trace
 } // namespace os
 
-#endif /* defined(__cplusplus) */
+#endif // defined(__cplusplus)
 
 #if defined(__cplusplus)
 extern "C"
 {
-#endif /* defined(__cplusplus) */
+#endif // defined(__cplusplus)
 
   inline void
   trace_initialize (void);
@@ -338,7 +338,7 @@ extern "C"
 
 #if defined(__cplusplus)
 }
-#endif /* defined(__cplusplus) */
+#endif // defined(__cplusplus)
 
 inline __attribute__ ((always_inline)) void
 trace_initialize (void)
@@ -352,7 +352,7 @@ trace_initialize (void)
 #pragma GCC diagnostic push
 #if defined(__cplusplus)
 #pragma GCC diagnostic ignored "-Wold-style-cast"
-#endif /* defined(__cplusplus) */
+#endif // defined(__cplusplus)
 
 inline __attribute__ ((always_inline)) ssize_t
 trace_write (const void* buf, size_t nbyte)
@@ -400,10 +400,10 @@ trace_dump_args (int argc, char* argv[])
 
 #pragma GCC diagnostic pop
 
-#endif /* defined(TRACE) */
+#endif // defined(TRACE)
 
 // ----------------------------------------------------------------------------
 
-#endif /* MICRO_OS_PLUS_DIAG_TRACE_H_ */
+#endif // MICRO_OS_PLUS_DIAG_TRACE_H_
 
 // ----------------------------------------------------------------------------
