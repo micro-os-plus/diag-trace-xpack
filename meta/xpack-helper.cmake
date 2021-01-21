@@ -11,28 +11,34 @@
 
 message(STATUS "Including micro-os-plus-diag-trace...")
 
+# -----------------------------------------------------------------------------
+
 function(target_sources_micro_os_plus_diag_trace target)
 
-  get_filename_component(PARENT_DIR ${CMAKE_CURRENT_FUNCTION_LIST_DIR} DIRECTORY)
+  get_filename_component(xpack_root_folder ${CMAKE_CURRENT_FUNCTION_LIST_DIR} DIRECTORY)
 
   target_sources(
     ${target}
 
     PRIVATE
-      ${PARENT_DIR}/src/trace.cpp
+      ${xpack_root_folder}/src/trace.cpp
   )
+
 endfunction()
+
+# -----------------------------------------------------------------------------
 
 function(target_include_directories_micro_os_plus_diag_trace target)
 
-  get_filename_component(PARENT_DIR ${CMAKE_CURRENT_FUNCTION_LIST_DIR} DIRECTORY)
+  get_filename_component(xpack_root_folder ${CMAKE_CURRENT_FUNCTION_LIST_DIR} DIRECTORY)
 
   target_include_directories(
     ${target}
 
     PUBLIC
-      ${PARENT_DIR}/include
+      ${xpack_root_folder}/include
   )
+
 endfunction()
 
 # -----------------------------------------------------------------------------
