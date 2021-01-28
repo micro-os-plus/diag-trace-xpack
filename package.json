@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/micro-os-plus/diag-trace-xpack.git"
+    "url": "git+https://github.com/micro-os-plus/diag-trace-xpack.git/"
   },
-  "homepage": "https://github.com/micro-os-plus/diag-trace-xpack",
+  "homepage": "https://github.com/micro-os-plus/diag-trace-xpack/",
   "keywords": [
     "xpack",
     "c++",
@@ -21,11 +21,11 @@
   "author": {
     "name": "Liviu Ionescu",
     "email": "ilg@livius.net",
-    "url": "https://github.com/ilg-ul"
+    "url": "https://github.com/ilg-ul/"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/micro-os-plus/diag-trace-xpack/issues"
+    "url": "https://github.com/micro-os-plus/diag-trace-xpack/issues/"
   },
   "config": {},
   "dependencies": {},
