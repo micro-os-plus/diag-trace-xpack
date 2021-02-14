@@ -83,6 +83,7 @@ function(add_libraries_micro_os_plus_diag_trace)
 
   # ---------------------------------------------------------------------------
 
+if(true)
   if(NOT TARGET micro-os-plus-diag-trace-static)
 
     add_library(micro-os-plus-diag-trace-static STATIC EXCLUDE_FROM_ALL)
@@ -101,6 +102,7 @@ function(add_libraries_micro_os_plus_diag_trace)
     )
 
   endif()
+endif()
 
   # ---------------------------------------------------------------------------
 
