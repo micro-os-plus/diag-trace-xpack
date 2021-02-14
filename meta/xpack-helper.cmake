@@ -26,7 +26,7 @@ function(target_sources_micro_os_plus_diag_trace target)
   target_sources(
     ${target}
 
-    PUBLIC
+    PRIVATE
       ${xpack_current_folder}/src/trace.cpp
   )
 
