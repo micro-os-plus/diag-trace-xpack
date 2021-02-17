@@ -72,13 +72,6 @@ function(add_libraries_micro_os_plus_diag_trace)
     add_library(micro-os-plus::diag-trace ALIAS micro-os-plus-diag-trace-objects)
     message(STATUS "micro-os-plus::diag-trace")
 
-    target_link_libraries(
-      micro-os-plus-diag-trace-objects
-
-      PUBLIC
-        micro-os-plus::common
-    )
-
   endif()
 
   # ---------------------------------------------------------------------------
@@ -93,13 +86,6 @@ if(true)
     target_compile_definitions_micro_os_plus_diag_trace(micro-os-plus-diag-trace-static)
 
     add_library(micro-os-plus::diag-trace-static ALIAS micro-os-plus-diag-trace-static)
-
-    target_link_libraries(
-      micro-os-plus-diag-trace-static
-      
-      PUBLIC
-        micro-os-plus::common
-    )
 
   endif()
 endif()
