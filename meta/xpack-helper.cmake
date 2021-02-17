@@ -61,22 +61,6 @@ function(add_libraries_micro_os_plus_diag_trace)
 
   # ---------------------------------------------------------------------------
 
-  if (NOT TARGET micro-os-plus::diag-trace)
-
-    add_library(micro-os-plus-diag-trace-objects OBJECT EXCLUDE_FROM_ALL)
-
-    target_sources_micro_os_plus_diag_trace(micro-os-plus-diag-trace-objects)
-    target_include_directories_micro_os_plus_diag_trace(micro-os-plus-diag-trace-objects)
-    target_compile_definitions_micro_os_plus_diag_trace(micro-os-plus-diag-trace-objects)
-
-    add_library(micro-os-plus::diag-trace ALIAS micro-os-plus-diag-trace-objects)
-    message(STATUS "micro-os-plus::diag-trace")
-
-  endif()
-
-  # ---------------------------------------------------------------------------
-
-if(true)
   if(NOT TARGET micro-os-plus-diag-trace-static)
 
     add_library(micro-os-plus-diag-trace-static STATIC EXCLUDE_FROM_ALL)
@@ -86,9 +70,9 @@ if(true)
     target_compile_definitions_micro_os_plus_diag_trace(micro-os-plus-diag-trace-static)
 
     add_library(micro-os-plus::diag-trace-static ALIAS micro-os-plus-diag-trace-static)
+    message(STATUS "micro-os-plus::diag-trace-static")
 
   endif()
-endif()
 
   # ---------------------------------------------------------------------------
 
