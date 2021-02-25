@@ -18,43 +18,38 @@ set(micro-os-plus-diag-trace-included TRUE)
 message(STATUS "Including micro-os-plus-diag-trace...")
 
 # -----------------------------------------------------------------------------
+# The current folder.
 
-function(add_libraries_micro_os_plus_diag_trace)
+get_filename_component(xpack_current_folder ${CMAKE_CURRENT_LIST_DIR} DIRECTORY)
 
-  get_filename_component(xpack_current_folder ${CMAKE_CURRENT_FUNCTION_LIST_DIR} DIRECTORY)
+# -----------------------------------------------------------------------------
 
-  # ---------------------------------------------------------------------------
+if(NOT TARGET micro-os-plus-diag-trace-static)
 
-  if(NOT TARGET micro-os-plus-diag-trace-static)
-
-    add_library(micro-os-plus-diag-trace-static STATIC EXCLUDE_FROM_ALL)
-
-    # -------------------------------------------------------------------------
-
-    target_sources(
-      micro-os-plus-diag-trace-static
-  
-      PRIVATE
-        ${xpack_current_folder}/src/trace.cpp
-    )
-  
-    target_include_directories(
-      micro-os-plus-diag-trace-static
-  
-      PUBLIC
-        ${xpack_current_folder}/include
-    )
-
-    # -------------------------------------------------------------------------
-    # Aliases
-
-    add_library(micro-os-plus::diag-trace-static ALIAS micro-os-plus-diag-trace-static)
-    message(STATUS "micro-os-plus::diag-trace-static")
-
-  endif()
+  add_library(micro-os-plus-diag-trace-static STATIC EXCLUDE_FROM_ALL)
 
   # ---------------------------------------------------------------------------
 
-endfunction()
+  target_sources(
+    micro-os-plus-diag-trace-static
+
+    PRIVATE
+      ${xpack_current_folder}/src/trace.cpp
+  )
+
+  target_include_directories(
+    micro-os-plus-diag-trace-static
+
+    PUBLIC
+      ${xpack_current_folder}/include
+  )
+
+  # ---------------------------------------------------------------------------
+  # Aliases.
+
+  add_library(micro-os-plus::diag-trace-static ALIAS micro-os-plus-diag-trace-static)
+  message(STATUS "micro-os-plus::diag-trace-static")
+
+endif()
 
 # -----------------------------------------------------------------------------
