@@ -12,11 +12,47 @@
 # https://cmake.org/cmake/help/v3.18/
 # https://cmake.org/cmake/help/v3.18/manual/cmake-packages.7.html#package-configuration-file
 
-# message(STATUS "Including micro-os-plus-diag-trace-config...")
+if(micro-os-plus-diag-trace-included)
+  return()
+endif()
+
+set(micro-os-plus-diag-trace-included TRUE)
+
+message(STATUS "Including micro-os-plus-diag-trace...")
+
+# -----------------------------------------------------------------------------
+# The current folder.
+
+get_filename_component(xpack_current_folder ${CMAKE_CURRENT_LIST_DIR} DIRECTORY)
 
 # -----------------------------------------------------------------------------
 
-include("${CMAKE_CURRENT_LIST_DIR}/xpack-helper.cmake")
+if(NOT TARGET micro-os-plus-diag-trace-static)
+
+  add_library(micro-os-plus-diag-trace-static STATIC EXCLUDE_FROM_ALL)
+
+  # ---------------------------------------------------------------------------
+
+  target_sources(
+    micro-os-plus-diag-trace-static
+
+    PRIVATE
+      ${xpack_current_folder}/src/trace.cpp
+  )
+
+  target_include_directories(
+    micro-os-plus-diag-trace-static
+
+    PUBLIC
+      ${xpack_current_folder}/include
+  )
+
+  # ---------------------------------------------------------------------------
+  # Aliases.
+
+  add_library(micro-os-plus::diag-trace-static ALIAS micro-os-plus-diag-trace-static)
+  message(STATUS "micro-os-plus::diag-trace-static")
+
+endif()
 
 # -----------------------------------------------------------------------------
-
