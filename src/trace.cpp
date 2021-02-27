@@ -35,8 +35,8 @@
 #include <cstdio>
 #include <cstring>
 
-#ifndef OS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE
-#define OS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE (200)
+#ifndef MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE
+#define MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE (200)
 #endif
 
 // ----------------------------------------------------------------------------
@@ -84,7 +84,7 @@ namespace os
     int __attribute__ ((weak)) vprintf (const char* format, std::va_list args)
     {
       // Caution: allocated on the stack!
-      char buf[OS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE];
+      char buf[MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE];
 
       // TODO: possibly rewrite it to no longer use newlib,
       // (although the nano version is no longer very heavy).
