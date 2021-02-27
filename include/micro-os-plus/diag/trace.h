@@ -63,7 +63,7 @@
 
 #if defined(__cplusplus)
 
-namespace os
+namespace micro_os_plus
 {
   /**
    * @brief Tracing support namespace.
@@ -73,13 +73,13 @@ namespace os
    * for diagnostic purposes.
    *
    * The API is simple, and mimics the standard C output calls:
-   * - `os::trace::printf()` / `trace_printf()`
-   * - `os::trace::puts()` / `trace_puts()`
-   * - `os::trace::putchar()` / `trace_putchar()`
+   * - `micro_os_plus::trace::printf()` / `trace_printf()`
+   * - `micro_os_plus::trace::puts()` / `trace_puts()`
+   * - `micro_os_plus::trace::putchar()` / `trace_putchar()`
    *
    * The implementation is done in:
-   * - os::trace::initialize()
-   * - os::trace::write()
+   * - micro_os_plus::trace::initialize()
+   * - micro_os_plus::trace::write()
    *
    * If these functions are not defined in another place, there are
    * weak definitions that simply discard the trace output.
@@ -166,7 +166,7 @@ namespace os
 
     // ------------------------------------------------------------------------
   } // namespace trace
-} // namespace os
+} // namespace micro_os_plus
 
 #endif // defined(__cplusplus)
 
@@ -217,7 +217,7 @@ extern "C"
 
 #if defined(__cplusplus)
 
-namespace os
+namespace micro_os_plus
 {
   namespace trace
   {
@@ -302,7 +302,7 @@ namespace os
 #pragma GCC diagnostic pop
 
   } // namespace trace
-} // namespace os
+} // namespace micro_os_plus
 
 #endif // defined(__cplusplus)
 

@@ -41,7 +41,7 @@
 
 // ----------------------------------------------------------------------------
 
-namespace os
+namespace micro_os_plus
 {
   namespace trace
   {
@@ -149,11 +149,11 @@ namespace os
 
     // ------------------------------------------------------------------------
   } // namespace trace
-} // namespace os
+} // namespace micro_os_plus
 
 // ----------------------------------------------------------------------------
 
-using namespace os;
+using namespace micro_os_plus;
 
 // These cannot be aliased, since they usually are defined
 // in a different translation unit.
