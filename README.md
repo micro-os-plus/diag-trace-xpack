@@ -98,7 +98,7 @@ All functions have C equivalents:
 `int 	micro_os_plus::trace::puts (const char *s)`
  Write the string and a line terminator to the trace device.
 
-`int 	micro_os_plus::trace::vprintf (const char *format, std::va_list args)`
+`int 	micro_os_plus::trace::vprintf (const char *format, std::va_list arguments)`
  Write a formatted variable arguments list to the trace device.
 
 ### C API
@@ -114,7 +114,7 @@ The following functions are available:
 `int 	trace_puts (const char *s)`
  Write the string and a line terminator to the trace device.
 
-`int 	trace_vprintf (const char *format, std::va_list args)`
+`int 	trace_vprintf (const char *format, std::va_list arguments)`
  Write a formatted variable arguments list to the trace device.
 
 ### Implementation

@@ -116,13 +116,13 @@ namespace micro_os_plus
     /**
      * @brief Write a formatted variable arguments list to the trace device.
      * @param [in] format A null terminate string with the format.
-     * @param [in] args A variable arguments list.
+     * @param [in] arguments A variable arguments list.
      * @return A nonnegative number for success.
      *
      * @ingroup micro-os-plus-diag
      */
     int
-    vprintf (const char* format, std::va_list args);
+    vprintf (const char* format, std::va_list arguments);
 
     /**
      * @brief Write the string and a line terminator to the trace device.
@@ -147,7 +147,7 @@ namespace micro_os_plus
     /**
      * @brief Write the argv[] array to the trace device.
      * @param [in] argc The number of argv[] strings.
-     * @param [in] argv An array of pointer to args.
+     * @param [in] argv An array of pointer to arguments.
      *
      * @ingroup micro-os-plus-diag
      */
@@ -196,7 +196,7 @@ extern "C"
   trace_printf (const char* format, ...);
 
   int
-  trace_vprintf (const char* format, va_list args);
+  trace_vprintf (const char* format, va_list arguments);
 
   int
   trace_puts (const char* s);
@@ -235,7 +235,7 @@ namespace micro_os_plus
     printf (const char* format, ...);
 
     inline int
-    vprintf (const char* format, std::va_list args);
+    vprintf (const char* format, std::va_list arguments);
 
     inline int
     puts (const char* s);
@@ -276,7 +276,7 @@ namespace micro_os_plus
     }
 
     inline __attribute__ ((always_inline)) int
-    vprintf (const char* format, std::va_list args)
+    vprintf (const char* format, std::va_list arguments)
     {
       return 0;
     }
@@ -325,7 +325,7 @@ extern "C"
   trace_printf (const char* format, ...);
 
   inline int
-  trace_vprintf (const char* format, va_list args);
+  trace_vprintf (const char* format, va_list arguments);
 
   inline int
   trace_puts (const char* s);
@@ -375,7 +375,7 @@ trace_printf (const char* format, ...)
 }
 
 inline __attribute__ ((always_inline)) int
-trace_vprintf (const char* format, va_list args)
+trace_vprintf (const char* format, va_list arguments)
 {
   return 0;
 }

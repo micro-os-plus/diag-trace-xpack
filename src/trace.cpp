@@ -72,16 +72,17 @@ namespace micro_os_plus
 
     int __attribute__ ((weak)) printf (const char* format, ...)
     {
-      std::va_list args;
-      va_start (args, format);
+      std::va_list arguments;
+      va_start (arguments, format);
 
-      int ret = vprintf (format, args);
+      int ret = vprintf (format, arguments);
 
-      va_end (args);
+      va_end (arguments);
       return ret;
     }
 
-    int __attribute__ ((weak)) vprintf (const char* format, std::va_list args)
+    int __attribute__ ((weak))
+    vprintf (const char* format, std::va_list arguments)
     {
       // Caution: allocated on the stack!
       char buf[MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE];
@@ -92,7 +93,7 @@ namespace micro_os_plus
       // Print to the local buffer
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-      int ret = ::vsnprintf (buf, sizeof (buf), format, args);
+      int ret = ::vsnprintf (buf, sizeof (buf), format, arguments);
 #pragma GCC diagnostic pop
       if (ret > 0)
         {
@@ -181,19 +182,19 @@ void __attribute__ ((weak)) trace_flush (void)
 int
 trace_printf (const char* format, ...)
 {
-  std::va_list args;
-  va_start (args, format);
+  std::va_list arguments;
+  va_start (arguments, format);
 
-  int ret = trace::vprintf (format, args);
+  int ret = trace::vprintf (format, arguments);
 
-  va_end (args);
+  va_end (arguments);
   return ret;
 }
 
 int
-trace_vprintf (const char* format, va_list args)
+trace_vprintf (const char* format, va_list arguments)
 {
-  return trace::vprintf (format, args);
+  return trace::vprintf (format, arguments);
 }
 
 int
