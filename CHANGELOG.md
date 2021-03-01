@@ -6,38 +6,52 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
-## v1.1.0 (2021-02-04)
+## 2021-03-01
 
+- v2.0.0
+
+## 2021-02-28
+
+- rename micro_os_plus
+
+## 2021-02-04
+
+- v1.1.0
 - first restructured release
 
-## v1.0.7 (2020-09-19)
+## 2020-09-19
 
+- v1.0.7
 - [#1] Remove non-portable aliases from C to C++
 
-## v1.0.6 (2018-04-16)
+## 2018-04-16
 
-* move deps back to npm
-* update README developer info
+- v1.0.6
+- move deps back to npm
+- update README developer info
 
-## v1.0.5 (2018-01-25)
+## 2018-01-25
 
-* cosmetics
+- v1.0.5
+- cosmetics
 
-## v1.0.4 (2018-01-24)
+## 2018-01-24
 
-* reformat
+- v1.0.4
+- reformat
 
-## v1.0.3 (2018-01-09)
+## 2018-01-09
 
-* README updates
+- v1.0.3
+- README updates
 
-## v1.0.2 (2017-10-04)
+## 2017-10-04
 
-* package.json clean-ups
-* add CHANGELOG.md
+- v1.0.2
+- package.json clean-ups
+- add CHANGELOG.md
 
-## v1.0.1 (2017-09-04)
+## 2017-09-04
 
-* initial version, copied from µOS++.
-
-
+- v1.0.1
+- initial version, copied from µOS++.
