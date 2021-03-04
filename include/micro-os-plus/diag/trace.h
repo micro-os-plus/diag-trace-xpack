@@ -152,7 +152,7 @@ namespace micro_os_plus
      * @ingroup micro-os-plus-diag
      */
     void
-    dump_args (int argc, char* argv[]);
+    dump_args (int argc, char* argv[], const char* name = "main");
 
     /**
      * @brief Flush the output.
@@ -244,7 +244,7 @@ namespace micro_os_plus
     putchar (int c);
 
     inline void
-    dump_args (int argc, char* argv[]);
+    dump_args (int argc, char* argv[], const char* name = "main");
 
     // ------------------------------------------------------------------------
 
@@ -294,7 +294,7 @@ namespace micro_os_plus
     }
 
     inline __attribute__ ((always_inline)) void
-    dump_args (int argc, char* argv[])
+    dump_args (int argc, char* argv[], const char* name)
     {
       ;
     }

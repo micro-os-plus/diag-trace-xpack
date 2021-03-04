@@ -134,9 +134,10 @@ namespace micro_os_plus
         }
     }
 
-    void __attribute__ ((weak)) dump_args (int argc, char* argv[])
+    void __attribute__ ((weak))
+    dump_args (int argc, char* argv[], const char* name)
     {
-      printf ("main(argc=%d, argv=[", argc);
+      printf ("%s(argc=%d, argv=[", name, argc);
       for (int i = 0; i < argc; ++i)
         {
           if (i != 0)
