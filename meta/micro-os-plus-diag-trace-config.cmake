@@ -54,7 +54,7 @@ if(NOT TARGET micro-os-plus-diag-trace-static)
   # Aliases.
 
   add_library(micro-os-plus::diag-trace-static ALIAS micro-os-plus-diag-trace-static)
-  message(STATUS "micro-os-plus::diag-trace-static")
+  message(STATUS "=> micro-os-plus::diag-trace-static")
 
 endif()
 
