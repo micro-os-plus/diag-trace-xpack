@@ -93,26 +93,38 @@ namespace micro_os_plus
       // Print to the local buffer
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-      int ret = ::vsnprintf (buf, sizeof (buf), format, arguments);
+      ssize_t ret = ::vsnprintf (buf, sizeof (buf), format, arguments);
 #pragma GCC diagnostic pop
       if (ret > 0)
         {
           // Transfer the buffer to the device.
-          ret = static_cast<int> (write (buf, static_cast<size_t> (ret)));
+          ret = write (buf, static_cast<size_t> (ret));
         }
-      return ret;
+#pragma GCC diagnostic push
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic ignored "-Wuseless-cast"
+#endif
+      // Cast required on 64-bit.
+      return static_cast<int> (ret);
+#pragma GCC diagnostic pop
     }
 
     int __attribute__ ((weak)) puts (const char* s)
     {
-      int ret = static_cast<int> (write (s, strlen (s)));
+      ssize_t ret = write (s, strlen (s));
       if (ret >= 0)
         {
-          ret = static_cast<int> (write ("\n", 1)); // Add a line terminator
+          ret = write ("\n", 1); // Add a line terminator
         }
       if (ret > 0)
         {
-          return ret;
+#pragma GCC diagnostic push
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic ignored "-Wuseless-cast"
+#endif
+          // Cast required on 64-bit.
+          return static_cast<int> (ret);
+#pragma GCC diagnostic pop
         }
       else
         {
@@ -122,8 +134,7 @@ namespace micro_os_plus
 
     int __attribute__ ((weak)) putchar (int c)
     {
-      int ret
-          = static_cast<int> (write (reinterpret_cast<const char*> (&c), 1));
+      ssize_t ret = write (reinterpret_cast<const char*> (&c), 1);
       if (ret > 0)
         {
           return c;
