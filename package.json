@@ -4,7 +4,24 @@
   "description": "A source xPack with the µOS++ trace::printf() tracing infrastructure",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "link-deps": "xpm link @micro-os-plus/build-helper @micro-os-plus/micro-test-plus",
+    "rm-deps": "xpm uninstall --global @micro-os-plus/build-helper @micro-os-plus/micro-test-plus",
+    "build-tests-native-cmake-debug": "cmake -S tests/meta -B build/tests-native-cmake-debug -GNinja -DPLATFORM_NAME=native -DCMAKE_BUILD_TYPE=Debug && cmake --build build/tests-native-cmake-debug",
+    "build-tests-native-cmake-debug-verbose": "cmake -S tests/meta -B build/tests-native-cmake-debug -GNinja -DPLATFORM_NAME=native -DCMAKE_BUILD_TYPE=Debug && cmake --build build/tests-native-cmake-debug --verbose",
+    "clean-tests-native-cmake-debug": "cmake --build build/tests-native-cmake-debug --verbose --target clean",
+    "execute-tests-native-cmake-debug": "cd build/tests-native-cmake-debug && ctest -V",
+    "test-native-cmake-debug": "xpm run build-tests-native-cmake-debug && xpm run execute-tests-native-cmake-debug",
+    "build-tests-native-cmake-release": "cmake -S tests/meta -B build/tests-native-cmake-release -GNinja -DPLATFORM_NAME=native -DCMAKE_BUILD_TYPE=release && cmake --build build/tests-native-cmake-release",
+    "build-tests-native-cmake-release-verbose": "cmake -S tests/meta -B build/tests-native-cmake-release -GNinja -DPLATFORM_NAME=native -DCMAKE_BUILD_TYPE=release && cmake --build build/tests-native-cmake-release --verbose",
+    "clean-tests-native-cmake-release": "cmake --build build/tests-native-cmake-release --verbose --target clean",
+    "execute-tests-native-cmake-release": "cd build/tests-native-cmake-release && ctest -V",
+    "test-native-cmake-release": "xpm run build-tests-native-cmake-release && xpm run execute-tests-native-cmake-release",
+    "clean-tests-native-cmake": "xpm run clean-tests-native-cmake-debug && xpm run clean-tests-native-cmake-release",
+    "clean-tests-cmake": "xpm run clean-tests-native-cmake-debug",
+    "clean-tests": "xpm run clean-tests-cmake",
+    "test-native-cmake": "xpm run test-native-cmake-debug && xpm run test-native-cmake-release",
+    "test-cmake": "xpm run test-native-cmake",
+    "test": "xpm run test-cmake"
   },
   "repository": {
     "type": "git",
@@ -28,5 +45,12 @@
     "url": "https://github.com/micro-os-plus/diag-trace-xpack/issues/"
   },
   "config": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@xpack-dev-tools/cmake": "3.19.2-1.1",
+    "@xpack-dev-tools/ninja-build": "1.10.1-1.1",
+    "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack#semver:2.1.1",
+    "@micro-os-plus/micro-test-plus": "github:micro-os-plus/micro-test-plus-xpack#semver:2.0.3"
+  },
   "xpack": {}
 }
