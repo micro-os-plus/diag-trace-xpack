@@ -50,6 +50,13 @@ if(NOT TARGET micro-os-plus-diag-trace-static)
       ${xpack_current_folder}/include
   )
 
+  target_compile_options(
+    micro-os-plus-diag-trace-static
+
+    PRIVATE
+      # ...
+  )
+
   # ---------------------------------------------------------------------------
   # Aliases.
 
