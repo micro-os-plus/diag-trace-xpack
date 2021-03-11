@@ -145,6 +145,11 @@ namespace micro_os_plus
         }
     }
 
+    /**
+     * @details
+     * Generally it should match the prototype of `main()`, to simplify
+     * forwarding the parameters.
+     */
     void __attribute__ ((weak))
     dump_args (int argc, char* argv[], const char* name)
     {
@@ -171,17 +176,18 @@ using namespace micro_os_plus;
 // These cannot be aliased, since they usually are defined
 // in a different translation unit.
 
-void __attribute__ ((weak)) trace_initialize (void)
+void __attribute__ ((weak)) micro_os_plus_trace_initialize (void)
 {
   trace::initialize ();
 }
 
-ssize_t __attribute__ ((weak)) trace_write (const void* buf, std::size_t nbyte)
+ssize_t __attribute__ ((weak))
+micro_os_plus_trace_write (const void* buf, std::size_t nbyte)
 {
   return trace::write (buf, nbyte);
 }
 
-void __attribute__ ((weak)) trace_flush (void)
+void __attribute__ ((weak)) micro_os_plus_trace_flush (void)
 {
   return trace::flush ();
 }
@@ -192,7 +198,7 @@ void __attribute__ ((weak)) trace_flush (void)
 // not support aliases, redefine the C functions to call the C++ versions.
 
 int
-trace_printf (const char* format, ...)
+micro_os_plus_trace_printf (const char* format, ...)
 {
   std::va_list arguments;
   va_start (arguments, format);
@@ -204,25 +210,25 @@ trace_printf (const char* format, ...)
 }
 
 int
-trace_vprintf (const char* format, va_list arguments)
+micro_os_plus_trace_vprintf (const char* format, va_list arguments)
 {
   return trace::vprintf (format, arguments);
 }
 
 int
-trace_puts (const char* s)
+micro_os_plus_trace_puts (const char* s)
 {
   return trace::puts (s);
 }
 
 int
-trace_putchar (int c)
+micro_os_plus_trace_putchar (int c)
 {
   return trace::putchar (c);
 }
 
 void
-trace_dump_args (int argc, char* argv[])
+micro_os_plus_trace_dump_args (int argc, char* argv[])
 {
   trace::dump_args (argc, argv);
 }

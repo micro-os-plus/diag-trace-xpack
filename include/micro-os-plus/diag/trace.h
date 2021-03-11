@@ -73,9 +73,9 @@ namespace micro_os_plus
    * for diagnostic purposes.
    *
    * The API is simple, and mimics the standard C output calls:
-   * - `micro_os_plus::trace::printf()` / `trace_printf()`
-   * - `micro_os_plus::trace::puts()` / `trace_puts()`
-   * - `micro_os_plus::trace::putchar()` / `trace_putchar()`
+   * - `micro_os_plus::trace::printf()` / `micro_os_plus_trace_printf()`
+   * - `micro_os_plus::trace::puts()` / `micro_os_plus_trace_puts()`
+   * - `micro_os_plus::trace::putchar()` / `micro_os_plus_trace_putchar()`
    *
    * The implementation is done in:
    * - micro_os_plus::trace::initialize()
@@ -182,30 +182,30 @@ extern "C"
    * Called from startup.
    */
   void
-  trace_initialize (void);
+  micro_os_plus_trace_initialize (void);
 
   ssize_t
-  trace_write (const void* buf, size_t nbyte);
+  micro_os_plus_trace_write (const void* buf, size_t nbyte);
 
   void
-  trace_flush (void);
+  micro_os_plus_trace_flush (void);
 
   // ----- Portable -----
 
   int
-  trace_printf (const char* format, ...);
+  micro_os_plus_trace_printf (const char* format, ...);
 
   int
-  trace_vprintf (const char* format, va_list arguments);
+  micro_os_plus_trace_vprintf (const char* format, va_list arguments);
 
   int
-  trace_puts (const char* s);
+  micro_os_plus_trace_puts (const char* s);
 
   int
-  trace_putchar (int c);
+  micro_os_plus_trace_putchar (int c);
 
   void
-  trace_dump_args (int argc, char* argv[]);
+  micro_os_plus_trace_dump_args (int argc, char* argv[]);
 
 #if defined(__cplusplus)
 }
@@ -312,36 +312,36 @@ extern "C"
 #endif // defined(__cplusplus)
 
   inline void
-  trace_initialize (void);
+  micro_os_plus_trace_initialize (void);
 
   // Implementation dependent
   inline ssize_t
-  trace_write (const void* buf, size_t nbyte);
+  micro_os_plus_trace_write (const void* buf, size_t nbyte);
 
   inline void
-  trace_flush (void);
+  micro_os_plus_trace_flush (void);
 
   inline int
-  trace_printf (const char* format, ...);
+  micro_os_plus_trace_printf (const char* format, ...);
 
   inline int
-  trace_vprintf (const char* format, va_list arguments);
+  micro_os_plus_trace_vprintf (const char* format, va_list arguments);
 
   inline int
-  trace_puts (const char* s);
+  micro_os_plus_trace_puts (const char* s);
 
   inline int
-  trace_putchar (int c);
+  micro_os_plus_trace_putchar (int c);
 
   inline void
-  trace_dump_args (int argc, char* argv[]);
+  micro_os_plus_trace_dump_args (int argc, char* argv[]);
 
 #if defined(__cplusplus)
 }
 #endif // defined(__cplusplus)
 
 inline __attribute__ ((always_inline)) void
-trace_initialize (void)
+micro_os_plus_trace_initialize (void)
 {
   ;
 }
@@ -355,13 +355,13 @@ trace_initialize (void)
 #endif // defined(__cplusplus)
 
 inline __attribute__ ((always_inline)) ssize_t
-trace_write (const void* buf, size_t nbyte)
+micro_os_plus_trace_write (const void* buf, size_t nbyte)
 {
   return (ssize_t) (nbyte);
 }
 
 inline __attribute__ ((always_inline)) void
-trace_flush (void)
+micro_os_plus_trace_flush (void)
 {
   ;
 }
@@ -369,31 +369,31 @@ trace_flush (void)
 #pragma GCC diagnostic pop
 
 inline __attribute__ ((always_inline)) int
-trace_printf (const char* format, ...)
+micro_os_plus_trace_printf (const char* format, ...)
 {
   return 0;
 }
 
 inline __attribute__ ((always_inline)) int
-trace_vprintf (const char* format, va_list arguments)
+micro_os_plus_trace_vprintf (const char* format, va_list arguments)
 {
   return 0;
 }
 
 inline __attribute__ ((always_inline)) int
-trace_puts (const char* s)
+micro_os_plus_trace_puts (const char* s)
 {
   return 0;
 }
 
 inline __attribute__ ((always_inline)) int
-trace_putchar (int c)
+micro_os_plus_trace_putchar (int c)
 {
   return c;
 }
 
 inline __attribute__ ((always_inline)) void
-trace_dump_args (int argc, char* argv[])
+micro_os_plus_trace_dump_args (int argc, char* argv[])
 {
   ;
 }
@@ -401,6 +401,17 @@ trace_dump_args (int argc, char* argv[])
 #pragma GCC diagnostic pop
 
 #endif // defined(TRACE)
+
+// ----------------------------------------------------------------------------
+// Compatibility definitions.
+
+#define trace_initialize micro_os_plus_trace_initialize
+#define trace_write micro_os_plus_trace_write
+#define trace_printf micro_os_plus_trace_printf
+#define trace_vprintf micro_os_plus_trace_vprintf
+#define trace_puts micro_os_plus_trace_puts
+#define trace_putchar micro_os_plus_trace_putchar
+#define trace_dump_args micro_os_plus_trace_dump_args
 
 // ----------------------------------------------------------------------------
 
