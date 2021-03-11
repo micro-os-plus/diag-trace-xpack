@@ -6,6 +6,13 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2021-03-11
+
+- v2.2.0
+- [#4] - make the C API consistent
+- add tests (running native on macOS/Linux)
+- add CI via GitHub Actions
+
 ## 2021-03-09
 
 - v2.1.0
