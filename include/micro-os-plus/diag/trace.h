@@ -407,6 +407,8 @@ micro_os_plus_trace_dump_args (int argc, char* argv[])
 
 #define trace_initialize micro_os_plus_trace_initialize
 #define trace_write micro_os_plus_trace_write
+#define trace_flush micro_os_plus_trace_flush
+
 #define trace_printf micro_os_plus_trace_printf
 #define trace_vprintf micro_os_plus_trace_vprintf
 #define trace_puts micro_os_plus_trace_puts
