@@ -6,6 +6,11 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2021-03-13
+
+- v2.2.1
+- add #define trace_flush
+
 ## 2021-03-11
 
 - v2.2.0
