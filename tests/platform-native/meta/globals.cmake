@@ -30,8 +30,6 @@ set(common_options
   -fdata-sections
 
   ${all_warnings}
-
-  -Werror
 )
 
 add_compile_options(
