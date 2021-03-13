@@ -66,7 +66,7 @@ namespace micro_os_plus
       assert (count >= 0);
       assert (static_cast<std::size_t> (count) + nbyte < sizeof (buffer));
       ::memcpy (&buffer[count], buf, nbyte);
-      count += nbyte;
+      count += static_cast<int> (nbyte);
 
       return static_cast<ssize_t> (nbyte);
     }
@@ -182,8 +182,7 @@ test_case_putchar (micro_test_plus::session& t)
   int prev_count = count;
   trace::putchar ('c');
 
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count), 1,
-                 "count increased by 1");
+  MTP_EXPECT_EQ (t, (count - prev_count), 1, "count increased by 1");
   MTP_EXPECT_EQ (t, buffer[prev_count], 'c', "buffer has c");
 }
 
@@ -193,8 +192,7 @@ test_case_putchar_c (micro_test_plus::session& t)
   int prev_count = count;
   micro_os_plus_trace_putchar ('c');
 
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count), 1,
-                 "count increased by 1");
+  MTP_EXPECT_EQ (t, (count - prev_count), 1, "count increased by 1");
   MTP_EXPECT_EQ (t, buffer[prev_count], 'c', "buffer has c");
 }
 
@@ -204,8 +202,7 @@ test_case_puts (micro_test_plus::session& t)
   int prev_count = count;
   trace::puts ("s");
 
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count), 2,
-                 "count increased by 2");
+  MTP_EXPECT_EQ (t, (count - prev_count), 2, "count increased by 2");
   MTP_EXPECT_EQ (t, buffer[prev_count], 's', "buffer has s");
   MTP_EXPECT_EQ (t, buffer[prev_count + 1], '\n', "buffer has \\n");
 }
@@ -216,8 +213,7 @@ test_case_puts_c (micro_test_plus::session& t)
   int prev_count = count;
   micro_os_plus_trace_puts ("s");
 
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count), 2,
-                 "count increased by 2");
+  MTP_EXPECT_EQ (t, (count - prev_count), 2, "count increased by 2");
   MTP_EXPECT_EQ (t, buffer[prev_count], 's', "buffer has s");
   MTP_EXPECT_EQ (t, buffer[prev_count + 1], '\n', "buffer has \\n");
 }
@@ -228,15 +224,13 @@ test_case_printf (micro_test_plus::session& t)
   int prev_count = count;
   trace::printf ("%s", "p");
 
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count), 1,
-                 "count increased by 1");
+  MTP_EXPECT_EQ (t, (count - prev_count), 1, "count increased by 1");
   MTP_EXPECT_EQ (t, buffer[prev_count], 'p', "buffer has p");
 
   prev_count = count;
   trace::printf ("%s\n", "q");
 
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count), 2,
-                 "count increased by 2");
+  MTP_EXPECT_EQ (t, (count - prev_count), 2, "count increased by 2");
   MTP_EXPECT_EQ (t, buffer[prev_count], 'q', "buffer has q");
   MTP_EXPECT_EQ (t, buffer[prev_count + 1], '\n', "buffer has \\n");
 }
@@ -247,15 +241,13 @@ test_case_printf_c (micro_test_plus::session& t)
   int prev_count = count;
   micro_os_plus_trace_printf ("%s", "p");
 
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count), 1,
-                 "count increased by 1");
+  MTP_EXPECT_EQ (t, (count - prev_count), 1, "count increased by 1");
   MTP_EXPECT_EQ (t, buffer[prev_count], 'p', "buffer has p");
 
   prev_count = count;
   micro_os_plus_trace_printf ("%s\n", "q");
 
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count), 2,
-                 "count increased by 2");
+  MTP_EXPECT_EQ (t, (count - prev_count), 2, "count increased by 2");
   MTP_EXPECT_EQ (t, buffer[prev_count], 'q', "buffer has q");
   MTP_EXPECT_EQ (t, buffer[prev_count + 1], '\n', "buffer has \\n");
 }
@@ -272,7 +264,7 @@ test_case_dump_args (micro_test_plus::session& t)
   trace::dump_args (3, const_cast<char**> (argv));
 
   const char expected_main[] = "main(argc=3, argv=[\"n\", \"1\", \"2\"])\n";
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count),
+  MTP_EXPECT_EQ (t, (count - prev_count),
                  static_cast<int> (strlen (expected_main)),
                  "count increased correctly");
   MTP_EXPECT_EQ (t, &buffer[prev_count], expected_main, "buffer has main");
@@ -281,7 +273,7 @@ test_case_dump_args (micro_test_plus::session& t)
   trace::dump_args (3, const_cast<char**> (argv), "args");
 
   const char expected_args[] = "args(argc=3, argv=[\"n\", \"1\", \"2\"])\n";
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count),
+  MTP_EXPECT_EQ (t, (count - prev_count),
                  static_cast<int> (strlen (expected_args)),
                  "count increased correctly");
   MTP_EXPECT_EQ (t, &buffer[prev_count], expected_args, "buffer has main");
@@ -299,7 +291,7 @@ test_case_dump_args_c (micro_test_plus::session& t)
   micro_os_plus_trace_dump_args (3, const_cast<char**> (argv));
 
   const char expected_main[] = "main(argc=3, argv=[\"n\", \"1\", \"2\"])\n";
-  MTP_EXPECT_EQ (t, static_cast<int> (count - prev_count),
+  MTP_EXPECT_EQ (t, (count - prev_count),
                  static_cast<int> (strlen (expected_main)),
                  "count increased correctly");
   MTP_EXPECT_EQ (t, &buffer[prev_count], expected_main, "buffer has main");
