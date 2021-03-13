@@ -8,6 +8,10 @@ and close existing issues and pull requests.
 
 ## 2021-03-13
 
+- v2.2.2
+- fix warnings
+- remove -Werror
+
 - v2.2.1
 - add #define trace_flush
 
