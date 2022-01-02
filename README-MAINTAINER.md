@@ -1,6 +1,6 @@
 [![license](https://img.shields.io/github/license/micro-os-plus/diag-trace-xpack)](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/LICENSE)
 [![CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/workflows/CI%20on%20Push/badge.svg)](https://github.com/micro-os-plus/diag-trace-xpack/actions?query=workflow%3A%22CI+on+Push%22)
-[![GitHub issues](https://img.shields.io/github/issues/micro-os-plus/diag-trace-xpack.svg)](https://github.com/micro-os-plus/diag-trace-xpack/issues)
+[![GitHub issues](https://img.shields.io/github/issues/micro-os-plus/diag-trace-xpack.svg)](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 [![GitHub pulls](https://img.shields.io/github/issues-pr/micro-os-plus/diag-trace-xpack.svg)](https://github.com/micro-os-plus/diag-trace-xpack/pulls)
 
 # Maintainer info
@@ -40,7 +40,7 @@ In the `micro-os-plus/web-jekyll` GitHub repo:
 - update the GitHub Actions URLs using the actual test pages
 
 If any, refer to closed
-[issues](https://github.com/micro-os-plus/diag-trace/issues)
+[issues](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 as:
 
 - **[Issue:\[#1\]\(...\)]**.
