@@ -8,7 +8,9 @@ and close existing issues and pull requests.
 
 ## 2022-01-02
 
-- v2.2.3
+- v2.2.4
+- bump deps
+- v2.2.3 (tests fail)
 
 ## 2021-03-13
 
