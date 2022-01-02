@@ -6,6 +6,10 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2022-01-02
+
+- v2.2.3
+
 ## 2021-03-13
 
 - v2.2.2
