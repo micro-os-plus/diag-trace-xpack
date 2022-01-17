@@ -54,8 +54,395 @@
   "devDependencies": {
     "@xpack-dev-tools/cmake": "3.20.6-2.1",
     "@xpack-dev-tools/ninja-build": "1.10.2-5.1",
-    "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack#semver:2.1.4",
-    "@micro-os-plus/micro-test-plus": "github:micro-os-plus/micro-test-plus-xpack#semver:2.0.4"
+    "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack#semver:2.1.7",
+    "@micro-os-plus/micro-test-plus": "github:micro-os-plus/micro-test-plus-xpack#semver:2.0.5"
   },
-  "xpack": {}
+  "xpack": {
+    "minimumXpmRequired": "0.11.0",
+    "properties": {
+      "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
+      "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
+      "commandCMakePrepare": "cmake -S . -B {{ properties.buildFolderRelativePathPosix }} -G Ninja -D CMAKE_BUILD_TYPE={{ properties.buildType }} -D PLATFORM_NAME={{ properties.platformName }} -D CMAKE_EXPORT_COMPILE_COMMANDS=ON",
+      "commandCMakePrepareWithToolchain": "{{ properties.commandCMakePrepare }} -D CMAKE_TOOLCHAIN_FILE=xpacks/micro-os-plus-build-helper/cmake/{{ properties.toolchainFileName }}",
+      "commandCMakeReconfigure": "{{ properties.commandCMakePrepare }}",
+      "commandCMakeBuild": "cmake --build {{ properties.buildFolderRelativePathPosix }} --verbose",
+      "commandCMakeClean": "cmake --build {{ properties.buildFolderRelativePathPosix }} --target clean",
+      "commandCMakePerformTests": "cd {{ properties.buildFolderRelativePath }} && ctest -V",
+      "commandMesonPrepare": "meson setup --backend ninja --buildtype {{ properties.buildType }} -D is-micro-os-plus-micro-test-plus-test=true {{ properties.buildFolderRelativePathPosix }} .",
+      "commandMesonPrepareMesonWithToolchain": "meson setup --backend ninja --buildtype {{ properties.buildType }} -D is-micro-os-plus-micro-test-plus-test=true --native-file xpacks/micro-os-plus-build-helper/meson/{{ properties.toolchainFileName }} {{ properties.buildFolderRelativePathPosix }} .",
+      "commandMesonReconfigure": "meson setup --reconfigure {{ properties.buildFolderRelativePathPosix }} .",
+      "commandMesonBuild": "meson compile -C {{ properties.buildFolderRelativePathPosix }} --verbose",
+      "commandMesonClean": "meson compile -C {{ properties.buildFolderRelativePathPosix }} --clean",
+      "commandMesonPerformTests": "meson test -C {{ properties.buildFolderRelativePathPosix }} --verbose"
+    },
+    "actions": {
+      "install-all": [
+        "xpm install --all-configs"
+      ],
+      "link-deps": [
+        "xpm link @micro-os-plus/build-helper"
+      ],
+      "test-all": [
+        "xpm run test-native",
+        "xpm run test-stm32f4discovery-cmake"
+      ],
+      "test-native": [
+        "xpm run test-native-cmake",
+        "xpm run test-native-cmake-gcc11",
+        "xpm run test-native-cmake-clang12",
+        "xpm run test-native-meson",
+        "xpm run test-native-meson-gcc11",
+        "xpm run test-native-meson-clang12"
+      ],
+      "test-native-cmake": [
+        "xpm run prepare --config native-cmake-debug",
+        "xpm run build --config native-cmake-debug",
+        "xpm run test --config native-cmake-debug",
+        "xpm run prepare --config native-cmake-release",
+        "xpm run build --config native-cmake-release",
+        "xpm run test --config native-cmake-release"
+      ],
+      "test-native-cmake-gcc11": [
+        "xpm run prepare --config native-cmake-gcc11-debug",
+        "xpm run build --config native-cmake-gcc11-debug",
+        "xpm run test --config native-cmake-gcc11-debug",
+        "xpm run prepare --config native-cmake-gcc11-release",
+        "xpm run build --config native-cmake-gcc11-release",
+        "xpm run test --config native-cmake-gcc11-release"
+      ],
+      "test-native-cmake-clang12": [
+        "xpm run prepare --config native-cmake-clang12-debug",
+        "xpm run build --config native-cmake-clang12-debug",
+        "xpm run test --config native-cmake-clang12-debug",
+        "xpm run prepare --config native-cmake-clang12-release",
+        "xpm run build --config native-cmake-clang12-release",
+        "xpm run test --config native-cmake-clang12-release"
+      ],
+      "test-native-meson": [
+        "xpm run prepare --config native-meson-debug",
+        "xpm run build --config native-meson-debug",
+        "xpm run test --config native-meson-debug",
+        "xpm run prepare --config native-meson-release",
+        "xpm run build --config native-meson-release",
+        "xpm run test --config native-meson-release"
+      ],
+      "test-native-meson-gcc11": [
+        "xpm run prepare --config native-meson-gcc11-debug",
+        "xpm run build --config native-meson-gcc11-debug",
+        "xpm run test --config native-meson-gcc11-debug",
+        "xpm run prepare --config native-meson-gcc11-release",
+        "xpm run build --config native-meson-gcc11-release",
+        "xpm run test --config native-meson-gcc11-release"
+      ],
+      "test-native-meson-clang12": [
+        "xpm run prepare --config native-meson-clang12-debug",
+        "xpm run build --config native-meson-clang12-debug",
+        "xpm run test --config native-meson-clang12-debug",
+        "xpm run prepare --config native-meson-clang12-release",
+        "xpm run build --config native-meson-clang12-release",
+        "xpm run test --config native-meson-clang12-release"
+      ],
+      "test-stm32f4discovery-cmake":[
+        "xpm run prepare --config stm32f4discovery-cmake-debug",
+        "xpm run build --config stm32f4discovery-cmake-debug",
+        "xpm run test --config stm32f4discovery-cmake-debug",
+        "xpm run prepare --config stm32f4discovery-cmake-release",
+        "xpm run build --config stm32f4discovery-cmake-release",
+        "xpm run test --config stm32f4discovery-cmake-release"
+      ],
+      "clean-all": [
+        "xpm run clean --config native-cmake-debug",
+        "xpm run clean --config native-cmake-release",
+        "xpm run clean --config native-cmake-gcc11-debug",
+        "xpm run clean --config native-cmake-gcc11-release",
+        "xpm run clean --config native-cmake-clang12-debug",
+        "xpm run clean --config native-cmake-clang12-release",
+        "xpm run clean --config native-meson-debug",
+        "xpm run clean --config native-meson-release",
+        "xpm run clean --config native-meson-gcc11-debug",
+        "xpm run clean --config native-meson-gcc11-release",
+        "xpm run clean --config native-meson-clang12-debug",
+        "xpm run clean --config native-meson-clang12-release",
+        "xpm run clean --config stm32f4discovery-cmake-debug",
+        "xpm run clean --config stm32f4discovery-cmake-release"
+      ],
+      "rm-deps": "xpm uninstall --global @micro-os-plus/build-helper @micro-os-plus/platform-stm32f4discovery @micro-os-plus/devices-stm32f4-extras @micro-os-plus/architecture-cortexm @micro-os-plus/startup @micro-os-plus/semihosting @micro-os-plus/diag-trace @micro-os-plus/libs-c @micro-os-plus/libs-cpp @micro-os-plus/version"
+    },
+    "buildConfigurations": {
+      "native-cmake-debug": {
+        "properties": {
+          "buildType": "Debug",
+          "platformName": "native"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandCMakePrepare }}",
+          "build": [
+            "{{ properties.commandCMakeReconfigure }}",
+            "{{ properties.commandCMakeBuild }}"
+          ],
+          "clean": "{{ properties.commandCMakeClean }}",
+          "test": "{{ properties.commandCMakePerformTests }}"
+        }
+      },
+      "native-cmake-release": {
+        "properties": {
+          "buildType": "Release",
+          "platformName": "native"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandCMakePrepare }}",
+          "build": [
+            "{{ properties.commandCMakeReconfigure }}",
+            "{{ properties.commandCMakeBuild }}"
+          ],
+          "clean": "{{ properties.commandCMakeClean }}",
+          "test": "{{ properties.commandCMakePerformTests }}"
+        }
+      },
+      "native-cmake-gcc11-debug": {
+        "properties": {
+          "buildType": "Debug",
+          "platformName": "native",
+          "toolchainFileName": "toolchain-gcc.cmake"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
+          "build": [
+            "{{ properties.commandCMakeReconfigure }}",
+            "{{ properties.commandCMakeBuild }}"
+          ],
+          "clean": "{{ properties.commandCMakeClean }}",
+          "test": "{{ properties.commandCMakePerformTests }}"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/gcc": "11.2.0-1.3"
+        }
+      },
+      "native-cmake-gcc11-release": {
+        "properties": {
+          "buildType": "Release",
+          "platformName": "native",
+          "toolchainFileName": "toolchain-gcc.cmake"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
+          "build": [
+            "{{ properties.commandCMakeReconfigure }}",
+            "{{ properties.commandCMakeBuild }}"
+          ],
+          "clean": "{{ properties.commandCMakeClean }}",
+          "test": "{{ properties.commandCMakePerformTests }}"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/gcc": "11.2.0-1.3"
+        }
+      },
+      "native-cmake-clang12-debug": {
+        "properties": {
+          "buildType": "Debug",
+          "platformName": "native",
+          "toolchainFileName": "toolchain-clang.cmake"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
+          "build": [
+            "{{ properties.commandCMakeReconfigure }}",
+            "{{ properties.commandCMakeBuild }}"
+          ],
+          "clean": "{{ properties.commandCMakeClean }}",
+          "test": "{{ properties.commandCMakePerformTests }}"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/clang": "12.0.1-1.2"
+        }
+      },
+      "native-cmake-clang12-release": {
+        "properties": {
+          "buildType": "Release",
+          "platformName": "native",
+          "toolchainFileName": "toolchain-clang.cmake"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
+          "build": [
+            "{{ properties.commandCMakeReconfigure }}",
+            "{{ properties.commandCMakeBuild }}"
+          ],
+          "clean": "{{ properties.commandCMakeClean }}",
+          "test": "{{ properties.commandCMakePerformTests }}"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/clang": "12.0.1-1.2"
+        }
+      },
+      "native-meson-debug": {
+        "properties": {
+          "buildType": "debug",
+          "platformName": "native"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandMesonPrepare }}",
+          "build": [
+            "{{ properties.commandMesonReconfigure }}",
+            "{{ properties.commandMesonBuild }}"
+          ],
+          "clean": "{{ properties.commandMesonClean }}",
+          "test": "{{ properties.commandMesonPerformTests }}"
+        }
+      },
+      "native-meson-release": {
+        "properties": {
+          "buildType": "release",
+          "platformName": "native"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandMesonPrepare }}",
+          "build": [
+            "{{ properties.commandMesonReconfigure }}",
+            "{{ properties.commandMesonBuild }}"
+          ],
+          "clean": "{{ properties.commandMesonClean }}",
+          "test": "{{ properties.commandMesonPerformTests }}"
+        }
+      },
+      "native-meson-gcc11-debug": {
+        "properties": {
+          "buildType": "debug",
+          "platformName": "native",
+          "toolchainFileName": "toolchain-gcc.ini"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandMesonPrepareMesonWithToolchain }}",
+          "build": [
+            "{{ properties.commandMesonReconfigure }}",
+            "{{ properties.commandMesonBuild }}"
+          ],
+          "clean": "{{ properties.commandMesonClean }}",
+          "test": "{{ properties.commandMesonPerformTests }}"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/gcc": "11.2.0-1.3"
+        }
+      },
+      "native-meson-gcc11-release": {
+        "properties": {
+          "buildType": "release",
+          "platformName": "native",
+          "toolchainFileName": "toolchain-gcc.ini"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandMesonPrepareMesonWithToolchain }}",
+          "build": [
+            "{{ properties.commandMesonReconfigure }}",
+            "{{ properties.commandMesonBuild }}"
+          ],
+          "clean": "{{ properties.commandMesonClean }}",
+          "test": "{{ properties.commandMesonPerformTests }}"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/gcc": "11.2.0-1.3"
+        }
+      },
+      "native-meson-clang12-debug": {
+        "properties": {
+          "buildType": "debug",
+          "platformName": "native",
+          "toolchainFileName": "toolchain-clang.ini"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandMesonPrepareMesonWithToolchain }}",
+          "build": [
+            "{{ properties.commandMesonReconfigure }}",
+            "{{ properties.commandMesonBuild }}"
+          ],
+          "clean": "{{ properties.commandMesonClean }}",
+          "test": "{{ properties.commandMesonPerformTests }}"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/clang": "12.0.1-1.2"
+        }
+      },
+      "native-meson-clang12-release": {
+        "properties": {
+          "buildType": "release",
+          "platformName": "native",
+          "toolchainFileName": "toolchain-clang.ini"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandMesonPrepareMesonWithToolchain }}",
+          "build": [
+            "{{ properties.commandMesonReconfigure }}",
+            "{{ properties.commandMesonBuild }}"
+          ],
+          "clean": "{{ properties.commandMesonClean }}",
+          "test": "{{ properties.commandMesonPerformTests }}"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/clang": "12.0.1-1.2"
+        }
+      },
+      "stm32f4discovery-cmake-debug": {
+        "properties": {
+          "buildType": "Debug",
+          "platformName": "stm32f4discovery",
+          "toolchainFileName": "toolchain-arm-none-eabi-gcc.cmake",
+          "qemuBoardName": "STM32F4-Discovery"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
+          "build": [
+            "{{ properties.commandCMakeReconfigure }}",
+            "{{ properties.commandCMakeBuild }}"
+          ],
+          "clean": "{{ properties.commandCMakeClean }}",
+          "test": "{{ properties.commandCMakePerformTests }}",
+          "link-deps": "xpm link --config {{ configuration.name }} @micro-os-plus/platform-stm32f4discovery @micro-os-plus/devices-stm32f4-extras @micro-os-plus/architecture-cortexm @micro-os-plus/startup @micro-os-plus/semihosting @micro-os-plus/diag-trace @micro-os-plus/libs-c @micro-os-plus/libs-cpp @micro-os-plus/version"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/arm-none-eabi-gcc": "10.2.1-1.1.2",
+          "@xpack-dev-tools/qemu-arm": "2.8.0-13.1",
+          "@micro-os-plus/architecture-cortexm": "github:micro-os-plus/architecture-cortexm-xpack#semver:3.0.2",
+          "@micro-os-plus/devices-stm32f4-extras": "github:micro-os-plus/devices-stm32f4-extras-xpack#semver:2.0.3",
+          "@micro-os-plus/diag-trace": "github:micro-os-plus/diag-trace-xpack#semver:2.2.4",
+          "@micro-os-plus/libs-c": "github:micro-os-plus/libs-c-xpack#semver:2.0.2",
+          "@micro-os-plus/libs-cpp": "github:micro-os-plus/libs-cpp-xpack#semver:2.0.3",
+          "@micro-os-plus/platform-stm32f4discovery": "github:micro-os-plus/platform-stm32f4discovery-xpack#semver:3.0.1",
+          "@micro-os-plus/semihosting": "github:micro-os-plus/semihosting-xpack#semver:3.0.2",
+          "@micro-os-plus/startup": "github:micro-os-plus/startup-xpack#semver:2.0.2",
+          "@micro-os-plus/version": "github:micro-os-plus/version-xpack#semver:7.0.4"
+        }
+      },
+      "stm32f4discovery-cmake-release": {
+        "properties": {
+          "buildType": "MinSizeRel",
+          "platformName": "stm32f4discovery",
+          "toolchainFileName": "toolchain-arm-none-eabi-gcc.cmake",
+          "qemuBoardName": "STM32F4-Discovery"
+        },
+        "actions": {
+          "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
+          "build": [
+            "{{ properties.commandCMakeReconfigure }}",
+            "{{ properties.commandCMakeBuild }}"
+          ],
+          "clean": "{{ properties.commandCMakeClean }}",
+          "test": "{{ properties.commandCMakePerformTests }}",
+          "link-deps": "xpm link --config {{ configuration.name }} @micro-os-plus/platform-stm32f4discovery @micro-os-plus/devices-stm32f4-extras @micro-os-plus/architecture-cortexm @micro-os-plus/startup @micro-os-plus/semihosting @micro-os-plus/diag-trace @micro-os-plus/libs-c @micro-os-plus/libs-cpp @micro-os-plus/version"
+        },
+        "devDependencies": {
+          "@xpack-dev-tools/arm-none-eabi-gcc": "10.2.1-1.1.2",
+          "@xpack-dev-tools/qemu-arm": "2.8.0-13.1",
+          "@micro-os-plus/architecture-cortexm": "github:micro-os-plus/architecture-cortexm-xpack#semver:3.0.2",
+          "@micro-os-plus/devices-stm32f4-extras": "github:micro-os-plus/devices-stm32f4-extras-xpack#semver:2.0.3",
+          "@micro-os-plus/diag-trace": "github:micro-os-plus/diag-trace-xpack#semver:2.2.4",
+          "@micro-os-plus/libs-c": "github:micro-os-plus/libs-c-xpack#semver:2.0.2",
+          "@micro-os-plus/libs-cpp": "github:micro-os-plus/libs-cpp-xpack#semver:2.0.3",
+          "@micro-os-plus/platform-stm32f4discovery": "github:micro-os-plus/platform-stm32f4discovery-xpack#semver:3.0.1",
+          "@micro-os-plus/semihosting": "github:micro-os-plus/semihosting-xpack#semver:3.0.2",
+          "@micro-os-plus/startup": "github:micro-os-plus/startup-xpack#semver:2.0.2",
+          "@micro-os-plus/version": "github:micro-os-plus/version-xpack#semver:7.0.4"
+        }
+      }
+    }
+  }
 }
