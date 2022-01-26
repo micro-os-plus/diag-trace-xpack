@@ -11,7 +11,7 @@
 
 # https://cmake.org/cmake/help/v3.19/
 cmake_minimum_required(VERSION 3.19)
-message(STATUS "CMake version: ${CMAKE_VERSION}")
+message(VERBOSE "CMake version: ${CMAKE_VERSION}")
 
 # -----------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-message(STATUS "Compiler: ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION}")
+message(VERBOSE "Compiler: ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION}")
 
 # Generate the compile_commands.json file to feed the indexer.
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -66,11 +66,11 @@ project(
 
 # -----------------------------------------------------------------------------
 
-message(STATUS "Platform name: ${PLATFORM_NAME}")
+message(VERBOSE "Platform name: ${PLATFORM_NAME}")
 # CMAKE_BUILD_TYPE: Debug, Release, RelWithDebInfo, MinSizeRel
-message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
-message(STATUS "Project path: ${xpack_project_folder}")
-message(STATUS "Prefix path: ${CMAKE_PREFIX_PATH}")
+message(VERBOSE "Build type: ${CMAKE_BUILD_TYPE}")
+message(VERBOSE "Project path: ${xpack_project_folder}")
+message(VERBOSE "Prefix path: ${CMAKE_PREFIX_PATH}")
 
 # -----------------------------------------------------------------------------
 
@@ -111,7 +111,7 @@ function(add_test_executable name)
       OUTPUT_NAME "${name}"
   )
 
-  message(STATUS "+ src/${name}.cpp")
+  message(VERBOSE "+ src/${name}.cpp")
 
   # Application sources.
   target_sources(
@@ -145,12 +145,12 @@ function(add_test_executable name)
 
   target_link_libraries(
     ${name}
-    
+
       micro-os-plus::micro-test-plus
       micro-os-plus::diag-trace
   )
 
-  message(STATUS "=> ${name}")
+  message(VERBOSE "=> ${name}")
 
 endfunction()
 
@@ -181,6 +181,6 @@ endif()
 # -----------------------------------------------------------------------------
 
 # Display an empty line, to better see the configuration output.
-message(STATUS "")
+message(VERBOSE "")
 
 # -----------------------------------------------------------------------------
