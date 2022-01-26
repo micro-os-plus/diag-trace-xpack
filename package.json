@@ -1,6 +1,6 @@
 {
   "name": "@micro-os-plus/diag-trace",
-  "version": "2.2.4",
+  "version": "2.3.0",
   "description": "A source xPack with the µOS++ trace::printf() tracing infrastructure",
   "main": "",
   "scripts": {
@@ -142,7 +142,7 @@
         "xpm run build --config native-meson-clang12-release",
         "xpm run test --config native-meson-clang12-release"
       ],
-      "test-stm32f4discovery-cmake":[
+      "test-stm32f4discovery-cmake": [
         "xpm run prepare --config stm32f4discovery-cmake-debug",
         "xpm run build --config stm32f4discovery-cmake-debug",
         "xpm run test --config stm32f4discovery-cmake-debug",
