@@ -6,22 +6,18 @@
 # Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 #
+# If a copy of the license was not distributed with this file, it can
+# be obtained from https://opensource.org/licenses/MIT/.
+#
 # -----------------------------------------------------------------------------
 
 # This file is intended to be consumed by applications with:
 #
-# `find_package(micro-os-plus-diag-trace REQUIRED)`
-#
-# or, if CMake packages are not used, manually with:
-#
 # `add_subdirectory("xpacks/micro-os-plus-diag-trace")`
 #
-# The result is a library that can be added to the linker with:
+# The result is an interface library that can be added to the linker with:
 #
 # `target_link_libraries(your-target PUBLIC micro-os-plus::diag-trace)`
-#
-# To avoid poluting this file with test related details, there is a separate
-# CMake configuration in the `tests` folder.
 
 # -----------------------------------------------------------------------------
 ## Preamble ##
@@ -42,39 +38,56 @@ endif()
 # -----------------------------------------------------------------------------
 ## The project library definitions ##
 
-add_library(micro-os-plus-diag-trace-static STATIC EXCLUDE_FROM_ALL)
+add_library(micro-os-plus-diag-trace-interface INTERFACE EXCLUDE_FROM_ALL)
 
 # -----------------------------------------------------------------------------
+# Target settings.
+
+target_include_directories(
+  micro-os-plus-diag-trace-interface
+
+  INTERFACE
+    "include"
+)
+
+message(VERBOSE "+ -I include")
 
 target_sources(
-  micro-os-plus-diag-trace-static
+  micro-os-plus-diag-trace-interface
 
-  PRIVATE
+  INTERFACE
     "src/trace.cpp"
 )
 
 message(VERBOSE "+ src/trace.cpp")
 
-target_include_directories(
-  micro-os-plus-diag-trace-static
+target_compile_definitions(
+  micro-os-plus-diag-trace-interface
 
-  PUBLIC
-    "include"
+  INTERFACE
+    # ... add preprocessor macro definitions.
 )
 
-message(VERBOSE "+ include")
-
 target_compile_options(
-  micro-os-plus-diag-trace-static
+  micro-os-plus-diag-trace-interface
 
-  PRIVATE
-    # ...
+  INTERFACE
+    # ... perhaps ignore some warnings.
+)
+
+target_link_libraries(
+  micro-os-plus-diag-trace-interface
+
+  INTERFACE
+    # Dependencies
+    # ... list all dependencies.
 )
 
 # -----------------------------------------------------------------------------
 # Aliases.
 
-add_library(micro-os-plus::diag-trace ALIAS micro-os-plus-diag-trace-static)
-message(VERBOSE "> micro-os-plus::diag-trace -> micro-os-plus-diag-trace-static")
+# https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
+add_library(micro-os-plus::diag-trace ALIAS micro-os-plus-diag-trace-interface)
+message(VERBOSE "> micro-os-plus::diag-trace -> micro-os-plus-diag-trace-interface")
 
 # -----------------------------------------------------------------------------
