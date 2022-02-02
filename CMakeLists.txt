@@ -44,7 +44,7 @@ endif()
 
 add_library(micro-os-plus-diag-trace-static STATIC EXCLUDE_FROM_ALL)
 
-# ---------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 target_sources(
   micro-os-plus-diag-trace-static
@@ -71,7 +71,7 @@ target_compile_options(
     # ...
 )
 
-# ---------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Aliases.
 
 add_library(micro-os-plus::diag-trace ALIAS micro-os-plus-diag-trace-static)
