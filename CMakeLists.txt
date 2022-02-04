@@ -50,16 +50,12 @@ target_include_directories(
     "include"
 )
 
-message(VERBOSE "+ -I include")
-
 target_sources(
   micro-os-plus-diag-trace-interface
 
   INTERFACE
     "src/trace.cpp"
 )
-
-message(VERBOSE "+ src/trace.cpp")
 
 target_compile_definitions(
   micro-os-plus-diag-trace-interface
@@ -82,6 +78,10 @@ target_link_libraries(
     # Dependencies
     # ... list all dependencies.
 )
+
+if (COMMAND xpack_display_target_lists)
+  xpack_display_target_lists(micro-os-plus-diag-trace-interface)
+endif()
 
 # -----------------------------------------------------------------------------
 # Aliases.

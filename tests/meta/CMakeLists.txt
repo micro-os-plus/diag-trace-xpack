@@ -113,7 +113,7 @@ function(add_test_executable name)
       OUTPUT_NAME "${name}"
   )
 
-  message(VERBOSE "+ src/${name}.cpp")
+  message(VERBOSE "A+ src/${name}.cpp")
 
   # Application sources.
   target_sources(
