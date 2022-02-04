@@ -6,6 +6,22 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2022-02-04
+
+- 55ee3b5 cmake: add xpack_display_target_lists
+
+## 2022-02-03
+
+- 81c0475 cmake update for interface
+
+## 2022-02-02
+
+- 463d34c add meson support
+
+## 2022-01-28
+
+- 1140aa6 rework CMake, top config, no sources
+
 ## 2022-01-26
 
 - v2.3.0
