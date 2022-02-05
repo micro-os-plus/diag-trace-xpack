@@ -6,6 +6,11 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2022-02-05
+
+- v2.4.1
+- b9c900b move meson_options.txt to tests
+
 ## 2022-02-04
 
 - v2.4.0
