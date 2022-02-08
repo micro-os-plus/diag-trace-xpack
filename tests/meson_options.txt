@@ -5,12 +5,9 @@
 #
 # Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
-#
-# If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/MIT/.
-#
+#native, qemu-mps2, ]
 # -----------------------------------------------------------------------------
 
-option('is-micro-os-plus-micro-test-plus-test', type : 'boolean', value : false)
+option('platform-name', type : 'string', value : '', description : '[native, qemu-mps2-an386, stm32f4discovery]' )
 
 # -----------------------------------------------------------------------------

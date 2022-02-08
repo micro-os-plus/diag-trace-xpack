@@ -2,19 +2,19 @@
 
 There are two tests available, a unit test and a sample test.
 
-The tests run only as native processes on macOS and GNU/Linux.
+The CI workflow runs several tests, both as native processes and as
+semihosted applications emulated by QEMU; for details see
+[CI.yml](../.github/workflows/CI.yml).
 
-Running on bare-metal is more complicated, since the existing testing
-environment also includes these trace functions, and would require
-special measures to move them to a separate namespace.
-
-The CI workflow runs all tests on GitHub Pages.
+Exactly the same source files are built on both platforms, without
+changes.
 
 ## Unit test
 
-The `unit-test.cpp` file checks each function, in C++ and in C.
+The `unit-test.cpp` file checks if all functions in the tracing framework
+work as expected.
 
 ## Sample
 
 The `sample-test.cpp` file is a simple example exercising the
-few primitives available.
+few primitives available in the tracing framework.
