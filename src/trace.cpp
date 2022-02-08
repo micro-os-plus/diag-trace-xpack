@@ -36,7 +36,7 @@ namespace micro_os_plus
   {
     // ------------------------------------------------------------------------
 
-    // Weak empty defaults, in case no output is defined.
+    // Weak empty defaults, in case no implementation is defined.
     void __attribute__ ((weak)) initialize (void)
     {
     }
