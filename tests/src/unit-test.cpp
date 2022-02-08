@@ -111,7 +111,7 @@ main (int argc, char* argv[])
 {
   micro_test_plus::session t (argc, argv);
 
-  printf ("diag::trace test");
+  t.start_suite ("diag::trace test");
 
   count = initial_count;
   strcpy (buffer, "xxx");
