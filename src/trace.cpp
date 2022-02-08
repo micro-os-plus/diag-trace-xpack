@@ -59,7 +59,7 @@ namespace micro_os_plus
 
     // ------------------------------------------------------------------------
 
-    int __attribute__ ((weak)) printf (const char* format, ...)
+    int printf (const char* format, ...)
     {
       std::va_list arguments;
       va_start (arguments, format);
@@ -70,7 +70,7 @@ namespace micro_os_plus
       return ret;
     }
 
-    int __attribute__ ((weak))
+    int
     vprintf (const char* format, std::va_list arguments)
     {
       // Caution: allocated on the stack!
@@ -98,7 +98,7 @@ namespace micro_os_plus
 #pragma GCC diagnostic pop
     }
 
-    int __attribute__ ((weak)) puts (const char* s)
+    int puts (const char* s)
     {
       ssize_t ret = write (s, strlen (s));
       if (ret >= 0)
@@ -121,7 +121,7 @@ namespace micro_os_plus
         }
     }
 
-    int __attribute__ ((weak)) putchar (int c)
+    int putchar (int c)
     {
       ssize_t ret = write (reinterpret_cast<const char*> (&c), 1);
       if (ret > 0)
@@ -139,7 +139,7 @@ namespace micro_os_plus
      * Generally it should match the prototype of `main()`, to simplify
      * forwarding the parameters.
      */
-    void __attribute__ ((weak))
+    void
     dump_args (int argc, char* argv[], const char* name)
     {
       printf ("%s(argc=%d, argv=[", name, argc);
@@ -165,18 +165,18 @@ using namespace micro_os_plus;
 // These cannot be aliased, since they usually are defined
 // in a different translation unit.
 
-void __attribute__ ((weak)) micro_os_plus_trace_initialize (void)
+void micro_os_plus_trace_initialize (void)
 {
   trace::initialize ();
 }
 
-ssize_t __attribute__ ((weak))
+ssize_t
 micro_os_plus_trace_write (const void* buf, std::size_t nbyte)
 {
   return trace::write (buf, nbyte);
 }
 
-void __attribute__ ((weak)) micro_os_plus_trace_flush (void)
+void micro_os_plus_trace_flush (void)
 {
   return trace::flush ();
 }
