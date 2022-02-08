@@ -25,8 +25,7 @@
 # https://cmake.org/cmake/help/v3.20/
 cmake_minimum_required(VERSION 3.20)
 
-project(
-  micro-os-plus-diag-trace
+project(micro-os-plus-diag-trace
   DESCRIPTION "µOS++ tracing infrastructure"
 )
 
@@ -43,40 +42,24 @@ add_library(micro-os-plus-diag-trace-interface INTERFACE EXCLUDE_FROM_ALL)
 # -----------------------------------------------------------------------------
 # Target settings.
 
-target_include_directories(
-  micro-os-plus-diag-trace-interface
-
-  INTERFACE
-    "include"
+target_include_directories(micro-os-plus-diag-trace-interface INTERFACE
+  "include"
 )
 
-target_sources(
-  micro-os-plus-diag-trace-interface
-
-  INTERFACE
-    "src/trace.cpp"
+target_sources(micro-os-plus-diag-trace-interface INTERFACE
+  "src/trace.cpp"
 )
 
-target_compile_definitions(
-  micro-os-plus-diag-trace-interface
-
-  INTERFACE
-    # ... add preprocessor macro definitions.
+target_compile_definitions(micro-os-plus-diag-trace-interface INTERFACE
+  # None.
 )
 
-target_compile_options(
-  micro-os-plus-diag-trace-interface
-
-  INTERFACE
-    # ... perhaps ignore some warnings.
+target_compile_options(micro-os-plus-diag-trace-interface INTERFACE
+  # None.
 )
 
-target_link_libraries(
-  micro-os-plus-diag-trace-interface
-
-  INTERFACE
-    # Dependencies
-    # ... list all dependencies.
+target_link_libraries(micro-os-plus-diag-trace-interface INTERFACE
+  # None.
 )
 
 if (COMMAND xpack_display_target_lists)
