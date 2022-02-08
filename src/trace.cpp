@@ -41,6 +41,8 @@ namespace micro_os_plus
     {
     }
 
+#if 0
+    // TODO: fix Doxygen.
     /**
      * @brief Write the given number of bytes to the trace output channel.
      * @return  The number of characters actually written, or -1 if error.
@@ -50,6 +52,7 @@ namespace micro_os_plus
     {
       return static_cast<ssize_t> (nbyte);
     }
+#endif
 
     void __attribute__ ((weak)) flush (void)
     {
