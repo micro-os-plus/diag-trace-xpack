@@ -10,7 +10,7 @@
  * be obtained from https://opensource.org/licenses/MIT/.
  */
 
-#if defined(TRACE)
+#if defined(MICRO_OS_PLUS_TRACE)
 
 // ----------------------------------------------------------------------------
 
@@ -220,6 +220,6 @@ micro_os_plus_trace_dump_args (int argc, char* argv[])
 
 // ----------------------------------------------------------------------------
 
-#endif // defined(TRACE)
+#endif // defined(MICRO_OS_PLUS_TRACE)
 
 // ----------------------------------------------------------------------------

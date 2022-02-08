@@ -44,7 +44,7 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(TRACE)
+#if defined(MICRO_OS_PLUS_TRACE)
 
 #if defined(__cplusplus)
 
@@ -69,12 +69,12 @@ namespace micro_os_plus
    * If these functions are not defined in another place, there are
    * weak definitions that simply discard the trace output.
    *
-   * Trace support is enabled by adding the `TRACE` macro definition.
+   * Trace support is enabled by adding the `MICRO_OS_PLUS_TRACE` macro definition.
    *
-   * When `TRACE` is not defined, all functions are inlined to empty bodies.
+   * When `MICRO_OS_PLUS_TRACE` is not defined, all functions are inlined to empty bodies.
    * This has the advantage that the trace calls do not need to be
    * conditionally compiled with
-   * <tt> \#if defined(TRACE) </tt> / <tt> \#endif </tt>
+   * <tt> \#if defined(MICRO_OS_PLUS_TRACE) </tt> / <tt> \#endif </tt>
    */
   namespace trace
   {
@@ -196,7 +196,7 @@ extern "C"
 }
 #endif // defined(__cplusplus)
 
-#else /* !defined(TRACE) */
+#else /* !defined(MICRO_OS_PLUS_TRACE) */
 
 // Empty definitions when trace is not defined
 
@@ -236,7 +236,6 @@ namespace micro_os_plus
     inline __attribute__ ((always_inline)) void
     initialize (void)
     {
-      ;
     }
 
 #pragma GCC diagnostic push
@@ -251,7 +250,6 @@ namespace micro_os_plus
     inline __attribute__ ((always_inline)) void
     flush (void)
     {
-      ;
     }
 
     inline __attribute__ ((always_inline)) int
@@ -281,7 +279,6 @@ namespace micro_os_plus
     inline __attribute__ ((always_inline)) void
     dump_args (int argc, char* argv[], const char* name)
     {
-      ;
     }
 
 #pragma GCC diagnostic pop
@@ -328,7 +325,6 @@ extern "C"
 inline __attribute__ ((always_inline)) void
 micro_os_plus_trace_initialize (void)
 {
-  ;
 }
 
 #pragma GCC diagnostic push
@@ -348,7 +344,6 @@ micro_os_plus_trace_write (const void* buf, size_t nbyte)
 inline __attribute__ ((always_inline)) void
 micro_os_plus_trace_flush (void)
 {
-  ;
 }
 
 #pragma GCC diagnostic pop
@@ -380,12 +375,11 @@ micro_os_plus_trace_putchar (int c)
 inline __attribute__ ((always_inline)) void
 micro_os_plus_trace_dump_args (int argc, char* argv[])
 {
-  ;
 }
 
 #pragma GCC diagnostic pop
 
-#endif // defined(TRACE)
+#endif // defined(MICRO_OS_PLUS_TRACE)
 
 // ----------------------------------------------------------------------------
 // Compatibility definitions.
