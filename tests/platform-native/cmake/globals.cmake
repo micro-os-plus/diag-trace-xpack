@@ -11,17 +11,19 @@
 #
 # -----------------------------------------------------------------------------
 
-# This file defines the global settings that apply to all targets.
+# This file defines the global compiler settings that apply to all targets.
+# Must be added with `include()` in the `tests` scope.
 
-# -----------------------------------------------------------------------------
-# The current folder.
-
-get_filename_component(xpack_current_folder ${CMAKE_CURRENT_LIST_DIR} DIRECTORY)
+message(VERBOSE "Including platform-native global definitions...")
 
 # -----------------------------------------------------------------------------
 # Global definitions. Before any libraries.
 
+# A list of all imaginable warnings.
 xpack_set_all_compiler_warnings(all_warnings)
+
+# Global compiler definitions.
+# add_compile_definitions()
 
 set(common_options
 
@@ -30,7 +32,20 @@ set(common_options
 
   -ffunction-sections
   -fdata-sections
+)
 
+if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux" AND "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armv7l")
+  # clang-12: error: unable to execute command: Segmentation fault
+  # clang-12: error: linker command failed due to signal (use -v to see invocation)
+  # Alternate linker was not effective.
+else()
+  list(APPEND common_options
+    $<$<CONFIG:Release>:-flto>
+    $<$<CONFIG:MinSizeRel>:-flto>
+  )
+endif()
+
+list(APPEND common_options
   ${all_warnings}
 )
 
@@ -38,6 +53,7 @@ add_compile_options(
   ${common_options}
 )
 
+# When `-flto` is used, the compile options must be passed to the linker too.
 add_link_options(
   ${common_options}
 )
