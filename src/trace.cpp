@@ -39,7 +39,6 @@ namespace micro_os_plus
     // Weak empty defaults, in case no output is defined.
     void __attribute__ ((weak)) initialize (void)
     {
-      ;
     }
 
     /**
@@ -54,7 +53,6 @@ namespace micro_os_plus
 
     void __attribute__ ((weak)) flush (void)
     {
-      ;
     }
 
     // ------------------------------------------------------------------------
