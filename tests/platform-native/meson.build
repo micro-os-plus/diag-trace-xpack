@@ -17,7 +17,7 @@ message('Processing platform-native...')
 
 # -----------------------------------------------------------------------------
 
-linker_options = common_options
+linker_options = []
 
 # https://mesonbuild.com/Reference-tables.html#operating-system-names
 if build_machine.system() == 'darwin'
@@ -174,6 +174,5 @@ test(
   args: [],
   env: nomalloc
 )
-
 
 # -----------------------------------------------------------------------------

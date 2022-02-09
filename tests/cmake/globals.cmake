@@ -11,28 +11,55 @@
 #
 # -----------------------------------------------------------------------------
 
-# Add definitions for all source files compiled in the `tests` folder.
+# This file defines the global compiler settings that apply to all targets.
+# Must be added with `include()` in the `tests` scope before the platform
+# globals.
+
 message(VERBOSE "Including global definitions...")
 
 # -----------------------------------------------------------------------------
 
-# https://cmake.org/cmake/help/v3.20/command/add_compile_definitions.html
-
-add_compile_definitions(
-  # NDEBUG is provided by the toolchain definitions on release.
-
-  # DO NOT use CMAKE_BUILD_TYPE
-  $<$<CONFIG:Debug>:DEBUG>
-  MICRO_OS_PLUS_HAS_CONFIG_H
-)
-
 include_directories(
   # Folders are relative to `tests`.
   "platform-${PLATFORM_NAME}/include-config"
+  "platform-${PLATFORM_NAME}/include-platform"
+)
+
+# https://cmake.org/cmake/help/v3.20/command/add_compile_definitions.html
+add_compile_definitions(
+  # NDEBUG is provided by the toolchain definitions on release.
+
+  # TODO: remove DEBUG
+  $<$<CONFIG:Debug>:DEBUG>
+  $<$<CONFIG:Debug>:MICRO_OS_PLUS_DEBUG>
+  MICRO_OS_PLUS_HAS_CONFIG_H
+)
+
+set(global_common_options
+
+  -fmessage-length=0
+  -fsigned-char
+
+  # These are used in conjunction with linker `--gc-sections`.
+  -ffunction-sections
+  -fdata-sections
+)
+
+add_compile_options(
+  ${global_common_options}
 )
 
 # When `-flto` is used, the compile options must be passed to the linker too.
-# add_compile_options()
-# add_link_options()
+add_link_options(
+  ${global_common_options}
+)
+
+# A list of all imaginable warnings.
+# Targets may add options to disable some of them.
+xpack_set_all_compiler_warnings(all_warnings)
+
+add_compile_options(
+  ${all_warnings}
+)
 
 # -----------------------------------------------------------------------------

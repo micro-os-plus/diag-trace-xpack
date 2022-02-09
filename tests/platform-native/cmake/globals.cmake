@@ -17,45 +17,30 @@
 message(VERBOSE "Including platform-native global definitions...")
 
 # -----------------------------------------------------------------------------
-# Global definitions. Before any libraries.
 
-# A list of all imaginable warnings.
-xpack_set_all_compiler_warnings(all_warnings)
-
-# Global compiler definitions.
+# Global definitions.
 # add_compile_definitions()
+# include_directories()
 
-set(common_options
-
-  -fmessage-length=0
-  -fsigned-char
-
-  -ffunction-sections
-  -fdata-sections
-)
-
-if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux" AND "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armv7l")
+# https://cmake.org/cmake/help/v3.20/variable/CMAKE_LANG_COMPILER_ID.html
+if("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang" AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Linux" AND "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armv7l")
   # clang-12: error: unable to execute command: Segmentation fault
   # clang-12: error: linker command failed due to signal (use -v to see invocation)
   # Alternate linker was not effective.
 else()
-  list(APPEND common_options
+  set(platform_common_options
     $<$<CONFIG:Release>:-flto>
     $<$<CONFIG:MinSizeRel>:-flto>
   )
+
+  add_compile_options(
+    ${platform_common_options}
+  )
+
+  # When `-flto` is used, the compile options must be passed to the linker too.
+  add_link_options(
+    ${platform_common_options}
+  )
 endif()
-
-list(APPEND common_options
-  ${all_warnings}
-)
-
-add_compile_options(
-  ${common_options}
-)
-
-# When `-flto` is used, the compile options must be passed to the linker too.
-add_link_options(
-  ${common_options}
-)
 
 # -----------------------------------------------------------------------------
