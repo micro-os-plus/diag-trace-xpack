@@ -32,7 +32,7 @@ add_compile_definitions(
   # TODO: remove DEBUG
   $<$<CONFIG:Debug>:DEBUG>
   $<$<CONFIG:Debug>:MICRO_OS_PLUS_DEBUG>
-  MICRO_OS_PLUS_HAS_CONFIG_H
+  MICRO_OS_PLUS_INCLUDE_CONFIG_H
 )
 
 set(global_common_options

@@ -20,7 +20,7 @@ if c_compiler.get_id() == 'gcc' or c_compiler.get_id().contains('clang')
   # Always add the `include-config` folder.
   includes += [ '-I../../tests/platform-' + xpack_platform_name + '/include-config' ]
   message('G+ -I tests/platform-' + xpack_platform_name + '/include-config')
-  
+
   includes += [ '-I../../tests/platform-' + xpack_platform_name + '/include-platform' ]
   message('G+ -I tests/platform-' + xpack_platform_name + '/include-platform')
 
@@ -35,7 +35,7 @@ if c_compiler.get_id() == 'gcc' or c_compiler.get_id().contains('clang')
     compiler_definitions += ['-DNDEBUG']
     compiler_definitions += ['-DMICRO_OS_PLUS_DEBUG']
   endif
-  compiler_definitions += ['-DMICRO_OS_PLUS_HAS_CONFIG_H']
+  compiler_definitions += ['-DMICRO_OS_PLUS_INCLUDE_CONFIG_H']
   # compiler_definitions += ['-DMICRO_OS_PLUS_TRACE']
 
   # Options for both compilers and linkers. When using `-flto`, all options
