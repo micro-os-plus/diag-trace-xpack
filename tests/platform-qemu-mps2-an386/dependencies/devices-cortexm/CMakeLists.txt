@@ -48,48 +48,33 @@ add_library(micro-os-plus-devices-cortexm-interface INTERFACE EXCLUDE_FROM_ALL)
 # -----------------------------------------------------------------------------
 # Target settings.
 
-target_include_directories(
-  micro-os-plus-devices-cortexm-interface
-
-  INTERFACE
-    "include"
+target_include_directories(micro-os-plus-devices-cortexm-interface INTERFACE
+  "include"
 )
 
-target_sources(
-  micro-os-plus-devices-cortexm-interface
+target_sources(micro-os-plus-devices-cortexm-interface INTERFACE
+  "src/diag/trace-itm.cpp"
+  "src/diag/trace-segger-rtt.cpp"
 
-  INTERFACE
-    "src/diag/trace-itm.cpp"
-    "src/diag/trace-segger-rtt.cpp"
+  "src/startup/initialize-hardware-early.c"
+  "src/startup/initialize-hardware.c"
+  "src/startup/initialize-interrupts-stack.cpp"
+  "src/startup/terminate.cpp"
 
-    "src/startup/initialize-hardware-early.c"
-    "src/startup/initialize-hardware.c"
-    "src/startup/initialize-interrupts-stack.cpp"
-    "src/startup/terminate.cpp"
-
-    "src/exception-handlers.cpp"
+  "src/exception-handlers.cpp"
 )
 
-target_compile_definitions(
-  micro-os-plus-devices-cortexm-interface
-
-  INTERFACE
-    # ... add preprocessor macro definitions.
+target_compile_definitions(micro-os-plus-devices-cortexm-interface INTERFACE
+  # None.
 )
 
-target_compile_options(
-  micro-os-plus-devices-cortexm-interface
-
-  INTERFACE
-    # Perhaps ignore some warnings.
+target_compile_options(micro-os-plus-devices-cortexm-interface INTERFACE
+  # None.
 )
 
-target_link_libraries(
-  micro-os-plus-devices-cortexm-interface
-
-  INTERFACE
-    # Dependencies
-    micro-os-plus::semihosting
+target_link_libraries(micro-os-plus-devices-cortexm-interface INTERFACE
+  # Dependencies
+  micro-os-plus::semihosting
 )
 
 if (COMMAND xpack_display_target_lists)

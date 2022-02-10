@@ -44,12 +44,12 @@ function(add_test_executable name)
   message(VERBOSE "A+ tests/src/${name}.cpp")
 
   target_compile_definitions(${name} PRIVATE
-    # ...
+    # None.
   )
 
   # The compile options were defined globally.
   target_compile_options(${name} PRIVATE
-    # ...
+    # None.
   )
 
   # https://cmake.org/cmake/help/v3.20/manual/cmake-generator-expressions.7.html
@@ -86,7 +86,7 @@ target_link_libraries(default-test PRIVATE
 )
 
 target_compile_definitions(default-test PRIVATE
-  MICRO_OS_PLUS_TRACE
+  "MICRO_OS_PLUS_TRACE"
 )
 
 add_test(
@@ -103,7 +103,7 @@ target_link_libraries(sample-test PRIVATE
 )
 
 target_compile_definitions(sample-test PRIVATE
-  MICRO_OS_PLUS_TRACE
+  "MICRO_OS_PLUS_TRACE"
 )
 
 add_test(
@@ -116,7 +116,7 @@ add_test(
 add_test_executable(unit-test)
 
 target_compile_definitions(unit-test PRIVATE
-  MICRO_OS_PLUS_TRACE
+  "MICRO_OS_PLUS_TRACE"
 )
 
 target_link_libraries(unit-test PRIVATE

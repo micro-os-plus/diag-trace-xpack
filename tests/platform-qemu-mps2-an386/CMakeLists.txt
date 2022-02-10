@@ -35,24 +35,24 @@ add_library(platform-qemu-mps2-an386-interface INTERFACE EXCLUDE_FROM_ALL)
 # -----------------------------------------------------------------------------
 
 target_sources(platform-qemu-mps2-an386-interface INTERFACE
-    "src/initialize-hardware.cpp"
-    "src/interrupts-handlers.cpp"
+  "src/initialize-hardware.cpp"
+  "src/interrupts-handlers.cpp"
 )
 
 target_include_directories(platform-qemu-mps2-an386-interface INTERFACE
-    "include-platform"
+  "include-platform"
 )
 
 target_compile_definitions(platform-qemu-mps2-an386-interface INTERFACE
-    "${xpack_platform_compile_definition}"
+  "${xpack_platform_compile_definition}"
 )
 
 target_compile_options(platform-qemu-mps2-an386-interface INTERFACE
-    # ... perhaps ignore some warnings.
+  # None.
 )
 
 target_link_libraries(platform-qemu-mps2-an386-interface INTERFACE
-    micro-os-plus::devices-qemu-cortexm
+  micro-os-plus::devices-qemu-cortexm
 )
 
 if (COMMAND xpack_display_target_lists)
@@ -135,7 +135,7 @@ endfunction()
 add_test_executable(no-trace-test)
 
 target_compile_definitions(no-trace-test PRIVATE
-  MICRO_OS_PLUS_TRACE
+  "MICRO_OS_PLUS_TRACE"
 )
 
 target_link_libraries(no-trace-test PRIVATE
@@ -197,7 +197,7 @@ add_test(
 add_test_executable(default-test)
 
 target_compile_definitions(default-test PRIVATE
-  MICRO_OS_PLUS_TRACE
+  "MICRO_OS_PLUS_TRACE"
 )
 
 target_link_libraries(default-test PRIVATE
@@ -229,7 +229,7 @@ add_test(
 add_test_executable(sample-test)
 
 target_compile_definitions(sample-test PRIVATE
-  MICRO_OS_PLUS_TRACE
+  "MICRO_OS_PLUS_TRACE"
 )
 
 target_link_libraries(sample-test PRIVATE
@@ -261,7 +261,7 @@ add_test(
 add_test_executable(unit-test)
 
 target_compile_definitions(unit-test PRIVATE
-  MICRO_OS_PLUS_TRACE
+  "MICRO_OS_PLUS_TRACE"
 )
 
 target_link_libraries(unit-test PRIVATE
