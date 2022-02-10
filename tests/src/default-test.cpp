@@ -10,12 +10,16 @@
  * be obtained from https://opensource.org/licenses/MIT/.
  */
 
-// ----------------------------------------------------------------------------
-
 /*
  * This test checks if the library compiles when MICRO_OS_PLUS_TRACE is defined,
  * and only write() is implemented.
  */
+
+// ----------------------------------------------------------------------------
+
+#if defined(MICRO_OS_PLUS_INCLUDE_CONFIG_H)
+#include <micro-os-plus/config.h>
+#endif // MICRO_OS_PLUS_INCLUDE_CONFIG_H
 
 #include <micro-os-plus/diag/trace.h>
 #include <unistd.h>

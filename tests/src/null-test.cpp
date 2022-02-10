@@ -10,11 +10,15 @@
  * be obtained from https://opensource.org/licenses/MIT/.
  */
 
-// ----------------------------------------------------------------------------
-
 /*
  * This test checks if the library compiles when MICRO_OS_PLUS_TRACE is not defined.
  */
+
+// ----------------------------------------------------------------------------
+
+#if defined(MICRO_OS_PLUS_INCLUDE_CONFIG_H)
+#include <micro-os-plus/config.h>
+#endif // MICRO_OS_PLUS_INCLUDE_CONFIG_H
 
 #if defined(MICRO_OS_PLUS_TRACE)
 #error "MICRO_OS_PLUS_TRACE should not be defined"

@@ -15,11 +15,11 @@
 
 // ----------------------------------------------------------------------------
 
-#include <stdbool.h>
-
 #if defined(MICRO_OS_PLUS_INCLUDE_CONFIG_H)
 #include <micro-os-plus/config.h>
 #endif // MICRO_OS_PLUS_INCLUDE_CONFIG_H
+
+#include <stdbool.h>
 
 #if !defined(MICRO_OS_PLUS_BOOL_USE_TRACE)
 #define MICRO_OS_PLUS_BOOL_USE_TRACE (true)
