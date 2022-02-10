@@ -6,6 +6,32 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2022-02-10
+
+- v2.4.2
+- 24e405e .c* include <micro-os-plus/config.h>
+- 2819b94 package.json: bump build-helper
+- c290a9c add platform-qemu-mps2-an386 & tests
+- bf83676 add most test sources
+
+## 2022-02-09
+
+- f415f88 MICRO_OS_PLUS_INCLUDE_CONFIG_H
+- e83560f rework cmake & meson globals & native
+
+## 2022-02-08
+
+- 384d5b4 CI.yml: update native tests
+- 468bc23 tests: update cmake & meson configs
+- 20b8a06 tests: add platform native
+- 8e53b7f add tests sources
+- 14aada4 add tests cmake & meson globals
+- d962829 trace.cpp: disable default write()
+- a9ada12 trace.cpp: empty block without ;
+- b8af835 trace.cpp: remove `__attribute__ ((weak))`
+- a76a829 use MICRO_OS_PLUS_HAS_CONFIG_H
+- fb58146 rename MICRO_OS_PLUS_TRACE
+
 ## 2022-02-05
 
 - v2.4.1
