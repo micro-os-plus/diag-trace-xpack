@@ -50,7 +50,6 @@ add_global_link_arguments(
 
 # -----------------------------------------------------------------------------
 
-# Native builds do not have dependencies.
 xpack_dependencies = [
   'xpacks/micro-os-plus-micro-test-plus', # -
 ]

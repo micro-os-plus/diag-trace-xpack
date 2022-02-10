@@ -28,14 +28,16 @@ if c_compiler.get_id() == 'gcc' or c_compiler.get_id().contains('clang')
   # Native builds may not use them.
   compiler_definitions = []
   if get_option('buildtype').contains('debug')
-    compiler_definitions += ['-DDEBUG']
-    compiler_definitions += ['-DMICRO_OS_PLUS_DEBUG']
+    compiler_definitions += [ '-DDEBUG' ]
+    compiler_definitions += [ '-DMICRO_OS_PLUS_DEBUG' ]
   endif
   if get_option('buildtype') == 'release'
-    compiler_definitions += ['-DNDEBUG']
-    compiler_definitions += ['-DMICRO_OS_PLUS_DEBUG']
+    compiler_definitions += [ '-DNDEBUG' ]
+    compiler_definitions += [ '-DMICRO_OS_PLUS_DEBUG' ]
   endif
-  compiler_definitions += ['-DMICRO_OS_PLUS_INCLUDE_CONFIG_H']
+  compiler_definitions += [ '-DMICRO_OS_PLUS_INCLUDE_CONFIG_H' ]
+
+  # DO NOT define it globally, one test does not need it!
   # compiler_definitions += ['-DMICRO_OS_PLUS_TRACE']
 
   # Options for both compilers and linkers. When using `-flto`, all options
@@ -43,15 +45,15 @@ if c_compiler.get_id() == 'gcc' or c_compiler.get_id().contains('clang')
 
   global_common_options = []
   if get_option('buildtype') == 'debug'
-    # global_common_options += ['-O0']
+    # global_common_options += [ '-O0' ]
   elif get_option('buildtype') == 'debugoptimized'
-    global_common_options += ['-Og'] # Override -O2
+    global_common_options += [ '-Og' ] # Override -O2
   elif get_option('buildtype') == 'minsize'
-    # global_common_options += ['-Os']
+    # global_common_options += [ '-Os' ]
   elif get_option('buildtype') == 'release'
-    # global_common_options += ['-O3']
+    # global_common_options += [ '-O3' ]
   else
-    global_common_options += ['-O']
+    global_common_options += [ '-O' ]
   endif
 
   global_common_options += [

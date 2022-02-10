@@ -63,6 +63,7 @@ null_test = executable(
   sources: files(
     '../src/null-test.cpp'
   ),
+  # MICRO_OS_PLUS_TRACE must not be defined
   dependencies: [
     micro_os_plus_diag_trace_dependency
   ],

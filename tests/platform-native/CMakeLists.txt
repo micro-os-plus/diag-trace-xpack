@@ -66,6 +66,8 @@ endfunction()
 
 add_test_executable(null-test)
 
+# MICRO_OS_PLUS_TRACE must not be defined
+
 target_link_libraries(null-test PRIVATE
     micro-os-plus::diag-trace
 )
