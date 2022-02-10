@@ -1,0 +1,60 @@
+/*
+ * This file is part of the µOS++ distribution.
+ *   (https://github.com/micro-os-plus)
+ * Copyright (c) 2016 Liviu Ionescu.
+ *
+ * Permission to use, copy, modify, and/or distribute this software
+ * for any purpose is hereby granted, under the terms of the MIT license.
+ *
+ * If a copy of the license was not distributed with this file, it can
+ * be obtained from https://opensource.org/licenses/MIT/.
+ */
+
+#ifndef MICRO_OS_PLUS_ESTD_SYSTEM_ERROR_
+#define MICRO_OS_PLUS_ESTD_SYSTEM_ERROR_
+
+// ----------------------------------------------------------------------------
+
+/*
+ * The code is inspired by LLVM libcxx and GNU libstdc++-v3.
+ */
+
+// note: replace the class-key with 'struct' (on RISC-V)
+// note: 'std::error_code' defined as 'struct' here
+// #if !defined(__ARM_EABI__)
+// #include <system_error>
+// #endif
+
+// ----------------------------------------------------------------------------
+
+#pragma GCC diagnostic push
+
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wc++98-compat"
+#endif
+
+namespace micro_os_plus
+{
+  namespace estd
+  {
+    // ------------------------------------------------------------------------
+
+    [[noreturn]] void
+    __throw_system_error (int ev, const char* what_arg);
+
+#if 1
+    [[noreturn]] void
+    __throw_rtos_error (int ev, const char* what_arg);
+#endif
+    // ------------------------------------------------------------------------
+
+  } // namespace estd
+} // namespace micro_os_plus
+
+#pragma GCC diagnostic pop
+
+// ----------------------------------------------------------------------------
+
+#endif // MICRO_OS_PLUS_ESTD_SYSTEM_ERROR_
+
+// ----------------------------------------------------------------------------
