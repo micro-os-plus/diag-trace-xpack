@@ -19,6 +19,25 @@ using namespace micro_os_plus;
 
 // ----------------------------------------------------------------------------
 
+int
+main (int argc, char* argv[])
+{
+  trace::initialize ();
+
+  trace::dump_args (argc, argv);
+
+  trace::printf ("Hello %s!\n", "World");
+  trace::puts ("one line");
+  trace::putchar ('*');
+
+  trace::flush ();
+
+  return 0;
+}
+
+// ----------------------------------------------------------------------------
+// The full implementation of the trace system API.
+
 namespace micro_os_plus
 {
   namespace trace
@@ -43,23 +62,5 @@ namespace micro_os_plus
     }
   } // namespace trace
 } // namespace micro_os_plus
-
-// ----------------------------------------------------------------------------
-
-int
-main (int argc, char* argv[])
-{
-  trace::initialize ();
-
-  trace::dump_args (argc, argv);
-
-  trace::printf ("Hello %s!\n", "World");
-  trace::puts ("one line");
-  trace::putchar ('*');
-
-  trace::flush ();
-
-  return 0;
-}
 
 // ----------------------------------------------------------------------------

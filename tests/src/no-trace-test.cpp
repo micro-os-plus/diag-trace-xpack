@@ -13,31 +13,28 @@
 // ----------------------------------------------------------------------------
 
 /*
- * This test checks if the library compiles when MICRO_OS_PLUS_TRACE is not defined.
+ * This test checks that the environment no longer has references to trace
+ * function.
  */
 
-#if defined(MICRO_OS_PLUS_TRACE)
-#error "MICRO_OS_PLUS_TRACE should not be defined"
+#if defined(MICRO_OS_PLUS_INCLUDE_CONFIG_H)
+#include <micro-os-plus/config.h>
+#endif // MICRO_OS_PLUS_INCLUDE_CONFIG_H
+
+#if !defined(MICRO_OS_PLUS_TRACE)
+#error "MICRO_OS_PLUS_TRACE should be defined"
 #endif
 
-#include <micro-os-plus/diag/trace.h>
+#if MICRO_OS_PLUS_BOOL_USE_TRACE
+#error "MICRO_OS_PLUS_BOOL_USE_TRACE should not be defined"
+#endif
 
-using namespace micro_os_plus;
-
-// ----------------------------------------------------------------------------
+#include <stdio.h>
 
 int
-main (int argc, char* argv[])
+main()
 {
-  trace::initialize ();
-
-  trace::dump_args (argc, argv);
-
-  trace::printf ("Hello %s!\n", "World");
-  trace::puts ("one line");
-  trace::putchar ('*');
-
-  trace::flush ();
+  printf("Hello %s!\n", "World");
 
   return 0;
 }

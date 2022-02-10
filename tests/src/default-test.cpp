@@ -41,12 +41,14 @@ main (int argc, char* argv[])
 }
 
 // ----------------------------------------------------------------------------
+// Minimal implementation, initialize() and flush() are not defined.
 
 namespace micro_os_plus
 {
   namespace trace
   {
     // ------------------------------------------------------------------------
+#if defined(MICRO_OS_PLUS_TRACE)
 
     ssize_t
     write (const void* buf, std::size_t nbyte)
@@ -55,6 +57,7 @@ namespace micro_os_plus
       return ::write (1, buf, nbyte);
     }
 
+#endif
     // ------------------------------------------------------------------------
   } // namespace trace
 } // namespace micro_os_plus
