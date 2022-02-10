@@ -58,7 +58,13 @@ namespace micro_os_plus
     write (const void* buf, std::size_t nbyte)
     {
       // 1=STDOUT
+#pragma GCC diagnostic push
+#if defined(__MINGW32__)
+// warning: conversion from 'std::size_t' {aka 'long long unsigned int'} to 'unsigned int' may change value [-Wconversion]
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
       return ::write (1, buf, nbyte);
+#pragma GCC diagnostic pop
     }
 
 #endif
