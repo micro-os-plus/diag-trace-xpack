@@ -38,30 +38,6 @@ namespace micro_os_plus
   {
     // ------------------------------------------------------------------------
 
-    // Weak empty defaults, in case no implementation is defined.
-    void __attribute__ ((weak)) initialize (void)
-    {
-    }
-
-#if 0
-    // TODO: fix Doxygen.
-    /**
-     * @brief Write the given number of bytes to the trace output channel.
-     * @return  The number of characters actually written, or -1 if error.
-     */
-    ssize_t __attribute__ ((weak))
-    write (const void* buf __attribute__ ((unused)), std::size_t nbyte)
-    {
-      return static_cast<ssize_t> (nbyte);
-    }
-#endif
-
-    void __attribute__ ((weak)) flush (void)
-    {
-    }
-
-    // ------------------------------------------------------------------------
-
     int printf (const char* format, ...)
     {
       std::va_list arguments;

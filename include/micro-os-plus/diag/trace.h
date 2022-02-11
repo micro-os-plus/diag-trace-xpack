@@ -62,27 +62,45 @@ namespace micro_os_plus
    * - `micro_os_plus::trace::puts()` / `micro_os_plus_trace_puts()`
    * - `micro_os_plus::trace::putchar()` / `micro_os_plus_trace_putchar()`
    *
-   * The implementation is done in:
+   * The user must provide implementations for:
    * - micro_os_plus::trace::initialize()
    * - micro_os_plus::trace::write()
+   * - micro_os_plus::trace::flush()
    *
-   * If these functions are not defined in another place, there are
-   * weak definitions that simply discard the trace output.
+   * Trace support is enabled by adding the `MICRO_OS_PLUS_TRACE` 
+   * macro definition to the compiler line.
    *
-   * Trace support is enabled by adding the `MICRO_OS_PLUS_TRACE` macro definition.
-   *
-   * When `MICRO_OS_PLUS_TRACE` is not defined, all functions are inlined to empty bodies.
+   * When `MICRO_OS_PLUS_TRACE` is not defined, all functions are 
+   * inlined to empty bodies.
    * This has the advantage that the trace calls do not need to be
    * conditionally compiled with
    * <tt> \#if defined(MICRO_OS_PLUS_TRACE) </tt> / <tt> \#endif </tt>
+   * The disadvantage is that this header must be always included.
    */
   namespace trace
   {
     // ------------------------------------------------------------------------
 
+    /**
+     * @brief Flush the output.
+     * @par Parameters
+     *  None.
+     * @par Returns
+     *  Nothing.
+     * 
+     * Must be implemented by the application.
+     */
     void
     initialize (void);
 
+    /**
+     * @brief Write the given number of bytes to the trace output channel.
+     * @param [in] buf An array of bytes.
+     * @param [in] nbyte The number of bytes in the array.
+     * @return  The number of characters actually written, or -1 if error.
+     * 
+     * Must be implemented by the application.
+     */
     ssize_t
     write (const void* buf, std::size_t nbyte);
 
