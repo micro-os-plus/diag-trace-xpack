@@ -53,12 +53,12 @@ size = find_program('size')
 objdump = find_program('objdump')
 objcopy = find_program('objcopy')
 
-test_names = [ 'no-trace-test', 'null-test', 'default-test', 'sample-test', 'unit-test' ]
+test_names = [ 'no-trace-test', 'null-test', 'sample-test', 'unit-test' ]
 
 foreach name : test_names
 
   compile_definitions = []
-  if name != 'default-test' and name != 'null-test'
+  if name != 'null-test'
     compile_definitions += [ '-DMICRO_OS_PLUS_TRACE' ]
   endif
 
@@ -199,22 +199,6 @@ test(
     '-d', 'unimp,guest_errors',
     '--semihosting-config', 'enable=on,target=native',
     '--semihosting-config', 'arg=null-test',
-  ],
-  env: nomalloc
-)
-
-# https://mesonbuild.com/Reference-manual_functions.html#test
-test(
-  'default-test',
-  qemu,
-  args: [
-    '--machine', 'mps2-an386',
-    '--cpu', 'cortex-m4',
-    '--kernel', default_test,
-    '--nographic',
-    '-d', 'unimp,guest_errors',
-    '--semihosting-config', 'enable=on,target=native',
-    '--semihosting-config', 'arg=default-test',
   ],
   env: nomalloc
 )

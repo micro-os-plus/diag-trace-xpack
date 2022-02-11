@@ -85,37 +85,6 @@ test(
 # -----------------------------------------------------------------------------
 
 # https://mesonbuild.com/Reference-manual.html#executable
-default_test = executable(
-  'default-test',
-  include_directories: include_directories(
-    '../include',
-  ),
-  sources: files(
-    '../src/default-test.cpp'
-  ),
-  c_args: [ '-DMICRO_OS_PLUS_TRACE' ],
-  cpp_args: [ '-DMICRO_OS_PLUS_TRACE' ],
-  dependencies: [
-    micro_os_plus_diag_trace_dependency
-  ],
-  link_args: linker_options
-)
-
-message('A+ -I tests/include')
-message('A+ tests/src/default-test.cpp')
-message('A> default-test')
-
-# https://mesonbuild.com/Reference-manual_functions.html#test
-test(
-  'default-test',
-  default_test,
-  args: [],
-  env: nomalloc
-)
-
-# -----------------------------------------------------------------------------
-
-# https://mesonbuild.com/Reference-manual.html#executable
 sample_test = executable(
   'sample-test',
   include_directories: include_directories(

@@ -81,23 +81,6 @@ add_test(
 
 # -----------------------------------------------------------------------------
 
-add_test_executable(default-test)
-
-target_link_libraries(default-test PRIVATE
-  micro-os-plus::diag-trace
-)
-
-target_compile_definitions(default-test PRIVATE
-  "MICRO_OS_PLUS_TRACE"
-)
-
-add_test(
-  NAME "default-test"
-  COMMAND default-test
-)
-
-# -----------------------------------------------------------------------------
-
 add_test_executable(sample-test)
 
 target_link_libraries(sample-test PRIVATE

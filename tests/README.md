@@ -55,12 +55,6 @@ Test that the build passes when the library is included, but
 `MICRO_OS_PLUS_TRACE` is not defined, which is the usual case for
 release configurations.
 
-## default-test
-
-Test that the build passes when only the `write()` function is
-defined by the application, and the weak `initialise()` and `flush()`
-are used as defaults.
-
 ## sample-test
 
 This is a simple example exercising the

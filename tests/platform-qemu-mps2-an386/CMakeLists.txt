@@ -194,38 +194,6 @@ add_test(
 
 # -----------------------------------------------------------------------------
 
-add_test_executable(default-test)
-
-target_compile_definitions(default-test PRIVATE
-  "MICRO_OS_PLUS_TRACE"
-)
-
-target_link_libraries(default-test PRIVATE
-  micro-os-plus::diag-trace
-
-  micro-os-plus::platform # Should bring device & architecture too.
-
-  micro-os-plus::libs-c
-  micro-os-plus::libs-cpp
-  micro-os-plus::semihosting
-  micro-os-plus::startup
-)
-
-add_test(
-  NAME "default-test"
-
-  COMMAND qemu-system-arm${extension}
-    --machine mps2-an386
-    --cpu cortex-m4
-    --kernel default-test.elf
-    --nographic
-    -d unimp,guest_errors
-    --semihosting-config enable=on,target=native
-    --semihosting-config arg=null-test
-)
-
-# -----------------------------------------------------------------------------
-
 add_test_executable(sample-test)
 
 target_compile_definitions(sample-test PRIVATE
