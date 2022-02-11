@@ -262,7 +262,7 @@
           "clean": "{{ properties.commandCMakeClean }}"
         },
         "devDependencies": {
-          "@xpack-dev-tools/gcc": "11.2.0-1.3"
+          "@xpack-dev-tools/gcc": "11.2.0-3.3"
         }
       },
       "native-cmake-gcc11-release": {
@@ -281,7 +281,7 @@
           "clean": "{{ properties.commandCMakeClean }}"
         },
         "devDependencies": {
-          "@xpack-dev-tools/gcc": "11.2.0-1.3"
+          "@xpack-dev-tools/gcc": "11.2.0-3.3"
         }
       },
       "native-cmake-clang12-debug": {
@@ -369,7 +369,7 @@
           "clean": "{{ properties.commandMesonClean }}"
         },
         "devDependencies": {
-          "@xpack-dev-tools/gcc": "11.2.0-1.3"
+          "@xpack-dev-tools/gcc": "11.2.0-3.3"
         }
       },
       "native-meson-gcc11-release": {
@@ -389,7 +389,7 @@
           "clean": "{{ properties.commandMesonClean }}"
         },
         "devDependencies": {
-          "@xpack-dev-tools/gcc": "11.2.0-1.3"
+          "@xpack-dev-tools/gcc": "11.2.0-3.3"
         }
       },
       "native-meson-clang12-debug": {
