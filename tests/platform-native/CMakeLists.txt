@@ -56,8 +56,8 @@ function(add_test_executable name)
   target_link_options(${name} PRIVATE
     $<$<PLATFORM_ID:Darwin>:-Wl,-dead_strip>
     $<$<PLATFORM_ID:Linux,Windows>:-Wl,--gc-sections>
-    -Wl,-Map,platform-bin/${name}-map.txt
-    -v 
+    $<$<PLATFORM_ID:Linux,Windows>:-Wl,-Map,platform-bin/${name}-map.txt>
+    -v
   )
 
   message(VERBOSE "A> ${name}")
