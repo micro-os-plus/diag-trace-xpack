@@ -17,26 +17,31 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Test diag-trace on supported platforms'
+name: 'Test diag-trace on all platforms'
 
 on:
   workflow_dispatch:
 
 jobs:
 
-  # linux-x64:
-  #   name: 'Linux x64 test'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: 'Machine'
-  #       run: uname -a
-  #     - name: 'Checkout'
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 3
-  #         submodules: true
-      # - name: 'Ubuntu latest x64 native xpm test-all'
-      #   run: bash tests/scripts/test-all.sh
+  linux-x64:
+    name: 'Linux x64 test'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Machine'
+        run: uname -a
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: 'Ubuntu latest x64 native xpm test-all'
+        run: bash tests/scripts/test-all.sh
+      - name: 'Debian docker xpm test-all'
+        uses: docker://node:lts
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/tests/scripts/test-all.sh --image node:lts
       # - name: 'Ubuntu 20.04 x64 docker xpm test-all'
       #   uses: docker://ubuntu:20.04
       #   with:
@@ -59,13 +64,18 @@ jobs:
         with:
           fetch-depth: 3
           submodules: true
-      # - name: 'Raspberry Pi OS arm64 native xpm test-all'
-      #   run: bash tests/scripts/test-all.sh
+      - name: 'Raspberry Pi OS arm64 native xpm test-all'
+        run: bash tests/scripts/test-all.sh
       # - name: 'Ubuntu 20.04 docker xpm test-all'
       #   uses: docker://ubuntu:20.04
       #   with:
       #     entrypoint: /bin/bash
       #     args: /github/workspace/tests/scripts/test-all.sh --image ubuntu:20.04
+      - name: 'Debian docker xpm test-all'
+        uses: docker://node:lts
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/tests/scripts/test-all.sh --image node:lts
       # - name: 'Debian buster docker xpm test-all'
       #   uses: docker://debian:buster
       #   with:
@@ -83,7 +93,7 @@ jobs:
         with:
           fetch-depth: 3
           submodules: true
-      - name: 'Debian buster arm32 docker test'
+      - name: 'Debian arm32 docker test'
         uses: docker://arm32v7/node:lts
         with:
           entrypoint: /usr/bin/linux32
