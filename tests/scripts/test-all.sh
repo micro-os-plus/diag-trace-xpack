@@ -115,7 +115,12 @@ then
   trap "xpm run deep-clean" EXIT
 fi
 
-trap "uname -a; lsb_release -a" EXIT
+trap "uname -a" EXIT
+
+if [ "$(uname)" == "Linux"]
+then
+  trap "lsb_release -a" EXIT
+fi
 
 # Be sure the build starts with a clean slate, since on self-hosted
 # runners the build folders are presistent.
