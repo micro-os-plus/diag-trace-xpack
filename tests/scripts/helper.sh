@@ -11,6 +11,17 @@
 # Common functions used in various tests.
 # -----------------------------------------------------------------------------
 
+function run_verbose()
+{
+  # Does not include the .exe extension.
+  local app_path=$1
+  shift
+
+  echo
+  echo "[${app_path} $@]"
+  "${app_path}" "$@" 2>&1
+}
+
 function trigger_github_workflow()
 {
   local github_org="$1"
