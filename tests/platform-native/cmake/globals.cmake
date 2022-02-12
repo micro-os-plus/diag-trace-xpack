@@ -25,7 +25,7 @@ message(VERBOSE "Including platform-native global definitions...")
 # https://cmake.org/cmake/help/v3.20/variable/CMAKE_LANG_COMPILER_ID.html
 # message("${CMAKE_C_COMPILER_ID} ${CMAKE_SYSTEM_NAME} ${CMAKE_SYSTEM_PROCESSOR}")
 # Unfortunatelly in a container it shows aarch64 instead of armv7l.
-if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang" AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Linux" AND ("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armv7l" OR ("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64")))
+if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang" AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Linux" AND ("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "armv" OR ("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64")))
   # clang-12: error: unable to execute command: Segmentation fault
   # clang-12: error: linker command failed due to signal (use -v to see invocation)
   # Alternate linker was not effective.
