@@ -97,6 +97,8 @@ function update_image()
     # pacman -S -yy -u -q --noconfirm
     run_verbose pacman -S -q --noconfirm --noprogressbar curl g++
     # run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
+  else
+    echo "Nothing installed..."
   fi
 
   echo
