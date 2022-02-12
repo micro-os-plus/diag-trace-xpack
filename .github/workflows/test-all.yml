@@ -17,7 +17,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Test xPack GNU Arm Embedded GCC on supported platforms'
+name: 'Test diag-trace on supported platforms'
 
 on:
   workflow_dispatch:

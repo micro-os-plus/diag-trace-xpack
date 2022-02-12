@@ -94,12 +94,9 @@ fi
 # -----------------------------------------------------------------------------
 
 npm --version
+npm install -g xpm@latest
 
-pwd
-ls -l
-
-# npm install -g xpm@latest
-
-# xpm
+xpm run install-all
+xpm run test-all
 
 # -----------------------------------------------------------------------------
