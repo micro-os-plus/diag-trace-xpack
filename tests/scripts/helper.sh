@@ -61,13 +61,13 @@ function update_image()
   echo "update_image ${image_name}"
 
   # Make sure that the minimum prerequisites are met.
-  if [[ "${image_name}" == "github-actions-image" ]]
+  if [[ ${image_name} == github-actions-image ]]
   then
     : # Undefined image, like for self-hosted.
   elif [[ ${image_name} == github-actions-ubuntu* ]]
   then
     : # sudo apt-get -qq install -y XXX
-  elif [[ "${image_name}" == "node:lts" ]]
+  elif [[ ${image_name} == *node:lts ]]
   then
     run_verbose apt-get -qq update
     run_verbose apt-get -qq install -y lsb-release
@@ -102,7 +102,7 @@ function update_image()
     run_verbose pacman -S -q --noconfirm --noprogressbar curl g++ lsb-release
     # run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
   else
-    echo "Nothing installed..."
+    echo "Nothing to be installed..."
   fi
 
   echo
