@@ -106,6 +106,8 @@ fi
 # npm --version
 npm install -g xpm@latest
 
+export PYTHONIOENCODING=utf-8
+
 xpm run install-all
 xpm run test-all
 
