@@ -35,7 +35,7 @@ jobs:
   #       with:
   #         fetch-depth: 3
   #         submodules: true
-  #     - name: 'Run native test'
+  #     - name: 'Run native xpm test-all'
   #       run: bash tests/scripts/test-all.sh
 
   # linux-arm64:
@@ -49,7 +49,7 @@ jobs:
   #       with:
   #         fetch-depth: 3
   #         submodules: true
-  #     - name: 'Run native test'
+  #     - name: 'Run native xpm test-all'
   #       uses: docker://debian:buster
   #       with:
   #         entrypoint: /bin/bash
@@ -73,27 +73,9 @@ jobs:
   #         entrypoint: /usr/bin/linux32
   #         args: /bin/bash /github/workspace/tests/scripts/test-all.sh --image arm32v7/debian:buster
 
-  macos-x64:
-    name: 'macOS x64 test'
-    runs-on: macos-latest
-    steps:
-      - name: 'Machine'
-        run: uname -a
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 3
-          submodules: true
-      - name: 'Run native test'
-        run: bash tests/scripts/test-all.sh
-
-  # macos-arm64:
-  #   name: 'macOS arm64 test'
-  #   runs-on: [self-hosted, macos, apple]
-  #   defaults:
-  #     run:
-  #       shell: "/usr/bin/arch -arch arm64e /bin/bash -l {0}"
-
+  # macos-x64:
+  #   name: 'macOS x64 test'
+  #   runs-on: macos-latest
   #   steps:
   #     - name: 'Machine'
   #       run: uname -a
@@ -102,12 +84,16 @@ jobs:
   #       with:
   #         fetch-depth: 3
   #         submodules: true
-  #     - name: 'Run native test'
+  #     - name: 'Run native xpm test-all'
   #       run: bash tests/scripts/test-all.sh
 
-  windows-x64:
-    name: 'Windows x64 test'
-    runs-on: windows-latest
+  macos-arm64:
+    name: 'macOS arm64 test'
+    runs-on: [self-hosted, macos, apple]
+    defaults:
+      run:
+        shell: "/usr/bin/arch -arch arm64e /bin/bash -l {0}"
+
     steps:
       - name: 'Machine'
         run: uname -a
@@ -116,7 +102,21 @@ jobs:
         with:
           fetch-depth: 3
           submodules: true
-      - name: 'Run native test'
+      - name: 'Run native xpm test-all'
         run: bash tests/scripts/test-all.sh
+
+  # windows-x64:
+  #   name: 'Windows x64 test'
+  #   runs-on: windows-latest
+  #   steps:
+  #     - name: 'Machine'
+  #       run: uname -a
+  #     - name: 'Checkout'
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 3
+  #         submodules: true
+  #     - name: 'Run native xpm test-all'
+  #       run: bash tests/scripts/test-all.sh
 
 # -----------------------------------------------------------------------------
