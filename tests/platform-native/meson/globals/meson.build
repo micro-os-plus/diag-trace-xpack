@@ -25,7 +25,8 @@ platform_common_options = [
 if get_option('buildtype') == 'release' or get_option('buildtype') == 'minsize' or get_option('buildtype') == 'debugoptimized'
   # https://mesonbuild.com/Reference-tables.html#operating-system-names
   # message(build_machine.cpu())
-  if c_compiler.get_id().contains('clang') and build_machine.system() == 'linux' and (build_machine.cpu() == 'arm')
+  # Match armv[78]l.
+  if c_compiler.get_id().contains('clang') and build_machine.system() == 'linux' and build_machine.cpu().contains('armv')
     # clang-12: error: unable to execute command: Segmentation fault
     # clang-12: error: linker command failed due to signal (use -v to see invocation)
   else
