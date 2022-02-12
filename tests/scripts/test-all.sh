@@ -112,8 +112,14 @@ export LC_CTYPE=C.UTF-8
 if [ -f "/.dockerenv" ]
 then
   # For self-hosted runners.
-  trap "xpm run deep-clean; lsb_release -a" EXIT
+  trap "xpm run deep-clean" EXIT
 fi
+
+trap "uname -a; lsb_release -a" EXIT
+
+# Be sure the build starts with a clean slate, since on self-hosted
+# runners the build folders are presistent.
+xpm run deep-clean
 
 xpm run install-all
 xpm run test-all
