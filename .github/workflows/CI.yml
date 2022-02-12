@@ -15,6 +15,7 @@ on:
       - '.gitignore'
       - '.npmignore'
       - '.github/workflows/test-all.yml'
+      - 'tests/scripts/**'
 
 jobs:
   ci-test:
