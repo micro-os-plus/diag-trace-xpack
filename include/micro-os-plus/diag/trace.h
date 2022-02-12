@@ -67,10 +67,10 @@ namespace micro_os_plus
    * - micro_os_plus::trace::write()
    * - micro_os_plus::trace::flush()
    *
-   * Trace support is enabled by adding the `MICRO_OS_PLUS_TRACE` 
+   * Trace support is enabled by adding the `MICRO_OS_PLUS_TRACE`
    * macro definition to the compiler line.
    *
-   * When `MICRO_OS_PLUS_TRACE` is not defined, all functions are 
+   * When `MICRO_OS_PLUS_TRACE` is not defined, all functions are
    * inlined to empty bodies.
    * This has the advantage that the trace calls do not need to be
    * conditionally compiled with
@@ -82,12 +82,12 @@ namespace micro_os_plus
     // ------------------------------------------------------------------------
 
     /**
-     * @brief Flush the output.
+     * @brief Intialize the trace device.
      * @par Parameters
      *  None.
      * @par Returns
      *  Nothing.
-     * 
+     *
      * Must be implemented by the application.
      */
     void
@@ -98,7 +98,7 @@ namespace micro_os_plus
      * @param [in] buf An array of bytes.
      * @param [in] nbyte The number of bytes in the array.
      * @return  The number of characters actually written, or -1 if error.
-     * 
+     *
      * Must be implemented by the application.
      */
     ssize_t
