@@ -176,7 +176,8 @@
         "xpm uninstall --global @micro-os-plus/build-helper",
         "xpm uninstall --global @micro-os-plus/micro-test-plus"
       ],
-      "deep-clean": "rm -rf build node_modules xpacks"
+      "deep-clean": "rm -rf build node_modules xpacks",
+      "trigger-workflow-test-all": "bash tests/scripts/trigger-workflow-test-all.sh"
     },
     "buildConfigurations": {
       "native-cmake-debug": {
