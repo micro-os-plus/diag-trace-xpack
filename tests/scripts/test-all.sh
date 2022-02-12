@@ -109,7 +109,12 @@ npm install -g xpm@latest
 # export PYTHONIOENCODING=utf-8
 export LC_CTYPE=C.UTF-8
 
-xpm run deep-clean
+if [ -f "/.dockerenv" ]
+then
+  # For self-hosted runners.
+  trap "xpm run deep-clean" EXIT
+fi
+
 xpm run install-all
 xpm run test-all
 
