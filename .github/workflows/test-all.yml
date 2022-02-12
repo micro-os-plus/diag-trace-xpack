@@ -35,13 +35,13 @@ jobs:
         with:
           fetch-depth: 3
           submodules: true
-      - name: 'Ubuntu latest x64 native xpm test-all'
-        run: bash tests/scripts/test-all.sh
+      # - name: 'Ubuntu latest x64 native xpm test-all'
+      #   run: bash tests/scripts/test-all.sh
       - name: 'Ubuntu 18.04 x64 docker xpm test-all'
         uses: docker://ubuntu:18.04
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/tests/scripts/native-test.sh --image ubuntu:18.04
+          args: /github/workspace/tests/scripts/test-all.sh --image ubuntu:18.04
 
   # linux-arm64:
   #   name: 'Linux arm64 test'
