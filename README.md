@@ -119,7 +119,7 @@ The following functions are available:
 
 ### Implementation
 
-The application should provide an implementation for the following
+The application must provide an implementation for the following
 basic functions:
 
 ```c++
@@ -164,10 +164,6 @@ namespace micro_os_plus
 }
 ```
 
-Without them the application still compiles, but there is no
-functionality, by default all the above are implemented as weak
-empty functions.
-
 ### Build & integration info
 
 To include this package in a project, consider the following details.
@@ -184,7 +180,7 @@ TODO: list the available headeres
 
 #### Preprocessor definitions
 
-TBD
+The
 
 #### Compiler options
 
@@ -193,11 +189,11 @@ TBD
 
 #### C++ Namespaces
 
-TBD
+- `micro_os_plus::trace`
 
 #### C++ Classes
 
-TBD
+- None
 
 ### Examples
 
