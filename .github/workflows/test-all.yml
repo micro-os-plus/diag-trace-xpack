@@ -24,17 +24,17 @@ on:
 
 jobs:
 
-  linux-x64:
-    name: 'Linux x64 test'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Machine'
-        run: uname -a
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 3
-          submodules: true
+  # linux-x64:
+  #   name: 'Linux x64 test'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: 'Machine'
+  #       run: uname -a
+  #     - name: 'Checkout'
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 3
+  #         submodules: true
       # - name: 'Ubuntu latest x64 native xpm test-all'
       #   run: bash tests/scripts/test-all.sh
       # - name: 'Ubuntu 20.04 x64 docker xpm test-all'
@@ -78,11 +78,17 @@ jobs:
         with:
           fetch-depth: 3
           submodules: true
-      - name: 'Debian buster arm32 docker test'
-        uses: docker://arm32v7/debian:buster
+      - name: 'Ubuntu 20.04 arm32 docker test'
+        uses: docker://arm32v7/ubuntu:20.04
         with:
           entrypoint: /usr/bin/linux32
-          args: /bin/bash /github/workspace/tests/scripts/test-all.sh --image arm32v7/debian:buster
+          args: /bin/bash /github/workspace/tests/scripts/test-all.sh --image arm32v7/ubuntu:20.04
+      # Fails to install nvm
+      # - name: 'Debian buster arm32 docker test'
+      #   uses: docker://arm32v7/debian:buster
+      #   with:
+      #     entrypoint: /usr/bin/linux32
+      #     args: /bin/bash /github/workspace/tests/scripts/test-all.sh --image arm32v7/debian:buster
 
   # macos-x64:
   #   name: 'macOS x64 test'
