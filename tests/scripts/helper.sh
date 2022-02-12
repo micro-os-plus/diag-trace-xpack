@@ -58,9 +58,13 @@ function trigger_github_workflow()
 function update_image()
 {
   local image_name="$1"
+  echo "update_image ${image_name}"
 
   # Make sure that the minimum prerequisites are met.
-  if [[ ${image_name} == github-actions-ubuntu* ]]
+  if [[ ${image_name} == github-actions-image ]]
+  then
+    : # Undefined image, like for self-hosted.
+  elif [[ ${image_name} == github-actions-ubuntu* ]]
   then
     : # sudo apt-get -qq install -y XXX
   elif [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${image_name} == *raspbian* ]]
