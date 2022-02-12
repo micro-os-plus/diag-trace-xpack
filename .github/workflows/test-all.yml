@@ -24,23 +24,8 @@ on:
 
 jobs:
 
-  linux-x64:
-    name: 'Linux x64 test'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Machine'
-        run: uname -a
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 3
-          submodules: true
-      - name: 'Run native test'
-        run: bash tests/scripts/test-all.sh
-
-
-  # linux-ia32:
-  #   name: 'Linux ia32 test'
+  # linux-x64:
+  #   name: 'Linux x64 test'
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: 'Machine'
@@ -50,12 +35,8 @@ jobs:
   #       with:
   #         fetch-depth: 3
   #         submodules: true
-  #     - name: 'Run docker test'
-  #       uses: docker://i386/debian:buster
-  #       with:
-  #         entrypoint: /usr/bin/linux32
-  #         args: /bin/bash /github/workspace/tests/scripts/test-all.sh --image i386/debian:buster
-
+  #     - name: 'Run native test'
+  #       run: bash tests/scripts/test-all.sh
 
   # linux-arm64:
   #   name: 'Linux arm64 test'
@@ -92,21 +73,19 @@ jobs:
   #         entrypoint: /usr/bin/linux32
   #         args: /bin/bash /github/workspace/tests/scripts/test-all.sh --image arm32v7/debian:buster
 
-
-  # macos-x64:
-  #   name: 'macOS x64 test'
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: 'Machine'
-  #       run: uname -a
-  #     - name: 'Checkout'
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 3
-  #         submodules: true
-  #     - name: 'Run native test'
-  #       run: bash tests/scripts/test-all.sh
-
+  macos-x64:
+    name: 'macOS x64 test'
+    runs-on: macos-latest
+    steps:
+      - name: 'Machine'
+        run: uname -a
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: 'Run native test'
+        run: bash tests/scripts/test-all.sh
 
   # macos-arm64:
   #   name: 'macOS arm64 test'
@@ -126,34 +105,18 @@ jobs:
   #     - name: 'Run native test'
   #       run: bash tests/scripts/test-all.sh
 
-
-  # windows-x64:
-  #   name: 'Windows x64 test'
-  #   runs-on: windows-latest
-  #   steps:
-  #     - name: 'Machine'
-  #       run: uname -a
-  #     - name: 'Checkout'
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 3
-  #         submodules: true
-  #     - name: 'Run native test'
-  #       run: bash tests/scripts/test-all.sh
-
-
-  # windows-ia32:
-  #   name: 'Windows ia32 test'
-  #   runs-on: windows-latest
-  #   steps:
-  #     - name: 'Machine'
-  #       run: uname -a
-  #     - name: 'Checkout'
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 3
-  #         submodules: true
-  #     - name: 'Run native test'
-  #       run: bash tests/scripts/test-all.sh --32
+  windows-x64:
+    name: 'Windows x64 test'
+    runs-on: windows-latest
+    steps:
+      - name: 'Machine'
+        run: uname -a
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: 'Run native test'
+        run: bash tests/scripts/test-all.sh
 
 # -----------------------------------------------------------------------------
