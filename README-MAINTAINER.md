@@ -88,10 +88,11 @@ The version is visible at:
 
 The project includes unit tests.
 
-To run them, run:
+To run the full set of tests, use:
 
 ```sh
-cd diag-trace-xpack.git
+cd ~Work/diag-trace-xpack.git
+
 xpm run install-all
 xpm run test
 ```
