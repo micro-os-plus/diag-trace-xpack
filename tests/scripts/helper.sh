@@ -70,7 +70,7 @@ function update_image()
   elif [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${image_name} == *raspbian* ]]
   then
     run_verbose apt-get -qq update
-    run_verbose apt-get -qq install -y curl g++ npm
+    run_verbose apt-get -qq install -y curl g++
     # run_verbose apt-get -qq install -y libc6-dev libstdc++6
   elif [[ ${image_name} == *centos* ]] || [[ ${image_name} == *redhat* ]] || [[ ${image_name} == *fedora* ]]
   then
