@@ -37,33 +37,35 @@ jobs:
           submodules: true
       # - name: 'Ubuntu latest x64 native xpm test-all'
       #   run: bash tests/scripts/test-all.sh
-      - name: 'Ubuntu 20.04 x64 docker xpm test-all'
-        uses: docker://ubuntu:20.04
-        with:
-          entrypoint: /bin/bash
-          args: /github/workspace/tests/scripts/test-all.sh --image ubuntu:20.04
+      # - name: 'Ubuntu 20.04 x64 docker xpm test-all'
+      #   uses: docker://ubuntu:20.04
+      #   with:
+      #     entrypoint: /bin/bash
+      #     args: /github/workspace/tests/scripts/test-all.sh --image ubuntu:20.04
       # - name: 'Ubuntu 18.04 x64 docker xpm test-all'
       #   uses: docker://ubuntu:18.04
       #   with:
       #     entrypoint: /bin/bash
       #     args: /github/workspace/tests/scripts/test-all.sh --image ubuntu:18.04
 
-  # linux-arm64:
-  #   name: 'Linux arm64 test'
-  #   runs-on: [self-hosted, linux, arm64]
-  #   steps:
-  #     - name: 'Machine'
-  #       run: uname -a
-  #     - name: 'Checkout'
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 3
-  #         submodules: true
-  #     - name: 'Run native xpm test-all'
-  #       uses: docker://debian:buster
-  #       with:
-  #         entrypoint: /bin/bash
-  #         args: /github/workspace/tests/scripts/test-all.sh --image debian:buster
+  linux-arm64:
+    name: 'Linux arm64 test'
+    runs-on: [self-hosted, linux, arm64]
+    steps:
+      - name: 'Machine'
+        run: uname -a
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: 'Raspberry Pi OS arm64 native xpm test-all'
+        run: bash tests/scripts/test-all.sh
+      # - name: 'Run native xpm test-all'
+      #   uses: docker://debian:buster
+      #   with:
+      #     entrypoint: /bin/bash
+      #     args: /github/workspace/tests/scripts/test-all.sh --image debian:buster
 
   # linux-arm32:
   #   name: 'Linux arm32 test'
