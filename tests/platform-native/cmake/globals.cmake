@@ -23,10 +23,11 @@ message(VERBOSE "Including platform-native global definitions...")
 # include_directories()
 
 # https://cmake.org/cmake/help/v3.20/variable/CMAKE_LANG_COMPILER_ID.html
-if("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang" AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Linux" AND "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armv7l")
+if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang" AND "${CMAKE_SYSTEM_NAME}" STREQUAL "Linux" AND "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armv7l")
   # clang-12: error: unable to execute command: Segmentation fault
   # clang-12: error: linker command failed due to signal (use -v to see invocation)
   # Alternate linker was not effective.
+  message(STATUS "Clang Linux armv7l - skip -flto")
 else()
   set(platform_common_options
     $<$<CONFIG:Release>:-flto>
