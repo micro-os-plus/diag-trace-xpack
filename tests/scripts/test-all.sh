@@ -93,7 +93,7 @@ else
   if [ "${GITHUB_ACTIONS:-""}" == "true" -a "${RUNNER_OS:-""}" == "Linux" ]
   then
     # Currently "ubuntu20".
-    update_image "github-actions-${ImageOS}"
+    update_image "github-actions-${ImageOS:-image}"
   fi
 fi
 
