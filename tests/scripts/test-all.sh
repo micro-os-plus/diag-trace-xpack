@@ -82,9 +82,9 @@ then
     echo "No image defined, quit."
     exit 1
   fi
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+  # export NVM_DIR="$HOME/.nvm"
+  # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   nvm install --lts node
   nvm use node
   nvm install-latest-npm
