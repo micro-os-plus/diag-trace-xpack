@@ -112,7 +112,7 @@ export LC_CTYPE=C.UTF-8
 if [ -f "/.dockerenv" ]
 then
   # For self-hosted runners.
-  trap "xpm run deep-clean" EXIT
+  trap "xpm run deep-clean; lsb_release -a" EXIT
 fi
 
 xpm run install-all
