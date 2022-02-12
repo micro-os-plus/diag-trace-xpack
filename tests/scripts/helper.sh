@@ -43,12 +43,8 @@ function trigger_github_workflow()
 
 # -----------------------------------------------------------------------------
 
+# Install npm on fresh docker images.
 function update_image()
-{
-  echo "must update $1"
-}
-
-function _update_image()
 {
   local image_name="$1"
 
@@ -59,16 +55,16 @@ function _update_image()
   elif [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${image_name} == *raspbian* ]]
   then
     run_verbose apt-get -qq update
-    run_verbose apt-get -qq install -y git-core curl tar gzip lsb-release binutils
-    run_verbose apt-get -qq install -y libc6-dev libstdc++6 # TODO: get rid of them
+    run_verbose apt-get -qq install -y npm
+    run_verbose apt-get -qq install -y libc6-dev libstdc++6
   elif [[ ${image_name} == *centos* ]] || [[ ${image_name} == *redhat* ]] || [[ ${image_name} == *fedora* ]]
   then
-    run_verbose yum install -y -q git curl tar gzip redhat-lsb-core binutils
-    run_verbose yum install -y -q glibc-devel glibc-static libstdc++-devel # TODO: get rid of them
+    run_verbose yum install -y -q npm
+    run_verbose yum install -y -q glibc-devel glibc-static libstdc++-devel
   elif [[ ${image_name} == *suse* ]]
   then
-    run_verbose zypper -q in -y git-core curl tar gzip lsb-release binutils findutils util-linux
-    run_verbose zypper -q in -y glibc-devel glibc-devel-static libstdc++6 # TODO: get rid of them
+    run_verbose zypper -q in -y npm
+    run_verbose zypper -q in -y glibc-devel glibc-devel-static libstdc++6
   elif [[ ${image_name} == *manjaro* ]]
   then
     # run_verbose pacman-mirrors -g
@@ -76,15 +72,15 @@ function _update_image()
 
     # Update even if up to date (-yy) & upgrade (-u).
     # pacman -S -yy -u -q --noconfirm
-    run_verbose pacman -S -q --noconfirm --noprogressbar git curl tar gzip lsb-release binutils
-    run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs # TODO: get rid of them
+    run_verbose pacman -S -q --noconfirm --noprogressbar npm
+    run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
   elif [[ ${image_name} == *archlinux* ]]
   then
     run_verbose pacman -S -y -q --noconfirm
 
     # Update even if up to date (-yy) & upgrade (-u).
     # pacman -S -yy -u -q --noconfirm
-    run_verbose pacman -S -q --noconfirm --noprogressbar git curl tar gzip lsb-release binutils
+    run_verbose pacman -S -q --noconfirm --noprogressbar npm
     run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
   fi
 
