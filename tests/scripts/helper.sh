@@ -66,16 +66,16 @@ function update_image()
   elif [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${image_name} == *raspbian* ]]
   then
     run_verbose apt-get -qq update
-    run_verbose apt-get -qq install -y npm
-    run_verbose apt-get -qq install -y libc6-dev libstdc++6
+    run_verbose apt-get -qq install -y curl g++
+    # run_verbose apt-get -qq install -y libc6-dev libstdc++6
   elif [[ ${image_name} == *centos* ]] || [[ ${image_name} == *redhat* ]] || [[ ${image_name} == *fedora* ]]
   then
-    run_verbose yum install -y -q npm
-    run_verbose yum install -y -q glibc-devel glibc-static libstdc++-devel
+    run_verbose yum install -y -q curl g++
+    # run_verbose yum install -y -q glibc-devel glibc-static libstdc++-devel
   elif [[ ${image_name} == *suse* ]]
   then
-    run_verbose zypper -q in -y npm
-    run_verbose zypper -q in -y glibc-devel glibc-devel-static libstdc++6
+    run_verbose zypper -q in -y curl g++
+    # run_verbose zypper -q in -y glibc-devel glibc-devel-static libstdc++6
   elif [[ ${image_name} == *manjaro* ]]
   then
     # run_verbose pacman-mirrors -g
@@ -83,16 +83,16 @@ function update_image()
 
     # Update even if up to date (-yy) & upgrade (-u).
     # pacman -S -yy -u -q --noconfirm
-    run_verbose pacman -S -q --noconfirm --noprogressbar npm
-    run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
+    run_verbose pacman -S -q --noconfirm --noprogressbar curl g++
+    # run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
   elif [[ ${image_name} == *archlinux* ]]
   then
     run_verbose pacman -S -y -q --noconfirm
 
     # Update even if up to date (-yy) & upgrade (-u).
     # pacman -S -yy -u -q --noconfirm
-    run_verbose pacman -S -q --noconfirm --noprogressbar npm
-    run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
+    run_verbose pacman -S -q --noconfirm --noprogressbar curl g++
+    # run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
   fi
 
   echo
