@@ -87,13 +87,12 @@ The version is visible at:
 ## Tests
 
 The project is fully tested via GitHub
-[Actions](https://github.com/micro-os-plus/micro-test-plus-xpack/actions/)
-on each push.
+[Actions](https://github.com/micro-os-plus/micro-test-plus-xpack/actions/);
+the **CI** job is automatically triggered on **Push**;
+it runs a selection of the tests on GitHub hosted runners.
 
-In addition to the **CI** job that is automatically triggered on **Push**,
-which runs a selection of the tests on GitHub hosted runners,
-it is possible to manually trigger a **test-all** job, that runs
-all available builds, on all supported platforms, including Linux Arm
+In addition, it is possible to manually trigger a **test-all** job, that
+runs all available builds, on all supported platforms, including Linux Arm
 and macOS Apple Silicon.
 
 For this, run the `trigger-workflow-test-all` action.
