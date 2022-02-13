@@ -16,8 +16,8 @@ on:
       - '.npmignore'
       - '.github/workflows/test-all.yml'
       - 'tests/scripts/**'
-    tags-ignore:
-      - '**'
+    # tags-ignore: # Does not work, nothing triggers.
+    #   - '**'
 
 jobs:
   ci-test:
