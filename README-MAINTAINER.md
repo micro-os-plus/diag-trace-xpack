@@ -44,22 +44,32 @@ Code formatting is done using `clang-format --style=file`, either manually
 from a script, or automatically from Visual Studio Code, or the Eclipse
 CppStyle plug-in.
 
-## Prepare a new blog post
+Always reformat the source files that were changed.
 
-In the `micro-os-plus/web-jekyll` GitHub repo:
+## Tests
 
-- select the `develop` branch
-- add a new file to `_posts/diag-trace/releases`
-- name the file like `2020-12-19-diag-trace-v1-1-0-released.md`
-- name the post like: **µOS++ diag-trace v3.0.0 released**
-- update the `date:` field with the current date
-- update the GitHub Actions URLs using the actual test pages
+The project is fully tested via GitHub
+[Actions](https://github.com/micro-os-plus/micro-test-plus-xpack/actions/);
+the **CI** job is automatically triggered on **Push**;
+it runs a selection of the tests on GitHub hosted runners.
 
-If any, refer to closed
-[issues](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
-as:
+In addition, it is possible to manually trigger a **test-all** job, that
+runs all available builds, on all supported platforms, including Linux Arm
+and macOS Apple Silicon.
 
-- **[Issue:\[#1\]\(...\)]**.
+For this, run the `trigger-workflow-test-all` action before publishing;
+see below.
+
+## Manual tests
+
+It is also possible to run the tests manually:
+
+```sh
+cd ~Work/diag-trace-xpack.git
+
+xpm run install-all
+xpm run test-all
+```
 
 ## Publish on the npmjs.com server
 
@@ -84,30 +94,6 @@ The version is visible at:
 
 - <https://www.npmjs.com/package/@micro-os-plus/diag-trace?activeTab=versions>
 
-## Tests
-
-The project is fully tested via GitHub
-[Actions](https://github.com/micro-os-plus/micro-test-plus-xpack/actions/);
-the **CI** job is automatically triggered on **Push**;
-it runs a selection of the tests on GitHub hosted runners.
-
-In addition, it is possible to manually trigger a **test-all** job, that
-runs all available builds, on all supported platforms, including Linux Arm
-and macOS Apple Silicon.
-
-For this, run the `trigger-workflow-test-all` action.
-
-## Manual tests
-
-It is also possible to run the tests manually:
-
-```sh
-cd ~Work/diag-trace-xpack.git
-
-xpm run install-all
-xpm run test-all
-```
-
 ## Update the repo
 
 When the package is considered stable:
@@ -124,15 +110,3 @@ When the release is considered stable, promote it as `latest`:
 - `npm dist-tag ls @micro-os-plus/diag-trace`
 - `npm dist-tag add @micro-os-plus/diag-trace@3.0.0 latest`
 - `npm dist-tag ls @@micro-os-plus/diag-trace`
-
-## Announce to the community
-
-Post an announcement to the forum.
-
-## Share on Twitter
-
-- in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
-- using the `@micro_os_plus` account
-- paste the release name like **µOS++ diag-trace v3.0.0 released**
-- paste the link to the Web page release
-- click the **Tweet** button
