@@ -84,24 +84,30 @@ The version is visible at:
 
 - <https://www.npmjs.com/package/@micro-os-plus/diag-trace?activeTab=versions>
 
-## Testing
+## Tests
 
-The project includes unit tests.
+The project is fully tested via GitHub
+[Actions](https://github.com/micro-os-plus/micro-test-plus-xpack/actions/)
+on each push.
 
-To run the full set of tests, use:
+In addition to the **CI** job that is automatically triggered on **Push**,
+which runs a selection of the tests on GitHub hosted runners,
+it is possible to manually trigger a **test-all** job, that runs
+all available builds, on all supported platforms, including Linux Arm
+and macOS Apple Silicon.
+
+For this, run the `trigger-workflow-test-all` action.
+
+## Manual tests
+
+It is also possible to run the tests manually:
 
 ```sh
 cd ~Work/diag-trace-xpack.git
 
 xpm run install-all
-xpm run test
+xpm run test-all
 ```
-
-## Continuous Integration
-
-The CI tests are performed on GitHub Actions, as the
-[CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/actions?query=workflow%3A%22CI+on+Push%22)
-workflow.
 
 ## Update the repo
 
