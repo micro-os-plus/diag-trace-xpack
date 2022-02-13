@@ -93,7 +93,7 @@ foreach name : test_names
       '-nostartfiles',
       '-u_interrupt_vectors',
       '-Wl,--gc-sections',
-      # '-v',
+      '-v',
       # Path are relative to the build folder.
       '-T../../tests/platform-qemu-mps2-an386/dependencies/devices-qemu-cortexm/linker-scripts/mem.ld',
       '-Txpacks/micro-os-plus-architecture-cortexm/linker-scripts/sections.ld',
