@@ -16,6 +16,8 @@ on:
       - '.npmignore'
       - '.github/workflows/test-all.yml'
       - 'tests/scripts/**'
+    tags-ignore:
+      - v*.*.*
 
 jobs:
   ci-test:
