@@ -32,9 +32,6 @@ micro_os_plus_devices_cortexm_dependency = declare_dependency(
     'include',
   ),
   sources: files(
-    'src/diag/trace-itm.cpp',
-    'src/diag/trace-segger-rtt.cpp',
-
     'src/startup/initialize-hardware-early.c',
     'src/startup/initialize-hardware.c',
     'src/startup/initialize-interrupts-stack.cpp',

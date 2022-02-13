@@ -53,9 +53,6 @@ target_include_directories(micro-os-plus-devices-cortexm-interface INTERFACE
 )
 
 target_sources(micro-os-plus-devices-cortexm-interface INTERFACE
-  "src/diag/trace-itm.cpp"
-  "src/diag/trace-segger-rtt.cpp"
-
   "src/startup/initialize-hardware-early.c"
   "src/startup/initialize-hardware.c"
   "src/startup/initialize-interrupts-stack.cpp"
