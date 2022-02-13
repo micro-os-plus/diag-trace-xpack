@@ -57,8 +57,10 @@ In addition, it is possible to manually trigger a **test-all** job, that
 runs all available builds, on all supported platforms, including Linux Arm
 and macOS Apple Silicon.
 
-For this, run the `trigger-workflow-test-all` action before publishing;
-see below.
+For this, run the `trigger-workflow-test-all` action before publishing.
+
+Wait for the **test-all** job to complete
+  (<https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/test-all.yml>)
 
 ## Manual tests
 
