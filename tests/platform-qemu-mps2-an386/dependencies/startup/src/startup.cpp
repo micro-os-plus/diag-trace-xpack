@@ -267,7 +267,8 @@ static uint32_t volatile __attribute__ ((section (".data_end")))
 __data_end_guard
     = DATA_END_GUARD_VALUE; // 2557891634
 
-#endif // defined(MICRO_OS_PLUS_DEBUG) && (MICRO_OS_PLUS_BOOL_STARTUP_GUARD_CHECKS)
+#endif // defined(MICRO_OS_PLUS_DEBUG) &&
+       // (MICRO_OS_PLUS_BOOL_STARTUP_GUARD_CHECKS)
 
 /**
  * @details

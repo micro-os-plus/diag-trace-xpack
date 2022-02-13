@@ -356,7 +356,7 @@ micro_os_plus_trace_initialize (void)
 inline __attribute__ ((always_inline)) ssize_t
 micro_os_plus_trace_write (const void* buf, size_t nbyte)
 {
-  return (ssize_t) (nbyte);
+  return (ssize_t)(nbyte);
 }
 
 inline __attribute__ ((always_inline)) void

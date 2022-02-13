@@ -30,7 +30,6 @@
 #include <newlib/c-syscalls.h>
 #include <micro-os-plus/architecture.h>
 
-
 #include <errno.h>
 
 using namespace micro_os_plus;
@@ -344,8 +343,7 @@ _symlink (const char* existing __attribute__ ((unused)),
   return -1;
 }
 
-clock_t __attribute__ ((weak))
-_times (tms* buf __attribute__ ((unused)))
+clock_t __attribute__ ((weak)) _times (tms* buf __attribute__ ((unused)))
 {
 #if defined(MICRO_OS_PLUS_DEBUG) \
     && (defined(MICRO_OS_PLUS_DEBUG_SYSCALLS_BRK) \

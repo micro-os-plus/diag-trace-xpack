@@ -11,7 +11,8 @@
  */
 
 /*
- * This test checks if the library compiles when MICRO_OS_PLUS_TRACE is not defined.
+ * This test checks if the library compiles when MICRO_OS_PLUS_TRACE is not
+ * defined.
  */
 
 // ----------------------------------------------------------------------------

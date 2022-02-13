@@ -55,7 +55,7 @@ micro_os_plus_startup_initialize_hardware_early (void)
 
   // Set VTOR to the actual address, provided by the linker script.
   // Override the manual, possibly wrong, SystemInit() setting.
-  SCB->VTOR = (uint32_t) (&__vectors_start);
+  SCB->VTOR = (uint32_t)(&__vectors_start);
   // Ensure all subsequence instructions use the new configuration.
   __DSB ();
 

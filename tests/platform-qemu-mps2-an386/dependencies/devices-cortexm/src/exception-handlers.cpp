@@ -81,7 +81,7 @@ extern "C"
 // For debugging purposes, it is possible to set a breakpoint here.
 // To create a proper stack frame, do not jump, but call `_start()`.
 
-void __attribute__ ((section (".after_vectors"), noreturn,naked))
+void __attribute__ ((section (".after_vectors"), noreturn, naked))
 Reset_Handler (void)
 {
   // __disable_irq ();
@@ -351,23 +351,25 @@ is_semihosting_call (exception_stack_frame_s* frame, uint16_t opCode)
     || defined(MICRO_OS_PLUS_USE_TRACE_SEMIHOSTING_DEBUG)
 
         case SEMIHOSTING_SYS_WRITEC:
-#if defined(MICRO_OS_PLUS_DEBUG_SEMIHOSTING_FAULTS) && MICRO_OS_PLUS_BOOL_USE_TRACE
+#if defined(MICRO_OS_PLUS_DEBUG_SEMIHOSTING_FAULTS) \
+    && MICRO_OS_PLUS_BOOL_USE_TRACE
           {
             char ch = *((char*)r1);
             trace_write (&ch, 1);
           }
-#endif // defined(MICRO_OS_PLUS_DEBUG_SEMIHOSTING_FAULTS) && MICRO_OS_PLUS_BOOL_USE_TRACE
-          // Register R0 is corrupted.
+#endif // defined(MICRO_OS_PLUS_DEBUG_SEMIHOSTING_FAULTS) &&
+       // MICRO_OS_PLUS_BOOL_USE_TRACE Register R0 is corrupted.
           break;
 
         case SEMIHOSTING_SYS_WRITE0:
-#if defined(MICRO_OS_PLUS_DEBUG_SEMIHOSTING_FAULTS) && MICRO_OS_PLUS_BOOL_USE_TRACE
+#if defined(MICRO_OS_PLUS_DEBUG_SEMIHOSTING_FAULTS) \
+    && MICRO_OS_PLUS_BOOL_USE_TRACE
           {
             char* p = ((char*)r1);
             trace_write (p, strlen (p));
           }
-#endif // defined(MICRO_OS_PLUS_DEBUG_SEMIHOSTING_FAULTS) && MICRO_OS_PLUS_BOOL_USE_TRACE
-          // Register R0 is corrupted.
+#endif // defined(MICRO_OS_PLUS_DEBUG_SEMIHOSTING_FAULTS) &&
+       // MICRO_OS_PLUS_BOOL_USE_TRACE Register R0 is corrupted.
           break;
 
 #endif

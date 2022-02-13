@@ -32,9 +32,9 @@
 #include <stdio.h>
 
 int
-main()
+main ()
 {
-  printf("Hello %s!\n", "World");
+  printf ("Hello %s!\n", "World");
 
   return 0;
 }

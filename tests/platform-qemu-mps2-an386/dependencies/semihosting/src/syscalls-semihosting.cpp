@@ -1866,7 +1866,7 @@ void __attribute__ ((noreturn, weak)) micro_os_plus_terminate (int code)
 #elif (__SIZEOF_POINTER__ == 8)
   field_t fields[2];
   fields[0] = (field_t)ADP_STOPPED_APPLICATION_EXIT;
-  fields[1] = (field_t) (size_t)code;
+  fields[1] = (field_t)(size_t)code;
   semihosting::call_host (SEMIHOSTING_SYS_EXIT, fields);
 #endif
 
