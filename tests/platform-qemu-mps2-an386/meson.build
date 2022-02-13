@@ -89,7 +89,7 @@ foreach name : test_names
       micro_os_plus_startup_dependency,
     ],
     link_args: [
-      '-Wl,-Map,meson-out/'+ name + '-map.txt',
+      '-Wl,-Map,'+ name + '-map.txt',
       '-nostartfiles',
       '-u_interrupt_vectors',
       '-Wl,--gc-sections',
