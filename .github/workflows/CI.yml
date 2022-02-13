@@ -76,8 +76,14 @@ jobs:
         xpm install --config native-meson-gcc11-release
         xpm run test-native-meson-gcc11
 
-    # - name: Run test-qemu-mps2-an386-cmake
-    #   run: |
-    #     xpm install --config qemu-mps2-an386-cmake-debug
-    #     xpm install --config qemu-mps2-an386-cmake-release
-    #     xpm run test-qemu-mps2-an386-cmake
+    - name: Run test-qemu-mps2-an386-cmake
+      run: |
+        xpm install --config qemu-mps2-an386-cmake-debug
+        xpm install --config qemu-mps2-an386-cmake-release
+        xpm run test-qemu-mps2-an386-cmake
+
+    - name: Run test-qemu-mps2-an386-meson
+      run: |
+        xpm install --config qemu-mps2-an386-meson-debug
+        xpm install --config qemu-mps2-an386-meson-release
+        xpm run test-qemu-mps2-an386-meson
