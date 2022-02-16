@@ -35,7 +35,7 @@ and close existing issues and pull requests.
 - 8e53b7f add tests sources
 - 14aada4 add tests cmake & meson globals
 - d962829 trace.cpp: disable default write()
-- a9ada12 trace.cpp: empty block without ;
+- a9ada12 trace.cpp: empty block without `;`
 - b8af835 trace.cpp: remove `__attribute__ ((weak))`
 - a76a829 use MICRO_OS_PLUS_HAS_CONFIG_H
 - fb58146 rename MICRO_OS_PLUS_TRACE
