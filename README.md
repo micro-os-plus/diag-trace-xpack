@@ -1,7 +1,7 @@
 [![license](https://img.shields.io/github/license/micro-os-plus/diag-trace-xpack)](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/LICENSE)
 [![CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/workflows/CI%20on%20Push/badge.svg)](https://github.com/micro-os-plus/diag-trace-xpack/actions?query=workflow%3A%22CI+on+Push%22)
 
-# A source xPack with the µOS++ `trace::printf()` tracing infrastructure
+# A source library xPack with the µOS++ `trace::printf()` tracing infrastructure
 
 This project provides support for a tracing channel, separate
 from the standard output or error streams. The API is similar to the
