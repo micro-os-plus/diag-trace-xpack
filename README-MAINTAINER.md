@@ -49,7 +49,7 @@ Always reformat the source files that were changed.
 ## Tests
 
 The project is fully tested via GitHub
-[Actions](https://github.com/micro-os-plus/micro-test-plus-xpack/actions/);
+[Actions](https://github.com/micro-os-plus/diag-trace-xpack/actions/);
 the **CI** job is automatically triggered on **Push**;
 it runs a selection of the tests on GitHub hosted runners.
 
