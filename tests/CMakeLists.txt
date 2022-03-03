@@ -18,7 +18,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(
-  micro-os-plus-micro-test-plus
+  micro-os-plus-diag-trace
   DESCRIPTION "diag-trace"
 )
 
