@@ -17,7 +17,7 @@ project('diag-trace',
   ['c', 'cpp'],
   default_options: [
     'c_std=c11',
-    'cpp_std=c++17',
+    'cpp_std=c++20',
     'b_staticpic=false', # Mandatory, startup fails otherwise.
   ],
   meson_version: '>= 0.59'
@@ -69,6 +69,11 @@ message('Platform name: ' + xpack_platform_name)
 
 # -----------------------------------------------------------------------------
 ## Global definitions ##
+
+enable_no_trace_test = true
+enable_null_test = true
+enable_sample_test = true
+enable_unit_test = true
 
 # https://mesonbuild.com/Reference-manual.html#subdir
 subdir('meson/globals')

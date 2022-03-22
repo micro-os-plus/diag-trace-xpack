@@ -37,7 +37,7 @@
     "@xpack-dev-tools/cmake": "3.20.6-2.1",
     "@xpack-dev-tools/meson-build": "0.59.4-1.1",
     "@xpack-dev-tools/ninja-build": "1.10.2-5.1",
-    "@micro-os-plus/build-helper": "2.4.2",
+    "@micro-os-plus/build-helper": "2.6.1",
     "@micro-os-plus/micro-test-plus": "2.1.1"
   },
   "xpack": {
@@ -53,8 +53,8 @@
       "commandCMakeClean": "cmake --build {{ properties.buildFolderRelativePathPosix }} --target clean",
       "commandCMakePerformTests": "cd {{ properties.buildFolderRelativePath }} && ctest -V",
       "commandMesonPrepare": "meson setup --backend ninja --buildtype {{ properties.buildType }} -D platform-name={{ properties.platformName }} {{ properties.buildFolderRelativePathPosix }} tests",
-      "commandMesonPrepareWithToolchain": "meson setup --backend ninja --buildtype {{ properties.buildType }} -D platform-name={{ properties.platformName }} --native-file xpacks/micro-os-plus-build-helper/meson/toolchains/{% if os.platform == 'win32' %}{{ properties.toolchainWindowsFileName }}{% else %}{{ properties.toolchainFileName }}{% endif %} --native-file tests/platform-{{ properties.platformName }}/meson/native.ini {{ properties.buildFolderRelativePathPosix }} tests",
-      "commandMesonPrepareCross": "meson setup --backend ninja --buildtype {{ properties.buildType }} -D platform-name={{ properties.platformName }} --cross xpacks/micro-os-plus-build-helper/meson/toolchains/{% if os.platform == 'win32' %}{{ properties.toolchainWindowsFileName }}{% else %}{{ properties.toolchainFileName }}{% endif %} --cross tests/platform-{{ properties.platformName }}/meson/cross.ini {{ properties.buildFolderRelativePathPosix }} tests",
+      "commandMesonPrepareWithToolchain": "meson setup --backend ninja --buildtype {{ properties.buildType }} -D platform-name={{ properties.platformName }} --native-file xpacks/micro-os-plus-build-helper/meson/toolchains/{{ properties.toolchainFileName }} --native-file tests/platform-{{ properties.platformName }}/meson/native.ini {{ properties.buildFolderRelativePathPosix }} tests",
+      "commandMesonPrepareCross": "meson setup --backend ninja --buildtype {{ properties.buildType }} -D platform-name={{ properties.platformName }} --cross xpacks/micro-os-plus-build-helper/meson/toolchains/{{ properties.toolchainFileName }} --cross tests/platform-{{ properties.platformName }}/meson/cross.ini {{ properties.buildFolderRelativePathPosix }} tests",
       "commandMesonReconfigure": "meson setup --reconfigure {{ properties.buildFolderRelativePathPosix }} tests",
       "commandMesonBuild": "meson compile -C {{ properties.buildFolderRelativePathPosix }}",
       "commandMesonBuildVerbose": "meson compile -C {{ properties.buildFolderRelativePathPosix }} --verbose",
@@ -63,7 +63,7 @@
     },
     "actions": {
       "install-all": [
-        "xpm install --all-configs"
+        "xpm install --all-configs --quiet"
       ],
       "link-deps": [
         "xpm link @micro-os-plus/build-helper",
@@ -74,11 +74,10 @@
         "xpm run test-cortexm"
       ],
       "test-native": [
-        "{% if os.platform != 'win32' %}xpm run test-native-cmake{% endif %}",
-        "xpm run test-native-cmake-gcc8",
+        "{% if os.platform == 'darwin' %}xpm run test-native-cmake{% endif %}",
         "xpm run test-native-cmake-gcc11",
         "xpm run test-native-cmake-clang12",
-        "{% if os.platform != 'win32' %}xpm run test-native-meson{% endif %}",
+        "{% if os.platform == 'darwin' %}xpm run test-native-meson{% endif %}",
         "xpm run test-native-meson-gcc11",
         "xpm run test-native-meson-clang12"
       ],
@@ -93,14 +92,6 @@
         "xpm run prepare --config native-cmake-release",
         "xpm run build --config native-cmake-release",
         "xpm run test --config native-cmake-release"
-      ],
-      "test-native-cmake-gcc8": [
-        "xpm run prepare --config native-cmake-gcc8-debug",
-        "xpm run build --config native-cmake-gcc8-debug",
-        "xpm run test --config native-cmake-gcc8-debug",
-        "xpm run prepare --config native-cmake-gcc8-release",
-        "xpm run build --config native-cmake-gcc8-release",
-        "xpm run test --config native-cmake-gcc8-release"
       ],
       "test-native-cmake-gcc11": [
         "xpm run prepare --config native-cmake-gcc11-debug",
@@ -161,8 +152,6 @@
       "clean-all": [
         "xpm run clean --config native-cmake-debug",
         "xpm run clean --config native-cmake-release",
-        "xpm run clean --config native-cmake-gcc8-debug",
-        "xpm run clean --config native-cmake-gcc8-release",
         "xpm run clean --config native-cmake-gcc11-debug",
         "xpm run clean --config native-cmake-gcc11-release",
         "xpm run clean --config native-cmake-clang12-debug",
@@ -212,44 +201,6 @@
           "clean": "{{ properties.commandCMakeClean }}"
         }
       },
-      "native-cmake-gcc8-debug": {
-        "properties": {
-          "buildType": "Debug",
-          "platformName": "native",
-          "toolchainFileName": "gcc.cmake"
-        },
-        "actions": {
-          "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
-          "build": [
-            "{{ properties.commandCMakeReconfigure }}",
-            "{{ properties.commandCMakeBuild }}"
-          ],
-          "test": "{{ properties.commandCMakePerformTests }}",
-          "clean": "{{ properties.commandCMakeClean }}"
-        },
-        "devDependencies": {
-          "@xpack-dev-tools/gcc": "8.5.0-1.1"
-        }
-      },
-      "native-cmake-gcc8-release": {
-        "properties": {
-          "buildType": "Release",
-          "platformName": "native",
-          "toolchainFileName": "gcc.cmake"
-        },
-        "actions": {
-          "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
-          "build": [
-            "{{ properties.commandCMakeReconfigure }}",
-            "{{ properties.commandCMakeBuild }}"
-          ],
-          "test": "{{ properties.commandCMakePerformTests }}",
-          "clean": "{{ properties.commandCMakeClean }}"
-        },
-        "devDependencies": {
-          "@xpack-dev-tools/gcc": "8.5.0-1.1"
-        }
-      },
       "native-cmake-gcc11-debug": {
         "properties": {
           "buildType": "Debug",
@@ -285,8 +236,7 @@
           "clean": "{{ properties.commandCMakeClean }}"
         },
         "devDependencies": {
-          "@xpack-dev-tools/gcc": "11.2.0-3.3"
-        }
+          "@xpack-dev-tools/gcc": "11.2.0-3.3"        }
       },
       "native-cmake-clang12-debug": {
         "properties": {
@@ -360,8 +310,7 @@
         "properties": {
           "buildType": "debug",
           "platformName": "native",
-          "toolchainFileName": "gcc.ini",
-          "toolchainWindowsFileName": "gcc-cmd.ini"
+          "toolchainFileName": "gcc-{{ os.platform }}.ini"
         },
         "actions": {
           "prepare": "{{ properties.commandMesonPrepareWithToolchain }}",
@@ -380,8 +329,7 @@
         "properties": {
           "buildType": "release",
           "platformName": "native",
-          "toolchainFileName": "gcc.ini",
-          "toolchainWindowsFileName": "gcc-cmd.ini"
+          "toolchainFileName": "gcc-{{ os.platform }}.ini"
         },
         "actions": {
           "prepare": "{{ properties.commandMesonPrepareWithToolchain }}",
@@ -400,8 +348,7 @@
         "properties": {
           "buildType": "debug",
           "platformName": "native",
-          "toolchainFileName": "clang.ini",
-          "toolchainWindowsFileName": "clang-cmd.ini"
+          "toolchainFileName": "clang-{{ os.platform }}.ini"
         },
         "actions": {
           "prepare": "{{ properties.commandMesonPrepareWithToolchain }}",
@@ -420,8 +367,7 @@
         "properties": {
           "buildType": "release",
           "platformName": "native",
-          "toolchainFileName": "clang.ini",
-          "toolchainWindowsFileName": "clang-cmd.ini"
+          "toolchainFileName": "clang-{{ os.platform }}.ini"
         },
         "actions": {
           "prepare": "{{ properties.commandMesonPrepareWithToolchain }}",
@@ -463,7 +409,7 @@
         "devDependencies": {
           "@xpack-dev-tools/arm-none-eabi-gcc": "10.3.1-2.3.1",
           "@xpack-dev-tools/qemu-arm": "6.2.0-1.1",
-          "@micro-os-plus/architecture-cortexm": "4.0.1",
+          "@micro-os-plus/architecture-cortexm": "5.0.0",
           "@micro-os-plus/version": "7.1.2",
           "@xpack-3rd-party/arm-cmsis-core-m": "5.4.0-5"
         }
@@ -495,7 +441,7 @@
         "devDependencies": {
           "@xpack-dev-tools/arm-none-eabi-gcc": "10.3.1-2.3.1",
           "@xpack-dev-tools/qemu-arm": "6.2.0-1.1",
-          "@micro-os-plus/architecture-cortexm": "4.0.1",
+          "@micro-os-plus/architecture-cortexm": "5.0.0",
           "@micro-os-plus/version": "7.1.2",
           "@xpack-3rd-party/arm-cmsis-core-m": "5.4.0-5"
         }
@@ -504,8 +450,7 @@
         "properties": {
           "buildType": "debug",
           "platformName": "qemu-mps2-an386",
-          "toolchainFileName": "arm-none-eabi-gcc.ini",
-          "toolchainWindowsFileName": "arm-none-eabi-gcc-cmd.ini",
+          "toolchainFileName": "arm-none-eabi-gcc-{{ os.platform }}.ini",
           "qemuBoardName": "QEMU mps2-an386"
         },
         "actions": {
@@ -525,7 +470,7 @@
         "devDependencies": {
           "@xpack-dev-tools/arm-none-eabi-gcc": "10.3.1-2.3.1",
           "@xpack-dev-tools/qemu-arm": "6.2.0-1.1",
-          "@micro-os-plus/architecture-cortexm": "4.0.1",
+          "@micro-os-plus/architecture-cortexm": "5.0.0",
           "@micro-os-plus/version": "7.1.2",
           "@xpack-3rd-party/arm-cmsis-core-m": "5.4.0-5"
         }
@@ -534,8 +479,7 @@
         "properties": {
           "buildType": "minsize",
           "platformName": "qemu-mps2-an386",
-          "toolchainFileName": "arm-none-eabi-gcc.ini",
-          "toolchainWindowsFileName": "arm-none-eabi-gcc-cmd.ini",
+          "toolchainFileName": "arm-none-eabi-gcc-{{ os.platform }}.ini",
           "qemuBoardName": "QEMU mps2-an386"
         },
         "actions": {
@@ -555,7 +499,7 @@
         "devDependencies": {
           "@xpack-dev-tools/arm-none-eabi-gcc": "10.3.1-2.3.1",
           "@xpack-dev-tools/qemu-arm": "6.2.0-1.1",
-          "@micro-os-plus/architecture-cortexm": "4.0.1",
+          "@micro-os-plus/architecture-cortexm": "5.0.0",
           "@micro-os-plus/version": "7.1.2",
           "@xpack-3rd-party/arm-cmsis-core-m": "5.4.0-5"
         }

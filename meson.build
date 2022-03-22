@@ -27,18 +27,40 @@
 
 message('Processing xPack @micro-os-plus/diag-trace...')
 
+xpack_common_args = []
+xpack_c_args = []
+xpack_cpp_args = []
+xpack_include_directories = []
+xpack_sources = []
+xpack_compile_definitions = []
+
+xpack_include_directories += [
+  'include',
+]
+
+xpack_sources += [
+  'src/trace.cpp',
+]
+
 # https://mesonbuild.com/Reference-manual.html#declare_dependency
 micro_os_plus_diag_trace_dependency = declare_dependency(
-  include_directories: include_directories(
-    'include',
-  ),
-  sources: files(
-    'src/trace.cpp',
-  ),
+  include_directories: include_directories(xpack_include_directories),
+  compile_args: xpack_common_args,
+  sources: files(xpack_sources),
 )
 
-message('+ -I include')
-message('+ src/trace.cpp')
+# Dependencies cannot store language specific definitions, the only
+# way is to pass them via global variables. All applications including
+# this dependency must also consider them.
+# micro_os_plus_diag_trace_dependency_c_args = xpack_c_args
+# micro_os_plus_diag_trace_dependency_cpp_args = xpack_cpp_args
+
+foreach name : xpack_include_directories
+  message('+ -I ' + name)
+endforeach
+foreach name : xpack_sources + xpack_common_args
+  message('+ ' + name)
+endforeach
 message('> micro_os_plus_diag_trace_dependency')
 
 # -----------------------------------------------------------------------------

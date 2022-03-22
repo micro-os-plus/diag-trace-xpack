@@ -17,9 +17,41 @@
 message(VERBOSE "Processing 'tests/platform-native'...")
 
 # -----------------------------------------------------------------------------
+# Define the platform library.
 
-# For native tests, a `micro-os-plus::platform` would be empty and it
-# is not created.
+add_library(platform-native-interface INTERFACE EXCLUDE_FROM_ALL)
+
+# -----------------------------------------------------------------------------
+
+target_include_directories(platform-native-interface INTERFACE
+  "include-platform"
+)
+
+target_sources(platform-native-interface INTERFACE
+  # None.
+)
+
+target_compile_definitions(platform-native-interface INTERFACE
+  # None.
+)
+
+target_compile_options(platform-native-interface INTERFACE
+  # None.
+)
+
+target_link_libraries(platform-native-interface INTERFACE
+  # micro-os-plus::architecture-synthetic-posix
+)
+
+if (COMMAND xpack_display_target_lists)
+  xpack_display_target_lists(platform-native-interface)
+endif()
+
+# -----------------------------------------------------------------------------
+# Aliases.
+
+add_library(micro-os-plus::platform ALIAS platform-native-interface)
+message(VERBOSE "> micro-os-plus::platform -> platform-native-interface")
 
 # =============================================================================
 
@@ -55,10 +87,23 @@ function(add_test_executable name)
 
   # https://cmake.org/cmake/help/v3.20/manual/cmake-generator-expressions.7.html
   target_link_options(${name} PRIVATE
+    $<$<C_COMPILER_ID:GNU>:-static-libgcc>
+    $<$<C_COMPILER_ID:GNU>:-static-libstdc++>
     $<$<PLATFORM_ID:Darwin>:-Wl,-dead_strip>
     $<$<PLATFORM_ID:Linux,Windows>:-Wl,--gc-sections>
     $<$<PLATFORM_ID:Linux,Windows>:-Wl,-Map,platform-bin/${name}-map.txt>
     # -v
+  )
+
+  target_link_libraries(${name} PRIVATE
+    # Tested library.
+    micro-os-plus::diag-trace
+
+    # Portable dependencies.
+    # None.
+
+    # Platform specific dependencies.
+    micro-os-plus::platform
   )
 
   message(VERBOSE "A> ${name}")
@@ -67,52 +112,55 @@ endfunction()
 
 # -----------------------------------------------------------------------------
 
-add_test_executable(null-test)
+if (ENABLE_NULL_TEST)
 
-# MICRO_OS_PLUS_TRACE must not be defined
+  add_test_executable(null-test)
 
-target_link_libraries(null-test PRIVATE
-    micro-os-plus::diag-trace
-)
+  # MICRO_OS_PLUS_TRACE must **not** be defined
 
-add_test(
-  NAME "null-test"
-  COMMAND null-test
-)
+  add_test(
+    NAME "null-test"
+    COMMAND null-test
+  )
 
-# -----------------------------------------------------------------------------
-
-add_test_executable(sample-test)
-
-target_link_libraries(sample-test PRIVATE
-  micro-os-plus::diag-trace
-)
-
-target_compile_definitions(sample-test PRIVATE
-  "MICRO_OS_PLUS_TRACE"
-)
-
-add_test(
-  NAME "sample-test"
-  COMMAND sample-test
-)
+endif()
 
 # -----------------------------------------------------------------------------
 
-add_test_executable(unit-test)
+if (ENABLE_SAMPLE_TEST)
 
-target_compile_definitions(unit-test PRIVATE
-  "MICRO_OS_PLUS_TRACE"
-)
+  add_test_executable(sample-test)
 
-target_link_libraries(unit-test PRIVATE
-  micro-os-plus::diag-trace
-  micro-os-plus::micro-test-plus
-)
+  target_compile_definitions(sample-test PRIVATE
+    "MICRO_OS_PLUS_TRACE"
+  )
 
-add_test(
-  NAME "unit-test"
-  COMMAND unit-test
-)
+  add_test(
+    NAME "sample-test"
+    COMMAND sample-test one two
+  )
+
+endif()
+
+# -----------------------------------------------------------------------------
+
+if (ENABLE_UNIT_TEST)
+
+  add_test_executable(unit-test)
+
+  target_compile_definitions(unit-test PRIVATE
+    "MICRO_OS_PLUS_TRACE"
+  )
+
+  target_link_libraries(unit-test PRIVATE
+    micro-os-plus::micro-test-plus
+  )
+
+  add_test(
+    NAME "unit-test"
+    COMMAND unit-test # --verbose
+  )
+
+endif()
 
 # -----------------------------------------------------------------------------

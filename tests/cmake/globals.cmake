@@ -23,7 +23,6 @@ message(VERBOSE "Including global definitions...")
 include_directories(
   # Folders are relative to `tests`.
   "platform-${PLATFORM_NAME}/include-config"
-  "platform-${PLATFORM_NAME}/include-platform"
 )
 
 # https://cmake.org/cmake/help/v3.20/command/add_compile_definitions.html
@@ -33,6 +32,8 @@ add_compile_definitions(
   # TODO: remove DEBUG
   $<$<CONFIG:Debug>:DEBUG>
   $<$<CONFIG:Debug>:MICRO_OS_PLUS_DEBUG>
+  # Not here, since null-test does not need it.
+  # $<$<CONFIG:Debug>:MICRO_OS_PLUS_TRACE>
   MICRO_OS_PLUS_INCLUDE_CONFIG_H
 )
 
@@ -44,6 +45,8 @@ set(global_common_options
   # These are used in conjunction with linker `--gc-sections`.
   -ffunction-sections
   -fdata-sections
+
+  -fdiagnostics-color=always
 )
 
 add_compile_options(
