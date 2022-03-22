@@ -21,6 +21,7 @@
 
 #include <cassert>
 #include <cstring>
+#include <string_view>
 #include <stdio.h>
 
 // ----------------------------------------------------------------------------
@@ -29,8 +30,7 @@ using namespace micro_os_plus;
 
 // ----------------------------------------------------------------------------
 
-#pragma GCC diagnostic push
-
+#pragma GCC diagnostic ignored "-Waggregate-return"
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
 #endif
@@ -71,236 +71,172 @@ namespace micro_os_plus
   } // namespace trace
 } // namespace micro_os_plus
 
-#pragma GCC diagnostic pop
-
-// ----------------------------------------------------------------------------
-
-void
-test_case_inits (micro_test_plus::session& t);
-
-void
-test_case_putchar (micro_test_plus::session& t);
-
-void
-test_case_puts (micro_test_plus::session& t);
-
-void
-test_case_printf (micro_test_plus::session& t);
-
-void
-test_case_dump_args (micro_test_plus::session& t);
-
-void
-test_case_flush (micro_test_plus::session& t);
-
-void
-test_case_inits_c (micro_test_plus::session& t);
-
-void
-test_case_putchar_c (micro_test_plus::session& t);
-
-void
-test_case_puts_c (micro_test_plus::session& t);
-
-void
-test_case_printf_c (micro_test_plus::session& t);
-
-void
-test_case_dump_args_c (micro_test_plus::session& t);
-
-void
-test_case_flush_c (micro_test_plus::session& t);
-
 // ----------------------------------------------------------------------------
 
 int
 main (int argc, char* argv[])
 {
-  micro_test_plus::session t (argc, argv);
+  using namespace micro_test_plus;
 
-  t.start_suite ("diag::trace test");
-
-  count = initial_count;
-  strcpy (buffer, "xxx");
-
-  t.run_test_case (test_case_inits, "Check trace::initialize");
-  t.run_test_case (test_case_putchar, "Check trace::putchar");
-  t.run_test_case (test_case_puts, "Check trace::puts");
-  t.run_test_case (test_case_printf, "Check trace::printf");
-  t.run_test_case (test_case_dump_args, "Check trace::dump_args");
-  t.run_test_case (test_case_flush, "Check trace::flush");
+  initialize (argc, argv, "diag::trace");
 
   count = initial_count;
   strcpy (buffer, "xxx");
 
-  t.run_test_case (test_case_inits_c, "Check micro_os_plus_trace_initialize");
-  t.run_test_case (test_case_putchar_c, "Check micro_os_plus_trace_putchar");
-  t.run_test_case (test_case_puts_c, "Check micro_os_plus_trace_puts");
-  t.run_test_case (test_case_printf_c, "Check micro_os_plus_trace_printf");
-  t.run_test_case (test_case_dump_args_c,
-                   "Check micro_os_plus_trace_dump_args");
-  t.run_test_case (test_case_flush, "Check micro_os_plus_trace_flush");
+  test_case ("Check trace::initialize", [] {
+    expect (eq (count, initial_count), "initial count");
+    expect (eq (buffer[0], 'x'), "initial content x");
 
-  return t.result ();
-}
+    trace::initialize ();
+    expect (eq (count, 0), "count initialised");
+    expect (eq (buffer[0], '\0'), "initial content cleared");
+  });
 
-// ----------------------------------------------------------------------------
+  test_case ("Check trace::putchar", [] {
+    int prev_count = count;
+    trace::putchar ('c');
 
-void
-test_case_inits (micro_test_plus::session& t)
-{
-  MTP_EXPECT_EQ (t, count, initial_count, "initial count");
-  MTP_EXPECT_EQ (t, buffer[0], 'x', "initial content x");
+    expect (eq ((count - prev_count), 1), "count increased by 1");
+    expect (eq (buffer[prev_count], 'c'), "buffer has c");
+  });
 
-  trace::initialize ();
-  MTP_EXPECT_EQ (t, count, 0, "count initialised");
-  MTP_EXPECT_EQ (t, buffer[0], '\0', "initial content cleared");
-}
+  test_case ("Check trace::puts", [] {
+    int prev_count = count;
+    trace::puts ("s");
 
-void
-test_case_inits_c (micro_test_plus::session& t)
-{
-  MTP_EXPECT_EQ (t, count, initial_count, "initial count");
-  MTP_EXPECT_EQ (t, buffer[0], 'x', "initial content x");
+    expect (eq ((count - prev_count), 2), "count increased by 2");
+    expect (eq (buffer[prev_count], 's'), "buffer has s");
+    expect (eq (buffer[prev_count + 1], '\n'), "buffer has \\n");
+  });
 
-  micro_os_plus_trace_initialize ();
-  MTP_EXPECT_EQ (t, count, 0, "count initialised");
-  MTP_EXPECT_EQ (t, buffer[0], '\0', "initial content cleared");
-}
+  test_case ("Check trace::printf", [] {
+    int prev_count = count;
+    trace::printf ("%s", "p");
 
-void
-test_case_putchar (micro_test_plus::session& t)
-{
-  int prev_count = count;
-  trace::putchar ('c');
+    expect (eq ((count - prev_count), 1), "count increased by 1");
+    expect (eq (buffer[prev_count], 'p'), "buffer has p");
 
-  MTP_EXPECT_EQ (t, (count - prev_count), 1, "count increased by 1");
-  MTP_EXPECT_EQ (t, buffer[prev_count], 'c', "buffer has c");
-}
+    prev_count = count;
+    trace::printf ("%s\n", "q");
 
-void
-test_case_putchar_c (micro_test_plus::session& t)
-{
-  int prev_count = count;
-  micro_os_plus_trace_putchar ('c');
+    expect (eq ((count - prev_count), 2), "count increased by 2");
+    expect (eq (buffer[prev_count], 'q'), "buffer has q");
+    expect (eq (buffer[prev_count + 1], '\n'), "buffer has \\n");
+  });
 
-  MTP_EXPECT_EQ (t, (count - prev_count), 1, "count increased by 1");
-  MTP_EXPECT_EQ (t, buffer[prev_count], 'c', "buffer has c");
-}
+  test_case ("Check trace::dump_args", [] {
+    const char* argv_[3];
+    argv_[0] = "n";
+    argv_[1] = "1";
+    argv_[2] = "2";
 
-void
-test_case_puts (micro_test_plus::session& t)
-{
-  int prev_count = count;
-  trace::puts ("s");
+    int prev_count = count;
+    trace::dump_args (3, const_cast<char**> (argv_));
 
-  MTP_EXPECT_EQ (t, (count - prev_count), 2, "count increased by 2");
-  MTP_EXPECT_EQ (t, buffer[prev_count], 's', "buffer has s");
-  MTP_EXPECT_EQ (t, buffer[prev_count + 1], '\n', "buffer has \\n");
-}
+    std::string_view expected_main{
+      "main(argc=3, argv=[\"n\", \"1\", \"2\"])\n"
+    };
+    expect (eq ((count - prev_count), expected_main.length ()),
+            "count increased correctly");
+    expect (eq (std::string_view{ &buffer[prev_count] }, expected_main),
+            "buffer has main");
 
-void
-test_case_puts_c (micro_test_plus::session& t)
-{
-  int prev_count = count;
-  micro_os_plus_trace_puts ("s");
+    prev_count = count;
+    trace::dump_args (3, const_cast<char**> (argv_), "args");
 
-  MTP_EXPECT_EQ (t, (count - prev_count), 2, "count increased by 2");
-  MTP_EXPECT_EQ (t, buffer[prev_count], 's', "buffer has s");
-  MTP_EXPECT_EQ (t, buffer[prev_count + 1], '\n', "buffer has \\n");
-}
+    std::string_view expected_args{
+      "args(argc=3, argv=[\"n\", \"1\", \"2\"])\n"
+    };
+    expect (eq ((count - prev_count), expected_args.length ()),
+            "count increased correctly");
+    expect (eq (std::string_view{ &buffer[prev_count] }, expected_args),
+            "buffer has main");
+  });
 
-void
-test_case_printf (micro_test_plus::session& t)
-{
-  int prev_count = count;
-  trace::printf ("%s", "p");
+  test_case ("Check trace::flush", [] {
+    trace::flush ();
+    expect (eq (buffer[count], flush_mark), "flush mark found");
+  });
 
-  MTP_EXPECT_EQ (t, (count - prev_count), 1, "count increased by 1");
-  MTP_EXPECT_EQ (t, buffer[prev_count], 'p', "buffer has p");
+  count = initial_count;
+  strcpy (buffer, "xxx");
 
-  prev_count = count;
-  trace::printf ("%s\n", "q");
+  test_case ("Check micro_os_plus_trace_initialize", [] {
+    expect (eq (count, initial_count), "initial count");
+    expect (eq (buffer[0], 'x'), "initial content x");
 
-  MTP_EXPECT_EQ (t, (count - prev_count), 2, "count increased by 2");
-  MTP_EXPECT_EQ (t, buffer[prev_count], 'q', "buffer has q");
-  MTP_EXPECT_EQ (t, buffer[prev_count + 1], '\n', "buffer has \\n");
-}
+    micro_os_plus_trace_initialize ();
+    expect (eq (count, 0), "count initialised");
+    expect (eq (buffer[0], '\0'), "initial content cleared");
+  });
 
-void
-test_case_printf_c (micro_test_plus::session& t)
-{
-  int prev_count = count;
-  micro_os_plus_trace_printf ("%s", "p");
+  test_case ("Check micro_os_plus_trace_putchar", [] {
+    int prev_count = count;
+    micro_os_plus_trace_putchar ('c');
 
-  MTP_EXPECT_EQ (t, (count - prev_count), 1, "count increased by 1");
-  MTP_EXPECT_EQ (t, buffer[prev_count], 'p', "buffer has p");
+    expect (eq ((count - prev_count), 1), "count increased by 1");
+    expect (eq (buffer[prev_count], 'c'), "buffer has c");
+  });
 
-  prev_count = count;
-  micro_os_plus_trace_printf ("%s\n", "q");
+  test_case ("Check micro_os_plus_trace_puts", [] {
+    int prev_count = count;
+    micro_os_plus_trace_puts ("s");
 
-  MTP_EXPECT_EQ (t, (count - prev_count), 2, "count increased by 2");
-  MTP_EXPECT_EQ (t, buffer[prev_count], 'q', "buffer has q");
-  MTP_EXPECT_EQ (t, buffer[prev_count + 1], '\n', "buffer has \\n");
-}
+    expect (eq ((count - prev_count), 2), "count increased by 2");
+    expect (eq (buffer[prev_count], 's'), "buffer has s");
+    expect (eq (buffer[prev_count + 1], '\n'), "buffer has \\n");
+  });
 
-void
-test_case_dump_args (micro_test_plus::session& t)
-{
-  const char* argv[3];
-  argv[0] = "n";
-  argv[1] = "1";
-  argv[2] = "2";
+  test_case ("Check micro_os_plus_trace_printf", [] {
+    int prev_count = count;
+    micro_os_plus_trace_printf ("%s", "p");
 
-  int prev_count = count;
-  trace::dump_args (3, const_cast<char**> (argv));
+    expect (eq ((count - prev_count), 1), "count increased by 1");
+    expect (eq (buffer[prev_count], 'p'), "buffer has p");
 
-  const char expected_main[] = "main(argc=3, argv=[\"n\", \"1\", \"2\"])\n";
-  MTP_EXPECT_EQ (t, (count - prev_count),
-                 static_cast<int> (strlen (expected_main)),
-                 "count increased correctly");
-  MTP_EXPECT_EQ (t, &buffer[prev_count], expected_main, "buffer has main");
+    prev_count = count;
+    micro_os_plus_trace_printf ("%s\n", "q");
 
-  prev_count = count;
-  trace::dump_args (3, const_cast<char**> (argv), "args");
+    expect (eq ((count - prev_count), 2), "count increased by 2");
+    expect (eq (buffer[prev_count], 'q'), "buffer has q");
+    expect (eq (buffer[prev_count + 1], '\n'), "buffer has \\n");
+  });
 
-  const char expected_args[] = "args(argc=3, argv=[\"n\", \"1\", \"2\"])\n";
-  MTP_EXPECT_EQ (t, (count - prev_count),
-                 static_cast<int> (strlen (expected_args)),
-                 "count increased correctly");
-  MTP_EXPECT_EQ (t, &buffer[prev_count], expected_args, "buffer has main");
-}
+  test_case ("Check micro_os_plus_trace_dump_args", [] {
+    const char* argv_[3];
+    argv_[0] = "n";
+    argv_[1] = "1";
+    argv_[2] = "2";
 
-void
-test_case_dump_args_c (micro_test_plus::session& t)
-{
-  const char* argv[3];
-  argv[0] = "n";
-  argv[1] = "1";
-  argv[2] = "2";
+    int prev_count = count;
+    trace::dump_args (3, const_cast<char**> (argv_));
 
-  int prev_count = count;
-  micro_os_plus_trace_dump_args (3, const_cast<char**> (argv));
+    std::string_view expected_main{
+      "main(argc=3, argv=[\"n\", \"1\", \"2\"])\n"
+    };
+    expect (eq ((count - prev_count), expected_main.length ()),
+            "count increased correctly");
+    expect (eq (std::string_view{ &buffer[prev_count] }, expected_main),
+            "buffer has main");
 
-  const char expected_main[] = "main(argc=3, argv=[\"n\", \"1\", \"2\"])\n";
-  MTP_EXPECT_EQ (t, (count - prev_count),
-                 static_cast<int> (strlen (expected_main)),
-                 "count increased correctly");
-  MTP_EXPECT_EQ (t, &buffer[prev_count], expected_main, "buffer has main");
-}
+    prev_count = count;
+    trace::dump_args (3, const_cast<char**> (argv_), "args");
 
-void
-test_case_flush (micro_test_plus::session& t)
-{
-  trace::flush ();
-  MTP_EXPECT_EQ (t, buffer[count], flush_mark, "flush mark found");
-}
+    std::string_view expected_args{
+      "args(argc=3, argv=[\"n\", \"1\", \"2\"])\n"
+    };
+    expect (eq ((count - prev_count), expected_args.length ()),
+            "count increased correctly");
+    expect (eq (std::string_view{ &buffer[prev_count] }, expected_args),
+            "buffer has main");
+  });
 
-void
-test_case_flush_c (micro_test_plus::session& t)
-{
-  micro_os_plus_trace_flush ();
-  MTP_EXPECT_EQ (t, buffer[count], flush_mark, "flush mark found");
+  test_case ("Check micro_os_plus_trace_flush", [] {
+    micro_os_plus_trace_flush ();
+    expect (eq (buffer[count], flush_mark), "flush mark found");
+  });
+
+  return exit_code ();
 }
 
 // ----------------------------------------------------------------------------
