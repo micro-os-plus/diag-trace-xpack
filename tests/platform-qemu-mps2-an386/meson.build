@@ -152,12 +152,6 @@ foreach name : test_names
     # None.
   ]
 
-  if name == 'unit-test'
-    xpack_link_with += [
-      micro_os_plus_micro_test_plus_static,
-    ]
-  endif
-
   # https://mesonbuild.com/Reference-manual.html#executable
   exe = executable(
     name,
