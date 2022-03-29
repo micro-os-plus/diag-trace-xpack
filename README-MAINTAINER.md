@@ -46,12 +46,66 @@ CppStyle plug-in.
 
 Always reformat the source files that were changed.
 
+## How to make new releases
+
+### Release schedule
+
+There are no fixed releases.
+
+### Check Git
+
+In the `micro-os-plus/diag-trace-xpack` Git repo:
+
+- switch to the `xpack-develop` branch
+- if needed, merge the `xpack` branch
+
+No need to add a tag here, it'll be added when the release is created.
+
+### Increase the version
+
+Determine the upstream version (like `3.0.0`) and update the `package.json`
+file; the format is `3.0.0-pre`.
+
+### Fix possible open issues
+
+Check GitHub issues and pull requests:
+
+- <https://github.com/micro-os-plus/diag-trace-xpack/issues/>
+
+and fix them; assign them to a milestone (like `3.0.0`).
+
+### Update `README.md`
+
+Update the `README.md` file to reflect the changes related to the new version.
+
+### Update version in `README-3RD-PARTY.md`
+
+Update the few references to the new version.
+
+### Update `CHANGELOG.md`
+
+- open the `CHANGELOG.md` file
+- check if all previous fixed issues are in
+- add a new entry like _- v3.0.0 prepared_
+- commit with a message like _prepare v3.0.0_
+
+### Push changes
+
+- reformat the source files that were changed
+- commit and push
+
 ## Tests
+
+### Continuous Integration
 
 The project is fully tested via GitHub
 [Actions](https://github.com/micro-os-plus/diag-trace-xpack/actions/);
 the **CI** job is automatically triggered on **Push**;
-it runs a selection of the tests on GitHub hosted runners.
+it runs a selection of the tests on GitHub hosted runners,
+and the results are available at
+[CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/actions?query=workflow%3A%22CI+on+Push%22).
+
+### Test on all platforms
 
 In addition, it is possible to manually trigger a **test-all** job, that
 runs all available builds, on all supported platforms, including Linux Arm
@@ -100,7 +154,6 @@ The version is visible at:
 
 When the package is considered stable:
 
-- with Sourcetree
 - merge `xpack-develop` into `xpack`
 - push to GitHub
 - select `xpack-develop`

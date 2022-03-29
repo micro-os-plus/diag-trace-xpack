@@ -34,7 +34,7 @@ npm install --global xpm@latest
 ```
 
 For details please follow the instructions in the
-[install](https://xpack.github.io/install/) page.
+[xPack install](https://xpack.github.io/install/) page.
 
 ### xpm install
 
