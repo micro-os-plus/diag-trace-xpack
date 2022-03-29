@@ -6,6 +6,18 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2022-03-29
+
+- 840bd8a package.json add clang13
+- 18ebec5 updates from build-tools/templates
+- d8faaa3 unit-test: update for expect() <<
+
+## 2022-03-22
+
+- 4cf0770 unit-test.cpp: update for new micro-test-plus
+- 9c459f5 update from new template, new micro-test-plus
+- 4514960 CI.yml: --quiet
+
 ## 2022-02-13
 
 - v3.0.0
