@@ -32,6 +32,8 @@ xpack_include_directories = []
 xpack_sources = []
 xpack_compile_definitions = []
 
+# -----------------------------------------------------------------------------
+
 xpack_include_directories += [
   'include-platform',
 ]
@@ -119,8 +121,8 @@ foreach name : test_names
     # '-v',
 
     # Path are relative to the build folder.
-     '-T../../tests/platform-qemu-mps2-an386/dependencies/devices-qemu-cortexm/linker-scripts/mem.ld',
-      '-Txpacks/micro-os-plus-architecture-cortexm/linker-scripts/sections.ld',
+    '-T../../tests/platform-qemu-mps2-an386/dependencies/devices-qemu-cortexm/linker-scripts/mem.ld',
+    '-Txpacks/micro-os-plus-architecture-cortexm/linker-scripts/sections.ld',
   ]
 
   xpack_dependencies += [

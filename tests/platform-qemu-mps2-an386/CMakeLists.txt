@@ -170,24 +170,28 @@ endfunction()
 
 # -----------------------------------------------------------------------------
 
-add_test_executable(no-trace-test)
+if (ENABLE_NO_TRACE_TEST)
 
-target_compile_definitions(no-trace-test PRIVATE
-  "MICRO_OS_PLUS_TRACE"
-)
+  add_test_executable(no-trace-test)
 
-add_test(
-  NAME "no-trace-test"
+  target_compile_definitions(no-trace-test PRIVATE
+    "MICRO_OS_PLUS_TRACE"
+  )
 
-  COMMAND qemu-system-arm${extension}
-    --machine mps2-an386
-    --cpu cortex-m4
-    --kernel no-trace-test.elf
-    --nographic
-    -d unimp,guest_errors
-    --semihosting-config enable=on,target=native
-    --semihosting-config arg=null-test
-)
+  add_test(
+    NAME "no-trace-test"
+
+    COMMAND qemu-system-arm${extension}
+      --machine mps2-an386
+      --cpu cortex-m4
+      --kernel no-trace-test.elf
+      --nographic
+      -d unimp,guest_errors
+      --semihosting-config enable=on,target=native
+      --semihosting-config arg=null-test
+  )
+
+endif()
 
 # -----------------------------------------------------------------------------
 

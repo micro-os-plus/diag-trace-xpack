@@ -34,6 +34,43 @@ xpack_include_directories = []
 xpack_sources = []
 xpack_compile_definitions = []
 
+# -----------------------------------------------------------------------------
+
+xpack_common_args += [
+  # '-Wno-padded',
+
+  # parameter passing for argument of type '...' changed in GCC 7.1
+  # '-Wno-psabi'
+]
+
+if c_compiler.get_id() == 'gcc'
+  xpack_common_args += [
+    # '-Wno-aggregate-return',
+  ]
+elif c_compiler.get_id().contains('clang')
+  xpack_common_args += [
+    # '-Wno-c++98-c++11-c++14-c++17-compat-pedantic',
+    # '-Wno-c++98-c++11-compat',
+    # '-Wno-c++98-compat',
+    # '-Wno-c++98-compat-pedantic',
+    # '-Wno-c99-extensions',
+    # '-Wno-pedantic',
+
+    # '-Wno-exit-time-destructors',
+    # '-Wno-ctad-maybe-unsupported',
+    # '-Wno-global-constructors',
+    # '-Wno-extra-semi-stmt',
+  ]
+endif
+
+xpack_cpp_args += [
+]
+
+if c_compiler.get_id() == 'gcc'
+  xpack_cpp_args += [
+  ]
+endif
+
 xpack_include_directories += [
   'include',
 ]

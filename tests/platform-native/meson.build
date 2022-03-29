@@ -54,7 +54,10 @@ nomalloc = environment({'MALLOC_PERTURB_': '0'})
 
 # -----------------------------------------------------------------------------
 
+# To be used with all applications.
 xpack_common_link_args = []
+
+# -----------------------------------------------------------------------------
 
 xpack_common_link_args += [
   # '-v',

@@ -61,7 +61,9 @@ if c_compiler.get_id() == 'gcc' or c_compiler.get_id().contains('clang')
 
     # These are used in conjunction with linker `--gc-sections`.
     '-ffunction-sections',
-    '-fdata-sections'
+    '-fdata-sections',
+
+    '-fdiagnostics-color=always',
   ]
 
   add_global_arguments(
