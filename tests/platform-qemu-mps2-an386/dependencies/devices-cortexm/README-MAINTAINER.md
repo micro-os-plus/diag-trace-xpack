@@ -174,7 +174,7 @@ When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @micro-os-plus/devices-cortexm`
 - `npm dist-tag add @micro-os-plus/devices-cortexm@2.0.1 latest`
-- `npm dist-tag ls @@micro-os-plus/devices-cortexm`
+- `npm dist-tag ls @micro-os-plus/devices-cortexm`
 
 ## Announce to the community
 

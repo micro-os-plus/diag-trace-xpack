@@ -117,7 +117,7 @@ When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @micro-os-plus/libs-cpp`
 - `npm dist-tag add @micro-os-plus/libs-cpp@2.2.1 latest`
-- `npm dist-tag ls @@micro-os-plus/libs-cpp`
+- `npm dist-tag ls @micro-os-plus/libs-cpp`
 
 ## Announce to the community
 
