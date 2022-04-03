@@ -63,8 +63,8 @@ No need to add a tag here, it'll be added when the release is created.
 
 ### Increase the version
 
-Determine the upstream version (like `3.0.0`) and update the `package.json`
-file; the format is `3.0.0-pre`.
+Determine the upstream version (like `3.0.1`) and update the `package.json`
+file; the format is `3.0.1-pre`.
 
 ### Fix possible open issues
 
@@ -72,7 +72,7 @@ Check GitHub issues and pull requests:
 
 - <https://github.com/micro-os-plus/diag-trace-xpack/issues/>
 
-and fix them; assign them to a milestone (like `3.0.0`).
+and fix them; assign them to a milestone (like `3.0.1`).
 
 ### Update `README.md`
 
@@ -86,8 +86,8 @@ Update the few references to the new version.
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _- v3.0.0 prepared_
-- commit with a message like _prepare v3.0.0_
+- add a new entry like _- v3.0.1 prepared_
+- commit with a message like _prepare v3.0.1_
 
 ### Push changes
 
@@ -133,7 +133,7 @@ xpm run test-all
 - commit all changes
 - update versions in `README.md` and `README-MAINTAINER.md`
 - update `CHANGELOG.md`
-- commit with a message like _prepare v3.0.0_
+- commit with a message like _prepare v3.0.1_
 - `npm pack` and check the content of the archive, which should list
   only `package.json`, `README.md`, `LICENSE`, `CHANGELOG.md`,
   the sources and CMake/meson files;
@@ -163,5 +163,5 @@ When the package is considered stable:
 When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @micro-os-plus/diag-trace`
-- `npm dist-tag add @micro-os-plus/diag-trace@3.0.0 latest`
+- `npm dist-tag add @micro-os-plus/diag-trace@3.0.1 latest`
 - `npm dist-tag ls @micro-os-plus/diag-trace`
