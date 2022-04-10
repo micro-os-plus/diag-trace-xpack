@@ -21,7 +21,7 @@ on:
 
 jobs:
   ci-test:
-    name: 'CI tests'
+    name: 'CI diag-trace tests'
 
     runs-on: ${{ matrix.os }}
 

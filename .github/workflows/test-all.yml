@@ -30,7 +30,7 @@ on:
 jobs:
 
   linux-x64:
-    name: 'Linux x64 tests'
+    name: 'Linux x64 diag-trace tests'
     runs-on: ubuntu-latest
     steps:
       - name: 'Machine'
@@ -49,7 +49,7 @@ jobs:
           args: /github/workspace/tests/scripts/test-all.sh --image node:lts
 
   linux-arm64:
-    name: 'Linux arm64 tests'
+    name: 'Linux arm64 diag-trace tests'
     runs-on: [self-hosted, linux, arm64, xbbla]
     steps:
       - name: 'Machine'
@@ -66,7 +66,7 @@ jobs:
           args: /github/workspace/tests/scripts/test-all.sh --image node:lts
 
   linux-arm32:
-    name: 'Linux arm32 tests'
+    name: 'Linux arm32 diag-trace tests'
     runs-on: [self-hosted, linux, arm64, xbbla]
     steps:
       - name: 'Machine'
@@ -84,7 +84,7 @@ jobs:
       # Ubuntu 20.04 & Debian buster fail to install nvm
 
   macos-x64:
-    name: 'macOS x64 tests'
+    name: 'macOS x64 diag-trace tests'
     runs-on: macos-latest
     steps:
       - name: 'Machine'
@@ -98,7 +98,7 @@ jobs:
         run: bash tests/scripts/test-all.sh
 
   macos-arm64:
-    name: 'macOS arm64 tests'
+    name: 'macOS arm64 diag-trace tests'
     runs-on: [self-hosted, macos, apple]
     defaults:
       run:
@@ -115,7 +115,7 @@ jobs:
         run: bash tests/scripts/test-all.sh
 
   windows-x64:
-    name: 'Windows x64 tests'
+    name: 'Windows x64 diag-trace tests'
     runs-on: windows-latest
     steps:
       - name: 'Machine'
