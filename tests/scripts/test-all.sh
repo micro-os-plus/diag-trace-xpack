@@ -47,10 +47,6 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 # =============================================================================
 
-project_folder_path="$(dirname $(dirname ${script_folder_path}))"
-helper_scripts_folder_path="${project_folder_path}/xpacks/micro-os-plus-build-helper/scripts"
-
-source "${helper_scripts_folder_path}/common-tests-source.sh"
 source "${script_folder_path}/helper.sh"
 
 # -----------------------------------------------------------------------------
