@@ -93,9 +93,9 @@ then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    nvm install --lts node
-    nvm use node
-    nvm install-latest-npm
+    run_verbose nvm install --lts node
+    run_verbose nvm use node
+    run_verbose nvm install-latest-npm
   fi
 else
   # Not inside a Docker; perhaps a GitHub Actions VM.
@@ -109,7 +109,9 @@ fi
 # -----------------------------------------------------------------------------
 
 # npm --version
-npm install -g xpm@latest
+run_verbose npm install -g xpm@latest
+
+run_verbose which xpm
 
 # export PYTHONIOENCODING=utf-8
 export LC_CTYPE=C.UTF-8
@@ -127,9 +129,9 @@ fi
 
 # Be sure the build starts with a clean slate, since on self-hosted
 # runners the build folders are presistent.
-xpm run deep-clean
+run_verbose xpm run deep-clean
 
-xpm run install-all
-xpm run test-all
+run_verbose xpm run install-all
+run_verbose xpm run test-all
 
 # -----------------------------------------------------------------------------
