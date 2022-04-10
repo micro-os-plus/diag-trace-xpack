@@ -113,6 +113,8 @@ run_verbose npm install -g xpm@latest
 
 run_verbose which xpm
 
+run_verbose xpm run who
+
 # export PYTHONIOENCODING=utf-8
 export LC_CTYPE=C.UTF-8
 
