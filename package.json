@@ -190,7 +190,7 @@
         "xpm run clean --config qemu-mps2-an386-meson-release"
       ],
       "deep-clean": "rm -rf build node_modules xpacks",
-      "trigger-workflow-test-all": "bash tests-xpack/scripts/trigger-workflow-test-all.sh",
+      "trigger-workflow-test-all": "bash tests/scripts/trigger-workflow-test-all.sh",
       "who": [
         "id",
         "id -ur"
