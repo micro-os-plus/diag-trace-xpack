@@ -77,6 +77,8 @@ done
 
 # -----------------------------------------------------------------------------
 
+run_verbose id
+
 if [ -f "/.dockerenv" ]
 then
   if [ -n "${image_name}" ]
@@ -108,32 +110,19 @@ fi
 
 # -----------------------------------------------------------------------------
 
+trap exit_trap EXIT
+
 # npm --version
-run_verbose npm install -g xpm@latest
-
-run_verbose which xpm
-
-run_verbose xpm run who
+run_verbose npm install --global xpm@latest
 
 # export PYTHONIOENCODING=utf-8
 export LC_CTYPE=C.UTF-8
-
-if [ -f "/.dockerenv" ]
-then
-  # For self-hosted runners.
-  trap "xpm run deep-clean" EXIT
-fi
-
-if [ "$(uname)" == "Linux" ]
-then
-  trap "lsb_release -a" EXIT
-fi
 
 # Be sure the build starts with a clean slate, since on self-hosted
 # runners the build folders are presistent.
 run_verbose xpm run deep-clean
 
-run_verbose xpm run install-all
-run_verbose xpm run test-all
+run_verbose xpm run install-all --quiet
+run_verbose run_verbose xpm run test-all
 
 # -----------------------------------------------------------------------------

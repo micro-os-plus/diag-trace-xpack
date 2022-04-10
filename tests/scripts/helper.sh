@@ -114,3 +114,18 @@ function update_image()
   echo "The system C/C++ libraries..."
   find /usr/lib* /lib -name 'libc.*' -o -name 'libstdc++.*' -o -name 'libgcc_s.*'
 }
+
+function exit_trap()
+{
+  if [ -f "/.dockerenv" ]
+  then
+    # For self-hosted runners, remove the root owned folders.
+    run_verbose xpm run deep-clean
+  fi
+
+  if [ -n "$(which lsb_release)" ]
+  then
+    run_verbose lsb_release -a
+  fi
+
+}
