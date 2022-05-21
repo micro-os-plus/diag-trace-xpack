@@ -2,7 +2,7 @@
 
 ## Overview
 
-The difficulty of testing this package is that it is also refered in
+The difficulty of testing this package is that it is also referred in
 multiple other packages used when running the tests on embedded platforms.
 
 There are two ways to cope with this:

@@ -16,7 +16,7 @@
 #
 # `subdir('xpacks/micro-os-plus-devices-cortexm')`
 #
-# The result is a dependency that can be refered as:
+# The result is a dependency that can be referred as:
 #
 # `dependencies: [micro_os_plus_devices_cortexm_dependency],`
 

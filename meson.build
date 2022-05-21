@@ -16,7 +16,7 @@
 #
 # `subdir('xpacks/micro-os-plus-diag-trace')`
 #
-# The result is a dependency that can be refered as:
+# The result is a dependency that can be referred as:
 #
 # `dependencies: [micro_os_plus_diag_trace_dependency],`
 

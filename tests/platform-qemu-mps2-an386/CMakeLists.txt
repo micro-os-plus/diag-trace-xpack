@@ -112,7 +112,7 @@ function(add_test_executable name)
     -nostartfiles
 
     # Force the linker to keep the interrupt vectors which otherwise
-    # are not refered from anywhere.
+    # are not referred from anywhere.
     -u_interrupt_vectors
 
     # nano has no exceptions.
