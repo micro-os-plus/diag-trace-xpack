@@ -110,7 +110,7 @@ namespace
    *
    * find_slot() - Translate entry.
    * new_slot() - Find empty entry.
-   * initilise_monitor_handles() - Initialize entries.
+   * initialise_monitor_handles() - Initialize entries.
    * open()
    * close()
    *
@@ -1912,7 +1912,7 @@ micro_os_plus_startup_initialize_args (int* p_argc, char*** p_argv)
   field_t fields[2];
   fields[0] = static_cast<field_t> (args_buf);
   fields[1] = reinterpret_cast<field_t> (sizeof (args_buf) - 1);
-  int ret = semihosting::call_host (SEMIHOSTING_SYS_GET_CMDLINE, fields);
+  int ret = semihosting::call_host (SEMIHOSTING_SYS_GETCMDLINE, fields);
   if (ret == 0)
     {
       // In case the host send more than we can chew, limit the
