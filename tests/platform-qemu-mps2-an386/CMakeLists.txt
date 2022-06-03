@@ -126,7 +126,7 @@ function(add_test_executable name)
     # Including files from other packages is not very nice, but functional.
     # Use absolute paths, otherwise set -L.
     -T${CMAKE_SOURCE_DIR}/platform-qemu-mps2-an386/dependencies/devices-qemu-cortexm/linker-scripts/mem.ld
-    -T${CMAKE_BINARY_DIR}/xpacks/micro-os-plus-architecture-cortexm/linker-scripts/sections.ld
+    -T${CMAKE_BINARY_DIR}/xpacks/micro-os-plus-architecture-cortexm/linker-scripts/sections-flash.ld
   )
 
   target_link_libraries(${name}  PRIVATE

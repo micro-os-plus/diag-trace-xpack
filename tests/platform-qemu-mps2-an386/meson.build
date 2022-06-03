@@ -122,7 +122,7 @@ foreach name : test_names
 
     # Path are relative to the build folder.
     '-T../../tests/platform-qemu-mps2-an386/dependencies/devices-qemu-cortexm/linker-scripts/mem.ld',
-    '-Txpacks/micro-os-plus-architecture-cortexm/linker-scripts/sections.ld',
+    '-Txpacks/micro-os-plus-architecture-cortexm/linker-scripts/sections-flash.ld',
   ]
 
   xpack_dependencies += [
