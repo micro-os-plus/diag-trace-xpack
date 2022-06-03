@@ -79,7 +79,7 @@ cd ~/Work/devices-cortexm-xpack.git
 xpm run test-all
 ```
 
-### Clone writable dependencies
+### Clone writeable dependencies
 
 The above procedure will allow to develop the project itself, but the
 dependencies will be read-only; to be able to contribute to them,
