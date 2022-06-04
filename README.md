@@ -225,15 +225,9 @@ are already made **CMake** and **meson** configuration files (see below).
 
 For other build systems, consider the following details:
 
-#### Source files
-
-The source file to be added to the build is:
-
-- `src/trace.cpp`
-
 #### Include folders
 
-The header folder to be included in the build is:
+The following folders should be passed to the compiler during the build:
 
 - `include`
 
@@ -242,6 +236,12 @@ The header file to be included in user source files is:
 ```c++
 #include <micro-os-plus/diag/trace.h>
 ```
+
+#### Source files
+
+The source files to be added to the build are:
+
+- `src/trace.cpp`
 
 #### Preprocessor definitions
 

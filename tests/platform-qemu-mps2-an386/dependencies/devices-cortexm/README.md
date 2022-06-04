@@ -99,13 +99,15 @@ On embedded platforms, the test applications should be built with
 
 To integrate this package into user projects, consider the following details:
 
-#### Source folders
+#### Source files
 
 - `src`
 
 The source file to be added to user projects is: `devices-cortexm.cpp`.
 
 #### Include folders
+
+The following folders should be passed to the compiler during the build:
 
 - `include`
 
@@ -117,7 +119,7 @@ The header file to be included in user project is:
 
 #### Preprocessor definitions
 
-- none required
+- none
 
 #### Compiler options
 

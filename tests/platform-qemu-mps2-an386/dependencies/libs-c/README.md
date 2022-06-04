@@ -101,11 +101,13 @@ The library functions fully functional.
 
 To include this package in a project, consider the following details.
 
-#### Source folders
+#### Source files
 
 - `src`
 
 #### Include folders
+
+The following folders should be passed to the compiler during the build:
 
 - `include`
 

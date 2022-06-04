@@ -109,11 +109,9 @@ The current initialisation code does not touch them.
 
 To integrate this package into user projects, consider the following details:
 
-#### Source folders
+#### Include folders
 
-- `src`
-
-##### Include folders
+The following folders should be passed to the compiler during the build:
 
 - `include`
 - `include/cmsis-core`
@@ -123,6 +121,11 @@ The header files to be included in user project are:
 ```c
 #include <micro-os-plus/device.h>
 ```
+
+
+#### Source files
+
+- `src`
 
 #### Preprocessor definitions
 
