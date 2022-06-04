@@ -48,7 +48,7 @@ extern unsigned int __vectors_start;
 void __attribute__ ((weak))
 micro_os_plus_startup_initialize_hardware_early (void)
 {
-  // Call the CSMSIS system initialisation routine.
+  // Call the CMSIS system initialisation routine.
   SystemInit ();
 
 #if defined(__ARM_ARCH_7M__) || defined(__ARM_ARCH_7EM__)
