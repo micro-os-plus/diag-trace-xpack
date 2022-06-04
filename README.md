@@ -379,7 +379,7 @@ backwards incompatible changes are introduced to the public API.
 The incompatible changes, in reverse chronological order,
 are:
 
-- v3.x: the weak atribute was removed from `initialize()` and `flush()`,
+- v3.x: the weak attribute was removed from `initialize()` and `flush()`,
 so there are no more defaults and both functions must be implemented by
 the application;
 - v2.x: the C++ namespace was renamed from `os` to `micro_os_plus`;
