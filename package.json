@@ -567,7 +567,7 @@
           "link-deps": [
             "xpm link --config {{ configuration.name }} @micro-os-plus/architecture-cortexm",
             "xpm link --config {{ configuration.name }} @micro-os-plus/version",
-            "xpm link --config {{ configuration.name }} @xpack-3rd-party/arm-cmsis-core-m"
+            "xpm link --config {{ configuration.name }} @xpack-3rd-party/arm-cmsis-core"
           ],
           "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
           "build": [
@@ -582,7 +582,7 @@
           "@xpack-dev-tools/qemu-arm": "6.2.0-1.1",
           "@micro-os-plus/architecture-cortexm": "5.0.0",
           "@micro-os-plus/version": "7.1.2",
-          "@xpack-3rd-party/arm-cmsis-core-m": "5.4.0-5"
+          "@xpack-3rd-party/arm-cmsis-core": "5.4.0-6"
         }
       },
       "qemu-mps2-an386-cmake-release": {
@@ -599,7 +599,7 @@
           "link-deps": [
             "xpm link --config {{ configuration.name }} @micro-os-plus/architecture-cortexm",
             "xpm link --config {{ configuration.name }} @micro-os-plus/version",
-            "xpm link --config {{ configuration.name }} @xpack-3rd-party/arm-cmsis-core-m"
+            "xpm link --config {{ configuration.name }} @xpack-3rd-party/arm-cmsis-core"
           ],
           "prepare": "{{ properties.commandCMakePrepareWithToolchain }}",
           "build": [
@@ -614,7 +614,7 @@
           "@xpack-dev-tools/qemu-arm": "6.2.0-1.1",
           "@micro-os-plus/architecture-cortexm": "5.0.0",
           "@micro-os-plus/version": "7.1.2",
-          "@xpack-3rd-party/arm-cmsis-core-m": "5.4.0-5"
+          "@xpack-3rd-party/arm-cmsis-core": "5.4.0-6"
         }
       },
       "qemu-mps2-an386-meson-debug": {
@@ -628,7 +628,7 @@
           "link-deps": [
             "xpm link --config {{ configuration.name }} @micro-os-plus/architecture-cortexm",
             "xpm link --config {{ configuration.name }} @micro-os-plus/version",
-            "xpm link --config {{ configuration.name }} @xpack-3rd-party/arm-cmsis-core-m"
+            "xpm link --config {{ configuration.name }} @xpack-3rd-party/arm-cmsis-core"
           ],
           "prepare": "{{ properties.commandMesonPrepareCross }}",
           "build": [
@@ -643,7 +643,7 @@
           "@xpack-dev-tools/qemu-arm": "6.2.0-1.1",
           "@micro-os-plus/architecture-cortexm": "5.0.0",
           "@micro-os-plus/version": "7.1.2",
-          "@xpack-3rd-party/arm-cmsis-core-m": "5.4.0-5"
+          "@xpack-3rd-party/arm-cmsis-core": "5.4.0-6"
         }
       },
       "qemu-mps2-an386-meson-release": {
@@ -657,7 +657,7 @@
           "link-deps": [
             "xpm link --config {{ configuration.name }} @micro-os-plus/architecture-cortexm",
             "xpm link --config {{ configuration.name }} @micro-os-plus/version",
-            "xpm link --config {{ configuration.name }} @xpack-3rd-party/arm-cmsis-core-m"
+            "xpm link --config {{ configuration.name }} @xpack-3rd-party/arm-cmsis-core"
           ],
           "prepare": "{{ properties.commandMesonPrepareCross }}",
           "build": [
@@ -672,7 +672,7 @@
           "@xpack-dev-tools/qemu-arm": "6.2.0-1.1",
           "@micro-os-plus/architecture-cortexm": "5.0.0",
           "@micro-os-plus/version": "7.1.2",
-          "@xpack-3rd-party/arm-cmsis-core-m": "5.4.0-5"
+          "@xpack-3rd-party/arm-cmsis-core": "5.4.0-6"
         }
       }
     }
