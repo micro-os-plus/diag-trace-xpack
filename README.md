@@ -100,14 +100,14 @@ to be a separate output channel, as fast as possible, to minimise the
 impact on the debugged target.
 
 One of the fastest solutions is the
-[Segger RTT (Real Time Transfer)](https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/),
+[SEGGER RTT (Real Time Transfer)](https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/),
 available with the J-Link probes.
 
 Other solution, for Cortex-M devices that support it, is the
 [Arm ITM (Instrumentation Trace Macrocell)](https://developer.arm.com/documentation/ddi0314/h/Instrumentation-Trace-Macrocell).
 
 A slower solution, but still functional, is semihosting, either via
-the DENUG channel, or the OUTPUT channnel.
+the DEBUG channel, or the OUTPUT channel.
 
 µOS++ provides implementations for all those channels, in separate
 packages.
@@ -163,7 +163,7 @@ The following C functions are available:
  flush the output.
 
 `void micro_os_plus_initialize (void)`
- Intialize the trace device.
+ Initialize the trace device.
 
 `ssize_t micro_os_plus_write (const void* buf, std::size_t nbyte)` -
  write the given number of bytes to the trace output channel.
@@ -379,6 +379,7 @@ backwards incompatible changes are introduced to the public API.
 The incompatible changes, in reverse chronological order,
 are:
 
+- v4.x: rename `SYS_GET_CMDLINE` to `SYS_GETCMDLINE`
 - v3.x: the weak attribute was removed from `initialize()` and `flush()`,
 so there are no more defaults and both functions must be implemented by
 the application;

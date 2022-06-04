@@ -82,7 +82,7 @@ namespace micro_os_plus
     // ------------------------------------------------------------------------
 
     /**
-     * @brief Intialize the trace device.
+     * @brief Initialize the trace device.
      * @par Parameters
      *  None.
      * @par Returns
