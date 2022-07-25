@@ -32,113 +32,110 @@
 
 // ----------------------------------------------------------------------------
 
-namespace micro_os_plus
+namespace micro_os_plus::trace
 {
-  namespace trace
+  // --------------------------------------------------------------------------
+
+  int
+  printf (const char* format, ...)
   {
-    // ------------------------------------------------------------------------
+    std::va_list arguments;
+    va_start (arguments, format);
 
-    int
-    printf (const char* format, ...)
-    {
-      std::va_list arguments;
-      va_start (arguments, format);
+    int ret = vprintf (format, arguments);
 
-      int ret = vprintf (format, arguments);
+    va_end (arguments);
+    return ret;
+  }
 
-      va_end (arguments);
-      return ret;
-    }
+  int
+  vprintf (const char* format, std::va_list arguments)
+  {
+    // Caution: allocated on the stack!
+    char buf[MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE];
 
-    int
-    vprintf (const char* format, std::va_list arguments)
-    {
-      // Caution: allocated on the stack!
-      char buf[MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE];
+    // TODO: possibly rewrite it to no longer use newlib,
+    // (although the nano version is no longer very heavy).
 
-      // TODO: possibly rewrite it to no longer use newlib,
-      // (although the nano version is no longer very heavy).
-
-      // Print to the local buffer
+    // Print to the local buffer
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-      ssize_t ret = ::vsnprintf (buf, sizeof (buf), format, arguments);
+    ssize_t ret = ::vsnprintf (buf, sizeof (buf), format, arguments);
 #pragma GCC diagnostic pop
-      if (ret > 0)
-        {
-          // Transfer the buffer to the device.
-          ret = write (buf, static_cast<size_t> (ret));
-        }
+    if (ret > 0)
+      {
+        // Transfer the buffer to the device.
+        ret = write (buf, static_cast<size_t> (ret));
+      }
 #pragma GCC diagnostic push
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wuseless-cast"
 #endif
-      // Cast required on 64-bit.
-      return static_cast<int> (ret);
+    // Cast required on 64-bit.
+    return static_cast<int> (ret);
 #pragma GCC diagnostic pop
-    }
+  }
 
-    int
-    puts (const char* s)
-    {
-      ssize_t ret = write (s, strlen (s));
-      if (ret >= 0)
-        {
-          ret = write ("\n", 1); // Add a line terminator
-        }
-      if (ret > 0)
-        {
+  int
+  puts (const char* s)
+  {
+    ssize_t ret = write (s, strlen (s));
+    if (ret >= 0)
+      {
+        ret = write ("\n", 1); // Add a line terminator
+      }
+    if (ret > 0)
+      {
 #pragma GCC diagnostic push
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wuseless-cast"
 #endif
-          // Cast required on 64-bit.
-          return static_cast<int> (ret);
+        // Cast required on 64-bit.
+        return static_cast<int> (ret);
 #pragma GCC diagnostic pop
-        }
-      else
-        {
-          return EOF;
-        }
-    }
+      }
+    else
+      {
+        return EOF;
+      }
+  }
 
-    int
-    putchar (int c)
-    {
-      ssize_t ret = write (reinterpret_cast<const char*> (&c), 1);
-      if (ret > 0)
-        {
-          return c;
-        }
-      else
-        {
-          return EOF;
-        }
-    }
+  int
+  putchar (int c)
+  {
+    ssize_t ret = write (reinterpret_cast<const char*> (&c), 1);
+    if (ret > 0)
+      {
+        return c;
+      }
+    else
+      {
+        return EOF;
+      }
+  }
 
-    /**
-     * @details
-     * Generally it should match the prototype of `main()`, to simplify
-     * forwarding the parameters.
-     */
-    void
-    dump_args (int argc, char* argv[], const char* name)
-    {
-      printf ("%s(argc=%d, argv=[", name, argc);
-      for (int i = 0; i < argc; ++i)
-        {
-          if (i != 0)
-            {
-              printf (", ");
-            }
-          printf ("\"%s\"", argv[i]);
-        }
-      printf ("])\n");
-    }
+  /**
+   * @details
+   * Generally it should match the prototype of `main()`, to simplify
+   * forwarding the parameters.
+   */
+  void
+  dump_args (int argc, char* argv[], const char* name)
+  {
+    printf ("%s(argc=%d, argv=[", name, argc);
+    for (int i = 0; i < argc; ++i)
+      {
+        if (i != 0)
+          {
+            printf (", ");
+          }
+        printf ("\"%s\"", argv[i]);
+      }
+    printf ("])\n");
+  }
 
-    // ------------------------------------------------------------------------
-  } // namespace trace
-} // namespace micro_os_plus
+  // --------------------------------------------------------------------------
+} // namespace micro_os_plus::trace
 
 // ----------------------------------------------------------------------------
 
