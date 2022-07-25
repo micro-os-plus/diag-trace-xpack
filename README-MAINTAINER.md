@@ -1,5 +1,5 @@
 [![license](https://img.shields.io/github/license/micro-os-plus/diag-trace-xpack)](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/LICENSE)
-[![CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/workflows/CI%20on%20Push/badge.svg)](https://github.com/micro-os-plus/diag-trace-xpack/actions?query=workflow%3A%22CI+on+Push%22)
+[![CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/CI.yml/badge.svg)](https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/CI.yml)
 [![GitHub issues](https://img.shields.io/github/issues/micro-os-plus/diag-trace-xpack.svg)](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 [![GitHub pulls](https://img.shields.io/github/issues-pr/micro-os-plus/diag-trace-xpack.svg)](https://github.com/micro-os-plus/diag-trace-xpack/pulls)
 
@@ -74,13 +74,10 @@ Check GitHub issues and pull requests:
 
 and fix them; assign them to a milestone (like `4.0.0`).
 
-### Update `README.md`
+### Update `README-MAINTAINER.md`
 
-Update the `README.md` file to reflect the changes related to the new version.
-
-### Update version in `README-3RD-PARTY.md`
-
-Update the few references to the new version.
+Update the `README-MAINTAINER.md` file to reflect the changes
+related to the new version.
 
 ### Update `CHANGELOG.md`
 
@@ -93,28 +90,6 @@ Update the few references to the new version.
 
 - reformat the source files that were changed
 - commit and push
-
-## Tests
-
-### Continuous Integration
-
-The project is fully tested via GitHub
-[Actions](https://github.com/micro-os-plus/diag-trace-xpack/actions/);
-the **CI** job is automatically triggered on **Push**;
-it runs a selection of the tests on GitHub hosted runners,
-and the results are available at
-[CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/actions?query=workflow%3A%22CI+on+Push%22).
-
-### Test on all platforms
-
-In addition, it is possible to manually trigger a **test-all** job, that
-runs all available builds, on all supported platforms, including Linux Arm
-and macOS Apple Silicon.
-
-For this, run the `trigger-workflow-test-all` action before publishing.
-
-Wait for the **test-all** job to complete
-  (<https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/test-all.yml>)
 
 ## Manual tests
 
@@ -131,9 +106,6 @@ xpm run test-all
 
 - select the `xpack-develop` branch
 - commit all changes
-- update versions in `README.md` and `README-MAINTAINER.md`
-- update `CHANGELOG.md`
-- commit with a message like _prepare v4.0.0_
 - `npm pack` and check the content of the archive, which should list
   only `package.json`, `README.md`, `LICENSE`, `CHANGELOG.md`,
   the sources and CMake/meson files;
@@ -150,10 +122,22 @@ The version is visible at:
 
 - <https://www.npmjs.com/package/@micro-os-plus/diag-trace?activeTab=versions>
 
+### Test on all platforms
+
+In addition, it is possible to manually trigger a **test-all** job, that
+runs all available builds, on all supported platforms, including Linux Arm
+and macOS Apple Silicon.
+
+For this, run the `trigger-workflow-test-all` action before publishing.
+
+Wait for the **test-all** job to complete
+  (<https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/test-all.yml>)
+
 ## Update the repo
 
 When the package is considered stable:
 
+- with a Git client (VS Code is fine)
 - merge `xpack-develop` into `xpack`
 - push to GitHub
 - select `xpack-develop`
