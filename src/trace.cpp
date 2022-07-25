@@ -26,8 +26,8 @@
 #include <cstdio>
 #include <cstring>
 
-#ifndef MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE
-#define MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE (200)
+#ifndef MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE
+#define MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE (200)
 #endif
 
 // ----------------------------------------------------------------------------
@@ -54,7 +54,7 @@ namespace micro_os_plus
     vprintf (const char* format, std::va_list arguments)
     {
       // Caution: allocated on the stack!
-      char buf[MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_TMP_ARRAY_SIZE];
+      char buf[MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE];
 
       // TODO: possibly rewrite it to no longer use newlib,
       // (although the nano version is no longer very heavy).
