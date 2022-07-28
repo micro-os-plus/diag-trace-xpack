@@ -135,7 +135,7 @@ namespace micro_os_plus
      * @ingroup micro-os-plus-diag
      */
     int
-    puts (const char* s);
+    puts (const char* s = "");
 
     /**
      * @brief Write the single character to the trace device.
@@ -240,8 +240,8 @@ namespace micro_os_plus
     inline int
     vprintf (const char* format, std::va_list arguments);
 
-    inline int
-    puts (const char* s);
+  inline int
+  puts (const char* s = "");
 
     inline int
     putchar (int c);
