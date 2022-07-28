@@ -220,6 +220,12 @@ extern "C"
 
 #if defined(__cplusplus)
 
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wc++98-compat"
+#pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
+#endif
+
 namespace micro_os_plus::trace
 {
   // ------------------------------------------------------------------------
@@ -300,6 +306,8 @@ namespace micro_os_plus::trace
 #pragma GCC diagnostic pop
 
 } // namespace micro_os_plus::trace
+
+#pragma GCC diagnostic pop
 
 #endif // defined(__cplusplus)
 
