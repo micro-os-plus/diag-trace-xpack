@@ -68,8 +68,8 @@ extern "C"
 
   // --------------------------------------------------------------------------
 
-  // static int
-  // micro_os_plus_semihosting_call_host (int reason, void* arg);
+  // static response_t
+  // micro_os_plus_semihosting_call_host (int reason, param_block* arg);
 
   // The definition is in the architecture semihosting-inlines.h file.
 
