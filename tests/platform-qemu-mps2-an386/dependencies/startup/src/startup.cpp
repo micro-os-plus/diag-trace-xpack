@@ -524,7 +524,7 @@ micro_os_plus_startup_initialize_free_store (void* heap_address,
                                              std::size_t heap_size_bytes)
 {
 #if MICRO_OS_PLUS_BOOL_USE_TRACE
-  trace::printf ("Heap: @0x%08X (%dK)\n", heap_address,
+  trace::printf ("Heap: @0x%08X (%d KiB)\n", heap_address,
                  heap_size_bytes / 1024);
 #endif // MICRO_OS_PLUS_BOOL_USE_TRACE
 }
@@ -534,7 +534,7 @@ micro_os_plus_startup_initialize_free_store (void* heap_address,
 void __attribute__ ((weak)) micro_os_plus_terminate_goodbye (void)
 {
 #if MICRO_OS_PLUS_BOOL_USE_TRACE
-  trace::printf ("\nHasta la Vista!\n");
+  trace::puts ("\nHasta la vista!");
   trace::flush ();
 #endif // MICRO_OS_PLUS_BOOL_USE_TRACE
 }
