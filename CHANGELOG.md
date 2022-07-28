@@ -6,6 +6,31 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2022-07-28
+
+* 008892b semihosting.h comments cosmetics
+* ab7e57a startup.cpp: message cosmetics (KiB)
+* e51fa46 trace.h: namespace cosmetics
+* 909fa41 #6: puts() with optional string in C++
+
+## 2022-07-26
+
+* 3016e30 trace.cpp: silence -Wc++98-c++11-c++14-compat
+
+## 2022-07-25
+
+* fb40646 trace.cpp: namespaces cosmetics
+* c1f0807 #5: rename MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE
+* 23f0720 CMake update error message
+* 726786d remove dependencies READMEs
+* 9292f88 package.json minimumXpmRequired
+* daa1f49 add preliminary xpack.json
+
+## 2022-07-12
+
+* ff16726 CMake: xpack_display_greetings() with arg
+* c3131b3 package.json: bump deps
+
 ## 2022-06-04
 
 * 445c14e update for arm-cmsis-core
