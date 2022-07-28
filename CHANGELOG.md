@@ -8,6 +8,9 @@ and close existing issues and pull requests.
 
 ## 2022-07-28
 
+* fd63c99 CI.yml: try to ignore tags
+* 50dcdd2 trace.h: silence clang compat
+* 4.1.0
 * 008892b semihosting.h comments cosmetics
 * ab7e57a startup.cpp: message cosmetics (KiB)
 * e51fa46 trace.h: namespace cosmetics
