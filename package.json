@@ -1,6 +1,6 @@
 {
   "name": "@micro-os-plus/diag-trace",
-  "version": "4.0.0",
+  "version": "4.1.1",
   "description": "A source library xPack with the µOS++ trace::printf() tracing infrastructure",
   "main": "",
   "scripts": {
@@ -37,11 +37,11 @@
     "@xpack-dev-tools/cmake": "3.21.6-1.1",
     "@xpack-dev-tools/meson-build": "0.60.3-1.1",
     "@xpack-dev-tools/ninja-build": "1.10.2-5.1",
-    "@micro-os-plus/build-helper": "2.7.1",
-    "@micro-os-plus/micro-test-plus": "3.0.0"
+    "@micro-os-plus/build-helper": "^2.10.1",
+    "@micro-os-plus/micro-test-plus": "^3.0.0"
   },
   "xpack": {
-    "minimumXpmRequired": "0.11.0",
+    "minimumXpmRequired": "0.13.7",
     "properties": {
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",

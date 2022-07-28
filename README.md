@@ -1,5 +1,5 @@
 [![license](https://img.shields.io/github/license/micro-os-plus/diag-trace-xpack)](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/LICENSE)
-[![CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/workflows/CI%20on%20Push/badge.svg)](https://github.com/micro-os-plus/diag-trace-xpack/actions?query=workflow%3A%22CI+on+Push%22)
+[![CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/CI.yml/badge.svg)](https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/CI.yml)
 
 # A source library xPack with the µOS++ `trace::printf()` tracing infrastructure
 
@@ -13,32 +13,30 @@ called from plain C source files as well.
 The project is hosted on GitHub as
 [micro-os-plus/diag-trace-xpack](https://github.com/micro-os-plus/diag-trace-xpack).
 
-This page is intended for developers who plan to include this source library
-in their own projects; for informations on how to make new releases,
-see the separate [README-MAINTAINER](README-MAINTAINER.md) page.
+## Maintainer info
+
+This page is addressed to developers who plan to include this source
+library into their own projects.
+
+For maintainer info, please see the
+[README-MAINTAINER](README-MAINTAINER.md) file.
 
 ## Install
 
-As a source xPack, the easiest way to add it to a project is via **xpm**,
-but it can also be used as any Git project, for example as a submodule,
-or even the source files can be directly copied into the project.
+As a source library xPack, the easiest way to add it to a project is via
+**xpm**, but it can also be used as any Git project, for example as a submodule.
 
 ### Prerequisites
 
 A recent [xpm](https://xpack.github.io/xpm/),
-which is a portable [Node.js](https://nodejs.org/) command line application
-that can be installed with **npm**.
-
-```sh
-npm install --global xpm@latest
-```
+which is a portable [Node.js](https://nodejs.org/) command line application.
 
 For details please follow the instructions in the
 [xPack install](https://xpack.github.io/install/) page.
 
-### xpm install
+### xpm
 
-This package is available as
+This package is available from npmjs.com as
 [`@micro-os-plus/diag-trace`](https://www.npmjs.com/package/@micro-os-plus/diag-trace)
 from the `npmjs.com` registry:
 
@@ -54,8 +52,7 @@ ls -l xpacks/micro-os-plus-diag-trace
 ### Git submodule
 
 If, for any reason, **xpm** is not available, the next recommended
-solution is to link it as a Git submodule, for example below an
-`xpacks` folder.
+solution is to link it as a Git submodule below an `xpacks` folder.
 
 ```sh
 cd my-project
@@ -74,14 +71,10 @@ Apart from the unused `master` branch, there are two active branches:
 - `xpack-develop`, with the current development version
 
 All development is done in the `xpack-develop` branch, and contributions via
-**Pull Requests** should be directed to this branch.
+Pull Requests should be directed to this branch.
 
 When new releases are published, the `xpack-develop` branch is merged
 into `xpack`.
-
-## Status
-
-The **diag-trace** source library is fully functional.
 
 ## Developer info
 
@@ -112,61 +105,69 @@ the DEBUG channel, or the OUTPUT channel.
 µOS++ provides implementations for all those channels, in separate
 packages.
 
+### Status
+
+The **diag-trace** source library is fully functional.
+
 ### C++ API
 
 The following C++ functions are available:
 
-`int micro_os_plus::trace::printf (const char *format, ...)` -
- write a formatted string to the trace device.
+```c++
+// Write a formatted string to the trace device.
+int micro_os_plus::trace::printf (const char *format, ...);
 
-`int micro_os_plus::trace::putchar (int c)` -
- write the single character to the trace device.
+// Write the single character to the trace device.
+int micro_os_plus::trace::putchar (int c);
 
-`int micro_os_plus::trace::puts (const char *s)` -
- write the string and a line terminator to the trace device.
+// Write the string and a line terminator to the trace device.
+int micro_os_plus::trace::puts (const char *s);
 
-`int micro_os_plus::trace::vprintf (const char *format, std::va_list arguments)` -
- write a formatted variable arguments list to the trace device.
+// Write a formatted variable arguments list to the trace device.
+int micro_os_plus::trace::vprintf (const char *format, std::va_list arguments);
 
-`void dump_args (int argc, char* argv[], const char* name = "main")` -
- write the `argv[]` array to the trace device.
+// Write the `argv[]` array to the trace device.
+void dump_args (int argc, char* argv[], const char* name = "main");
 
-`void flush(void)` -
- flush the output.
+// Flush the output.
+void flush(void);
 
-`void initialize (void)` -
- initialize the trace device; called by the startup code.
+// Initialize the trace device; called by the startup code.
+void initialize (void);
 
-`ssize_t write (const void* buf, std::size_t nbyte)` -
- write the given number of bytes to the trace output channel.
+// Write the given number of bytes to the trace output channel.
+ssize_t write (const void* buf, std::size_t nbyte);
+```
 
 ### C API
 
 The following C functions are available:
 
-`int micro_os_plus_trace_printf (const char *format,...)` -
- write a formatted string to the trace device.
+```c
+// Write a formatted string to the trace device.
+int micro_os_plus_trace_printf (const char *format,...);
 
-`int micro_os_plus_trace_putchar (int c)` -
- write the single character to the trace device.
+// Write the single character to the trace device.
+int micro_os_plus_trace_putchar (int c);
 
-`int micro_os_plus_trace_puts (const char *s)` -
- write the string and a line terminator to the trace device.
+// Write the string and a line terminator to the trace device.
+int micro_os_plus_trace_puts (const char *s);
 
-`int micro_os_plus_trace_vprintf (const char *format, std::va_list arguments)` -
- write a formatted variable arguments list to the trace device.
+// Write a formatted variable arguments list to the trace device.
+int micro_os_plus_trace_vprintf (const char *format, std::va_list arguments);
 
-`void micro_os_plus_dump_args (int argc, char* argv[])` -
- write the argv[] array to the trace device.
+// Write the argv[] array to the trace device.
+void micro_os_plus_dump_args (int argc, char* argv[]);
 
-`void micro_os_plus_flush(void)` -
- flush the output.
+// Flush the output.
+void micro_os_plus_flush(void);
 
-`void micro_os_plus_initialize (void)`
- Initialize the trace device.
+// Initialize the trace device.
+void micro_os_plus_initialize (void);
 
-`ssize_t micro_os_plus_write (const void* buf, std::size_t nbyte)` -
- write the given number of bytes to the trace output channel.
+// Write the given number of bytes to the trace output channel.
+ssize_t micro_os_plus_write (const void* buf, std::size_t nbyte);
+```
 
 ### Implementation
 
@@ -174,44 +175,41 @@ The application must provide implementations for the following
 basic functions:
 
 ```c++
-namespace micro_os_plus
+namespace micro_os_plus::trace
 {
-  namespace trace
+  // --------------------------------------------------------------------------
+
+  void
+  initialize (void)
   {
-    // ------------------------------------------------------------------------
-
-    void
-    initialize (void)
-    {
-      // TODO: open the trace device.
-    }
-
-    // ------------------------------------------------------------------------
-
-    ssize_t
-    write (const void* buf, std::size_t nbyte)
-    {
-      if (buf == nullptr || nbyte == 0)
-        {
-          return 0;
-        }
-
-      // TODO: write chars from buffer to the trace channel.
-
-      // Return the number of characters successfully sent.
-      return (ssize_t) nbyte;
-    }
-
-    // ------------------------------------------------------------------------
-
-    void
-    flush (void)
-    {
-      // TODO the trace channel.
-    }
+    // TODO: open the trace device.
+  }
 
   // --------------------------------------------------------------------------
+
+  ssize_t
+  write (const void* buf, std::size_t nbyte)
+  {
+    if (buf == nullptr || nbyte == 0)
+      {
+        return 0;
+      }
+
+    // TODO: write chars from buffer to the trace channel.
+
+    // Return the number of characters successfully sent.
+    return (ssize_t) nbyte;
   }
+
+  // --------------------------------------------------------------------------
+
+  void
+  flush (void)
+  {
+    // TODO the trace channel.
+  }
+
+// ----------------------------------------------------------------------------
 }
 ```
 
@@ -220,8 +218,14 @@ results in missing symbols during link.
 
 ### Build & integration info
 
+The project is written in C++ and it is expected
+to be used in C and C++ projects.
+
+The source code was compiled with GCC 11, clang 12, clang 13
+arm-none-eabi-gcc 11, riscv-none-elf-gcc 12, and should be warning free.
+
 To ease the integration of this package into user projects, there
-are already made **CMake** and **meson** configuration files (see below).
+are already made CMake and meson configuration files (see below).
 
 For other build systems, consider the following details:
 
@@ -245,8 +249,9 @@ The source files to be added to the build are:
 
 #### Preprocessor definitions
 
-The macro used to configure this library is:
+There are several preprocessor definitions used to configure the build.
 
+- `MICRO_OS_PLUS_INCLUDE_CONFIG_H` - to include `<micro-os-plus/config.h>`
 - `MICRO_OS_PLUS_TRACE` - enable support for tracing
 
 If not defined, all functions are defined as empty inlines; thus
@@ -269,12 +274,16 @@ library namespace.
 
 #### C++ Classes
 
-- None
+- none
+
+#### Dependencies
+
+- none
 
 #### CMake
 
-To integrate the µOS++ diag-trace source library into a CMake application,
-download this project into a folder and add it to the build:
+To integrate the diag-trace source library into a CMake application,
+add this folder to the build:
 
 ```cmake
 add_subdirectory("xpacks/micro-os-plus-diag-trace")`
@@ -285,30 +294,31 @@ dependency with:
 
 ```cmake
 target_link_libraries(your-target PRIVATE
-    ...
-    micro-os-plus::diag-trace
+
+  micro-os-plus::diag-trace
 )
 ```
 
 #### meson
 
-Similarly, to integrate the µOS++ diag-trace source library into a
-meson application, download this project into a folder and add it to the build:
+To integrate the diag-trace source library into a meson application,
+add this folder to the build:
 
 ```meson
 subdir('xpacks/micro-os-plus-diag-trace')
 ```
 
-The result is a dependency object that can be added as an application
-dependency with:
+The result is a dependency object that can be added
+to an application with:
 
 ```meson
 exe = executable(
   your-target,
-
+  link_with: [
+    # Nothing, not static.
+  ],
   dependencies: [
-    ...
-    micro_os_plus_diag_trace_dependency
+    micro_os_plus_diag_trace_dependency,
   ]
 )
 ```
@@ -351,9 +361,10 @@ main (int argc, char* argv[])
 The project is fully tested via GitHub
 [Actions](https://github.com/micro-os-plus/diag-trace-xpack/actions/)
 on each push.
-The test platforms are GNU/Linux, macOS and Windows, the tests are
-compiled with GCC, clang and arm-none-eabi-gcc and run natively or
-via QEMU.
+
+The test platforms are GNU/Linux, macOS and Windows; native tests are
+compiled with GCC and clang; tests for embedded platforms are compiled
+with arm-none-eabi-gcc and risc-none-elf-gcc, and executed via QEMU.
 
 There are two sets of tests, one that runs on every push, with a
 limited number of tests, and a set that is triggered manually,

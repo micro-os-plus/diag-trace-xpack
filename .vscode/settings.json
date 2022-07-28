@@ -14,6 +14,7 @@
     "Wsign",
     "Wunused",
     "Wuseless",
+    "Xpmake",
     "buildtype",
     "cmake",
     "cmsis",
@@ -31,6 +32,7 @@
     "nullptr",
     "postversion",
     "putchar",
+    "riscv",
     "semihosted",
     "semihosting",
     "ssize",
@@ -40,5 +42,6 @@
     "xpack",
     "xpacks"
   ],
-  "cmake.configureOnOpen": false
+  "cmake.configureOnOpen": false,
+  "editor.wordWrap": "on"
 }

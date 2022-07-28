@@ -30,7 +30,7 @@ and close existing issues and pull requests.
 
 ## 2022-01-30
 
-- rename as device-qemu-cortexm
+- rename as devices-qemu-cortexm
 
 ## 2022-01-26
 

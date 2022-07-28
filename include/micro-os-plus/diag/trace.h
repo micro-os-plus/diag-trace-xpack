@@ -135,7 +135,7 @@ namespace micro_os_plus
      * @ingroup micro-os-plus-diag
      */
     int
-    puts (const char* s);
+    puts (const char* s = "");
 
     /**
      * @brief Write the single character to the trace device.
@@ -220,89 +220,94 @@ extern "C"
 
 #if defined(__cplusplus)
 
-namespace micro_os_plus
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wc++98-compat"
+#pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
+#endif
+
+namespace micro_os_plus::trace
 {
-  namespace trace
+  // ------------------------------------------------------------------------
+
+  inline void
+  initialize (void);
+
+  inline ssize_t
+  write (const void* buf, std::size_t nbyte);
+
+  // ------------------------------------------------------------------------
+
+  inline int
+  printf (const char* format, ...);
+
+  inline int
+  vprintf (const char* format, std::va_list arguments);
+
+  inline int
+  puts (const char* s = "");
+
+  inline int
+  putchar (int c);
+
+  inline void
+  dump_args (int argc, char* argv[], const char* name = "main");
+
+  // ------------------------------------------------------------------------
+
+  inline __attribute__ ((always_inline)) void
+  initialize (void)
   {
-    // ------------------------------------------------------------------------
-
-    inline void
-    initialize (void);
-
-    inline ssize_t
-    write (const void* buf, std::size_t nbyte);
-
-    // ------------------------------------------------------------------------
-
-    inline int
-    printf (const char* format, ...);
-
-    inline int
-    vprintf (const char* format, std::va_list arguments);
-
-    inline int
-    puts (const char* s);
-
-    inline int
-    putchar (int c);
-
-    inline void
-    dump_args (int argc, char* argv[], const char* name = "main");
-
-    // ------------------------------------------------------------------------
-
-    inline __attribute__ ((always_inline)) void
-    initialize (void)
-    {
-    }
+  }
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-    inline __attribute__ ((always_inline)) ssize_t
-    write (const void* buf, std::size_t nbyte)
-    {
-      return static_cast<ssize_t> (nbyte);
-    }
+  inline __attribute__ ((always_inline)) ssize_t
+  write (const void* buf, std::size_t nbyte)
+  {
+    return static_cast<ssize_t> (nbyte);
+  }
 
-    inline __attribute__ ((always_inline)) void
-    flush (void)
-    {
-    }
+  inline __attribute__ ((always_inline)) void
+  flush (void)
+  {
+  }
 
-    inline __attribute__ ((always_inline)) int
-    printf (const char* format, ...)
-    {
-      return 0;
-    }
+  inline __attribute__ ((always_inline)) int
+  printf (const char* format, ...)
+  {
+    return 0;
+  }
 
-    inline __attribute__ ((always_inline)) int
-    vprintf (const char* format, std::va_list arguments)
-    {
-      return 0;
-    }
+  inline __attribute__ ((always_inline)) int
+  vprintf (const char* format, std::va_list arguments)
+  {
+    return 0;
+  }
 
-    inline __attribute__ ((always_inline)) int
-    puts (const char* s)
-    {
-      return 0;
-    }
+  inline __attribute__ ((always_inline)) int
+  puts (const char* s)
+  {
+    return 0;
+  }
 
-    inline __attribute__ ((always_inline)) int
-    putchar (int c)
-    {
-      return c;
-    }
+  inline __attribute__ ((always_inline)) int
+  putchar (int c)
+  {
+    return c;
+  }
 
-    inline __attribute__ ((always_inline)) void
-    dump_args (int argc, char* argv[], const char* name)
-    {
-    }
+  inline __attribute__ ((always_inline)) void
+  dump_args (int argc, char* argv[], const char* name)
+  {
+  }
 
 #pragma GCC diagnostic pop
 
-  } // namespace trace
-} // namespace micro_os_plus
+} // namespace micro_os_plus::trace
+
+#pragma GCC diagnostic pop
 
 #endif // defined(__cplusplus)
 
