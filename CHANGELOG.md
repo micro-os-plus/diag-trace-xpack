@@ -6,6 +6,17 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2022-08-04
+
+* v4.2.0
+* 498dcd8 rename MICRO_OS_PLUS_INTEGER_TRACE_SEMIHOSTING_BUFFER_ARRAY_SIZE
+* 4e018fc tests/cross.ini: add link to cpu-families
+
+## 2022-08-03
+
+* f3607fb .vscode/settings.json: cmake.ignoreCMakeListsMissing
+* 1bd6ad0 .vscode/settings.json: makefile.configureOnOpen
+
 ## 2022-07-28
 
 * fd63c99 CI.yml: try to ignore tags
