@@ -39,6 +39,8 @@
     "subdir",
     "unistd",
     "vprintf",
+    "xbbla",
+    "xbbma",
     "xpack",
     "xpacks"
   ],
