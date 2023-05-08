@@ -35,11 +35,14 @@ micro_os_plus_startup_dependency = declare_dependency(
   sources: files(
     'src/startup.cpp',
   ),
+  compile_args: [
+    # None.
+  ],
   dependencies: [
     micro_os_plus_version_dependency,
     # micro_os_plus_diag_trace_dependency,
     micro_os_plus_architecture_dependency,
-  ],
+  ]
 )
 
 message('+ -I include')

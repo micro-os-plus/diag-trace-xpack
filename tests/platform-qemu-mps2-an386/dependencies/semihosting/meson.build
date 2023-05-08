@@ -36,10 +36,13 @@ micro_os_plus_semihosting_dependency = declare_dependency(
     'src/syscalls-semihosting.cpp',
     'src/trace-semihosting.cpp'
   ),
+  compile_args: [
+    # None.
+  ],
   dependencies: [
     micro_os_plus_architecture_dependency,
     # micro_os_plus_diag_trace_dependency,
-  ],
+  ]
 )
 
 message('+ -I include')

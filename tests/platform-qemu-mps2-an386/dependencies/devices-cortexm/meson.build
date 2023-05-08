@@ -41,6 +41,7 @@ micro_os_plus_devices_cortexm_dependency = declare_dependency(
     'src/exception-handlers.cpp',
   ),
   compile_args: [
+    # None.
   ],
   dependencies: [
     micro_os_plus_semihosting_dependency

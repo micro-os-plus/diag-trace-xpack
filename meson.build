@@ -82,8 +82,9 @@ xpack_sources += [
 # https://mesonbuild.com/Reference-manual.html#declare_dependency
 micro_os_plus_diag_trace_dependency = declare_dependency(
   include_directories: include_directories(xpack_include_directories),
-  compile_args: xpack_common_args,
   sources: files(xpack_sources),
+  compile_args: xpack_common_args,
+  dependencies: []
 )
 
 # Dependencies cannot store language specific definitions, the only
