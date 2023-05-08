@@ -96,10 +96,8 @@ related to the new version.
 It is also possible to run the tests manually:
 
 ```sh
-cd ~Work/diag-trace-xpack.git
-
-xpm run install-all
-xpm run test-all
+xpm run install-all -C ~/Work/micro-os-plus/diag-trace-xpack.git
+xpm run test-all -C ~/Work/micro-os-plus/diag-trace-xpack.git
 ```
 
 ## Publish on the npmjs.com server
