@@ -39,7 +39,7 @@ For Cortex-M tests, the toolchain is arm-none-eabi-gcc 11.
 ## CI
 
 The CI workflow runs the tests on every push; for details see
-[CI.yml](../.github/workflows/CI.yml).
+[ci.yml](../.github/workflows/ci.yml).
 
 ## Tests details
 
