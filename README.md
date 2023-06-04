@@ -55,7 +55,7 @@ xpm init # Unless a package.json is already present
 
 xpm install @micro-os-plus/diag-trace@latest
 
-ls -l xpacks/micro-os-plus-diag-trace
+ls -l xpacks/@micro-os-plus/diag-trace
 ```
 
 ### Git submodule
@@ -69,7 +69,7 @@ git init # Unless already a Git project
 mkdir -p xpacks
 
 git submodule add https://github.com/micro-os-plus/diag-trace-xpack.git \
-  xpacks/micro-os-plus-diag-trace
+  xpacks/@micro-os-plus/diag-trace
 ```
 
 ## Branches
@@ -295,7 +295,7 @@ To integrate the diag-trace source library into a CMake application,
 add this folder to the build:
 
 ```cmake
-add_subdirectory("xpacks/micro-os-plus-diag-trace")`
+add_subdirectory("xpacks/@micro-os-plus/diag-trace")`
 ```
 
 The result is an interface library that can be added as an application
@@ -314,7 +314,7 @@ To integrate the diag-trace source library into a meson application,
 add this folder to the build:
 
 ```meson
-subdir('xpacks/micro-os-plus-diag-trace')
+subdir('xpacks/@micro-os-plus/diag-trace')
 ```
 
 The result is a dependency object that can be added

@@ -90,15 +90,15 @@ add_global_link_arguments(
 
 # The base folder is root, via the `top` link.
 xpack_dependencies = [
-  # 'xpacks/micro-os-plus-diag-trace', # -
-  'xpacks/micro-os-plus-micro-test-plus', # -
+  # 'xpacks/@micro-os-plus/diag-trace', # -
+  'xpacks/@micro-os-plus/micro-test-plus', # -
 
   # -
-  xpack_build_folder_relative_path + '/xpacks/micro-os-plus-version',
+  xpack_build_folder_relative_path + '/xpacks/@micro-os-plus/version',
   # -
-  xpack_build_folder_relative_path + '/xpacks/xpack-3rd-party-arm-cmsis-core',
+  xpack_build_folder_relative_path + '/xpacks/@xpack-3rd-party/arm-cmsis-core',
   # (architecture) -
-  xpack_build_folder_relative_path + '/xpacks/micro-os-plus-architecture-cortexm',
+  xpack_build_folder_relative_path + '/xpacks/@micro-os-plus/architecture-cortexm',
 
   # +(version, diag_trace, architecture) >startup
   'tests/platform-qemu-mps2-an386/dependencies/startup',

@@ -14,7 +14,7 @@
 
 # This file is intended to be consumed by applications with:
 #
-# `subdir('xpacks/micro-os-plus-diag-trace')`
+# `subdir('xpacks/@micro-os-plus/diag-trace')`
 #
 # The result is a dependency that can be referred as:
 #
