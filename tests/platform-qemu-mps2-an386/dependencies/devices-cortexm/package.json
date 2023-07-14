@@ -10,16 +10,16 @@
     "url": "https://github.com/micro-os-plus/devices-cortexm-xpack.git"
   },
   "bugs": {
-    "url": "https://github.com/micro-os-plus/devices-cortexm-xpack/issues/"
+    "url": "https://github.com/micro-os-plus/devices-cortexm-xpack/issues"
   },
-  "homepage": "https://github.com/micro-os-plus/devices-cortexm-xpack/",
+  "homepage": "https://github.com/micro-os-plus/devices-cortexm-xpack",
   "keywords": [
     "xpack"
   ],
   "author": {
     "name": "Liviu Ionescu",
     "email": "ilg@livius.net",
-    "url": "https://github.com/ilg-ul/"
+    "url": "https://github.com/ilg-ul"
   },
   "license": "MIT",
   "config": {},

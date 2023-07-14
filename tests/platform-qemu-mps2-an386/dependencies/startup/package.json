@@ -15,15 +15,15 @@
     "micro-os-plus",
     "startup"
   ],
-  "homepage": "https://github.com/micro-os-plus/startup/",
+  "homepage": "https://github.com/micro-os-plus/startup",
   "author": {
     "name": "Liviu Ionescu",
     "email": "ilg@livius.net",
-    "url": "https://github.com/ilg-ul/"
+    "url": "https://github.com/ilg-ul"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/micro-os-plus/startup/issues/"
+    "url": "https://github.com/micro-os-plus/startup/issues"
   },
   "config": {},
   "xpack": {}
