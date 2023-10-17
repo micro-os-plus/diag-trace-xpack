@@ -34,6 +34,7 @@
 
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
+#pragma clang diagnostic ignored "-Wunknown-warning-option"
 #endif
 
 namespace micro_os_plus::trace
@@ -123,6 +124,10 @@ namespace micro_os_plus::trace
    * Generally it should match the prototype of `main()`, to simplify
    * forwarding the parameters.
    */
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
   void
   dump_args (int argc, char* argv[], const char* name)
   {
@@ -137,6 +142,7 @@ namespace micro_os_plus::trace
       }
     printf ("])\n");
   }
+#pragma GCC diagnostic pop
 
   // --------------------------------------------------------------------------
 } // namespace micro_os_plus::trace
