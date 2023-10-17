@@ -1,7 +1,7 @@
 {
   "name": "@micro-os-plus/diag-trace",
   "version": "4.2.0",
-  "description": "A source library xPack with the µOS++ trace::printf() tracing infrastructure",
+  "description": "A source code library with the µOS++ trace::printf() tracing infrastructure",
   "main": "",
   "scripts": {
     "npm-install": "npm install",

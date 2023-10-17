@@ -1,7 +1,7 @@
 {
   "name": "@micro-os-plus/semihosting",
   "version": "3.2.1",
-  "description": "A source library xPack with the µOS++ portable semihosting definitions",
+  "description": "A source code library with the µOS++ portable semihosting definitions",
   "main": "",
   "scripts": {
   },
