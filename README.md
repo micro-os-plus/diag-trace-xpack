@@ -4,7 +4,7 @@
 [![license](https://img.shields.io/github/license/micro-os-plus/diag-trace-xpack)](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/LICENSE)
 [![CI on Push](https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/ci.yml/badge.svg)](https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/ci.yml)
 
-# A source library xPack with the µOS++ `trace::printf()` tracing infrastructure
+# A source code library with the µOS++ `trace::printf()` tracing infrastructure
 
 This project provides support for a tracing channel, separate
 from the standard output or error streams. The API is similar to the
@@ -406,7 +406,7 @@ the application;
 
 ## License
 
-The original content is released under the
-[MIT License](https://opensource.org/licenses/MIT/),
+Unless otherwise stated, the content is released under the terms of the
+[MIT License](https://opensource.org/licenses/mit/),
 with all rights reserved to
 [Liviu Ionescu](https://github.com/ilg-ul).
