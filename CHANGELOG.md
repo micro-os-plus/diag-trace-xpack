@@ -6,9 +6,62 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2023-10-18
+
+* v4.2.1
+* 944ac54 README update
+* 4244738 package.json: description cosmetics
+
+## 2023-10-17
+
+* badfbac trace.cpp: silence warnings
+
+## 2023-10-12
+
+* 2bdb99c ci.yml: non-sudo npm install
+
+## 2023-07-14
+
+* 681d474 ci.yml: xpm 0.16.2
+* d9ca5ef README updates
+* 9deb141 tests/CMakeLists.txt: cosmetics
+* 31e01f1 package.json: cosmetise urls
+* 1c66236 package.json: minXpm 0.16.2
+
+## 2023-06-04
+
+* 0110e7d update for xpacks/@scope/name
+* 228dec6 cmake: add dependencies.cmake
+* f493850 package.json: build-helper-xpack#xpack-develop
+* 39177ab remove --quiet
+* 219e896 ci.yml: bump xpm
+
+## 2023-06-03
+
+* f461e84 lower case ci.yml
+* cf69dbf package.json min 0.16.0
+* 468c3f1 package.json min 0.16.0
+* 9ea9ede lower case ci.yml
+
+## 2023-05-08
+
+* a3ae928 CI.yml: re-enable windows
+* 84f42a2 CI.yml: bump deps, node 18
+* d3693f7 .npmignore update
+* 52238fb READMEs updates
+* 3b10890 README updates
+* 8567d73 README update
+* 5255082 meson.build cosmetics
+
+## 2022-08-16
+
+* 31e0505 package.json min 0.14.0 & defaults
+
 ## 2022-08-04
 
-* v4.2.0
+* 650c8d5 4.2.0
+* 4a22166 prepare v4.2.0
+* d560e9b .vscode/settings.json: ignoreWords
 * 498dcd8 rename MICRO_OS_PLUS_INTEGER_TRACE_SEMIHOSTING_BUFFER_ARRAY_SIZE
 * 4e018fc tests/cross.ini: add link to cpu-families
 
