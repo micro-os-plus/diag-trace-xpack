@@ -17,25 +17,45 @@
 # https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/test-ci.yml
 
 # Workflow for running some tests on each Push.
-name: Run all tests
+name: CI on Push
 
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 
 on:
-  # Runs on manual triggering.
-  workflow_dispatch:
+  # Runs on pushes, if all conditions are met:
+  push:
+    # ... on the active branches ...
+    branches:
+      - 'xpack-development'
+      - 'xpack'
+    # ... skip tags only ...
+    tags-ignore:
+      - '**'
+    # ... include everything except ...
+    paths-ignore:
+      - '.vscode/**'
+      - 'LICENSE'
+      - '**.md'
+      - '.clang-format'
+      - '.gitignore'
+      - '.npmignore'
+      - '.github/workflows/publish-github-pages.yml'
+      - '.github/workflows/test-all.yml'
+      - 'tests/scripts/**'
+      - '**/README**'
+      - 'website/**'
 
 jobs:
   ci-test:
-    name: 'All µOS++ Tracing Infrastructure tests'
+    name: 'CI µOS++ Tracing Infrastructure tests'
 
     runs-on:  ${{ matrix.os }}
 
     strategy:
       matrix:
         # https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners
-        os: [ 'ubuntu-24.04', 'ubuntu-22.04', 'ubuntu-24.04-arm', 'ubuntu-22.04-arm', 'macos-13', 'macos-14', 'windows-2022', 'windows-2019' ]
+        os: [ 'ubuntu-24.04', 'ubuntu-24.04-arm', 'macos-13', 'macos-14', 'windows-2022' ]
         # https://nodejs.org/en - use LTS
         node-version: [ '20' ]
         # https://www.npmjs.com/package/xpm
@@ -68,26 +88,10 @@ jobs:
 
     - name: Satisfy project dependencies on ${{ matrix.os }}
       run: |
-        npm ci -C tests
-        xpm run install-all -C tests
-
-    - name: Clean xPack cache Linux
-      if: runner.os == 'Linux'
-      run: |
-        rm -rf "${HOME}/.cache/xPacks"
-
-    - name: Clean xPack cache macOS
-      if: runner.os == 'macOS'
-      run: |
-        rm -rf "${HOME}/Library/Caches/xPacks"
-
-    - name: Clean xPack cache Windows
-      if: runner.os == 'Windows'
-      shell: pwsh
-      run: |
-        Remove-Item -LiteralPath "$env:LOCALAPPDATA\Caches\xPacks" -Force -Recurse
+        npm ci
+        xpm run install-ci
 
     - name: Run tests on ${{ matrix.os }}
-      run: xpm run test-all -C tests
+      run: xpm run test-ci
       env:
           CI: true
