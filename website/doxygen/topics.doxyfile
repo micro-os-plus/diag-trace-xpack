@@ -1,0 +1,120 @@
+/*
+ * This file is part of the µOS++ project (https://micro-os-plus.github.com).
+ * Copyright (c) 2021 Liviu Ionescu. All rights reserved.
+ *
+ * Permission to use, copy, modify, and/or distribute this software
+ * for any purpose is hereby granted, under the terms of the MIT license.
+ *
+ * If a copy of the license was not distributed with this file, it can
+ * be obtained from https://opensource.org/licenses/mit.
+ */
+
+// Not really a .doxyfile, since it does not define variables.
+// But also it cannot be .md, since Doxygen renders markdown files
+// as extra entries in the sidebar. Suggestions welcomed!
+
+-------------------------------------------------------------------------------
+/**
+
+@defgroup micro-os-plus-diag-trace µOS++ Tracing Infrastructure
+@details
+
+The **µOS++ Tracing Infrastructure** library facilitates the output of trace messages, a widely utilised diagnostic technique during debugging. A notable example is the `trace::printf()` function.
+
+The core implementation is developed in C++, complemented by a minimal C wrapper layer.
+
+The functions are categorised into three distinct groups:
+- Functions that must be implemented by the user to define the channel for transmitting trace messages from the target.
+- Core tracing functions.
+- Auxiliary utility functions.
+
+*/
+-------------------------------------------------------------------------------
+/**
+
+@defgroup micro-os-plus-diag-trace-cpp-api C++ API
+@ingroup micro-os-plus-diag-trace
+@details
+
+The µOS++ **diag-trace** functions are implemented in C++.
+
+*/
+-------------------------------------------------------------------------------
+/**
+
+@defgroup micro-os-plus-diag-trace-c-api C API
+@ingroup micro-os-plus-diag-trace
+@details
+
+The µOS++ **diag-trace** C API serves as a lightweight wrapper built upon the underlying C++ functions.
+
+*/
+-------------------------------------------------------------------------------
+
+/**
+
+@defgroup micro-os-plus-diag-trace-cpp-api-implementation Implementation functions
+@ingroup micro-os-plus-diag-trace-cpp-api
+@details
+
+The following functions must be implemented by the user and are specific to each individual trace channel.
+
+*/
+-------------------------------------------------------------------------------
+
+/**
+
+@defgroup micro-os-plus-diag-trace-cpp-api-main Main functions
+@ingroup micro-os-plus-diag-trace-cpp-api
+@details
+
+These functions serve as the primary methods for outputting trace messages in C++ projects.
+
+*/
+-------------------------------------------------------------------------------
+
+/**
+
+@defgroup micro-os-plus-diag-trace-cpp-api-extra Utility functions
+@ingroup micro-os-plus-diag-trace-cpp-api
+@details
+
+These are supplementary functions designed to enhance tracing capabilities.
+
+*/
+-------------------------------------------------------------------------------
+
+/**
+
+@defgroup micro-os-plus-diag-trace-c-api-implementation Implementation functions
+@ingroup micro-os-plus-diag-trace-c-api
+@details
+
+These functions may be invoked from C projects to execute actions specific to the implementation.
+
+*/
+-------------------------------------------------------------------------------
+
+/**
+
+@defgroup micro-os-plus-diag-trace-c-api-main Main functions
+@ingroup micro-os-plus-diag-trace-c-api
+@details
+
+These functions constitute the primary methods for outputting trace messages in C projects.
+
+*/
+-------------------------------------------------------------------------------
+
+/**
+
+@defgroup micro-os-plus-diag-trace-c-api-extra Utility functions
+@ingroup micro-os-plus-diag-trace-c-api
+@details
+
+These are supplementary functions designed to enhance tracing capabilities.
+
+*/
+-------------------------------------------------------------------------------
+
+

@@ -1,0 +1,7 @@
+Sitemap: https://micro-os-plus.github.io/diag-trace-xpack/sitemap.xml
+
+User-agent: *
+Disallow: /diag-trace-xpack/blog/archive/
+Disallow: /diag-trace-xpack/blog/authors/
+Disallow: /diag-trace-xpack/blog/page/
+Disallow: /diag-trace-xpack/blog/tags/
