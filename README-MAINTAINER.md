@@ -33,6 +33,12 @@ git clone \
   ~/Work/micro-os-plus/diag-trace-xpack.git
 ```
 
+To link it to the central xPack store:
+
+```sh
+xpm link -C ~/Work/micro-os-plus/diag-trace-xpack.git
+```
+
 ## Prerequisites
 
 A recent [xpm](https://xpack.github.io/xpm/), which is a portable
