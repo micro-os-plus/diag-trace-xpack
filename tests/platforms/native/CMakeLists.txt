@@ -61,7 +61,7 @@ function(add_test_executable name)
     micro-os-plus::diag-trace
 
     # Portable dependencies.
-    # micro-os-plus::diag-trace
+    micro-os-plus::diag-trace
 
     # Platform specific dependencies and common compile/link options.
     micro-os-plus::platform

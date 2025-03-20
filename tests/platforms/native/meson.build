@@ -40,11 +40,12 @@ foreach name : test_names
     '../../src/' + name + '.cpp',
   ]
 
-  _local_compile_c_args += platform_native_dependency_compile_c_args
-  _local_compile_cpp_args += platform_native_dependency_compile_cpp_args
-
-  _local_compile_c_args += micro_os_plus_micro_test_plus_dependency_compile_c_args
-  _local_compile_cpp_args += micro_os_plus_micro_test_plus_dependency_compile_cpp_args
+  if c_compiler.get_id() == 'gcc'
+    _local_link_args += [
+      '-Wl,-Map,'+ name + '-map.txt',
+      # '-v',
+    ]
+  endif
 
   if name != 'null-test'
     _local_compile_c_args += [ '-DMICRO_OS_PLUS_TRACE_TESTING' ]
@@ -52,22 +53,29 @@ foreach name : test_names
   endif
 
   # Tested library.
-  _local_dependencies += [
-    micro_os_plus_diag_trace_dependency,
-  ]
+  _local_compile_c_args += micro_os_plus_diag_trace_dependency_compile_c_args
+  _local_compile_cpp_args += micro_os_plus_diag_trace_dependency_compile_cpp_args
+
+  _local_dependencies += [ micro_os_plus_diag_trace_dependency ]
 
   # Portable dependencies.
-  # micro_os_plus_diag_trace_dependency,
+  # _local_compile_c_args += micro_os_plus_diag_trace_dependency_compile_c_args
+  # _local_compile_cpp_args += micro_os_plus_diag_trace_dependency_compile_cpp_args
+
+  # _local_dependencies += [ micro_os_plus_diag_trace_dependency ]
+
   if name == 'unit-test'
-    _local_dependencies += [
-      micro_os_plus_micro_test_plus_dependency,
-    ]
+    _local_compile_c_args += micro_os_plus_micro_test_plus_dependency_compile_c_args
+    _local_compile_cpp_args += micro_os_plus_micro_test_plus_dependency_compile_cpp_args
+
+    _local_dependencies += [ micro_os_plus_micro_test_plus_dependency ]
   endif
 
   # Platform specific dependencies.
-  _local_dependencies += [
-    platform_native_dependency,
-  ]
+  _local_compile_c_args += platform_native_dependency_compile_c_args
+  _local_compile_cpp_args += platform_native_dependency_compile_cpp_args
+
+  _local_dependencies += [ platform_native_dependency ]
 
   # https://mesonbuild.com/Reference-manual.html#executable
   exe = executable(
@@ -115,7 +123,6 @@ if enable_null_test
   )
 
 endif
-
 
 # -----------------------------------------------------------------------------
 

@@ -46,7 +46,9 @@ main (int argc, char* argv[])
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpre-c++17-compat"
 #endif
+
 namespace micro_os_plus::trace_testing
+
 #if defined(__clang__)
 #pragma clang diagnostic pop
 #endif
@@ -74,10 +76,8 @@ namespace micro_os_plus::trace_testing
   void
   flush (void)
   {
-#if !defined(__MINGW32__)
+#if defined(__APPLE__) || defined(__linux__) || defined(__unix__)
     fsync (1); // Sync STDOUT.
-#else
-// error: 'fsync' was not declared in this scope
 #endif
   }
 } // namespace micro_os_plus::trace_testing

@@ -31,7 +31,9 @@ using namespace micro_os_plus;
 // ----------------------------------------------------------------------------
 
 #pragma GCC diagnostic ignored "-Waggregate-return"
-#if defined(__clang__)
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic ignored "-Wunused-value"
+#elif defined(__clang__)
 #pragma clang diagnostic ignored "-Wunknown-warning-option"
 #pragma clang diagnostic ignored "-Wc++98-compat"
 // Silence warnings on buffer[], they are asserted.
