@@ -26,15 +26,15 @@ using namespace micro_os_plus;
 int
 main (int argc, char* argv[])
 {
-  trace::initialize ();
+  trace_testing::initialize ();
 
-  trace::dump_args (argc, argv);
+  trace_testing::dump_args (argc, argv);
 
-  trace::printf ("Hello %s!\n", "World");
-  trace::puts ("one line");
-  trace::putchar ('*');
+  trace_testing::printf ("Hello %s!\n", "World");
+  trace_testing::puts ("one line");
+  trace_testing::putchar ('*');
 
-  trace::flush ();
+  trace_testing::flush ();
 
   return 0;
 }
@@ -46,7 +46,7 @@ main (int argc, char* argv[])
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpre-c++17-compat"
 #endif
-namespace micro_os_plus::trace
+namespace micro_os_plus::trace_testing
 #if defined(__clang__)
 #pragma clang diagnostic pop
 #endif
@@ -80,6 +80,6 @@ namespace micro_os_plus::trace
 // error: 'fsync' was not declared in this scope
 #endif
   }
-} // namespace micro_os_plus::trace
+} // namespace micro_os_plus::trace_testing
 
 // ----------------------------------------------------------------------------

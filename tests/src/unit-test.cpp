@@ -47,7 +47,7 @@ static std::size_t count;
 static constexpr std::size_t initial_count = 999999;
 static constexpr char flush_mark = -17;
 
-namespace micro_os_plus::trace
+namespace micro_os_plus::trace_testing
 {
   void
   initialize (void)
@@ -73,7 +73,7 @@ namespace micro_os_plus::trace
     assert (count < sizeof (buffer));
     buffer[count] = flush_mark;
   }
-} // namespace micro_os_plus::trace
+} // namespace micro_os_plus::trace_testing
 
 // ----------------------------------------------------------------------------
 
@@ -87,18 +87,18 @@ main (int argc, char* argv[])
   count = initial_count;
   strcpy (buffer, "xxx");
 
-  test_case ("Check trace::initialize", [] {
+  test_case ("Check trace_testing::initialize", [] {
     expect (eq (count, initial_count)) << "initial count";
     expect (eq (buffer[0], 'x')) << "initial content x";
 
-    trace::initialize ();
+    trace_testing::initialize ();
     expect (eq (count, 0)) << "count initialised";
     expect (eq (buffer[0], '\0')) << "initial content cleared";
   });
 
-  test_case ("Check trace::putchar", [] {
+  test_case ("Check trace_testing::putchar", [] {
     std::size_t prev_count = count;
-    trace::putchar ('c');
+    trace_testing::putchar ('c');
 
     expect (eq ((count - prev_count), 1)) << "count increased by 1";
 
@@ -106,9 +106,9 @@ main (int argc, char* argv[])
     expect (eq (buffer[prev_count], 'c')) << "buffer has c";
   });
 
-  test_case ("Check trace::puts", [] {
+  test_case ("Check trace_testing::puts", [] {
     std::size_t prev_count = count;
-    trace::puts ("s");
+    trace_testing::puts ("s");
 
     expect (eq ((count - prev_count), 2)) << "count increased by 2";
 
@@ -117,9 +117,9 @@ main (int argc, char* argv[])
     expect (eq (buffer[prev_count + 1], '\n')) << "buffer has \\n";
   });
 
-  test_case ("Check trace::printf", [] {
+  test_case ("Check trace_testing::printf", [] {
     std::size_t prev_count = count;
-    trace::printf ("%s", "p");
+    trace_testing::printf ("%s", "p");
 
     expect (eq ((count - prev_count), 1)) << "count increased by 1";
 
@@ -127,7 +127,7 @@ main (int argc, char* argv[])
     expect (eq (buffer[prev_count], 'p')) << "buffer has p";
 
     prev_count = count;
-    trace::printf ("%s\n", "q");
+    trace_testing::printf ("%s\n", "q");
 
     expect (eq ((count - prev_count), 2)) << "count increased by 2";
 
@@ -136,14 +136,14 @@ main (int argc, char* argv[])
     expect (eq (buffer[prev_count + 1], '\n')) << "buffer has \\n";
   });
 
-  test_case ("Check trace::dump_args", [] {
+  test_case ("Check trace_testing::dump_args", [] {
     const char* argv_[3];
     argv_[0] = "n";
     argv_[1] = "1";
     argv_[2] = "2";
 
     std::size_t prev_count = count;
-    trace::dump_args (3, const_cast<char**> (argv_));
+    trace_testing::dump_args (3, const_cast<char**> (argv_));
 
     std::string_view expected_main{
       "main(argc=3, argv=[\"n\", \"1\", \"2\"])\n"
@@ -156,7 +156,7 @@ main (int argc, char* argv[])
         << "buffer has main";
 
     prev_count = count;
-    trace::dump_args (3, const_cast<char**> (argv_), "args");
+    trace_testing::dump_args (3, const_cast<char**> (argv_), "args");
 
     std::string_view expected_args{
       "args(argc=3, argv=[\"n\", \"1\", \"2\"])\n"
@@ -169,8 +169,8 @@ main (int argc, char* argv[])
         << "buffer has main";
   });
 
-  test_case ("Check trace::flush", [] {
-    trace::flush ();
+  test_case ("Check trace_testing::flush", [] {
+    trace_testing::flush ();
 
     assert (count < sizeof (buffer));
     expect (eq (buffer[count], flush_mark)) << "flush mark found";
@@ -183,14 +183,14 @@ main (int argc, char* argv[])
     expect (eq (count, initial_count)) << "initial count";
     expect (eq (buffer[0], 'x')) << "initial content x";
 
-    micro_os_plus_trace_initialize ();
+    micro_os_plus_trace_initialize_testing ();
     expect (eq (count, 0)) << "count initialised";
     expect (eq (buffer[0], '\0')) << "initial content cleared";
   });
 
   test_case ("Check micro_os_plus_trace_putchar", [] {
     std::size_t prev_count = count;
-    micro_os_plus_trace_putchar ('c');
+    micro_os_plus_trace_putchar_testing ('c');
 
     expect (eq ((count - prev_count), 1)) << "count increased by 1";
 
@@ -200,7 +200,7 @@ main (int argc, char* argv[])
 
   test_case ("Check micro_os_plus_trace_puts", [] {
     std::size_t prev_count = count;
-    micro_os_plus_trace_puts ("s");
+    micro_os_plus_trace_puts_testing ("s");
 
     expect (eq ((count - prev_count), 2)) << "count increased by 2";
 
@@ -211,7 +211,7 @@ main (int argc, char* argv[])
 
   test_case ("Check micro_os_plus_trace_printf", [] {
     std::size_t prev_count = count;
-    micro_os_plus_trace_printf ("%s", "p");
+    micro_os_plus_trace_printf_testing ("%s", "p");
 
     expect (eq ((count - prev_count), 1)) << "count increased by 1";
 
@@ -219,7 +219,7 @@ main (int argc, char* argv[])
     expect (eq (buffer[prev_count], 'p')) << "buffer has p";
 
     prev_count = count;
-    micro_os_plus_trace_printf ("%s\n", "q");
+    micro_os_plus_trace_printf_testing ("%s\n", "q");
 
     expect (eq ((count - prev_count), 2)) << "count increased by 2";
 
@@ -235,7 +235,7 @@ main (int argc, char* argv[])
     argv_[2] = "2";
 
     std::size_t prev_count = count;
-    trace::dump_args (3, const_cast<char**> (argv_));
+    trace_testing::dump_args (3, const_cast<char**> (argv_));
 
     std::string_view expected_main{
       "main(argc=3, argv=[\"n\", \"1\", \"2\"])\n"
@@ -248,7 +248,7 @@ main (int argc, char* argv[])
         << "buffer has main";
 
     prev_count = count;
-    trace::dump_args (3, const_cast<char**> (argv_), "args");
+    trace_testing::dump_args (3, const_cast<char**> (argv_), "args");
 
     std::string_view expected_args{
       "args(argc=3, argv=[\"n\", \"1\", \"2\"])\n"
@@ -262,7 +262,7 @@ main (int argc, char* argv[])
   });
 
   test_case ("Check micro_os_plus_trace_flush", [] {
-    micro_os_plus_trace_flush ();
+    micro_os_plus_trace_flush_testing ();
 
     assert (count < sizeof (buffer));
     expect (eq (buffer[count], flush_mark)) << "flush mark found";
