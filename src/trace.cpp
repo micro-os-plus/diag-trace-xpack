@@ -33,8 +33,8 @@
 // ----------------------------------------------------------------------------
 
 #if defined(__clang__)
-#pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
 #pragma clang diagnostic ignored "-Wunknown-warning-option"
+#pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
 #endif
 
 namespace micro_os_plus::trace

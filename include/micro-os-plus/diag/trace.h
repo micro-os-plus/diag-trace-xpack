@@ -76,7 +76,14 @@ compiled using
  * However, the drawback is that the associated header file must always be
 included.
  */
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpre-c++17-compat"
+#endif
 namespace micro_os_plus::trace
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#endif
 {
   // --------------------------------------------------------------------------
 
