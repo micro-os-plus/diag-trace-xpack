@@ -37,7 +37,9 @@
 #pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
 #endif
 
-namespace micro_os_plus::trace
+// For separation, use a separate naming space while testing.
+namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
+
 {
   // --------------------------------------------------------------------------
 
@@ -155,21 +157,22 @@ using namespace micro_os_plus;
 // in a different translation unit.
 
 void
-micro_os_plus_trace_initialize (void)
+MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_initialize) (void)
 {
-  trace::initialize ();
+  MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::initialize ();
 }
 
 ssize_t
-micro_os_plus_trace_write (const void* buf, std::size_t nbyte)
+MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_write) (
+    const void* buf, std::size_t nbyte)
 {
-  return trace::write (buf, nbyte);
+  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::write (buf, nbyte);
 }
 
 void
-micro_os_plus_trace_flush (void)
+MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_flush) (void)
 {
-  return trace::flush ();
+  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::flush ();
 }
 
 // ----------------------------------------------------------------------------
@@ -178,39 +181,43 @@ micro_os_plus_trace_flush (void)
 // not support aliases, redefine the C functions to call the C++ versions.
 
 int
-micro_os_plus_trace_printf (const char* format, ...)
+MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_printf) (
+    const char* format, ...)
 {
   std::va_list arguments;
   va_start (arguments, format);
 
-  int ret = trace::vprintf (format, arguments);
+  int ret
+      = MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::vprintf (format, arguments);
 
   va_end (arguments);
   return ret;
 }
 
 int
-micro_os_plus_trace_vprintf (const char* format, va_list arguments)
+MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_vprintf) (
+    const char* format, va_list arguments)
 {
-  return trace::vprintf (format, arguments);
+  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::vprintf (format, arguments);
 }
 
 int
-micro_os_plus_trace_puts (const char* s)
+MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_puts) (const char* s)
 {
-  return trace::puts (s);
+  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::puts (s);
 }
 
 int
-micro_os_plus_trace_putchar (int c)
+MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_putchar) (int c)
 {
-  return trace::putchar (c);
+  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::putchar (c);
 }
 
 void
-micro_os_plus_trace_dump_args (int argc, char* argv[])
+MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_dump_args) (int argc,
+                                                                  char* argv[])
 {
-  trace::dump_args (argc, argv);
+  MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::dump_args (argc, argv);
 }
 
 // ----------------------------------------------------------------------------

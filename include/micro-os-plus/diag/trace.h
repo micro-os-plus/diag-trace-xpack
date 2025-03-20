@@ -46,6 +46,12 @@
 
 #if defined(MICRO_OS_PLUS_TRACE) || defined(MICRO_OS_PLUS_TRACE_TESTING)
 
+#if defined(MICRO_OS_PLUS_TRACE_TESTING)
+#define MICRO_OS_PLUS_TRACE_NAME_TESTING(name) name##_testing
+#else
+#define MICRO_OS_PLUS_TRACE_NAME_TESTING(name) name
+#endif
+
 #if defined(__cplusplus)
 
 /**
@@ -80,7 +86,10 @@ included.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpre-c++17-compat"
 #endif
-namespace micro_os_plus::trace
+
+// For separation, use a separate naming space while testing.
+namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
+
 #if defined(__clang__)
 #pragma clang diagnostic pop
 #endif
@@ -218,7 +227,7 @@ extern "C"
    *  Nothing.
    */
   void
-  micro_os_plus_trace_initialize (void);
+      MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_initialize) (void);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
@@ -228,8 +237,8 @@ extern "C"
    * @param [in] nbyte The number of bytes in the array.
    * @return  The number of characters actually written, or -1 if error.
    */
-  ssize_t
-  micro_os_plus_trace_write (const void* buf, size_t nbyte);
+  ssize_t MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_write) (
+      const void* buf, size_t nbyte);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
@@ -240,8 +249,7 @@ extern "C"
    * @par Returns
    *  Nothing.
    */
-  void
-  micro_os_plus_trace_flush (void);
+  void MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_flush) (void);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
@@ -250,8 +258,8 @@ extern "C"
    * @param [in] format A null terminate string with the format.
    * @return A nonnegative number for success.
    */
-  int
-  micro_os_plus_trace_printf (const char* format, ...);
+  int MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_printf) (
+      const char* format, ...);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
@@ -262,8 +270,8 @@ extern "C"
    * @param [in] arguments A variable arguments list.
    * @return A nonnegative number for success.
    */
-  int
-  micro_os_plus_trace_vprintf (const char* format, va_list arguments);
+  int MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_vprintf) (
+      const char* format, va_list arguments);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
@@ -272,8 +280,8 @@ extern "C"
    * @param [in] s A null terminated string.
    * @return A nonnegative number for success.
    */
-  int
-  micro_os_plus_trace_puts (const char* s);
+  int MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_puts) (
+      const char* s);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
@@ -282,8 +290,7 @@ extern "C"
    * @param [in] c A single byte character.
    * @return The written character.
    */
-  int
-  micro_os_plus_trace_putchar (int c);
+  int MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_putchar) (int c);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-extra
@@ -292,16 +299,17 @@ extern "C"
    * @param [in] argc The number of argv[] strings.
    * @param [in] argv An array of pointer to arguments.
    */
-  void
-  micro_os_plus_trace_dump_args (int argc, char* argv[]);
+  void MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_dump_args) (
+      int argc, char* argv[]);
 
 #if defined(__cplusplus)
 }
 #endif // defined(__cplusplus)
 
-#else /* !defined(MICRO_OS_PLUS_TRACE) */
+#endif /* defined(MICRO_OS_PLUS_TRACE) */
 
-// Empty definitions when trace is not defined
+// When TRACE is not enabled, define empty definitions.
+#if !defined(MICRO_OS_PLUS_TRACE)
 
 #if defined(__cplusplus)
 
@@ -311,6 +319,7 @@ extern "C"
 #pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
 #endif
 
+// The void definitions are always in the regular namespace.
 namespace micro_os_plus::trace
 {
   // ------------------------------------------------------------------------
@@ -400,6 +409,8 @@ namespace micro_os_plus::trace
 extern "C"
 {
 #endif // defined(__cplusplus)
+
+  // The void definitions are always in the regular namespace.
 
   inline void
   micro_os_plus_trace_initialize (void);
