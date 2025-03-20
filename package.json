@@ -38,6 +38,7 @@
     "diag",
     "trace"
   ],
+  "dependencies": {},
   "bundleDependencies": [],
   "$devDependenciesUrls": [
     "https://www.npmjs.com/package/del-cli",
@@ -63,6 +64,5 @@
   },
   "engines": {
     "node": " >=18.0.0"
-  },
-  "dependencies": {}
+  }
 }
