@@ -90,8 +90,8 @@ micro_os_plus_diag_trace_dependency = declare_dependency(
 # Dependencies cannot store language specific definitions, the only
 # way is to pass them via global variables. All applications including
 # this dependency must also consider them.
-# micro_os_plus_diag_trace_dependency_c_args = xpack_c_args
-# micro_os_plus_diag_trace_dependency_cpp_args = xpack_cpp_args
+micro_os_plus_diag_trace_dependency_compile_c_args = xpack_c_args
+micro_os_plus_diag_trace_dependency_compile_cpp_args = xpack_cpp_args
 
 foreach name : xpack_include_directories
   message('+ -I ' + name)
