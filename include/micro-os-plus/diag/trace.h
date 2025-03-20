@@ -44,7 +44,7 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_TRACE)
+#if defined(MICRO_OS_PLUS_TRACE) || defined(MICRO_OS_PLUS_TRACE_TESTING)
 
 #if defined(__cplusplus)
 
