@@ -32,44 +32,48 @@ using namespace micro_os_plus;
 
 #pragma GCC diagnostic ignored "-Waggregate-return"
 #if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunknown-warning-option"
 #pragma clang diagnostic ignored "-Wc++98-compat"
+// Silence warnings on buffer[], they are asserted.
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #endif
 
-static char buffer[1024];
-static int count;
+// Ensure the asserts are always enabled.
+#undef NDEBUG
 
-static constexpr int initial_count = -1;
+static char buffer[1024];
+static std::size_t count;
+
+static constexpr std::size_t initial_count = 999999;
 static constexpr char flush_mark = -17;
 
-namespace micro_os_plus
+namespace micro_os_plus::trace
 {
-  namespace trace
+  void
+  initialize (void)
   {
-    void
-    initialize (void)
-    {
-      count = 0;
-      ::memset (buffer, 0, sizeof (buffer));
-    }
+    count = 0;
+    ::memset (buffer, 0, sizeof (buffer));
+  }
 
-    ssize_t
-    write (const void* buf, std::size_t nbyte)
-    {
-      assert (count >= 0);
-      assert (static_cast<std::size_t> (count) + nbyte < sizeof (buffer));
-      ::memcpy (&buffer[count], buf, nbyte);
-      count += static_cast<int> (nbyte);
+  ssize_t
+  write (const void* buf, std::size_t nbyte)
+  {
+    assert (static_cast<std::size_t> (count) + nbyte < sizeof (buffer));
+    ::memcpy (&buffer[count], buf, nbyte);
 
-      return static_cast<ssize_t> (nbyte);
-    }
+    count += nbyte;
 
-    void
-    flush (void)
-    {
-      buffer[count] = flush_mark;
-    }
-  } // namespace trace
-} // namespace micro_os_plus
+    return static_cast<ssize_t> (nbyte);
+  }
+
+  void
+  flush (void)
+  {
+    assert (count < sizeof (buffer));
+    buffer[count] = flush_mark;
+  }
+} // namespace micro_os_plus::trace
 
 // ----------------------------------------------------------------------------
 
@@ -93,33 +97,41 @@ main (int argc, char* argv[])
   });
 
   test_case ("Check trace::putchar", [] {
-    int prev_count = count;
+    std::size_t prev_count = count;
     trace::putchar ('c');
 
     expect (eq ((count - prev_count), 1)) << "count increased by 1";
+
+    assert (prev_count < sizeof (buffer));
     expect (eq (buffer[prev_count], 'c')) << "buffer has c";
   });
 
   test_case ("Check trace::puts", [] {
-    int prev_count = count;
+    std::size_t prev_count = count;
     trace::puts ("s");
 
     expect (eq ((count - prev_count), 2)) << "count increased by 2";
+
+    assert (prev_count + 1 < sizeof (buffer));
     expect (eq (buffer[prev_count], 's')) << "buffer has s";
     expect (eq (buffer[prev_count + 1], '\n')) << "buffer has \\n";
   });
 
   test_case ("Check trace::printf", [] {
-    int prev_count = count;
+    std::size_t prev_count = count;
     trace::printf ("%s", "p");
 
     expect (eq ((count - prev_count), 1)) << "count increased by 1";
+
+    assert (prev_count < sizeof (buffer));
     expect (eq (buffer[prev_count], 'p')) << "buffer has p";
 
     prev_count = count;
     trace::printf ("%s\n", "q");
 
     expect (eq ((count - prev_count), 2)) << "count increased by 2";
+
+    assert (prev_count + 1 < sizeof (buffer));
     expect (eq (buffer[prev_count], 'q')) << "buffer has q";
     expect (eq (buffer[prev_count + 1], '\n')) << "buffer has \\n";
   });
@@ -130,7 +142,7 @@ main (int argc, char* argv[])
     argv_[1] = "1";
     argv_[2] = "2";
 
-    int prev_count = count;
+    std::size_t prev_count = count;
     trace::dump_args (3, const_cast<char**> (argv_));
 
     std::string_view expected_main{
@@ -138,6 +150,8 @@ main (int argc, char* argv[])
     };
     expect (eq ((count - prev_count), expected_main.length ()))
         << "count increased correctly";
+
+    assert (prev_count + expected_main.size () < sizeof (buffer));
     expect (eq (std::string_view{ &buffer[prev_count] }, expected_main))
         << "buffer has main";
 
@@ -149,12 +163,16 @@ main (int argc, char* argv[])
     };
     expect (eq ((count - prev_count), expected_args.length ()))
         << "count increased correctly";
+
+    assert (prev_count + expected_args.size () < sizeof (buffer));
     expect (eq (std::string_view{ &buffer[prev_count] }, expected_args))
         << "buffer has main";
   });
 
   test_case ("Check trace::flush", [] {
     trace::flush ();
+
+    assert (count < sizeof (buffer));
     expect (eq (buffer[count], flush_mark)) << "flush mark found";
   });
 
@@ -171,33 +189,41 @@ main (int argc, char* argv[])
   });
 
   test_case ("Check micro_os_plus_trace_putchar", [] {
-    int prev_count = count;
+    std::size_t prev_count = count;
     micro_os_plus_trace_putchar ('c');
 
     expect (eq ((count - prev_count), 1)) << "count increased by 1";
+
+    assert (prev_count < sizeof (buffer));
     expect (eq (buffer[prev_count], 'c')) << "buffer has c";
   });
 
   test_case ("Check micro_os_plus_trace_puts", [] {
-    int prev_count = count;
+    std::size_t prev_count = count;
     micro_os_plus_trace_puts ("s");
 
     expect (eq ((count - prev_count), 2)) << "count increased by 2";
+
+    assert (prev_count + 1 < sizeof (buffer));
     expect (eq (buffer[prev_count], 's')) << "buffer has s";
     expect (eq (buffer[prev_count + 1], '\n')) << "buffer has \\n";
   });
 
   test_case ("Check micro_os_plus_trace_printf", [] {
-    int prev_count = count;
+    std::size_t prev_count = count;
     micro_os_plus_trace_printf ("%s", "p");
 
     expect (eq ((count - prev_count), 1)) << "count increased by 1";
+
+    assert (prev_count < sizeof (buffer));
     expect (eq (buffer[prev_count], 'p')) << "buffer has p";
 
     prev_count = count;
     micro_os_plus_trace_printf ("%s\n", "q");
 
     expect (eq ((count - prev_count), 2)) << "count increased by 2";
+
+    assert (prev_count + 1 < sizeof (buffer));
     expect (eq (buffer[prev_count], 'q')) << "buffer has q";
     expect (eq (buffer[prev_count + 1], '\n')) << "buffer has \\n";
   });
@@ -208,7 +234,7 @@ main (int argc, char* argv[])
     argv_[1] = "1";
     argv_[2] = "2";
 
-    int prev_count = count;
+    std::size_t prev_count = count;
     trace::dump_args (3, const_cast<char**> (argv_));
 
     std::string_view expected_main{
@@ -216,6 +242,8 @@ main (int argc, char* argv[])
     };
     expect (eq ((count - prev_count), expected_main.length ()))
         << "count increased correctly";
+
+    assert (prev_count + expected_main.size () < sizeof (buffer));
     expect (eq (std::string_view{ &buffer[prev_count] }, expected_main))
         << "buffer has main";
 
@@ -227,12 +255,16 @@ main (int argc, char* argv[])
     };
     expect (eq ((count - prev_count), expected_args.length ()))
         << "count increased correctly";
+
+    assert (prev_count + expected_args.size () < sizeof (buffer));
     expect (eq (std::string_view{ &buffer[prev_count] }, expected_args))
         << "buffer has main";
   });
 
   test_case ("Check micro_os_plus_trace_flush", [] {
     micro_os_plus_trace_flush ();
+
+    assert (count < sizeof (buffer));
     expect (eq (buffer[count], flush_mark)) << "flush mark found";
   });
 

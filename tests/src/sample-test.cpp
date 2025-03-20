@@ -42,40 +42,44 @@ main (int argc, char* argv[])
 // ----------------------------------------------------------------------------
 // The full implementation of the trace system API.
 
-namespace micro_os_plus
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpre-c++17-compat"
+#endif
+namespace micro_os_plus::trace
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#endif
 {
-  namespace trace
+  void
+  initialize (void)
   {
-    void
-    initialize (void)
-    {
-      // STDOUT is always available.
-    }
+    // STDOUT is always available.
+  }
 
-    ssize_t
-    write (const void* buf, std::size_t nbyte)
-    {
-      // 1=STDOUT
+  ssize_t
+  write (const void* buf, std::size_t nbyte)
+  {
+    // 1=STDOUT
 #pragma GCC diagnostic push
 #if defined(__MINGW32__)
 // warning: conversion from 'std::size_t' {aka 'long long unsigned int'} to
 // 'unsigned int' may change value [-Wconversion]
 #pragma GCC diagnostic ignored "-Wconversion"
 #endif
-      return ::write (1, buf, nbyte);
+    return ::write (1, buf, nbyte);
 #pragma GCC diagnostic pop
-    }
+  }
 
-    void
-    flush (void)
-    {
+  void
+  flush (void)
+  {
 #if !defined(__MINGW32__)
-      fsync (1); // Sync STDOUT.
+    fsync (1); // Sync STDOUT.
 #else
 // error: 'fsync' was not declared in this scope
 #endif
-    }
-  } // namespace trace
-} // namespace micro_os_plus
+  }
+} // namespace micro_os_plus::trace
 
 // ----------------------------------------------------------------------------
