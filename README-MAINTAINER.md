@@ -121,7 +121,7 @@ xpm run test-all -C ~/Work/micro-os-plus/diag-trace-xpack.git
 - push the `xpack-development` branch to GitHub
 - the `postversion` npm script should also update tags via `git push origin --tags`
 - wait for the CI job to complete
-  (<https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/ci.yml>)
+  (<https://github.com/micro-os-plus/diag-trace-xpack/actions/workflows/test-ci.yml>)
 
 ### Test on all platforms
 
