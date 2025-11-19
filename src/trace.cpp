@@ -48,7 +48,12 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
     std::va_list arguments;
     va_start (arguments, format);
 
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
     int ret = vprintf (format, arguments);
+#pragma GCC diagnostic pop
 
     va_end (arguments);
     return ret;
@@ -66,6 +71,9 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
     // Print to the local buffer
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
     ssize_t ret = ::vsnprintf (buf, sizeof (buf), format, arguments);
 #pragma GCC diagnostic pop
     if (ret > 0)
@@ -85,7 +93,12 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
   int
   puts (const char* s)
   {
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
     ssize_t ret = write (s, strlen (s));
+#pragma GCC diagnostic pop
     if (ret >= 0)
       {
         ret = write ("\n", 1); // Add a line terminator
@@ -186,8 +199,13 @@ MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_printf) (
   std::va_list arguments;
   va_start (arguments, format);
 
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
   int ret
       = MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::vprintf (format, arguments);
+#pragma GCC diagnostic pop
 
   va_end (arguments);
   return ret;
@@ -197,26 +215,46 @@ int
 MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_vprintf) (
     const char* format, va_list arguments)
 {
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
   return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::vprintf (format, arguments);
+#pragma GCC diagnostic pop
 }
 
 int
 MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_puts) (const char* s)
 {
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
   return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::puts (s);
+#pragma GCC diagnostic pop
 }
 
 int
 MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_putchar) (int c)
 {
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
   return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::putchar (c);
+#pragma GCC diagnostic pop
 }
 
 void
 MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_dump_args) (int argc,
                                                                   char* argv[])
 {
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
   MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::dump_args (argc, argv);
+#pragma GCC diagnostic pop
 }
 
 // ----------------------------------------------------------------------------
