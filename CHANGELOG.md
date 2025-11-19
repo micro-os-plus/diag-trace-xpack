@@ -6,9 +6,57 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2025-11-19
+
+* v4.2.2
+* 9e486a7 trace.cpp silence warnings
+
+## 2025-10-07
+
+* 3be1463 update copyright notices
+
+## 2025-03-21
+
+* 79af703 tests: clean-ups
+* 2436191 update package-lock.json
+* e71b51a re-generate workflows
+* 198b444 tests: remove old platforms
+* ecbc237 meson.build: add *compile_c*_args
+* 198c707 tests: all platforms functional
+
+## 2025-03-20
+
+* c82b51d tests: update to use the testing namespace
+* 4a26a72 library: use separate testing namespace
+* 1a9d9f2 tests/package.json updates
+* da87d4a package.json cosmetics
+* 833c4c2 tests: platforms/native updates
+* 50232ed tests: silence warnings, add asserts
+* ca4a8af tests cmake & meson updates
+* f92a26b silence -Wpre-c++17-compat
+* 8e8709f add MICRO_OS_PLUS_TRACE_TESTING
+
+## 2025-03-18
+
+* 0ae4299 initial website content
+* 19142bf trace.h: re-work doxygen
+* e81e6c6 README update
+* c6de55f rename xcdl.json
+* 0db98d3 re-generate top
+
+## 2023-11-28
+
+* 3f2248a README updates
+* 626fd32 package.json: cosmetise scripts
+
+## 2023-10-19
+
+* a98654a tests/native/config.h: update *_BUFFER_ARRAY_SIZE
+
 ## 2023-10-18
 
-* v4.2.1
+* 3a7dc30 4.2.1
+* f0d346e prepare v4.2.1
 * 944ac54 README update
 * 4244738 package.json: description cosmetics
 
