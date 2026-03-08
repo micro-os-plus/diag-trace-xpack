@@ -1,6 +1,6 @@
 /*
  * This file is part of the µOS++ project (https://micro-os-plus.github.io/).
- * Copyright (c) 2021-2025 Liviu Ionescu. All rights reserved.
+ * Copyright (c) 2021-2026 Liviu Ionescu. All rights reserved.
  *
  * Permission to use, copy, modify, and/or distribute this software
  * for any purpose is hereby granted, under the terms of the MIT license.
@@ -60,7 +60,7 @@ namespace micro_os_plus::trace_testing
   ssize_t
   write (const void* buf, std::size_t nbyte)
   {
-    assert (static_cast<std::size_t> (count) + nbyte < sizeof (buffer));
+    assert (count + nbyte < sizeof (buffer));
     ::memcpy (&buffer[count], buf, nbyte);
 
     count += nbyte;

@@ -7,8 +7,8 @@
     "generate-tests-commons": "bash xpacks/@micro-os-plus/build-helper/maintenance-scripts/generate-tests-commons.sh --micro-os-plus",
     "npm-install": "npm install",
     "npm-link-helpers": "npm link @xpack/npm-packages-helper",
-    "xpm-link-helpers": "xpm link @micro-os-plus/build-helper",
-    "deep-clean": "del-cli build node_modules xpacks package-json.json"
+    "npm-outdated": "npm outdated",
+    "deep-clean": "del-cli build node_modules package-json.json"
   },
   "author": {
     "name": "Liviu Ionescu",
@@ -20,9 +20,9 @@
   "dependencies": {},
   "bundleDependencies": [],
   "devDependencies": {
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "json": "^11.0.0",
-    "liquidjs": "^10.20.1"
+    "liquidjs": "^10.24.0"
   },
   "testsConfig": {
     "skipMICRO_OS_PLUS_TRACE": "true"
@@ -41,9 +41,9 @@
       "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack#v2.16.0",
       "@micro-os-plus/diag-trace": "^4.2.1",
       "@micro-os-plus/micro-test-plus": "^3.2.2",
-      "@xpack-dev-tools/cmake": "3.30.7-1.1",
-      "@xpack-dev-tools/meson-build": "1.6.1-1.1",
-      "@xpack-dev-tools/ninja-build": "1.12.1-1.1"
+      "@xpack-dev-tools/cmake": "3.31.9-1.1",
+      "@xpack-dev-tools/meson-build": "1.8.5-1.1",
+      "@xpack-dev-tools/ninja-build": "1.13.1-1.1"
     },
     "properties": {
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
@@ -221,7 +221,7 @@
         "xpm run test-native-cmake-clang18",
         "xpm run test-native-cmake-clang17",
         "xpm run test-native-cmake-clang16",
-        "xpm run test-native-cmake-clang15",
+        "echo xpm run test-native-cmake-clang15",
         "echo xpm run test-native-cmake-clang14",
         "echo xpm run test-native-cmake-clang13"
       ],
@@ -347,7 +347,7 @@
         "xpm run test-native-meson-clang18",
         "xpm run test-native-meson-clang17",
         "xpm run test-native-meson-clang16",
-        "xpm run test-native-meson-clang15",
+        "echo xpm run test-native-meson-clang15",
         "echo xpm run test-native-meson-clang14",
         "echo xpm run test-native-meson-clang13"
       ],
@@ -1362,7 +1362,7 @@
         "hidden": true,
         "$devDependenciesUrl": "https://www.npmjs.com/package/@micro-os-plus/architecture-synthetic-posix",
         "devDependencies": {
-          "@micro-os-plus/architecture-synthetic-posix": "4.0.2"
+          "@micro-os-plus/architecture-synthetic-posix": "4.0.3"
         }
       },
       "cortexm-dependencies": {
@@ -1395,7 +1395,7 @@
         ],
         "devDependencies": {
           "@micro-os-plus/architecture-aarch32": "^3.2.0",
-          "@micro-os-plus/devices-qemu-aarch32": "4.0.0"
+          "@micro-os-plus/devices-qemu-aarch32": "4.1.0"
         }
       },
       "aarch64-dependencies": {
@@ -1406,7 +1406,7 @@
         ],
         "devDependencies": {
           "@micro-os-plus/architecture-aarch64": "^3.2.0",
-          "@micro-os-plus/devices-qemu-aarch64": "4.0.0"
+          "@micro-os-plus/devices-qemu-aarch64": "4.1.1"
         }
       },
       "bare-metal-dependencies": {
@@ -1416,8 +1416,8 @@
           "https://www.npmjs.com/package/@micro-os-plus/startup"
         ],
         "devDependencies": {
-          "@micro-os-plus/semihosting": "^7.1.0",
-          "@micro-os-plus/startup": "^5.1.0"
+          "@micro-os-plus/semihosting": "^8.0.0",
+          "@micro-os-plus/startup": "^5.2.0"
         }
       },
       "arm-cmsis-core-dependencies": {
@@ -1448,7 +1448,7 @@
         "$devDependenciesUrl": "https://www.npmjs.com/package/@xpack-dev-tools/gcc",
         "devDependencies": {
           "@xpack-dev-tools/gcc": {
-            "specifier": "12.4.0-2.1",
+            "specifier": "12.5.0-1.1",
             "platforms": "linux-x64,linux-arm64,win32-x64"
           }
         }
@@ -1458,7 +1458,7 @@
         "$devDependenciesUrl": "https://www.npmjs.com/package/@xpack-dev-tools/gcc",
         "devDependencies": {
           "@xpack-dev-tools/gcc": {
-            "specifier": "13.3.0-2.1",
+            "specifier": "13.4.0-1.1",
             "platforms": "linux-x64,linux-arm64,win32-x64"
           }
         }
@@ -1468,7 +1468,7 @@
         "$devDependenciesUrl": "https://www.npmjs.com/package/@xpack-dev-tools/gcc",
         "devDependencies": {
           "@xpack-dev-tools/gcc": {
-            "specifier": "14.2.0-2.1",
+            "specifier": "14.3.0-1.1",
             "platforms": "linux-x64,linux-arm64,win32-x64"
           }
         }
@@ -1634,21 +1634,21 @@
         "hidden": true,
         "$devDependenciesUrl": "https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm",
         "devDependencies": {
-          "@xpack-dev-tools/qemu-arm": "8.2.6-1.1"
+          "@xpack-dev-tools/qemu-arm": "9.2.4-1.1"
         }
       },
       "qemu-riscv-dependencies": {
         "hidden": true,
         "$devDependenciesUrl": "https://www.npmjs.com/package/@xpack-dev-tools/qemu-riscv",
         "devDependencies": {
-          "@xpack-dev-tools/qemu-riscv": "8.2.6-1.1"
+          "@xpack-dev-tools/qemu-riscv": "9.2.4-1.1"
         }
       },
       "openocd-dependencies": {
         "hidden": true,
         "$devDependenciesUrl": "https://www.npmjs.com/package/@xpack-dev-tools/openocd",
         "devDependencies": {
-          "@xpack-dev-tools/openocd": "0.12.0-6.1"
+          "@xpack-dev-tools/openocd": "0.12.0-7.1"
         }
       },
       "native-cmake-sys-debug": {
