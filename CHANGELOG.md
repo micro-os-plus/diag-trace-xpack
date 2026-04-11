@@ -6,9 +6,26 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2026-04-11
+
+* v4.2.3 prepared
+* e0fd16a #7: clip the output of vsnprintf()
+
+## 2026-03-09
+
+* c025dce test-ci.yml updates
+
+## 2026-03-08
+
+* 6425752 test-ci.yml updates
+* ff2394f package*.json bump deps
+* 1a842f3 copyright 2026 updates
+
 ## 2025-11-19
 
-* v4.2.2
+* fbac5fd --prefix
+* f6e3ab5 4.2.2
+* b284053 prepare v4.2.2
 * 9e486a7 trace.cpp silence warnings
 
 ## 2025-10-07
