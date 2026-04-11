@@ -24,6 +24,7 @@
 #include <cstdarg>
 #include <cstdio>
 #include <cstring>
+#include <algorithm>
 
 #ifndef MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE
 #define MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE (200)
@@ -37,7 +38,7 @@
 #endif
 
 // For separation, use a separate naming space while testing.
-namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
+namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
 
 {
   // --------------------------------------------------------------------------
@@ -78,8 +79,9 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
 #pragma GCC diagnostic pop
     if (ret > 0)
       {
-        // Transfer the buffer to the device.
-        ret = write (buf, static_cast<size_t> (ret));
+        // Clamp to actual buffer size if output was truncated.
+        ret = write (buf, static_cast<size_t> (std::min (
+                              ret, static_cast<ssize_t> (sizeof (buf) - 1))));
       }
 #pragma GCC diagnostic push
 #if defined(__GNUC__) && !defined(__clang__)
@@ -159,7 +161,7 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
 #pragma GCC diagnostic pop
 
   // --------------------------------------------------------------------------
-} // namespace micro_os_plus::trace
+} // namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
 
 // ----------------------------------------------------------------------------
 
