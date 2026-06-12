@@ -6,12 +6,11 @@
   "scripts": {
     "generate-top-commons": "bash node_modules/@xpack/npm-packages-helper/maintenance-scripts/generate-top-commons.sh --micro-os-plus",
     "npm-install": "npm install",
-    "npm-link-helpers": "npm link @xpack/npm-packages-helper @xpack/docusaurus-template-liquid",
+    "npm-link-helpers": "npm link @xpack/npm-packages-helper",
     "npm-outdated": "npm outdated",
+    "npm-ci": "npm ci",
     "npm-pack": "npm pack",
     "npm-link": "npm link",
-    "npm-version-patch": "npm version patch",
-    "npm-version-minor": "npm version minor",
     "git-log": "git log --pretty='%cd * %h %s' --date=short",
     "git-pull-helper": "git -C ${HOME}/Work/micro-os-plus/build-helper-xpack.git pull",
     "deep-clean": "del-cli node_modules package-lock.json *.tgz",
@@ -39,30 +38,38 @@
     "trace"
   ],
   "dependencies": {},
-  "bundleDependencies": [],
-  "$devDependenciesUrls": [
-    "https://www.npmjs.com/package/del-cli",
-    "https://www.npmjs.com/package/json",
-    "https://www.npmjs.com/package/liquidjs"
-  ],
+  "$dependenciesUrls": {
+    "del-cli": "https://www.npmjs.com/package/del-cli",
+    "json": "https://www.npmjs.com/package/json",
+    "liquidjs": "https://www.npmjs.com/package/liquidjs",
+    "glob": "https://www.npmjs.com/package/glob",
+    "json5": "https://www.npmjs.com/package/json5",
+    "jsonc-parser": "https://www.npmjs.com/package/jsonc-parser"
+  },
   "devDependencies": {
+    "@xpack/npm-packages-helper": "github:xpack/npm-packages-helper",
     "del-cli": "^7.0.0",
     "json": "^11.0.0",
-    "liquidjs": "^10.24.0"
+    "liquidjs": "^10.25.0",
+    "glob": "^13.0.6",
+    "json5": "^2.2.3",
+    "jsonc-parser": "^3.3.1"
   },
   "xpack": {
     "minimumXpmRequired": "0.20.8",
     "dependencies": {},
-    "devDependencies": {},
+    "devDependencies": {
+      "@xpack-dev-tools/clang": "21.1.8-1.1"
+    },
     "properties": {},
-    "buildConfigurations": {}
-  },
-  "topConfig": {
-    "descriptiveName": "µOS++ Tracing Infrastructure",
-    "permalinkName": "diag-trace",
-    "useDoxygen": "true"
+    "buildConfigurations": {},
+    "actions": {
+      "clang-format": "bash scripts/clang-format.sh",
+      "cmake-format": "bash scripts/cmake-format.sh",
+      "xcdl-export": "bash scripts/xcdl-export.sh xcdl-package.jsonc"
+    }
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.0"
   }
 }
