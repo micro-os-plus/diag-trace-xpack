@@ -13,7 +13,7 @@
 
 # This file creates the platform specific test executables.
 
-message('Processing tests/platform-native...')
+message('Processing tests/platform/native...')
 
 # -----------------------------------------------------------------------------
 

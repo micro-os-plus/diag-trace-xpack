@@ -3,129 +3,102 @@
 # This file is part of the µOS++ project (https://micro-os-plus.github.io/).
 # Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
 #
-# Permission to use, copy, modify, and/or distribute this software
-# for any purpose is hereby granted, under the terms of the MIT license.
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose is hereby granted, under the terms of the MIT license.
 #
-# If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit.
+# If a copy of the license was not distributed with this file, it can be
+# obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
 # Create the platform specific test executables.
 
-message(VERBOSE "Processing 'tests/platform-native'...")
+message (VERBOSE "Processing 'tests/platform/native'...")
 
 # -----------------------------------------------------------------------------
-function(add_test_executable name)
-  add_executable(${name})
+function (add_test_executable name)
+  add_executable (${name})
 
-  # Include folders.
-  # `platform-native/include` was added globally.
-  target_include_directories(${name} PRIVATE
-    "../../include"
-  )
+  # Include folders. `platform-native/include` was added globally.
+  target_include_directories (${name} PRIVATE "../../include")
 
-  message(VERBOSE "A+ -I tests/include")
+  message (VERBOSE "A+ -I tests/include")
 
-  set_target_properties(${name} PROPERTIES OUTPUT_NAME "${name}")
+  set_target_properties (${name} PROPERTIES OUTPUT_NAME "${name}")
 
   # Application sources.
-  target_sources(${name} PRIVATE
-    "../../src/${name}.cpp"
-  )
+  target_sources (${name} PRIVATE "../../src/${name}.cpp")
 
-  message(VERBOSE "A+ tests/src/${name}.cpp")
+  message (VERBOSE "A+ tests/src/${name}.cpp")
 
-  target_compile_definitions(${name} PRIVATE
-
-    # None.
+  target_compile_definitions (${name} PRIVATE # None.
   )
 
   # The compile options were defined globally.
-  target_compile_options(${name} PRIVATE
-
-    # None.
+  target_compile_options (${name} PRIVATE # None.
   )
 
   # https://cmake.org/cmake/help/v3.20/manual/cmake-generator-expressions.7.html
   # The link options were defined in `platform-native-interface`.
-  target_link_options(${name} PRIVATE
-    $<$<PLATFORM_ID:Linux,Windows>:-Wl,-Map,platform-bin/${name}-map.txt>
-
-    # -v
+  target_link_options (
+    ${name} PRIVATE
+    $<$<PLATFORM_ID:Linux,Windows>:-Wl,-Map,platform-bin/${name}-map.txt> # -v
   )
 
-  target_link_libraries(${name} PRIVATE
-
-    # Tested library.
-    micro-os-plus::diag-trace
-
-    # Portable dependencies.
-    micro-os-plus::diag-trace
-
-    # Platform specific dependencies and common compile/link options.
-    micro-os-plus::platform
+  target_link_libraries (
+    ${name}
+    PRIVATE # Tested library.
+            micro-os-plus::diag-trace
+            # Portable dependencies.
+            micro-os-plus::diag-trace
+            # Platform specific dependencies and common compile/link options.
+            micro-os-plus::platform
   )
 
-  if(xpack_create_listing)
-    add_custom_command(TARGET ${name} POST_BUILD
-
+  if (xpack_create_listing)
+    add_custom_command (
+      TARGET ${name}
+      POST_BUILD
       # --all-headers -> Invalid/Unsupported object file format
-      COMMAND ${CMAKE_OBJDUMP} --source --demangle --line-numbers --wide "$<TARGET_FILE:${name}>" > ${name}-list.txt
+      COMMAND ${CMAKE_OBJDUMP} --source --demangle --line-numbers --wide
+              "$<TARGET_FILE:${name}>" > ${name}-list.txt
       VERBATIM
     )
-  endif()
+  endif ()
 
-  message(VERBOSE "A> ${name}")
-endfunction()
+  message (VERBOSE "A> ${name}")
+endfunction ()
 
 # -----------------------------------------------------------------------------
-if(ENABLE_NULL_TEST)
-  add_test_executable(null-test)
+if (ENABLE_NULL_TEST)
+  add_test_executable (null-test)
 
   # MICRO_OS_PLUS_TRACE must **not** be defined
-  add_test(
-    NAME "null-test"
-    COMMAND null-test
-  )
-endif()
+  add_test (NAME "null-test" COMMAND null-test)
+endif ()
 
 # -----------------------------------------------------------------------------
-if(ENABLE_SAMPLE_TEST)
-  add_test_executable(sample-test)
+if (ENABLE_SAMPLE_TEST)
+  add_test_executable (sample-test)
 
-  target_compile_definitions(sample-test PRIVATE
-    "MICRO_OS_PLUS_TRACE_TESTING"
-  )
+  target_compile_definitions (sample-test PRIVATE "MICRO_OS_PLUS_TRACE_TESTING")
 
-  add_test(
-    NAME "sample-test"
-    COMMAND sample-test one two
-  )
-endif()
+  add_test (NAME "sample-test" COMMAND sample-test one two)
+endif ()
 
 # -----------------------------------------------------------------------------
-if(ENABLE_UNIT_TEST)
-  add_test_executable(unit-test)
+if (ENABLE_UNIT_TEST)
+  add_test_executable (unit-test)
 
-  target_compile_definitions(unit-test PRIVATE
-    "MICRO_OS_PLUS_TRACE_TESTING"
+  target_compile_definitions (unit-test PRIVATE "MICRO_OS_PLUS_TRACE_TESTING")
+
+  target_link_libraries (unit-test PRIVATE micro-os-plus::micro-test-plus)
+
+  add_test (NAME "unit-test" COMMAND unit-test # --verbose
   )
 
-  target_link_libraries(unit-test PRIVATE
-    micro-os-plus::micro-test-plus
-  )
-
-  add_test(
-    NAME "unit-test"
-    COMMAND unit-test # --verbose
-  )
-
-  # add_custom_command(
-  # TARGET "unit-test" POST_BUILD
-  # COMMAND ${CMAKE_OBJDUMP} -x "$<TARGET_FILE:unit-test>"
-  # VERBATIM
-  # )
-endif()
+  # add_custom_command( TARGET "unit-test" POST_BUILD COMMAND ${CMAKE_OBJDUMP}
+  # -x "$<TARGET_FILE:unit-test>" VERBATIM )
+endif ()
 
 # -----------------------------------------------------------------------------
