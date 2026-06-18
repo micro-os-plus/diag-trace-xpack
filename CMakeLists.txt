@@ -12,13 +12,23 @@
 #
 # -----------------------------------------------------------------------------
 
-# This file is intended to be consumed by applications with:
+# This file is intended to be used by applications via:
 #
 # `add_subdirectory("xpacks/@micro-os-plus/diag-trace")`
 #
-# The result is an interface library that can be added to the linker with:
+# This creates several libraries that can be linked to a target with one of:
 #
-# `target_link_libraries(your-target PUBLIC micro-os-plus::diag-trace)`
+# ~~~
+# target_link_libraries(your-target PUBLIC micro-os-plus::diag-trace)
+#
+# target_link_libraries(your-target PUBLIC micro-os-plus::diag-trace-static-library)
+#
+# target_link_libraries(your-target PUBLIC micro-os-plus::diag-trace-objects-library)
+# ~~~
+#
+# Weak symbols in static libraries are not always resolved reliably by the
+# linker. Object libraries are provided as a safer alternative, although they
+# have their own quirks.
 
 # -----------------------------------------------------------------------------
 
@@ -28,7 +38,7 @@ cmake_minimum_required (VERSION 3.20)
 # The portable trace::printf() code. Enabled by the explicit compiler option MICRO_OS_PLUS_TRACE..
 project (
   micro-os-plus-diag-trace
-  DESCRIPTION "µOS++ Tracing Infrastructure"
+  DESCRIPTION "Diagnostics trace::printf()"
   LANGUAGES CXX
 )
 
@@ -67,26 +77,21 @@ target_sources (
   INTERFACE "src/trace.cpp"
 )
 
-target_compile_definitions (
-  micro-os-plus-diag-trace-interface 
-  INTERFACE
-)
-
-target_compile_options (
-  micro-os-plus-diag-trace-interface 
-  INTERFACE
-)
-
-target_link_libraries (
-  micro-os-plus-diag-trace-interface 
-  INTERFACE
-)
-
 if (COMMAND xpack_display_target_lists)
   xpack_display_target_lists (micro-os-plus-diag-trace-interface)
 endif ()
 
+# -----------------------------------------------------------------------------
 # Alias.
+
+# Export an alias target using namespaced syntax (Project::Target). This is the
+# canonical pattern for consumption via target_link_libraries(), whether the
+# dependency is added via add_subdirectory(), FetchContent, or an installed
+# package via find_package(). Using "::" lets CMake detect an invalid or
+# misspelled target name at configure time, rather than silently passing it
+# through to the linker as a plain string or flag. Note: alias targets are
+# read-only; properties must be set on the underlying target, not on the alias
+# itself.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
   micro-os-plus::diag-trace ALIAS micro-os-plus-diag-trace-interface
@@ -98,32 +103,6 @@ message (
 
 # -----------------------------------------------------------------------------
 
-# Extract the properties of the interface library to reuse them in the OBJECT
-# and STATIC libraries, which are compiled before the platform library and need
-# to get the same compile options.
-get_property (
-  micro-os-plus-diag-trace-includes
-  TARGET micro-os-plus-diag-trace-interface
-  PROPERTY INTERFACE_INCLUDE_DIRECTORIES
-)
-
-get_property (
-  micro-os-plus-diag-trace-sources
-  TARGET micro-os-plus-diag-trace-interface
-  PROPERTY INTERFACE_SOURCES
-)
-
-get_property (
-  micro-os-plus-diag-trace-compile-definitions
-  TARGET micro-os-plus-diag-trace-interface
-  PROPERTY INTERFACE_COMPILE_DEFINITIONS
-)
-
-get_property (
-  micro-os-plus-diag-trace-compile-options
-  TARGET micro-os-plus-diag-trace-interface
-  PROPERTY INTERFACE_COMPILE_OPTIONS
-)
 
 # -----------------------------------------------------------------------------
 
@@ -138,54 +117,50 @@ get_property (
 # with the separate dependency compilation in each executable. Consumers of this
 # OBJECT library are expected to link separately to all dependencies and to the
 # platform-specific library.
-add_library (micro-os-plus-diag-trace-objects OBJECT)
+add_library (micro-os-plus-diag-trace-objects-library OBJECT)
 
 # Use PUBLIC so that the include directories are available both for the OBJECT
 # library's own sources and for consumers of the library.
 target_include_directories (
-  micro-os-plus-diag-trace-objects
-  PUBLIC ${micro-os-plus-diag-trace-includes}
+  micro-os-plus-diag-trace-objects-library
+  PUBLIC "include"
 )
 
 # Use PRIVATE to avoid propagating the sources to consumers of the OBJECT
 # library, which would cause duplicate symbol errors at link time.
 target_sources (
-  micro-os-plus-diag-trace-objects
-  PRIVATE ${micro-os-plus-diag-trace-sources}
+  micro-os-plus-diag-trace-objects-library
+  PRIVATE "src/trace.cpp"
 )
 
-# Use PRIVATE to avoid propagating compile definitions to consumers of the
-# OBJECT library.
-target_compile_definitions (
-  micro-os-plus-diag-trace-objects
-  PRIVATE ${micro-os-plus-diag-trace-compile-definitions}
+# Propagate the compiled object files to consumers via INTERFACE_SOURCES so that
+# CMake includes them in the final link even when this OBJECT library is
+# referenced only transitively through an INTERFACE library chain. Without this,
+# CMake does not automatically inject $<TARGET_OBJECTS:...> for indirect OBJECT
+# library dependencies reached via INTERFACE libraries.
+target_sources (
+  micro-os-plus-diag-trace-objects-library
+  INTERFACE "$<TARGET_OBJECTS:micro-os-plus-diag-trace-objects-library>"
 )
-
-# Use PRIVATE to avoid propagating the compile options to consumers of the
-# OBJECT library, which may cause conflicts with consumer-specific compile
-# options.
-target_compile_options (
-  micro-os-plus-diag-trace-objects
-  PRIVATE ${micro-os-plus-diag-trace-compile-options}
-)
-
-# Add the dependency include paths without linking the code; linking it would
-# add dependency sources as INTERFACE_SOURCES and compile them into the OBJECT
-# library, causing duplicate symbols at link time.
 
 if (COMMAND xpack_display_target_lists)
-  xpack_display_target_lists (micro-os-plus-diag-trace-objects)
+  xpack_display_target_lists (micro-os-plus-diag-trace-objects-library)
 endif ()
 
+# -----------------------------------------------------------------------------
 # Alias.
+
+# Namespaced alias for downstream consumption (find_package- and
+# add_subdirectory-compatible). "::" ensures CMake validates the target name at
+# configure time. Aliases are read-only.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
-  micro-os-plus::diag-trace-objects ALIAS
-  micro-os-plus-diag-trace-objects
+  micro-os-plus::diag-trace-objects-library ALIAS
+  micro-os-plus-diag-trace-objects-library
 )
 message (
   VERBOSE
-  "> micro-os-plus::diag-trace-objects -> micro-os-plus-diag-trace-objects"
+  "> micro-os-plus::diag-trace-objects-library -> micro-os-plus-diag-trace-objects-library"
 )
 
 # -----------------------------------------------------------------------------
@@ -200,54 +175,45 @@ message (
 # with the separate dependency compilation in each executable. Consumers of this
 # STATIC library are expected to link separately to all dependencies and to the
 # platform-specific library.
-add_library (micro-os-plus-diag-trace-static STATIC)
+add_library (micro-os-plus-diag-trace-static-library STATIC)
+
+set_target_properties (
+  micro-os-plus-diag-trace-static-library
+  PROPERTIES OUTPUT_NAME diag-trace
+)
 
 # Use PUBLIC so that the include directories are available both for the STATIC
 # library's own sources and for consumers of the library.
 target_include_directories (
-  micro-os-plus-diag-trace-static
-  PUBLIC ${micro-os-plus-diag-trace-includes}
+  micro-os-plus-diag-trace-static-library
+  PUBLIC "include"
 )
 
 # Use PRIVATE to avoid propagating the sources to consumers of the STATIC
 # library, which would cause duplicate symbol errors at link time.
 target_sources (
-  micro-os-plus-diag-trace-static
-  PRIVATE ${micro-os-plus-diag-trace-sources}
+  micro-os-plus-diag-trace-static-library
+  PRIVATE "src/trace.cpp"
 )
-
-# Use PRIVATE to avoid propagating compile definitions to consumers of the
-# STATIC library.
-target_compile_definitions (
-  micro-os-plus-diag-trace-static
-  PRIVATE ${micro-os-plus-diag-trace-compile-definitions}
-)
-
-# Use PRIVATE to avoid propagating the compile options to consumers of the
-# STATIC library, which may cause conflicts with consumer-specific compile
-# options.
-target_compile_options (
-  micro-os-plus-diag-trace-static
-  PRIVATE ${micro-os-plus-diag-trace-compile-options}
-)
-
-# Add the dependency include paths without linking the dependency target:
-# linking it would add dependency sources as INTERFACE_SOURCES and compile them
-# into the STATIC library, causing duplicate symbols at link time.
 
 if (COMMAND xpack_display_target_lists)
-  xpack_display_target_lists (micro-os-plus-diag-trace-static)
+  xpack_display_target_lists (micro-os-plus-diag-trace-static-library)
 endif ()
 
+# -----------------------------------------------------------------------------
 # Alias.
+
+# Namespaced alias for downstream consumption (find_package- and
+# add_subdirectory-compatible). "::" ensures CMake validates the target name at
+# configure time. Aliases are read-only.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
-  micro-os-plus::diag-trace-static ALIAS
-  micro-os-plus-diag-trace-static
+  micro-os-plus::diag-trace-static-library ALIAS
+  micro-os-plus-diag-trace-static-library
 )
 message (
   VERBOSE
-  "> micro-os-plus::diag-trace-static -> micro-os-plus-diag-trace-static"
+  "> micro-os-plus::diag-trace-static-library -> micro-os-plus-diag-trace-static-library"
 )
 
 # -----------------------------------------------------------------------------

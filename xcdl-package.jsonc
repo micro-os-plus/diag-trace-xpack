@@ -1,0 +1,59 @@
+{
+  "minimumXcdlRequired": "2.0.0",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2022-2026 Liviu Ionescu",
+  "cdlComponents": [
+    {
+      "id": "micro-os-plus.diag.trace",
+      "display": "Diagnostics trace::printf()",
+      "description": "The portable trace::printf() code. Enabled by the explicit compiler option MICRO_OS_PLUS_TRACE.",
+      "publicIncludeFolders": [
+        "include"
+      ],
+      "sourceFiles": [
+        "src/trace.cpp"
+      ],
+      "dependencies": [],
+      // "customDefine": "MICRO_OS_PLUS_HAS_DIAG_TRACE",
+      "cdlInterfaces": [
+        {
+          "id": "output-channel-interface",
+          "display": "Output channel interface",
+          "description": "There must be one and only one implementation of the trace output channel",
+          "legalValues": "1"
+        }
+      ],
+      "cdlOptions": [
+        {
+          "id": "printf-buffer-array-size",
+          "display": "printf() buffer array size",
+          "description": "The size in bytes of the stack buffer used by vsnprintf() to store the diagnostics line",
+          "valueType": "integer",
+          "defaultValue": 200
+          // "customDefine": "MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE_ENABLED"
+        }
+      ],
+      "cdlArtefacts": [
+        {
+          "id": "static-library",
+          "display": "Static Library",
+          "description": "Static library with the diagnostics trace::printf()",
+          "type": "staticLibrary",
+          // This generates `libdiag-trace.a` on Linux/macOS and 
+          // `diag-trace.lib` on Windows.
+          "fileName": "diag-trace",
+          "dependencies": []
+        },
+        {
+          "id": "objects-library",
+          "display": "Object Files",
+          "description": "Object files with the diagnostics trace::printf()",
+          "type": "objectFiles",
+          // This generates a `diag-trace` folder with `trace.o` inside.
+          "folderName": "diag-trace",
+          "dependencies": []
+        }
+      ]
+    }
+  ]
+}

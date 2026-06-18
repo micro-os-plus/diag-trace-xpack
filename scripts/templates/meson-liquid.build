@@ -1,8 +1,12 @@
+{%- assign packageScope = package.name | remove_first: '@' | split: '/' | first %}
+{%- assign packageName = package.name | remove_first: '@' | split: '/' | last %}
+{%- assign component = xcdl.cdlComponents[0] %}
+{%- assign nameUnderscore = component.id | replace: '-', '_' | replace: '.', '_' -%}
 # -----------------------------------------------------------------------------
 # DO NOT EDIT!
 # Automatically generated from {{libraryFilePath}}.
 #
-# This file is part of the µOS++ project (https://{{packageScope}}.github.io/).
+# This file is part of the µOS++ project (https://micro-os-plus.github.io/).
 # Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
 #
 # Permission to use, copy, modify, and/or distribute this software for any
@@ -13,12 +17,11 @@
 #
 # -----------------------------------------------------------------------------
 
-{% assign nameUnderscore = name | replace: '-', '_' | replace: '.', '_' -%}
-# This file is intended to be consumed by applications with:
+# This file is intended to be used by applications via:
 #
 # `subdir('xpacks/@{{packageScope}}/{{packageName}}')`
 #
-# The result is a dependency that can be referred as:
+# This creates a dependency that can be linked to a target with:
 #
 # `dependencies: [{{nameUnderscore}}_dependency],`
 
@@ -26,7 +29,9 @@
 # for production it might need some refinements.
 
 # -----------------------------------------------------------------------------
-
+{% if component.description %}
+# {{component.description}}.
+{%- endif %}
 message('Processing xPack @{{packageScope}}/{{packageName}}...')
 
 # -----------------------------------------------------------------------------
@@ -45,18 +50,39 @@ _local_compile_definitions = []
 _local_dependencies = []
 _local_link_args = []
 _local_link_with = []
+{%- if component.publicIncludeFolders and component.publicIncludeFolders.size > 0 %}
 
 _local_include_directories += [
-{%- for path in publicIncludeFolders %}
+{%- for path in component.publicIncludeFolders %}
   '{{path}}',
 {%- endfor %}
 ]
+{%- endif %}
+{%- if component.sourceFiles and component.sourceFiles.size > 0 %}
 
 _local_sources += [
-{%- for path in sourceFiles %}
+{%- for path in component.sourceFiles %}
   '{{path}}',
 {%- endfor %}
 ]
+{%- endif %}
+{%- if component.publicCompilerOptions and component.publicCompilerOptions.size > 0 %}
+
+compile_args += [
+{%- for option in component.publicCompilerOptions %}
+  '{{option}}',
+{%- endfor %}
+]
+{%- endif %}
+{%- if component.dependencies and component.dependencies.size > 0 %}
+
+_local_dependencies += [
+{%- for dependency in component.dependencies %}
+{%- assign dependencyUnderscore = dependency | replace: '-', '_' | replace: '.', '_' %}
+  {{dependencyUnderscore}}_dependency,
+{%- endfor %}
+]
+{%- endif %}
 
 # https://mesonbuild.com/Reference-manual_functions.html#declare_dependency
 {{nameUnderscore}}_dependency = declare_dependency(

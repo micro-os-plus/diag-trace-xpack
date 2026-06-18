@@ -13,11 +13,11 @@
 #
 # -----------------------------------------------------------------------------
 
-# This file is intended to be consumed by applications with:
+# This file is intended to be used by applications via:
 #
 # `subdir('xpacks/@micro-os-plus/diag-trace')`
 #
-# The result is a dependency that can be referred as:
+# This creates a dependency that can be linked to a target with:
 #
 # `dependencies: [micro_os_plus_diag_trace_dependency],`
 
@@ -26,6 +26,7 @@
 
 # -----------------------------------------------------------------------------
 
+# The portable trace::printf() code. Enabled by the explicit compiler option MICRO_OS_PLUS_TRACE..
 message('Processing xPack @micro-os-plus/diag-trace...')
 
 # -----------------------------------------------------------------------------
