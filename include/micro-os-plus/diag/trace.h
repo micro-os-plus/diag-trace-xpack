@@ -59,13 +59,7 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_TRACE) || defined(MICRO_OS_PLUS_TRACE_TESTING)
-
-#if defined(MICRO_OS_PLUS_TRACE_TESTING)
-#define MICRO_OS_PLUS_TRACE_NAME_TESTING(name) name##_testing
-#else
-#define MICRO_OS_PLUS_TRACE_NAME_TESTING(name) name
-#endif
+#if defined(MICRO_OS_PLUS_TRACE)
 
 #if defined(__cplusplus)
 
@@ -81,10 +75,20 @@ The API is straightforward and emulates the standard C output calls:
  * - `micro_os_plus::trace::puts()` / `micro_os_plus_trace_puts()`
  * - `micro_os_plus::trace::putchar()` / `micro_os_plus_trace_putchar()`
  *
- * The user is required to provide implementations for the following:
- * - `micro_os_plus::trace::initialize()`
- * - `micro_os_plus::trace::write()`
- * - `micro_os_plus::trace::flush()`
+ * The C++ API is implemented as a function template parameterised on a
+ * tag type (@ref micro_os_plus::trace::Default,
+ * @ref micro_os_plus::trace::Testing). Each tag selects an independent,
+ * statically-allocated instance: the two share no mutable state, and
+ * instantiating both in the same translation unit is supported. The
+ * non-template overloads (`micro_os_plus::trace::printf()` etc.) are a
+ * thin alias bound to the `Default` tag, so existing call sites do not
+ * need to change.
+ *
+ * The user is required to provide implementations for the following,
+ * once per tag actually used (as explicit template specialisations):
+ * - `micro_os_plus::trace::initialize<Tag>()`
+ * - `micro_os_plus::trace::write<Tag>()`
+ * - `micro_os_plus::trace::flush<Tag>()`
  *
  * Trace support is activated by adding the `MICRO_OS_PLUS_TRACE`
  * macro definition to the compiler line.
@@ -101,10 +105,7 @@ included.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpre-c++17-compat"
 #endif
-
-// For separation, use a separate naming space while testing.
-namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
-
+namespace micro_os_plus::trace
 #if defined(__clang__)
 #pragma clang diagnostic pop
 #endif
@@ -112,16 +113,42 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
   // --------------------------------------------------------------------------
 
   /**
+   * @brief Tag selecting the production trace instance.
+   * @details
+   * Bound to the non-template `printf()`/`puts()`/... overloads, so
+   * existing call sites are unaffected by the introduction of the
+   * `Default`/`Testing` tag templates.
+   */
+  struct Default
+  {
+  };
+
+  /**
+   * @brief Tag selecting an independent, isolated trace instance.
+   * @details
+   * Intended for use from test code, in the same binary as the
+   * `Default` instance, with no shared mutable state between the two.
+   */
+  struct Testing
+  {
+  };
+
+  // --------------------------------------------------------------------------
+
+  /**
    * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
-   * @brief Initialize the trace output channel.
+   * @brief Initialize the trace output channel for the given instance.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @tparam Tag The instance to initialize (@ref Default, @ref Testing).
    * @par Parameters
    *  None.
    * @par Returns
    *  Nothing.
    *
-   * @note Must be implemented by the application.
+   * @note Must be implemented by the application, as an explicit
+   * specialisation, for each tag actually used.
    */
+  template <typename Tag>
   void
   initialize (void);
 
@@ -129,11 +156,13 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
    * @brief Write the given number of bytes to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @tparam Tag The instance to write to (@ref Default, @ref Testing).
    * @param [in] buf An array of bytes.
    * @param [in] nbyte The number of bytes in the array.
    * @return  The number of characters actually written, or -1 if error.
    *
-   * @note Must be implemented by the application.
+   * @note Must be implemented by the application, as an explicit
+   * specialisation, for each tag actually used.
    *
    * @details
    * This function is called during startup, as early as possible, to
@@ -141,6 +170,7 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    *
    * After this function, all tracing functions are available.
    */
+  template <typename Tag>
   ssize_t
   write (const void* buf, std::size_t nbyte);
 
@@ -148,12 +178,14 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
    * @brief Flush the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @tparam Tag The instance to flush (@ref Default, @ref Testing).
    * @par Parameters
    *  None.
    * @par Returns
    *  Nothing.
    *
-   * @note Must be implemented by the application.
+   * @note Must be implemented by the application, as an explicit
+   * specialisation, for each tag actually used.
    *
    * @details
    * For buffered trace channels, this function should guarantee that
@@ -161,6 +193,7 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    *
    * For character mode channels, this function can be left empty.
    */
+  template <typename Tag>
   void
   flush (void);
 
@@ -170,9 +203,11 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    * @ingroup micro-os-plus-diag-trace-cpp-api-main
    * @brief Write a formatted string to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @tparam Tag The instance to write to (@ref Default, @ref Testing).
    * @param [in] format A null terminate string with the format.
    * @return A nonnegative number for success.
    */
+  template <typename Tag>
   int
   printf (const char* format, ...);
 
@@ -181,10 +216,12 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    * @brief Write a formatted variable arguments list to the trace output
    * channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @tparam Tag The instance to write to (@ref Default, @ref Testing).
    * @param [in] format A null terminate string with the format.
    * @param [in] arguments A variable arguments list.
    * @return A nonnegative number for success.
    */
+  template <typename Tag>
   int
   vprintf (const char* format, std::va_list arguments);
 
@@ -192,9 +229,11 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    * @ingroup micro-os-plus-diag-trace-cpp-api-main
    * @brief Write the string and a line terminator to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @tparam Tag The instance to write to (@ref Default, @ref Testing).
    * @param [in] s A null terminated string.
    * @return A nonnegative number for success.
    */
+  template <typename Tag>
   int
   puts (const char* s = "");
 
@@ -202,9 +241,11 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    * @ingroup micro-os-plus-diag-trace-cpp-api-main
    * @brief Write the single character to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @tparam Tag The instance to write to (@ref Default, @ref Testing).
    * @param [in] c A single byte character.
    * @return The written character.
    */
+  template <typename Tag>
   int
   putchar (int c);
 
@@ -212,12 +253,171 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
    * @ingroup micro-os-plus-diag-trace-cpp-api-extra
    * @brief Send the `argv[]` array to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @tparam Tag The instance to write to (@ref Default, @ref Testing).
    * @param [in] argc The number of `argv[]` strings.
    * @param [in] argv An array of pointer to arguments.
    * @param [in] name A null terminate string, default "main".
    */
+  template <typename Tag>
   void
   dump_args (int argc, char* argv[], const char* name = "main");
+
+  // --------------------------------------------------------------------------
+  // Declare the `Default` and `Testing` specialisations / instantiations
+  // before they are used anywhere in this header or in translation units
+  // that include it.
+  //
+  // The three user-supplied primitives (`initialize`, `write`, `flush`)
+  // are provided by the user as explicit specialisations (`template <>`),
+  // so they are forward-declared here with `template <>`.
+  //
+  // The higher-level functions (`printf`, `vprintf`, `puts`, `putchar`,
+  // `dump_args`) are explicitly instantiated in `trace.cpp`; the
+  // `extern template` declarations here suppress implicit instantiation
+  // in every other translation unit that includes this header, which
+  // avoids the `-Wundefined-func-template` diagnostic and keeps the
+  // object-code in exactly one place.
+  // --------------------------------------------------------------------------
+
+  template <>
+  void
+  initialize<Default> (void);
+
+  template <>
+  ssize_t
+  write<Default> (const void* buf, std::size_t nbyte);
+
+  template <>
+  void
+  flush<Default> (void);
+
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#endif
+
+  extern template int
+  printf<Default> (const char* format, ...);
+
+  extern template int
+  vprintf<Default> (const char* format, std::va_list arguments);
+
+  extern template int
+  puts<Default> (const char* s);
+
+  extern template int
+  putchar<Default> (int c);
+
+  extern template void
+  dump_args<Default> (int argc, char* argv[], const char* name);
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#endif
+
+  // --------------------------------------------------------------------------
+  // Same declarations for the `Testing` tag.
+  // --------------------------------------------------------------------------
+
+  template <>
+  void
+  initialize<Testing> (void);
+
+  template <>
+  ssize_t
+  write<Testing> (const void* buf, std::size_t nbyte);
+
+  template <>
+  void
+  flush<Testing> (void);
+
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#endif
+
+  extern template int
+  printf<Testing> (const char* format, ...);
+
+  extern template int
+  vprintf<Testing> (const char* format, std::va_list arguments);
+
+  extern template int
+  puts<Testing> (const char* s);
+
+  extern template int
+  putchar<Testing> (int c);
+
+  extern template void
+  dump_args<Testing> (int argc, char* argv[], const char* name);
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#endif
+
+  // --------------------------------------------------------------------------
+  // Non-template aliases bound to the `Default` tag. These preserve the
+  // original call syntax (`micro_os_plus::trace::printf(...)`) so that
+  // existing call sites throughout the codebase do not need to change.
+  // A non-template overload is preferred over a function template
+  // specialisation by overload resolution for an unqualified call, so
+  // these always win for plain `trace::printf(...)` calls.
+  // --------------------------------------------------------------------------
+
+  inline void
+  initialize (void)
+  {
+    initialize<Default> ();
+  }
+
+  inline ssize_t
+  write (const void* buf, std::size_t nbyte)
+  {
+    return write<Default> (buf, nbyte);
+  }
+
+  inline void
+  flush (void)
+  {
+    flush<Default> ();
+  }
+
+  inline int
+  printf (const char* format, ...) __attribute__ ((format (printf, 1, 2)));
+
+  inline int
+  printf (const char* format, ...)
+  {
+    std::va_list arguments;
+    va_start (arguments, format);
+    int ret = vprintf<Default> (format, arguments);
+    va_end (arguments);
+    return ret;
+  }
+
+  inline int
+  vprintf (const char* format, std::va_list arguments)
+  {
+    return vprintf<Default> (format, arguments);
+  }
+
+  inline int
+  puts (const char* s)
+  {
+    return puts<Default> (s);
+  }
+
+  inline int
+  putchar (int c)
+  {
+    return putchar<Default> (c);
+  }
+
+  inline void
+  dump_args (int argc, char* argv[], const char* name = "main")
+  {
+    dump_args<Default> (argc, argv, name);
+  }
 
   // --------------------------------------------------------------------------
 } // namespace micro_os_plus::trace
@@ -242,7 +442,7 @@ extern "C"
    *  Nothing.
    */
   void
-      MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_initialize) (void);
+  micro_os_plus_trace_initialize (void);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
@@ -252,8 +452,8 @@ extern "C"
    * @param [in] nbyte The number of bytes in the array.
    * @return  The number of characters actually written, or -1 if error.
    */
-  ssize_t MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_write) (
-      const void* buf, size_t nbyte);
+  ssize_t
+  micro_os_plus_trace_write (const void* buf, size_t nbyte);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
@@ -264,7 +464,8 @@ extern "C"
    * @par Returns
    *  Nothing.
    */
-  void MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_flush) (void);
+  void
+  micro_os_plus_trace_flush (void);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
@@ -273,8 +474,8 @@ extern "C"
    * @param [in] format A null terminate string with the format.
    * @return A nonnegative number for success.
    */
-  int MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_printf) (
-      const char* format, ...);
+  int
+  micro_os_plus_trace_printf (const char* format, ...);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
@@ -285,8 +486,8 @@ extern "C"
    * @param [in] arguments A variable arguments list.
    * @return A nonnegative number for success.
    */
-  int MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_vprintf) (
-      const char* format, va_list arguments);
+  int
+  micro_os_plus_trace_vprintf (const char* format, va_list arguments);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
@@ -295,8 +496,8 @@ extern "C"
    * @param [in] s A null terminated string.
    * @return A nonnegative number for success.
    */
-  int MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_puts) (
-      const char* s);
+  int
+  micro_os_plus_trace_puts (const char* s);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
@@ -305,7 +506,8 @@ extern "C"
    * @param [in] c A single byte character.
    * @return The written character.
    */
-  int MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_putchar) (int c);
+  int
+  micro_os_plus_trace_putchar (int c);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-extra
@@ -314,8 +516,8 @@ extern "C"
    * @param [in] argc The number of argv[] strings.
    * @param [in] argv An array of pointer to arguments.
    */
-  void MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_dump_args) (
-      int argc, char* argv[]);
+  void
+  micro_os_plus_trace_dump_args (int argc, char* argv[]);
 
 #if defined(__cplusplus)
 }

@@ -11,7 +11,7 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_TRACE) || defined(MICRO_OS_PLUS_TRACE_TESTING)
+#if defined(MICRO_OS_PLUS_TRACE)
 
 // ----------------------------------------------------------------------------
 
@@ -33,12 +33,17 @@
 #pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
 #endif
 
-// For separation, use a separate naming space while testing.
-namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
-
+namespace micro_os_plus::trace
 {
   // --------------------------------------------------------------------------
+  // Function templates, parameterised on the instance tag (Default,
+  // Testing, or any user-defined tag). Each tag is given its own set
+  // of object-code instances via the explicit instantiations at the
+  // bottom of this file; the templates here share no state across
+  // tags, so Default and Testing can coexist in the same binary.
+  // --------------------------------------------------------------------------
 
+  template <typename Tag>
   int
   printf (const char* format, ...)
   {
@@ -49,13 +54,14 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-    int ret = vprintf (format, arguments);
+    int ret = vprintf<Tag> (format, arguments);
 #pragma GCC diagnostic pop
 
     va_end (arguments);
     return ret;
   }
 
+  template <typename Tag>
   int
   vprintf (const char* format, std::va_list arguments)
   {
@@ -76,8 +82,9 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
     if (ret > 0)
       {
         // Clamp to actual buffer size if output was truncated.
-        ret = write (buf, static_cast<size_t> (std::min (
-                              ret, static_cast<ssize_t> (sizeof (buf) - 1))));
+        ret = write<Tag> (
+            buf, static_cast<size_t> (
+                     std::min (ret, static_cast<ssize_t> (sizeof (buf) - 1))));
       }
 #pragma GCC diagnostic push
 #if defined(__GNUC__) && !defined(__clang__)
@@ -88,6 +95,7 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
 #pragma GCC diagnostic pop
   }
 
+  template <typename Tag>
   int
   puts (const char* s)
   {
@@ -95,11 +103,11 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-    ssize_t ret = write (s, strlen (s));
+    ssize_t ret = write<Tag> (s, strlen (s));
 #pragma GCC diagnostic pop
     if (ret >= 0)
       {
-        ret = write ("\n", 1); // Add a line terminator
+        ret = write<Tag> ("\n", 1); // Add a line terminator
       }
     if (ret > 0)
       {
@@ -117,10 +125,11 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
       }
   }
 
+  template <typename Tag>
   int
   putchar (int c)
   {
-    ssize_t ret = write (reinterpret_cast<const char*> (&c), 1);
+    ssize_t ret = write<Tag> (reinterpret_cast<const char*> (&c), 1);
     if (ret > 0)
       {
         return c;
@@ -140,24 +149,54 @@ namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #endif
+  template <typename Tag>
   void
   dump_args (int argc, char* argv[], const char* name)
   {
-    printf ("%s(argc=%d, argv=[", name, argc);
+    printf<Tag> ("%s(argc=%d, argv=[", name, argc);
     for (int i = 0; i < argc; ++i)
       {
         if (i != 0)
           {
-            printf (", ");
+            printf<Tag> (", ");
           }
-        printf ("\"%s\"", argv[i]);
+        printf<Tag> ("\"%s\"", argv[i]);
       }
-    printf ("])\n");
+    printf<Tag> ("])\n");
   }
 #pragma GCC diagnostic pop
 
   // --------------------------------------------------------------------------
-} // namespace micro_os_plus::MICRO_OS_PLUS_TRACE_NAME_TESTING(trace)
+  // Explicit instantiations. Add a line here for any further tag that
+  // needs to be usable from other translation units; without an
+  // explicit instantiation (or a definition visible at the call site)
+  // the linker will not find these symbols for that tag.
+  // --------------------------------------------------------------------------
+
+  template int
+  printf<Default> (const char* format, ...);
+  template int
+  vprintf<Default> (const char* format, std::va_list arguments);
+  template int
+  puts<Default> (const char* s);
+  template int
+  putchar<Default> (int c);
+  template void
+  dump_args<Default> (int argc, char* argv[], const char* name);
+
+  template int
+  printf<Testing> (const char* format, ...);
+  template int
+  vprintf<Testing> (const char* format, std::va_list arguments);
+  template int
+  puts<Testing> (const char* s);
+  template int
+  putchar<Testing> (int c);
+  template void
+  dump_args<Testing> (int argc, char* argv[], const char* name);
+
+  // --------------------------------------------------------------------------
+} // namespace micro_os_plus::trace
 
 // ----------------------------------------------------------------------------
 
@@ -165,24 +204,28 @@ using namespace micro_os_plus;
 
 // These cannot be aliased, since they usually are defined
 // in a different translation unit.
+//
+// The C API is always bound to the `Default` tag; it has no template
+// parameter (extern "C" does not support templates), so it cannot
+// expose the `Testing` instance. Code that needs the `Testing`
+// instance must call the C++ template API directly.
 
 void
-MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_initialize) (void)
+micro_os_plus_trace_initialize (void)
 {
-  MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::initialize ();
+  trace::initialize<trace::Default> ();
 }
 
 ssize_t
-MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_write) (
-    const void* buf, std::size_t nbyte)
+micro_os_plus_trace_write (const void* buf, std::size_t nbyte)
 {
-  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::write (buf, nbyte);
+  return trace::write<trace::Default> (buf, nbyte);
 }
 
 void
-MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_flush) (void)
+micro_os_plus_trace_flush (void)
 {
-  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::flush ();
+  return trace::flush<trace::Default> ();
 }
 
 // ----------------------------------------------------------------------------
@@ -191,8 +234,7 @@ MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_flush) (void)
 // not support aliases, redefine the C functions to call the C++ versions.
 
 int
-MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_printf) (
-    const char* format, ...)
+micro_os_plus_trace_printf (const char* format, ...)
 {
   std::va_list arguments;
   va_start (arguments, format);
@@ -201,8 +243,7 @@ MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_printf) (
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-  int ret
-      = MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::vprintf (format, arguments);
+  int ret = trace::vprintf<trace::Default> (format, arguments);
 #pragma GCC diagnostic pop
 
   va_end (arguments);
@@ -210,48 +251,46 @@ MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_printf) (
 }
 
 int
-MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_vprintf) (
-    const char* format, va_list arguments)
+micro_os_plus_trace_vprintf (const char* format, va_list arguments)
 {
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::vprintf (format, arguments);
+  return trace::vprintf<trace::Default> (format, arguments);
 #pragma GCC diagnostic pop
 }
 
 int
-MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_puts) (const char* s)
+micro_os_plus_trace_puts (const char* s)
 {
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::puts (s);
+  return trace::puts<trace::Default> (s);
 #pragma GCC diagnostic pop
 }
 
 int
-MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_putchar) (int c)
+micro_os_plus_trace_putchar (int c)
 {
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-  return MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::putchar (c);
+  return trace::putchar<trace::Default> (c);
 #pragma GCC diagnostic pop
 }
 
 void
-MICRO_OS_PLUS_TRACE_NAME_TESTING (micro_os_plus_trace_dump_args) (int argc,
-                                                                  char* argv[])
+micro_os_plus_trace_dump_args (int argc, char* argv[])
 {
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-  MICRO_OS_PLUS_TRACE_NAME_TESTING (trace)::dump_args (argc, argv);
+  trace::dump_args<trace::Default> (argc, argv);
 #pragma GCC diagnostic pop
 }
 

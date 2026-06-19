@@ -6,7 +6,7 @@
     {
       "id": "micro-os-plus.diag.trace",
       "display": "Diagnostics trace::printf()",
-      "description": "The portable trace::printf() code. Enabled by the explicit compiler option MICRO_OS_PLUS_TRACE.",
+      "description": "The portable trace::printf() code",
       "publicIncludeFolders": [
         "include"
       ],
