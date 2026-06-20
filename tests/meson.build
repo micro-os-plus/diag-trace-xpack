@@ -5,11 +5,11 @@
 # This file is part of the µOS++ project (https://micro-os-plus.github.com/).
 # Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
 #
-# Permission to use, copy, modify, and/or distribute this software
-# for any purpose is hereby granted, under the terms of the MIT license.
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose is hereby granted, under the terms of the MIT license.
 #
-# If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit.
+# If a copy of the license was not distributed with this file, it can be
+# obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
@@ -34,9 +34,9 @@ project('micro-os-plus-diag-trace-tests',
 # gnu++2a, gnu++20, vc++14, vc++17, vc++latest
 
 # -----------------------------------------------------------------------------
-# Global definitions #
+# Project specific definitions.
 
-subdir('meson/global-definitions')
+subdir('meson/project-definitions')
 
 # -----------------------------------------------------------------------------
 
@@ -50,6 +50,8 @@ cpp_compiler = meson.get_compiler('cpp')
 
 # https://mesonbuild.com/Reference-manual_builtin_meson.html#mesoncurrent_source_dir
 xpack_tests_folder_path = meson.current_source_dir()
+
+xpack_project_name = 'diag-trace'
 xpack_project_folder_path = fs.parent(xpack_tests_folder_path)
 # https://mesonbuild.com/Reference-manual_builtin_meson.html#mesonproject_build_root
 xpack_build_folder_path = meson.project_build_root()
@@ -80,22 +82,25 @@ message('Platform name: ' + xpack_platform_name)
 # -----------------------------------------------------------------------------
 
 # https://mesonbuild.com/Reference-manual.html#subdir
-subdir('meson/common-options')
-subdir('xpacks/@micro-os-plus/build-helper/meson/enable-all-warnings')
+subdir('meson/common-options-library')
+subdir('meson/enable-all-warnings')
 
-# Since the order of processing is significative, include it in dependencies.
-# subdir('platforms/'+ xpack_platform_name + '/meson/platform-options')
+subdir('platforms/'+ xpack_platform_name + '/meson/definitions')
 
 # -----------------------------------------------------------------------------
-# Dependencies #
+# Dependencies.
 
 # Set `xpack_dependencies_folders` with the platform specific dependencies.
 subdir('platforms/'+ xpack_platform_name + '/meson/dependencies-folders')
+# The platform library is included in the dependencies, at the end.
 
 foreach dep: xpack_dependencies_folders
-  message('Adding ' + dep + '...')
+  message('Adding dependency from ' + dep + '...')
   subdir(dep)
 endforeach
+
+# Include the platform library.
+subdir('platforms/' + xpack_platform_name + '/meson/platform-library')
 
 # -----------------------------------------------------------------------------
 
@@ -104,9 +109,24 @@ message('Adding top library...')
 subdir('top')
 
 # -----------------------------------------------------------------------------
-# Platform specifics #
 
-# Include the platform specific targets and tests.
+foreach dep: xpack_dependencies_tests_folders
+  message('Adding test from ' + dep + '...')
+  subdir(dep)
+endforeach
+
+# -----------------------------------------------------------------------------
+
+xpack_tested_library_dependency = micro_os_plus_diag_trace_dependency
+xpack_tested_library_dependency_compile_c_args = micro_os_plus_diag_trace_dependency_compile_c_args
+xpack_tested_library_dependency_compile_cpp_args = micro_os_plus_diag_trace_dependency_compile_cpp_args
+
+subdir('meson/define-executables')
+
+# -----------------------------------------------------------------------------
+# Artefact specifics.
+
+# Include the platform specific artefacts and tests.
 subdir('platforms/' + xpack_platform_name)
 
 # -----------------------------------------------------------------------------

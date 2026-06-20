@@ -13,92 +13,91 @@
 
 # Create the platform specific test executables.
 
-message (VERBOSE "Processing 'tests/platform/native'...")
-
 # -----------------------------------------------------------------------------
-function (add_test_executable name)
-  add_executable (${name})
 
-  # Include folders. `platform-native/include` was added globally.
-  target_include_directories (${name} PRIVATE "../../include")
+message (VERBOSE "Processing 'tests/platforms/native'...")
 
-  message (VERBOSE "A+ -I tests/include")
-
-  set_target_properties (${name} PROPERTIES OUTPUT_NAME "${name}")
-
-  # Application sources.
-  target_sources (${name} PRIVATE "../../src/${name}.cpp")
-
-  message (VERBOSE "A+ tests/src/${name}.cpp")
-
-  target_compile_definitions (${name} PRIVATE # None.
-  )
-
-  # The compile options were defined globally.
-  target_compile_options (${name} PRIVATE # None.
-  )
-
-  # https://cmake.org/cmake/help/v3.20/manual/cmake-generator-expressions.7.html
-  # The link options were defined in `platform-native-interface`.
-  target_link_options (
-    ${name} PRIVATE
-    $<$<PLATFORM_ID:Linux,Windows>:-Wl,-Map,platform-bin/${name}-map.txt> # -v
-  )
-
-  target_link_libraries (
-    ${name}
-    PRIVATE # Tested library.
-            micro-os-plus::diag-trace
-            # Portable dependencies.
-            micro-os-plus::diag-trace
-            # Platform specific dependencies and common compile/link options.
-            micro-os-plus::platform
-  )
-
-  if (xpack_create_listing)
-    add_custom_command (
-      TARGET ${name}
-      POST_BUILD
-      # --all-headers -> Invalid/Unsupported object file format
-      COMMAND ${CMAKE_OBJDUMP} --source --demangle --line-numbers --wide
-              "$<TARGET_FILE:${name}>" > ${name}-list.txt
-      VERBATIM
-    )
-  endif ()
-
-  message (VERBOSE "A> ${name}")
-endfunction ()
-
-# -----------------------------------------------------------------------------
-if (ENABLE_NULL_TEST)
-  add_test_executable (null-test)
-
-  # MICRO_OS_PLUS_TRACE must **not** be defined
-  add_test (NAME "null-test" COMMAND null-test)
+if (CMAKE_BUILD_TYPE STREQUAL "Debug" AND CMAKE_HOST_SYSTEM_NAME STREQUAL
+                                          "Darwin"
+)
+  # Enable it temporarily to check the coverage on macOS.
+  set (XPACK_ENABLE_COVERAGE true)
 endif ()
 
 # -----------------------------------------------------------------------------
-if (ENABLE_SAMPLE_TEST)
-  add_test_executable (sample-test)
 
-  target_compile_definitions (sample-test PRIVATE "MICRO_OS_PLUS_TRACE_TESTING")
+if (XPACK_ENABLE_NO_TRACE_TEST)
+  add_native_test_executable (no-trace-test)
+  target_link_native_test_libraries (no-trace-test tests::no-trace)
+
+  xpack_display_target_lists (no-trace-test)
+  message (VERBOSE "A> no-trace-test")
+
+  add_test (NAME "no-trace-test" COMMAND no-trace-test one two)
+endif ()
+
+# -----------------------------------------------------------------------------
+
+if (XPACK_ENABLE_NULL_TEST)
+  add_native_test_executable (null-test)
+  target_link_native_test_libraries (null-test tests::null)
+
+  # MICRO_OS_PLUS_TRACE must **not** be defined
+  xpack_display_target_lists (null-test)
+  message (VERBOSE "A> null-test")
+
+  add_test (NAME "null-test" COMMAND null-test one two)
+endif ()
+
+# -----------------------------------------------------------------------------
+
+if (XPACK_ENABLE_SAMPLE_TEST)
+  add_native_test_executable (sample-test)
+  target_link_native_test_libraries (sample-test tests::sample)
+  target_compile_definitions (sample-test PRIVATE "MICRO_OS_PLUS_TRACE")
+
+  xpack_display_target_lists (sample-test)
+  message (VERBOSE "A> sample-test")
 
   add_test (NAME "sample-test" COMMAND sample-test one two)
 endif ()
 
 # -----------------------------------------------------------------------------
-if (ENABLE_UNIT_TEST)
-  add_test_executable (unit-test)
 
-  target_compile_definitions (unit-test PRIVATE "MICRO_OS_PLUS_TRACE_TESTING")
+if (XPACK_ENABLE_UNIT_TEST)
+  add_native_test_executable (unit-test)
+  target_link_native_test_libraries (unit-test tests::unit)
+  target_compile_definitions (unit-test PUBLIC "MICRO_OS_PLUS_TRACE")
 
   target_link_libraries (unit-test PRIVATE micro-os-plus::micro-test-plus)
 
-  add_test (NAME "unit-test" COMMAND unit-test # --verbose
-  )
+  if (XPACK_ENABLE_COVERAGE)
+    # Otherwise only the library cpp and its inline are shown.
+    add_compile_coverage_private_options (unit-test)
+    add_link_coverage_private_options (unit-test)
+  endif ()
 
-  # add_custom_command( TARGET "unit-test" POST_BUILD COMMAND ${CMAKE_OBJDUMP}
-  # -x "$<TARGET_FILE:unit-test>" VERBATIM )
+  xpack_display_target_lists (unit-test)
+
+  message (VERBOSE "A> unit-test")
+
+  add_test (NAME "unit-test" COMMAND unit-test)
+
+  if (XPACK_ENABLE_COVERAGE)
+    set_tests_properties (
+      "unit-test" PROPERTIES ENVIRONMENT "LLVM_PROFILE_FILE=unit-test.profraw"
+    )
+
+    add_test (
+      NAME "unit-test-coverage"
+      COMMAND
+        bash "${CMAKE_CURRENT_SOURCE_DIR}/../../scripts/show-coverage.sh"
+        unit-test unit-test
+        # "../../../../include/micro-os-plus/utils/inlines/intrusive-list-inlines.h"
+    )
+    set_tests_properties ("unit-test-coverage" PROPERTIES DEPENDS "unit-test")
+  endif ()
+
 endif ()
 
 # -----------------------------------------------------------------------------

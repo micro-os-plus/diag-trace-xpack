@@ -20,7 +20,7 @@
 #error "MICRO_OS_PLUS_TRACE should not be defined"
 #endif
 
-#include <micro-os-plus/diag/trace.h>
+#include "null.h"
 
 using namespace micro_os_plus;
 
@@ -29,15 +29,34 @@ using namespace micro_os_plus;
 int
 main (int argc, char* argv[])
 {
-  trace::initialize ();
+  // --------------------------------------------------------------------------
+  // Exercise the empty C++ API.
+
+  trace::initialise ();
 
   trace::dump_args (argc, argv);
 
-  trace::printf ("Hello %s!\n", "World");
+  trace::printf ("Hello %s!\n", "C++ World");
   trace::puts ("one line");
   trace::putchar ('*');
 
   trace::flush ();
+
+  // --------------------------------------------------------------------------
+  // Exercise the empty C API called from C++.
+
+  micro_os_plus_trace_initialise ();
+  micro_os_plus_trace_dump_args (argc, argv);
+
+  micro_os_plus_trace_printf ("Hello %s!\n", "C World");
+  micro_os_plus_trace_puts ("one line");
+  micro_os_plus_trace_putchar ('*');
+
+  micro_os_plus_trace_puts ("");
+  micro_os_plus_trace_flush ();
+
+  // --------------------------------------------------------------------------
+  c_api (argc, argv);
 
   return 0;
 }

@@ -8,9 +8,12 @@
       "id": "tests.null",
       "display": "Null Test",
       "description": "Check if the library compiles when MICRO_OS_PLUS_TRACE is not defined",
-      "publicIncludeFolders": [],
+      "publicIncludeFolders": [
+        "include"
+      ],
       "sourceFiles": [
-        "src/main.cpp"
+        "src/main.cpp",
+        "src/c-api.c"
       ],
       "dependencies": [
         "micro-os-plus.diag.trace"

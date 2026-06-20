@@ -3,11 +3,11 @@
 # This file is part of the µOS++ project (https://micro-os-plus.github.io/).
 # Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
 #
-# Permission to use, copy, modify, and/or distribute this software
-# for any purpose is hereby granted, under the terms of the MIT license.
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose is hereby granted, under the terms of the MIT license.
 #
-# If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit.
+# If a copy of the license was not distributed with this file, it can be
+# obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
@@ -15,160 +15,64 @@
 
 # -----------------------------------------------------------------------------
 
-message(VERBOSE "Processing 'tests/platforms/qemu-riscv-rv32imac'...")
+message (VERBOSE "Processing 'tests/platforms/qemu-riscv-rv32imac'...")
 
 # -----------------------------------------------------------------------------
 
-# set(xpack_create_listing true)
-# set(xpack_create_hex true)
+if (XPACK_ENABLE_NULL_TEST)
+  add_cross_test_executable (null-test)
+  target_link_cross_test_libraries (null-test tests::null)
 
-# -----------------------------------------------------------------------------
+  xpack_display_target_lists (null-test)
 
-# Define the tests executables.
-function(add_test_executable name)
-  add_executable(${name})
+  message (VERBOSE "A> null-test")
 
-  set_target_properties(${name}
-
-    PROPERTIES
-    OUTPUT_NAME "${name}"
-  )
-
-  # Include folders.
-  # `tests/platforms/qemu-riscv-rv32imac/include` was added globally.
-  target_include_directories(${name} PRIVATE
-    "../../include"
-  )
-
-  message(VERBOSE "A+ -I tests/include")
-
-  # Application sources.
-  target_sources(${name} PRIVATE
-    "../../src/${name}.cpp"
-  )
-
-  message(VERBOSE "A+ tests/src/${name}.cpp")
-
-  target_compile_definitions(${name} PRIVATE
-
-    # None.
-  )
-
-  target_compile_options(${name} PRIVATE
-
-    # None.
-  )
-
-  target_link_options(${name} PRIVATE
-    -Wl,-Map,platform-bin/${name}-map.txt
-
-    # -v
-  )
-
-  target_link_libraries(${name} PRIVATE
-
-    # Tested library.
-    micro-os-plus::diag-trace
-
-    # Portable dependencies.
-    micro-os-plus::diag-trace
-
-    # Platform specific dependencies.
-    micro-os-plus::platform # bring device & architecture too
-
-    micro-os-plus::semihosting
-    micro-os-plus::startup
-  )
-
-  # TODO use add_custom_target()
-  # https://cmake.org/cmake/help/v3.20/command/add_custom_command.html
-  add_custom_command(TARGET ${name} POST_BUILD
-    COMMAND ${CMAKE_SIZE} --format=berkeley "$<TARGET_FILE:${name}>"
-  )
-
-  if(xpack_create_hex)
-    add_custom_command(TARGET ${name} POST_BUILD
-      COMMAND ${CMAKE_OBJCOPY} -O ihex "$<TARGET_FILE:${name}>" "$<TARGET_FILE:${name}>.hex"
-    )
-  endif()
-
-  if(xpack_create_listing)
-    add_custom_command(TARGET ${name} POST_BUILD
-      COMMAND ${CMAKE_OBJDUMP} --source --all-headers --demangle --line-numbers --wide "$<TARGET_FILE:${name}>" > ${name}-list.txt
-      VERBATIM
-    )
-  endif()
-
-  message(VERBOSE "A> ${name}")
-endfunction()
-
-# -----------------------------------------------------------------------------
-if(ENABLE_NULL_TEST)
-  add_test_executable(null-test)
-
-  add_test(
+  add_test (
     NAME "null-test"
-
-    COMMAND qemu-system-riscv32${extension}
-    --machine virt
-    --cpu rv32
-    --kernel null-test.elf
-    -smp 1
-    -bios none
-    --nographic
-    -d unimp,guest_errors
-    --semihosting-config enable=on,target=native
+    COMMAND
+      qemu-system-riscv32${extension} --machine virt --cpu rv32 --kernel
+      null-test.elf -smp 1 -bios none --nographic -d unimp,guest_errors
+      --semihosting-config enable=on,target=native
   )
-endif()
+endif ()
 
 # -----------------------------------------------------------------------------
-if(ENABLE_SAMPLE_TEST)
-  add_test_executable(sample-test)
 
-  target_compile_definitions(sample-test PRIVATE
-    "MICRO_OS_PLUS_TRACE_TESTING"
-  )
+if (XPACK_ENABLE_SAMPLE_TEST)
+  add_cross_test_executable (sample-test)
+  target_link_cross_test_libraries (sample-test tests::sample)
+  target_compile_definitions (sample-test PUBLIC "MICRO_OS_PLUS_TRACE")
 
-  add_test(
+  xpack_display_target_lists (sample-test)
+
+  message (VERBOSE "A> sample-test")
+
+  add_test (
     NAME "sample-test"
-
-    COMMAND qemu-system-riscv32${extension}
-    --machine virt
-    --cpu rv32
-    --kernel sample-test.elf
-    -smp 1
-    -bios none
-    --nographic
-    -d unimp,guest_errors
-    --semihosting-config enable=on,target=native,arg=sample-test,arg=one,arg=two
+    COMMAND
+      qemu-system-riscv32${extension} --machine virt --cpu rv32 --kernel
+      sample-test.elf -smp 1 -bios none --nographic -d unimp,guest_errors
+      --semihosting-config
+      enable=on,target=native,arg=sample-test,arg=one,arg=two
   )
-endif()
+endif ()
 
 # -----------------------------------------------------------------------------
-if(ENABLE_UNIT_TEST)
-  add_test_executable(unit-test)
 
-  target_compile_definitions(unit-test PRIVATE
-    "MICRO_OS_PLUS_TRACE_TESTING"
-  )
+if (XPACK_ENABLE_UNIT_TEST)
+  add_cross_test_executable (unit-test)
+  target_link_cross_test_libraries (unit-test tests::unit)
+  target_compile_definitions (unit-test PUBLIC "MICRO_OS_PLUS_TRACE")
 
-  target_link_libraries(unit-test PRIVATE
-    micro-os-plus::micro-test-plus
-  )
+  message (VERBOSE "A> unit-test")
 
-  add_test(
+  add_test (
     NAME "unit-test"
-
-    COMMAND qemu-system-riscv32${extension}
-    --machine virt
-    --cpu rv32
-    --kernel unit-test.elf
-    --nographic
-    -smp 1
-    -bios none
-    -d unimp,guest_errors
-    --semihosting-config enable=on,target=native,arg=unit-test
+    COMMAND
+      qemu-system-riscv32${extension} --machine virt --cpu rv32 --kernel
+      unit-test.elf --nographic -smp 1 -bios none -d unimp,guest_errors
+      --semihosting-config enable=on,target=native,arg=unit-test
   )
-endif()
+endif ()
 
 # -----------------------------------------------------------------------------

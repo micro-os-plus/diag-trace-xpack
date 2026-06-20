@@ -5,11 +5,11 @@
 # This file is part of the µOS++ project (https://micro-os-plus.github.io/).
 # Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
 #
-# Permission to use, copy, modify, and/or distribute this software
-# for any purpose is hereby granted, under the terms of the MIT license.
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose is hereby granted, under the terms of the MIT license.
 #
-# If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit.
+# If a copy of the license was not distributed with this file, it can be
+# obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@
 
 # -----------------------------------------------------------------------------
 
-message('Including tests/platforms/' + xpack_platform_name + '/meson.build...')
+message('Including tests/platforms/' + xpack_platform_name + '/meson/platform-library/meson.build...')
 
 # -----------------------------------------------------------------------------
 
@@ -120,8 +120,8 @@ if c_compiler.version().version_compare('>=12.0.0')
 endif
 
 _local_dependencies += [
-  common_options_dependency,
   micro_os_plus_devices_qemu_cortexm_dependency,
+  micro_os_plus_startup_dependency,
 ]
 
 # https://mesonbuild.com/Reference-manual_functions.html#declare_dependency
@@ -139,10 +139,18 @@ platform_qemu_cortex_m0_dependency_compile_cpp_args = _local_compile_cpp_args
 foreach xn : _local_include_directories
   message('+ -I ' + xn)
 endforeach
-# Note: depenedencies compile_args not shown.
+# Note: dependencies compile_args not shown.
 foreach xn : _local_sources + _local_compile_definitions + _local_compile_args + _local_compile_c_args + _local_compile_cpp_args + _local_link_args
   message('+ ' + xn)
 endforeach
 message('> platform_qemu_cortex_m0_dependency')
+
+# -----------------------------------------------------------------------------
+
+# Aliases.
+platform_dependency = platform_qemu_cortex_m0_dependency
+platform_dependency_compile_c_args = platform_qemu_cortex_m0_dependency_compile_c_args
+platform_dependency_compile_cpp_args = platform_qemu_cortex_m0_dependency_compile_cpp_args
+message('> platform_dependency')
 
 # -----------------------------------------------------------------------------

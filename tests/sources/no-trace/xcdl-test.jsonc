@@ -13,6 +13,7 @@
         "src/main.cpp"
       ],
       "dependencies": [
+        "micro-os-plus.diag.trace"
       ]
     }
   ]

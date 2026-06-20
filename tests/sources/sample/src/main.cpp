@@ -11,6 +11,10 @@
 
 // ----------------------------------------------------------------------------
 
+#if !defined(MICRO_OS_PLUS_TRACE)
+#error "MICRO_OS_PLUS_TRACE should be defined"
+#endif
+
 #include <micro-os-plus/diag/trace.h>
 
 #include <unistd.h>
@@ -22,60 +26,35 @@ using namespace micro_os_plus;
 int
 main (int argc, char* argv[])
 {
-  trace_testing::initialize ();
+  trace::initialise ();
+  trace::dump_args (argc, argv);
 
-  trace_testing::dump_args (argc, argv);
+  trace::printf ("Hello %s!\n", "C++ World");
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif
+  trace::puts ("one line");
+  trace::putchar ('*');
 
-  trace_testing::printf ("Hello %s!\n", "World");
-  trace_testing::puts ("one line");
-  trace_testing::putchar ('*');
+  trace::puts ();
+#pragma GCC diagnostic pop
+  trace::flush ();
 
-  trace_testing::flush ();
+  // --------------------------------------------------------------------------
+
+  // Exercise the C API.
+  micro_os_plus_trace_initialise ();
+  micro_os_plus_trace_dump_args (argc, argv);
+
+  micro_os_plus_trace_printf ("Hello %s!\n", "C World");
+  micro_os_plus_trace_puts ("one line");
+  micro_os_plus_trace_putchar ('*');
+
+  micro_os_plus_trace_puts ("");
+  micro_os_plus_trace_flush ();
 
   return 0;
 }
-
-// ----------------------------------------------------------------------------
-// The full implementation of the trace system API.
-
-#if defined(__clang__)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpre-c++17-compat"
-#endif
-
-namespace micro_os_plus::trace_testing
-
-#if defined(__clang__)
-#pragma clang diagnostic pop
-#endif
-{
-  void
-  initialize (void)
-  {
-    // STDOUT is always available.
-  }
-
-  ssize_t
-  write (const void* buf, std::size_t nbyte)
-  {
-    // 1=STDOUT
-#pragma GCC diagnostic push
-#if defined(__MINGW32__)
-// warning: conversion from 'std::size_t' {aka 'long long unsigned int'} to
-// 'unsigned int' may change value [-Wconversion]
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    return ::write (1, buf, nbyte);
-#pragma GCC diagnostic pop
-  }
-
-  void
-  flush (void)
-  {
-#if defined(__APPLE__) || defined(__linux__) || defined(__unix__)
-    fsync (1); // Sync STDOUT.
-#endif
-  }
-} // namespace micro_os_plus::trace_testing
 
 // ----------------------------------------------------------------------------

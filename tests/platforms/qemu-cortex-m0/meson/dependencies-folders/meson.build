@@ -5,22 +5,15 @@
 # This file is part of the µOS++ project (https://micro-os-plus.github.io/).
 # Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
 #
-# Permission to use, copy, modify, and/or distribute this software
-# for any purpose is hereby granted, under the terms of the MIT license.
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose is hereby granted, under the terms of the MIT license.
 #
-# If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit.
+# If a copy of the license was not distributed with this file, it can be
+# obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
 # Define a list of folders where the platform dependencies are located.
-
-# -----------------------------------------------------------------------------
-
-# Required in devices-qemu-cortexm.
-xpack_device_compile_definition='MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_M0'
-
-xpack_platform_compile_definition = 'MICRO_OS_PLUS_PLATFORM_QEMU_CORTEX_M0'
 
 # -----------------------------------------------------------------------------
 
@@ -46,8 +39,6 @@ xpack_dependencies_folders = [
 
   # +(arm_cmsis_core_m, devices_cortexm, startup) >devices_qemu_cortexm
   xpack_build_folder_relative_path + '/xpacks/@micro-os-plus/devices-qemu-cortexm',
-
-  'platforms/qemu-cortex-m0/meson/platform-options',
 ]
 
 # -----------------------------------------------------------------------------

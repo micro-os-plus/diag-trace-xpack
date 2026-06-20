@@ -1,0 +1,55 @@
+# -----------------------------------------------------------------------------
+#
+# This file is part of the µOS++ project (https://micro-os-plus.github.io/).
+# Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
+#
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose is hereby granted, under the terms of the MIT license.
+#
+# If a copy of the license was not distributed with this file, it can be
+# obtained from https://opensource.org/licenses/mit.
+#
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Project specific definitions.
+
+set (XPACK_ENABLE_NO_TRACE_TEST false)
+set (XPACK_ENABLE_NULL_TEST true)
+set (XPACK_ENABLE_SAMPLE_TEST true)
+set (XPACK_ENABLE_UNIT_TEST true)
+
+set (xpack_dependencies_tests_folders)
+
+# Each test has its own library. Add only those enabled.
+if (XPACK_ENABLE_NO_TRACE_TEST)
+  list (APPEND xpack_dependencies_tests_folders
+        "${CMAKE_SOURCE_DIR}/sources/no-trace"
+  )
+endif ()
+
+if (XPACK_ENABLE_NULL_TEST)
+  list (APPEND xpack_dependencies_tests_folders
+        "${CMAKE_SOURCE_DIR}/sources/null"
+  )
+endif ()
+
+if (XPACK_ENABLE_SAMPLE_TEST)
+  list (APPEND xpack_dependencies_tests_folders
+        "${CMAKE_SOURCE_DIR}/sources/sample"
+  )
+endif ()
+
+if (XPACK_ENABLE_UNIT_TEST)
+  list (APPEND xpack_dependencies_tests_folders
+        "${CMAKE_SOURCE_DIR}/sources/unit"
+  )
+endif ()
+
+# -----------------------------------------------------------------------------
+
+set (XPACK_ENABLE_REPORT_SIZE true)
+set (XPACK_ENABLE_CREATE_HEX false)
+set (XPACK_ENABLE_CREATE_LISTING true)
+
+# -----------------------------------------------------------------------------

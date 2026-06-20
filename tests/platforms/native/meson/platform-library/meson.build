@@ -5,11 +5,11 @@
 # This file is part of the µOS++ project (https://micro-os-plus.github.io/).
 # Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
 #
-# Permission to use, copy, modify, and/or distribute this software
-# for any purpose is hereby granted, under the terms of the MIT license.
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose is hereby granted, under the terms of the MIT license.
 #
-# If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit.
+# If a copy of the license was not distributed with this file, it can be
+# obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
@@ -17,7 +17,8 @@
 
 # -----------------------------------------------------------------------------
 
-message('Including tests/platforms/' + xpack_platform_name + '/meson.build...')
+# Included from dependencies-folders.
+message('Including tests/platforms/' + xpack_platform_name + '/meson/platform-library/meson.build...')
 
 # -----------------------------------------------------------------------------
 
@@ -28,7 +29,7 @@ assert(is_variable('xpack_platform_compile_definition'), 'Define xpack_platform_
 if build_machine.system() == 'linux' or build_machine.system() == 'darwin'
 
   _local_cxx_run_result = run_command(
-    xpack_tests_folder_path + '/xpacks/@micro-os-plus/build-helper/dev-scripts/get-libraries-paths.sh',
+    xpack_tests_folder_path + '/scripts/get-libraries-paths.sh',
     cpp_compiler.cmd_array()[0],
     check: false,
     capture: true
@@ -67,7 +68,7 @@ _local_link_args = []
 _local_link_with = []
 
 _local_include_directories += [
-  # Go back to the platform include.
+  # Go up to the platform include.
   '../../include',
 ]
 
@@ -83,14 +84,6 @@ _local_compile_definitions += [
   '-D_POSIX_C_SOURCE=200809L',
 ]
 
-# if c_compiler.get_id().contains('clang') and build_machine.system() == 'darwin'
-#   # On macOS enabling the macro fails with:
-#   # error: unknown type name 'u_int'
-# else
-#   _local_compile_definitions += [
-#   ]
-# endif
-
 _local_compile_args += [
   '-Werror',
 ]
@@ -104,6 +97,22 @@ endif
 if c_compiler.get_id().contains('clang') and build_machine.system() == 'windows'
   _local_compile_args += [
     '-Wno-used-but-marked-unused',
+  ]
+endif
+
+if c_compiler.get_id().contains('clang') and build_machine.system() == 'darwin'
+  _local_compile_args += [
+    '-Wno-#warnings'
+  ]
+  _local_compile_cpp_args += [
+    '-Wno-pre-c++17-compat'
+  ]
+endif
+
+if c_compiler.get_id().contains('clang')
+  _local_compile_args += [
+    '-Wno-unknown-warning-option',
+    '-Wno-documentation',
   ]
 endif
 
@@ -146,7 +155,8 @@ if c_compiler.get_id().contains('clang')
       '-lunwind',
     ]
   endif
-  if build_machine.system() == 'linux' or build_machine.system() == 'darwin'
+  # if build_machine.system() == 'linux' or build_machine.system() == 'darwin'
+  if build_machine.system() == 'linux'
     _local_link_args += [
       '-fuse-ld=lld'
     ]
@@ -221,10 +231,18 @@ platform_native_dependency_compile_cpp_args = _local_compile_cpp_args
 foreach xn : _local_include_directories
   message('+ -I ' + xn)
 endforeach
-# Note: depenedencies compile_args not shown.
+# Note: dependencies compile_args not shown.
 foreach xn : _local_sources + _local_compile_definitions + _local_compile_args + _local_compile_c_args + _local_compile_cpp_args + _local_link_args
   message('+ ' + xn)
 endforeach
 message('> platform_native_dependency')
+
+# -----------------------------------------------------------------------------
+
+# Aliases.
+platform_dependency = platform_native_dependency
+platform_dependency_compile_c_args = platform_native_dependency_compile_c_args
+platform_dependency_compile_cpp_args = platform_native_dependency_compile_cpp_args
+message('> platform_dependency')
 
 # -----------------------------------------------------------------------------
