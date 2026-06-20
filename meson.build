@@ -26,7 +26,7 @@
 
 # -----------------------------------------------------------------------------
 
-# The portable trace::printf() code. Enabled by the explicit compiler option MICRO_OS_PLUS_TRACE..
+# The portable trace::printf() code.
 message('Processing xPack @micro-os-plus/diag-trace...')
 
 # -----------------------------------------------------------------------------
@@ -51,7 +51,8 @@ _local_include_directories += [
 ]
 
 _local_sources += [
-  'src/trace.cpp',
+  'src/trace-cpp-api.cpp',
+  'src/trace-c-api.cpp',
 ]
 
 # https://mesonbuild.com/Reference-manual_functions.html#declare_dependency

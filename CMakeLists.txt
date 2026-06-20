@@ -35,8 +35,7 @@
 # https://cmake.org/cmake/help/v3.20/
 cmake_minimum_required (VERSION 3.20)
 
-# The portable trace::printf() code. Enabled by the explicit compiler option
-# MICRO_OS_PLUS_TRACE..
+# The portable trace::printf() code.
 project (
   micro-os-plus-diag-trace
   DESCRIPTION "Diagnostics trace::printf()"
@@ -72,7 +71,10 @@ target_include_directories (
   micro-os-plus-diag-trace-interface INTERFACE "include"
 )
 
-target_sources (micro-os-plus-diag-trace-interface INTERFACE "src/trace.cpp")
+target_sources (
+  micro-os-plus-diag-trace-interface INTERFACE "src/trace-cpp-api.cpp"
+                                               "src/trace-c-api.cpp"
+)
 
 if (COMMAND xpack_display_target_lists)
   xpack_display_target_lists (micro-os-plus-diag-trace-interface)
@@ -110,7 +112,7 @@ message (VERBOSE
 # with the separate dependency compilation in each executable. Consumers of this
 # OBJECT library are expected to link separately to all dependencies and to the
 # platform-specific library.
-add_library (micro-os-plus-diag-trace-objects-library OBJECT)
+add_library (micro-os-plus-diag-trace-objects-library OBJECT EXCLUDE_FROM_ALL)
 
 # Use PUBLIC so that the include directories are available both for the OBJECT
 # library's own sources and for consumers of the library.
@@ -121,7 +123,8 @@ target_include_directories (
 # Use PRIVATE to avoid propagating the sources to consumers of the OBJECT
 # library, which would cause duplicate symbol errors at link time.
 target_sources (
-  micro-os-plus-diag-trace-objects-library PRIVATE "src/trace.cpp"
+  micro-os-plus-diag-trace-objects-library PRIVATE "src/trace-cpp-api.cpp"
+                                                   "src/trace-c-api.cpp"
 )
 
 # Propagate the compiled object files to consumers via INTERFACE_SOURCES so that
@@ -166,7 +169,7 @@ message (
 # with the separate dependency compilation in each executable. Consumers of this
 # STATIC library are expected to link separately to all dependencies and to the
 # platform-specific library.
-add_library (micro-os-plus-diag-trace-static-library STATIC)
+add_library (micro-os-plus-diag-trace-static-library STATIC EXCLUDE_FROM_ALL )
 
 set_target_properties (
   micro-os-plus-diag-trace-static-library PROPERTIES OUTPUT_NAME diag-trace
@@ -180,7 +183,10 @@ target_include_directories (
 
 # Use PRIVATE to avoid propagating the sources to consumers of the STATIC
 # library, which would cause duplicate symbol errors at link time.
-target_sources (micro-os-plus-diag-trace-static-library PRIVATE "src/trace.cpp")
+target_sources (
+  micro-os-plus-diag-trace-static-library PRIVATE "src/trace-cpp-api.cpp"
+                                                  "src/trace-c-api.cpp"
+)
 
 if (COMMAND xpack_display_target_lists)
   xpack_display_target_lists (micro-os-plus-diag-trace-static-library)

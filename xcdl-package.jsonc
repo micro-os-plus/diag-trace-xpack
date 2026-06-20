@@ -11,7 +11,8 @@
         "include"
       ],
       "sourceFiles": [
-        "src/trace.cpp"
+        "src/trace-cpp-api.cpp",
+        "src/trace-c-api.cpp"
       ],
       "dependencies": [],
       // "customDefine": "MICRO_OS_PLUS_HAS_DIAG_TRACE",
