@@ -20,7 +20,7 @@
 # The base folder is `tests`. The order is significant.
 xpack_dependencies_folders = [
 
-  'xpacks/@micro-os-plus/diag-trace', # -
+  
   'xpacks/@micro-os-plus/micro-test-plus', # -
 
   # -
