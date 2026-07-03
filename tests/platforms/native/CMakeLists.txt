@@ -29,7 +29,6 @@ endif ()
 if (XPACK_ENABLE_NO_TRACE_TEST)
   add_native_test_executable (no-trace-test)
   target_link_native_test_libraries (no-trace-test tests::no-trace)
-  target_compile_definitions (no-trace-test PRIVATE "MICRO_OS_PLUS_TRACE")
 
   xpack_display_target_lists (no-trace-test)
   message (VERBOSE "A> no-trace-test")
@@ -55,7 +54,6 @@ endif ()
 if (XPACK_ENABLE_SAMPLE_TEST)
   add_native_test_executable (sample-test)
   target_link_native_test_libraries (sample-test tests::sample)
-  target_compile_definitions (sample-test PRIVATE "MICRO_OS_PLUS_TRACE")
 
   xpack_display_target_lists (sample-test)
   message (VERBOSE "A> sample-test")
@@ -68,7 +66,6 @@ endif ()
 if (XPACK_ENABLE_UNIT_TEST)
   add_native_test_executable (unit-test)
   target_link_native_test_libraries (unit-test tests::unit)
-  target_compile_definitions (unit-test PUBLIC "MICRO_OS_PLUS_TRACE")
 
   target_link_libraries (unit-test PRIVATE micro-os-plus::micro-test-plus)
 
