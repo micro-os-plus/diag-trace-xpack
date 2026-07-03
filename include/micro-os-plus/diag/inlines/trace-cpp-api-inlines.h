@@ -42,8 +42,8 @@
 
 // ----------------------------------------------------------------------------
 
-#ifndef MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE
-#define MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE (200)
+#ifndef MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER
+#define MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER (200)
 #endif
 
 // ----------------------------------------------------------------------------
@@ -91,7 +91,7 @@ namespace micro_os_plus::trace
     tracer<T>::vprintf (const char* format, std::va_list arguments) noexcept
     {
       // Caution: allocated on the stack!
-      char buf[MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE];
+      char buf[MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER];
 
       // TODO: possibly rewrite it to no longer use newlib,
       // (although the nano version is no longer very heavy).
