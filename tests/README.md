@@ -5,15 +5,6 @@
 The difficulty of testing this package is that it is also referred in
 multiple other packages used when running the tests on embedded platforms.
 
-There are two ways to cope with this:
-
-- set `MICRO_OS_PLUS_BOOL_USE_TRACE` to false, to disable references in
-the run-time
-- make local copies of the run-time with the trace calls disabled
-
-For now the first solution is used, and if this becomes too difficult to
-maintain, the second one will be used.
-
 ## Platforms
 
 - native (as a process on the development machine)

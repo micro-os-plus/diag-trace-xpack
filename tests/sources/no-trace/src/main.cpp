@@ -20,10 +20,6 @@
 #error "MICRO_OS_PLUS_TRACE should be defined"
 #endif
 
-#if MICRO_OS_PLUS_BOOL_USE_TRACE
-#error "MICRO_OS_PLUS_BOOL_USE_TRACE should not be defined"
-#endif
-
 #include <stdio.h>
 
 int
