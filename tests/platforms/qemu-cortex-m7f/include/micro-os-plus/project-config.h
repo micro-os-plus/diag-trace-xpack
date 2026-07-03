@@ -9,8 +9,8 @@
  * obtained from https://opensource.org/licenses/mit.
  */
 
-#ifndef MICRO_OS_PLUS_CONFIG_H_
-#define MICRO_OS_PLUS_CONFIG_H_
+#ifndef MICRO_OS_PLUS_PROJECT_CONFIG_H_
+#define MICRO_OS_PLUS_PROJECT_CONFIG_H_
 
 // ----------------------------------------------------------------------------
 
@@ -25,13 +25,15 @@
 #define MICRO_OS_PLUS_INCLUDE_EXIT
 
 #if defined(MICRO_OS_PLUS_TRACE)
+
 // #define MICRO_OS_PLUS_USE_TRACE_SEMIHOSTING_DEBUG
 #define MICRO_OS_PLUS_USE_TRACE_SEMIHOSTING_STDOUT
 // #define MICRO_OS_PLUS_USE_TRACE_SEMIHOSTING_STDERR
+
 #endif // MICRO_OS_PLUS_TRACE
 
 // ----------------------------------------------------------------------------
 
-#endif /* MICRO_OS_PLUS_CONFIG_H_ */
+#endif /* MICRO_OS_PLUS_PROJECT_CONFIG_H_ */
 
 // ----------------------------------------------------------------------------
