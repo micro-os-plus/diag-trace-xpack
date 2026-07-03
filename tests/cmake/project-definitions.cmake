@@ -14,7 +14,7 @@
 # -----------------------------------------------------------------------------
 # Project specific definitions.
 
-set (XPACK_ENABLE_NO_TRACE_TEST false)
+set (XPACK_ENABLE_NO_TRACE_TEST true)
 set (XPACK_ENABLE_NULL_TEST true)
 set (XPACK_ENABLE_SAMPLE_TEST true)
 set (XPACK_ENABLE_UNIT_TEST true)

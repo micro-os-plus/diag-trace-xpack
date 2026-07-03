@@ -31,7 +31,7 @@ set (
   #
   # Portable dependencies.
   "${CMAKE_SOURCE_DIR}/xpacks/@micro-os-plus/micro-test-plus"
-  #
+
   # Platform specific dependencies.
   "${CMAKE_BINARY_DIR}/xpacks/@micro-os-plus/architecture-synthetic-posix"
 )

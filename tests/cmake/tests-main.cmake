@@ -42,6 +42,7 @@ include ("platforms/${PLATFORM_NAME}/cmake/definitions.cmake")
 # -----------------------------------------------------------------------------
 # Dependencies.
 
+# Add the project library, defined one level above.
 message (VERBOSE "Adding top library...")
 add_subdirectory (".." "top-bin")
 
@@ -55,11 +56,6 @@ xpack_add_dependencies_subdirectories (
 
 # Include the platform library.
 include ("platforms/${PLATFORM_NAME}/cmake/platform-library.cmake")
-
-# -----------------------------------------------------------------------------
-
-# Add the project library, defined one level above. message (VERBOSE "Adding top
-# library...") add_subdirectory (".." "top-bin")
 
 # -----------------------------------------------------------------------------
 

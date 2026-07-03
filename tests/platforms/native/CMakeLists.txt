@@ -17,8 +17,8 @@
 
 message (VERBOSE "Processing 'tests/platforms/native'...")
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug" AND CMAKE_HOST_SYSTEM_NAME STREQUAL
-                                          "Darwin"
+if (CMAKE_BUILD_TYPE STREQUAL "Debug" AND CMAKE_CXX_COMPILER_ID STREQUAL
+                                          "AppleClang"
 )
   # Enable it temporarily to check the coverage on macOS.
   set (XPACK_ENABLE_COVERAGE true)
@@ -29,6 +29,7 @@ endif ()
 if (XPACK_ENABLE_NO_TRACE_TEST)
   add_native_test_executable (no-trace-test)
   target_link_native_test_libraries (no-trace-test tests::no-trace)
+  target_compile_definitions (no-trace-test PRIVATE "MICRO_OS_PLUS_TRACE")
 
   xpack_display_target_lists (no-trace-test)
   message (VERBOSE "A> no-trace-test")
@@ -78,7 +79,6 @@ if (XPACK_ENABLE_UNIT_TEST)
   endif ()
 
   xpack_display_target_lists (unit-test)
-
   message (VERBOSE "A> unit-test")
 
   add_test (NAME "unit-test" COMMAND unit-test)

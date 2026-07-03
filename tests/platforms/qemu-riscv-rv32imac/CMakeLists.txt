@@ -24,7 +24,6 @@ if (XPACK_ENABLE_NULL_TEST)
   target_link_cross_test_libraries (null-test tests::null)
 
   xpack_display_target_lists (null-test)
-
   message (VERBOSE "A> null-test")
 
   add_test (
@@ -44,7 +43,6 @@ if (XPACK_ENABLE_SAMPLE_TEST)
   target_compile_definitions (sample-test PUBLIC "MICRO_OS_PLUS_TRACE")
 
   xpack_display_target_lists (sample-test)
-
   message (VERBOSE "A> sample-test")
 
   add_test (
@@ -64,6 +62,7 @@ if (XPACK_ENABLE_UNIT_TEST)
   target_link_cross_test_libraries (unit-test tests::unit)
   target_compile_definitions (unit-test PUBLIC "MICRO_OS_PLUS_TRACE")
 
+  xpack_display_target_lists (unit-test)
   message (VERBOSE "A> unit-test")
 
   add_test (

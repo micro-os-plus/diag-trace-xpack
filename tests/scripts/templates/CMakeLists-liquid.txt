@@ -82,9 +82,9 @@ target_link_libraries (
 )
 {%- endif %}
 
-
+if (COMMAND xpack_display_target_lists)
   xpack_display_target_lists ({{nameDash}}-interface)
-
+endif ()
 
 # -----------------------------------------------------------------------------
 # Alias.

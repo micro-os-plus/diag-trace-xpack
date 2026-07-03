@@ -24,7 +24,6 @@ if (XPACK_ENABLE_NULL_TEST)
   target_link_cross_test_libraries (null-test tests::null)
 
   xpack_display_target_lists (null-test)
-
   message (VERBOSE "A> null-test")
 
   add_test (
