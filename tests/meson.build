@@ -90,6 +90,10 @@ subdir('platforms/'+ xpack_platform_name + '/meson/definitions')
 # -----------------------------------------------------------------------------
 # Dependencies.
 
+# Include the project library, defined one level above.
+message('Adding top library...')
+subdir('top')
+
 # Set `xpack_dependencies_folders` with the platform specific dependencies.
 subdir('platforms/'+ xpack_platform_name + '/meson/dependencies-folders')
 # The platform library is included in the dependencies, at the end.
@@ -101,12 +105,6 @@ endforeach
 
 # Include the platform library.
 subdir('platforms/' + xpack_platform_name + '/meson/platform-library')
-
-# -----------------------------------------------------------------------------
-
-# Include the project library, defined one level above.
-message('Adding top library...')
-subdir('top')
 
 # -----------------------------------------------------------------------------
 

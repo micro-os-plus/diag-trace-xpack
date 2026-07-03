@@ -24,7 +24,6 @@ message('Including tests/platforms/' + xpack_platform_name + '/meson/dependencie
 # The base folder is `tests`. The order is significant.
 xpack_dependencies_folders = [
 
-  'xpacks/@micro-os-plus/diag-trace', # -
   'xpacks/@micro-os-plus/micro-test-plus', # -
 
   # (architecture) -

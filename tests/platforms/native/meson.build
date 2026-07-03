@@ -25,6 +25,34 @@ xpack_environment.set('MALLOC_PERTURB_', '0')
 
 # -----------------------------------------------------------------------------
 
+if xpack_enable_no_trace_test
+
+  # https://mesonbuild.com/Reference-manual_functions.html#test
+  test(
+    'no-trace-test',
+    no_trace_test,
+    args: [],
+    env: xpack_environment
+  )
+
+endif
+
+# -----------------------------------------------------------------------------
+
+if xpack_enable_null_test
+
+  # https://mesonbuild.com/Reference-manual_functions.html#test
+  test(
+    'null-test',
+    null_test,
+    args: [],
+    env: xpack_environment
+  )
+
+endif
+
+# -----------------------------------------------------------------------------
+
 if xpack_enable_sample_test
 
   # https://mesonbuild.com/Reference-manual_functions.html#test

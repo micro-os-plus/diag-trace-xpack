@@ -99,6 +99,10 @@ foreach test : tests
   _local_compile_c_args += platform_dependency_compile_c_args
   _local_compile_cpp_args += platform_dependency_compile_cpp_args
 
+  if test_name != 'null-test'
+    _local_compile_args += [ '-DMICRO_OS_PLUS_TRACE' ]
+  endif
+
   if xpack_platform_name != 'native'
     # _local_compile_c_args += micro_os_plus_semihosting_dependency_compile_c_args
     # _local_compile_cpp_args += micro_os_plus_semihosting_dependency_compile_cpp_args
