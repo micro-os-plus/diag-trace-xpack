@@ -35,7 +35,9 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_TRACE)
+#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
+
+// ----------------------------------------------------------------------------
 
 #include <cstring>
 #include <algorithm>
@@ -280,7 +282,11 @@ namespace micro_os_plus::trace
 
 #pragma GCC diagnostic pop
 
-#else // !defined(MICRO_OS_PLUS_TRACE)
+// ----------------------------------------------------------------------------
+
+#else // !defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
+
+// ----------------------------------------------------------------------------
 
 #pragma GCC diagnostic push
 #if defined(__clang__)
@@ -345,7 +351,9 @@ namespace micro_os_plus::trace
 
 #pragma GCC diagnostic pop
 
-#endif // defined(MICRO_OS_PLUS_TRACE)
+// ----------------------------------------------------------------------------
+
+#endif // defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
 // ----------------------------------------------------------------------------
 

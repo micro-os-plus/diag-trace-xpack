@@ -22,7 +22,9 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_TRACE)
+#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
+
+// ----------------------------------------------------------------------------
 
 #if defined(__cplusplus)
 extern "C"
@@ -121,11 +123,16 @@ extern "C"
   void
   micro_os_plus_trace_dump_args (int argc, char* argv[]);
 
+  // --------------------------------------------------------------------------
+
 #if defined(__cplusplus)
 }
 #endif // defined(__cplusplus)
 
-#endif // defined(MICRO_OS_PLUS_TRACE)
+// ----------------------------------------------------------------------------
+
+#endif // defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
+
 
 // ----------------------------------------------------------------------------
 

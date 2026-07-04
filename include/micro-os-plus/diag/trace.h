@@ -47,6 +47,10 @@
 
 // ----------------------------------------------------------------------------
 
+// The headers are included even when tracing is disabled, as they define the
+// empty inline functions needed for the trace calls to compile without
+// requiring conditional compilation.
+
 #include "trace-cpp-api.h"
 #include "trace-c-api.h"
 

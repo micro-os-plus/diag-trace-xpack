@@ -111,7 +111,11 @@ namespace micro_os_plus::trace
 #pragma GCC diagnostic pop
 } // namespace micro_os_plus::trace
 
-#if defined(MICRO_OS_PLUS_TRACE)
+// ----------------------------------------------------------------------------
+
+#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
+
+// ----------------------------------------------------------------------------
 
 namespace micro_os_plus::trace
 {
@@ -289,11 +293,11 @@ namespace micro_os_plus::trace
       dump_args (int argc, char* argv[], const char* name = "main") noexcept;
     };
 
-    // --------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
     // Suppress implicit instantiation of the tracer member function bodies
     // in every TU that includes this header. The explicit instantiations in
     // trace.cpp are the sole ODR-defining instances.
-    // --------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
 
 #pragma GCC diagnostic push
 #if defined(__clang__)
@@ -308,9 +312,15 @@ namespace micro_os_plus::trace
 #pragma GCC diagnostic pop
 } // namespace micro_os_plus::trace
 
-#endif // defined(MICRO_OS_PLUS_TRACE)
+// ----------------------------------------------------------------------------
+
+#endif // defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
+
+// ----------------------------------------------------------------------------
 
 #pragma GCC diagnostic pop
+
+// ----------------------------------------------------------------------------
 
 #endif // defined(__cplusplus)
 

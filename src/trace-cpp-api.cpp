@@ -11,11 +11,11 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_TRACE)
+#include <micro-os-plus/diag/trace.h>
 
 // ----------------------------------------------------------------------------
 
-#include <micro-os-plus/diag/trace.h>
+#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
 // ----------------------------------------------------------------------------
 
@@ -42,6 +42,6 @@ namespace micro_os_plus::trace::detail
 
 // ----------------------------------------------------------------------------
 
-#endif // defined(MICRO_OS_PLUS_TRACE)
+#endif // defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
 // ----------------------------------------------------------------------------

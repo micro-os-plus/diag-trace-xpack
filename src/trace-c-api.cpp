@@ -11,11 +11,11 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_TRACE)
+#include <micro-os-plus/diag/trace.h>
 
 // ----------------------------------------------------------------------------
 
-#include <micro-os-plus/diag/trace.h>
+#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
 // ----------------------------------------------------------------------------
 
@@ -117,6 +117,6 @@ micro_os_plus_trace_dump_args (int argc, char* argv[])
 
 // ----------------------------------------------------------------------------
 
-#endif // defined(MICRO_OS_PLUS_TRACE)
+#endif // defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
 // ----------------------------------------------------------------------------

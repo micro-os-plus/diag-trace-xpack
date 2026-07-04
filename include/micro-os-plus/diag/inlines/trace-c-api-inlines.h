@@ -32,7 +32,9 @@
 // ----------------------------------------------------------------------------
 
 // When TRACE is not enabled, define all as empty.
-#if !defined(MICRO_OS_PLUS_TRACE)
+#if !defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
+
+// ----------------------------------------------------------------------------
 
 #include <stdarg.h>
 #include <sys/types.h>
@@ -99,7 +101,9 @@ micro_os_plus_trace_dump_args (int argc, char* argv[])
 
 #pragma GCC diagnostic pop
 
-#endif // !defined(MICRO_OS_PLUS_TRACE)
+// ----------------------------------------------------------------------------
+
+#endif // !defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
 // ----------------------------------------------------------------------------
 
