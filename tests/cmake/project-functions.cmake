@@ -26,23 +26,21 @@ function (target_link_native_test_libraries name test_library_name)
             micro-os-plus::common-options
             # Library with the current test.
             ${test_library_name}
-            # TODO: remove it after updating architecture dependencies.
-            # micro-os-plus::diag-trace Platform dependency.
+            # Platform dependency.
             micro-os-plus::platform # bring device & architecture too
   )
 endfunction ()
 
 # -----------------------------------------------------------------------------
 
-function (target_link_cross_test_libraries name test_library_name)
+function (target_link_cross_test_libraries name library_name)
   target_link_libraries (
     ${name}
     PRIVATE # The compile & link options common to all platforms.
             micro-os-plus::common-options
             # Library with the current test.
             ${test_library_name}
-            # TODO: remove it after updating architecture dependencies.
-            # micro-os-plus::diag-trace Platform specific dependencies.
+            # Platform specific dependencies.
             micro-os-plus::platform # bring device & architecture too
             micro-os-plus::semihosting
   )
