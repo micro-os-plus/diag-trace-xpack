@@ -162,20 +162,24 @@ namespace micro_os_plus::trace
     /**
      * @brief Concept constraining the policy class `T` used by `tracer<T>`.
      * @details
-     * A conforming `T` must expose three static member functions with
-     * the following exact signatures:
-     * - `static void T::initialise()`
-     * - `static ssize_t T::write(const void*, std::size_t)`
-     * - `static void T::flush()`
+     * A conforming `T` must expose three static, `noexcept` member
+     * functions with the following exact signatures:
+     * - `static void T::initialise() noexcept`
+     * - `static ssize_t T::write(const void*, std::size_t) noexcept`
+     * - `static void T::flush() noexcept`
      *
-     * A clear diagnostic is emitted at the point of instantiation if
-     * any of the required functions is absent or has the wrong signature.
+     * The `noexcept` requirement is enforced by the concept so that a
+     * non-conforming policy is rejected at instantiation time rather
+     * than silently invoking `std::terminate` through the unconditionally
+     * `noexcept` free-function wrappers. A clear diagnostic is emitted
+     * at the point of instantiation if any required function is absent,
+     * has the wrong signature, or is not `noexcept`.
      */
     template <typename T>
     concept trace_policy = requires (const void* buf, std::size_t n) {
-      { T::initialise () } -> std::same_as<void>;
-      { T::write (buf, n) } -> std::same_as<ssize_t>;
-      { T::flush () } -> std::same_as<void>;
+      { T::initialise () } noexcept -> std::same_as<void>;
+      { T::write (buf, n) } noexcept -> std::same_as<ssize_t>;
+      { T::flush () } noexcept -> std::same_as<void>;
     };
 
     // ------------------------------------------------------------------------
