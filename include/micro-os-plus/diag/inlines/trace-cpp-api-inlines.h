@@ -109,6 +109,10 @@ namespace micro_os_plus::trace
       if (ret > 0)
         {
           // Clamp to actual buffer size if output was truncated.
+          // Note: on truncation the return value becomes the byte count
+          // written to the channel, not the total length vsnprintf
+          // computed. Callers cannot use the return value to detect
+          // truncation.
           ret = write (buf,
                        static_cast<size_t> (std::min (
                            ret, static_cast<ssize_t> (sizeof (buf) - 1))));

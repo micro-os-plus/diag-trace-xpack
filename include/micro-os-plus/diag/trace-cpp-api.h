@@ -292,13 +292,17 @@ namespace micro_os_plus::trace
        * output channel.
        * @param [in] format A null terminated string with the format.
        * @param [in] arguments A variable arguments list.
-       * @return The number of bytes written, or -1 if an error occurred.
+       * @return The number of bytes written to the output channel,
+       *  or -1 if an error occurred.
        *
        * @details
        * Equivalent to `printf()`, but accepts a `std::va_list`
        * instead of a variadic argument list. Subject to the same
-       * fixed-size stack buffer constraint and truncation behaviour.
-       * Typically called by `printf()`.
+       * fixed-size stack buffer constraint. When the formatted output
+       * exceeds the buffer size, the text is truncated silently; the
+       * return value then reflects the bytes actually written to the
+       * channel, not the total length that `vsnprintf` would have
+       * produced. Typically called by `printf()`.
        */
       static int
       vprintf (const char* format, std::va_list arguments) noexcept;
