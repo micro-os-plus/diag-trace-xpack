@@ -96,23 +96,13 @@ micro_os_plus_trace_puts (const char* s)
 int
 micro_os_plus_trace_putchar (int c)
 {
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
   return tracer<implementation>::putchar (c);
-#pragma GCC diagnostic pop
 }
 
 void
 micro_os_plus_trace_dump_args (int argc, char* argv[])
 {
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
   tracer<implementation>::dump_args (argc, argv);
-#pragma GCC diagnostic pop
 }
 
 // ----------------------------------------------------------------------------
