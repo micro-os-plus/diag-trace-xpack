@@ -54,12 +54,6 @@
 #include "trace-cpp-api.h"
 #include "trace-c-api.h"
 
-// ============================================================================
-// Templates, inlines & constexpr implementations.
-
-#include "inlines/trace-cpp-api-inlines.h"
-#include "inlines/trace-c-api-inlines.h"
-
 // ----------------------------------------------------------------------------
 
 #endif // MICRO_OS_PLUS_DIAG_TRACE_H_

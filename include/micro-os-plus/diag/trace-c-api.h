@@ -133,6 +133,10 @@ extern "C"
 
 #endif // defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
+// ============================================================================
+// Templates, inlines & constexpr implementations.
+
+#include "inlines/trace-c-api-inlines.h"
 
 // ----------------------------------------------------------------------------
 
