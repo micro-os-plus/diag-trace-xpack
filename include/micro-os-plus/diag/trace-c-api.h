@@ -14,6 +14,19 @@
 
 // ----------------------------------------------------------------------------
 
+/**
+ * @file
+ * @brief C header file with the declarations for the C trace API.
+ *
+ * @details
+ * Empty inline stubs (used when tracing is disabled) are located in
+ * @ref trace-c-api-inlines.h, included at the bottom of this file.
+ * This file is included by `<micro-os-plus/diag/trace.h>`, which
+ * should be used instead of including this file directly.
+ */
+
+// ----------------------------------------------------------------------------
+
 // #include <stdint.h>
 #include <stdarg.h>
 // #include <stdlib.h>
@@ -35,7 +48,7 @@ extern "C"
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
-   * @brief Initialize the trace output channel.
+   * @brief Initialise the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
    * @par Parameters
    *  None.
@@ -169,14 +182,18 @@ extern "C"
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
    * @param [in] argc The number of `argv[]` strings.
    * @param [in] argv An array of pointers to argument strings.
+   * @par Returns
+   *  Nothing.
    *
    * @details
    * Formats and writes the argument list in the form
    * `main(argc=N, argv=["arg0", "arg1", ...])`, followed by a
-   * newline. Intended to be called at the start of `main()` to
-   * record the process arguments in the trace output. Each
-   * argument string is quoted; no escaping is applied to the
-   * string content.
+   * newline. The prefix is always the literal string `"main"`;
+   * for a configurable prefix, use the C++ API
+   * `micro_os_plus::trace::dump_args()`. Intended to be called
+   * at the start of `main()` to record the process arguments in
+   * the trace output. Each argument string is quoted; no escaping
+   * is applied to the string content.
    */
   void
   micro_os_plus_trace_dump_args (int argc, char* argv[]);

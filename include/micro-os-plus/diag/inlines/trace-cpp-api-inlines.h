@@ -61,14 +61,14 @@ namespace micro_os_plus::trace
   namespace detail
   {
 
-    // --------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
     // Out-of-class definitions of the tracer<T> member function
     // templates declared in trace.h. Each is parameterised on the policy
     // class (`implementation`, or any user-defined policy class)
     // and shares no state across policy classes, so tracer<implementation> and
     // tracer<Testing> (or any further user-defined policy class)
     // can coexist in the same binary.
-    // --------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
 
     template <trace_policy T>
     int
@@ -180,11 +180,6 @@ namespace micro_os_plus::trace
         }
     }
 
-    /**
-     * @details
-     * Generally it should match the prototype of `main()`, to simplify
-     * forwarding the parameters.
-     */
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
