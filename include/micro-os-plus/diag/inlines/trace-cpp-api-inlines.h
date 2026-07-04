@@ -130,7 +130,7 @@ namespace micro_os_plus::trace
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-      ssize_t ret = write (s, strlen (s));
+      ssize_t ret = write (s, std::strlen (s));
 #pragma GCC diagnostic pop
       if (ret >= 0)
         {
