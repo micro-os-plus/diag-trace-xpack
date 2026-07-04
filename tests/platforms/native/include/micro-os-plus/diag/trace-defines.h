@@ -8,6 +8,8 @@
 
 // ----------------------------------------------------------------------------
 
+#if defined(MICRO_OS_PLUS_TRACE)
+
 // The portable trace::printf() code.
 #if !defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 #define MICRO_OS_PLUS_DIAG_TRACE_ENABLED
@@ -18,6 +20,8 @@
 #if !defined(MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER)
 #define MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER (512)
 #endif // MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER
+
+#endif // defined(MICRO_OS_PLUS_TRACE)
 
 // ----------------------------------------------------------------------------
 
