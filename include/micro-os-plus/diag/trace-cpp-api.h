@@ -207,6 +207,12 @@ namespace micro_os_plus::trace
        *  None.
        * @par Returns
        *  Nothing.
+       *
+       * @details
+       * Delegates unconditionally to `T::initialise()`. Called
+       * during startup, as early as possible, to enable the trace
+       * channel. The `noexcept` specification mirrors that of the
+       * policy method.
        */
       static void
       initialise (void) noexcept (noexcept (T::initialise ()))
@@ -219,7 +225,13 @@ namespace micro_os_plus::trace
        * @brief Write the given number of bytes to the trace output channel.
        * @param [in] buf An array of bytes.
        * @param [in] nbyte The number of bytes in the array.
-       * @return  The number of characters actually written, or -1 if error.
+       * @return The number of bytes actually written, or -1 if error.
+       *
+       * @details
+       * Delegates unconditionally to `T::write()`. The return value
+       * must reflect the number of bytes actually transferred; a
+       * return value of -1 signals an error. The `noexcept`
+       * specification mirrors that of the policy method.
        */
       static ssize_t
       write (const void* buf,
@@ -235,6 +247,14 @@ namespace micro_os_plus::trace
        *  None.
        * @par Returns
        *  Nothing.
+       *
+       * @details
+       * Delegates unconditionally to `T::flush()`. For buffered
+       * output channels, the policy method must drain any internally
+       * buffered data to the output device. For unbuffered or
+       * character-mode channels (e.g. UART, ITM), the policy method
+       * body can be left empty. The `noexcept` specification mirrors
+       * that of the policy method.
        */
       static void
       flush (void) noexcept (noexcept (T::flush ()))
@@ -247,8 +267,16 @@ namespace micro_os_plus::trace
       /**
        * @ingroup micro-os-plus-diag-trace-cpp-api-main
        * @brief Write a formatted string to the trace output channel.
-       * @param [in] format A null terminate string with the format.
-       * @return A nonnegative number for success.
+       * @param [in] format A null terminated string with the format.
+       * @return The number of bytes written, or -1 if an error occurred.
+       *
+       * @details
+       * Formatting is performed into a fixed-size stack buffer of
+       * `MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER`
+       * bytes (default: 200). Output that exceeds this limit is
+       * silently truncated before being passed to `write()`. The
+       * return value reflects the bytes actually written, not the
+       * number that the format string would have produced.
        */
       static int
       printf (const char* format, ...) noexcept
@@ -258,9 +286,15 @@ namespace micro_os_plus::trace
        * @ingroup micro-os-plus-diag-trace-cpp-api-main
        * @brief Write a formatted variable arguments list to the trace
        * output channel.
-       * @param [in] format A null terminate string with the format.
+       * @param [in] format A null terminated string with the format.
        * @param [in] arguments A variable arguments list.
-       * @return A nonnegative number for success.
+       * @return The number of bytes written, or -1 if an error occurred.
+       *
+       * @details
+       * Equivalent to `printf()`, but accepts a `std::va_list`
+       * instead of a variadic argument list. Subject to the same
+       * fixed-size stack buffer constraint and truncation behaviour.
+       * Typically called by `printf()`.
        */
       static int
       vprintf (const char* format, std::va_list arguments) noexcept;
@@ -269,8 +303,16 @@ namespace micro_os_plus::trace
        * @ingroup micro-os-plus-diag-trace-cpp-api-main
        * @brief Write the string and a line terminator to the trace
        * output channel.
-       * @param [in] s A null terminated string.
-       * @return A nonnegative number for success.
+       * @param [in] s A null terminated string (default: empty string).
+       * @return The total number of bytes written (string + newline),
+       *  or EOF (-1) if an error occurred.
+       *
+       * @details
+       * Writes the characters of @p s followed by a single newline
+       * character (`'\n'`). Unlike the standard C `puts()`, this
+       * function returns the total byte count written. If writing
+       * the newline fails after the string has been written
+       * successfully, EOF is returned.
        */
       static int
       puts (const char* s = "") noexcept;
@@ -278,8 +320,14 @@ namespace micro_os_plus::trace
       /**
        * @ingroup micro-os-plus-diag-trace-cpp-api-main
        * @brief Write the single character to the trace output channel.
-       * @param [in] c A single byte character.
-       * @return The written character.
+       * @param [in] c A single byte character, passed as an `int`.
+       * @return The written character as an `int`, or EOF (-1) if an
+       *  error occurred.
+       *
+       * @details
+       * Converts @p c to `char` and passes it as a one-byte buffer
+       * to `write()`. On success, returns the original value of
+       * @p c; on failure, returns EOF.
        */
       static int
       putchar (int c) noexcept;
@@ -288,8 +336,17 @@ namespace micro_os_plus::trace
        * @ingroup micro-os-plus-diag-trace-cpp-api-extra
        * @brief Send the `argv[]` array to the trace output channel.
        * @param [in] argc The number of `argv[]` strings.
-       * @param [in] argv An array of pointer to arguments.
-       * @param [in] name A null terminate string, default "main".
+       * @param [in] argv An array of pointers to argument strings.
+       * @param [in] name A null terminated string used as the
+       *  function name prefix (default: `"main"`).
+       *
+       * @details
+       * Formats and writes the argument list in the form
+       * `name(argc=N, argv=["arg0", "arg1", ...])`, followed by a
+       * newline. Intended to be called at the start of `main()` to
+       * record the process arguments in the trace output. Each
+       * argument string is quoted; no escaping is applied to the
+       * string content.
        */
       static void
       dump_args (int argc, char* argv[], const char* name = "main") noexcept;

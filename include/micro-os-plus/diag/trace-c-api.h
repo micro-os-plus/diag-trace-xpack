@@ -33,9 +33,6 @@ extern "C"
 
   // --------------------------------------------------------------------------
 
-  /*
-   * Called from startup.
-   */
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
    * @brief Initialize the trace output channel.
@@ -44,6 +41,12 @@ extern "C"
    *  None.
    * @par Returns
    *  Nothing.
+   *
+   * @details
+   * This function is called during startup, as early as possible, to
+   * enable the trace channel. The user must provide a definition of
+   * this function that configures the underlying output device
+   * (e.g. a UART, a semihosting channel, or an ITM port).
    */
   void
   micro_os_plus_trace_initialise (void);
@@ -54,7 +57,15 @@ extern "C"
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
    * @param [in] buf An array of bytes.
    * @param [in] nbyte The number of bytes in the array.
-   * @return  The number of characters actually written, or -1 if error.
+   * @return  The number of bytes actually written, or -1 if error.
+   *
+   * @details
+   * This is the core output primitive. The user must provide a
+   * definition of this function. The return value must reflect the
+   * number of bytes actually transferred to the output device, which
+   * may be less than @p nbyte if the device is full or an error
+   * occurs. A return value of -1 signals an error; any non-negative
+   * value is treated as a byte count by the higher-level functions.
    */
   ssize_t
   micro_os_plus_trace_write (const void* buf, size_t nbyte);
@@ -67,6 +78,14 @@ extern "C"
    *  None.
    * @par Returns
    *  Nothing.
+   *
+   * @details
+   * For buffered output channels, this function must drain any
+   * internally buffered data to the output device. For unbuffered
+   * or character-mode channels (e.g. UART, ITM), the body can be
+   * left empty. No assumptions are made about thread safety or
+   * re-entrancy; the caller is responsible for ensuring that
+   * concurrent calls do not occur.
    */
   void
   micro_os_plus_trace_flush (void);
@@ -75,30 +94,55 @@ extern "C"
    * @ingroup micro-os-plus-diag-trace-c-api-main
    * @brief Write a formatted string to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] format A null terminate string with the format.
-   * @return A nonnegative number for success.
+   * @param [in] format A null terminated string with the format.
+   * @return The number of bytes written, or -1 if an error occurred.
+   *
+   * @details
+   * Formatting is performed into a fixed-size stack buffer of
+   * `MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER`
+   * bytes (default: 200). If the formatted output exceeds this
+   * limit, it is silently truncated before being passed to
+   * `micro_os_plus_trace_write`. The return value reflects the
+   * number of bytes actually written, not the number that the
+   * format string would have produced.
    */
   int
-  micro_os_plus_trace_printf (const char* format, ...);
+  micro_os_plus_trace_printf (const char* format, ...)
+      __attribute__ ((format (printf, 1, 2)));
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
-   * @brief Write a formatted variable arguments list to the trace output
-   * channel.
+   * @brief Write a formatted variable arguments list to the trace
+   * output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] format A null terminate string with the format.
+   * @param [in] format A null terminated string with the format.
    * @param [in] arguments A variable arguments list.
-   * @return A nonnegative number for success.
+   * @return The number of bytes written, or -1 if an error occurred.
+   *
+   * @details
+   * Equivalent to `micro_os_plus_trace_printf`, but accepts a
+   * `va_list` instead of a variadic argument list. Subject to the
+   * same fixed-size stack buffer constraint and truncation behaviour.
+   * Typically called by `micro_os_plus_trace_printf`.
    */
   int
   micro_os_plus_trace_vprintf (const char* format, va_list arguments);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
-   * @brief Write the string and a line terminator to the trace output channel.
+   * @brief Write the string and a line terminator to the trace
+   * output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
    * @param [in] s A null terminated string.
-   * @return A nonnegative number for success.
+   * @return The total number of bytes written (string + newline),
+   *  or EOF (-1) if an error occurred.
+   *
+   * @details
+   * Writes the characters of @p s followed by a single newline
+   * character (`'\n'`). Unlike the standard C `puts()`, this
+   * function returns the total byte count written, not merely a
+   * non-negative indicator. If writing the newline fails after
+   * the string has been written successfully, EOF is returned.
    */
   int
   micro_os_plus_trace_puts (const char* s);
@@ -107,18 +151,32 @@ extern "C"
    * @ingroup micro-os-plus-diag-trace-c-api-main
    * @brief Write the single character to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] c A single byte character.
-   * @return The written character.
+   * @param [in] c A single byte character, passed as an `int`.
+   * @return The written character as an `int`, or EOF (-1) if an
+   *  error occurred.
+   *
+   * @details
+   * Converts @p c to `char` and passes it as a one-byte buffer to
+   * `micro_os_plus_trace_write`. On success, returns the original
+   * value of @p c; on failure, returns EOF.
    */
   int
   micro_os_plus_trace_putchar (int c);
 
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-extra
-   * @brief Write the argv[] array to the trace output channel.
+   * @brief Write the `argv[]` array to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] argc The number of argv[] strings.
-   * @param [in] argv An array of pointer to arguments.
+   * @param [in] argc The number of `argv[]` strings.
+   * @param [in] argv An array of pointers to argument strings.
+   *
+   * @details
+   * Formats and writes the argument list in the form
+   * `main(argc=N, argv=["arg0", "arg1", ...])`, followed by a
+   * newline. Intended to be called at the start of `main()` to
+   * record the process arguments in the trace output. Each
+   * argument string is quoted; no escaping is applied to the
+   * string content.
    */
   void
   micro_os_plus_trace_dump_args (int argc, char* argv[]);

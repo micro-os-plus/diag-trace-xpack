@@ -17,12 +17,12 @@
 
 /**
  * @file
- * @brief C header file with the inline implementations for the
- * `tracer` class template.
+ * @brief C header file with the empty inline stubs for the C trace
+ * API when tracing is disabled.
  *
  * @details
- * Class definitions are located in @ref trace-c-api.h.
- * Inline methods are separated into this file to improve project
+ * Function declarations are located in @ref trace-c-api.h.
+ * The stubs are separated into this file to improve project
  * structure and maintainability.
  */
 
@@ -107,6 +107,6 @@ micro_os_plus_trace_dump_args (int argc, char* argv[])
 
 // ----------------------------------------------------------------------------
 
-#endif // MICRO_OS_PLUS_DIAG_TRACE_CPP_API_INLINES_H_
+#endif // MICRO_OS_PLUS_DIAG_TRACE_C_API_INLINES_H_
 
 // ----------------------------------------------------------------------------
