@@ -35,7 +35,6 @@
 
 // ----------------------------------------------------------------------------
 
-using namespace micro_os_plus;
 using namespace micro_os_plus::trace::detail;
 
 // The C API is always bound to the `tracer<implementation>` policy class;
