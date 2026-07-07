@@ -9,6 +9,22 @@
  * be obtained from https://opensource.org/licenses/mit.
  */
 
+// ----------------------------------------------------------------------------
+
+/**
+ * @file
+ * @brief C++ header file with the declarations for the µOS++ Tracing
+ * Infrastructure.
+ *
+ * @details
+ * Top-level umbrella header; the only file users need to  include directly.
+ *
+ * This header file includes the C++ and C API headers, which define the
+ * functions that can be used to output trace messages.
+ */
+
+// ----------------------------------------------------------------------------
+
 #ifndef MICRO_OS_PLUS_DIAG_TRACE_H_
 #define MICRO_OS_PLUS_DIAG_TRACE_H_
 

@@ -11,6 +11,22 @@
 
 // ----------------------------------------------------------------------------
 
+/**
+ * @file
+ * @brief C++ source file with the definitions for the C++ trace API.
+ *
+ * @details
+ * Definitions for the C++ API functions (`micro_os_plus::trace::printf()`,
+ * etc.) that forward to the corresponding C++ internal
+ * `tracer<implementation>` functions.
+ *
+ * The empty inline stubs (used when tracing is disabled) are located in
+ * @ref trace-cpp-api-inlines.h, included at the bottom of
+ * @ref trace-cpp-api.h.
+
+ */
+// ----------------------------------------------------------------------------
+
 #include <micro-os-plus/diag/trace.h>
 
 // ----------------------------------------------------------------------------
