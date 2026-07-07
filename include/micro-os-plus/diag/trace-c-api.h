@@ -67,7 +67,7 @@ extern "C"
    * This function is called during startup, as early as possible, to
    * enable the trace channel. The user must provide a definition of
    * this function that configures the underlying output device
-   * (e.g. a UART, a semihosting channel, or an ITM port).
+   * (e.g. a semihosting channel, or an ITM port).
    */
   void
   micro_os_plus_trace_initialise (void);
@@ -76,8 +76,8 @@ extern "C"
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
    * @brief Write the given number of bytes to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] buf An array of bytes.
-   * @param [in] nbyte The number of bytes in the array.
+   * @param buf An array of bytes.
+   * @param nbyte The number of bytes in the array.
    * @return  The number of bytes actually written, or -1 if error.
    *
    * @details
@@ -103,7 +103,7 @@ extern "C"
    * @details
    * For buffered output channels, this function must drain any
    * internally buffered data to the output device. For unbuffered
-   * or character-mode channels (e.g. UART, ITM), the body can be
+   * or character-mode channels (e.g. ITM), the body can be
    * left empty. No assumptions are made about thread safety or
    * re-entrancy; the caller is responsible for ensuring that
    * concurrent calls do not occur.
@@ -115,7 +115,8 @@ extern "C"
    * @ingroup micro-os-plus-diag-trace-c-api-main
    * @brief Write a formatted string to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] format A null terminated string with the format.
+   * @param format A null terminated string with the format.
+   * @param ... Additional arguments matching the format specifiers.
    * @return The number of bytes written, or -1 if an error occurred.
    *
    * @details
@@ -136,8 +137,8 @@ extern "C"
    * @brief Write a formatted variable arguments list to the trace
    * output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] format A null terminated string with the format.
-   * @param [in] arguments A variable arguments list.
+   * @param format A null terminated string with the format.
+   * @param arguments A variable arguments list.
    * @return The number of bytes written, or -1 if an error occurred.
    *
    * @details
@@ -154,7 +155,7 @@ extern "C"
    * @brief Write the string and a line terminator to the trace
    * output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] s A null terminated string.
+   * @param s A null terminated string.
    * @return The total number of bytes written (string + newline),
    *  or EOF (-1) if an error occurred.
    *
@@ -172,7 +173,7 @@ extern "C"
    * @ingroup micro-os-plus-diag-trace-c-api-main
    * @brief Write the single character to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] c A single byte character, passed as an `int`.
+   * @param c A single byte character, passed as an `int`.
    * @return The written character as an `int`, or EOF (-1) if an
    *  error occurred.
    *
@@ -188,8 +189,8 @@ extern "C"
    * @ingroup micro-os-plus-diag-trace-c-api-extra
    * @brief Write the `argv[]` array to the trace output channel.
    * @headerfile trace.h <micro-os-plus/diag/trace.h>
-   * @param [in] argc The number of `argv[]` strings.
-   * @param [in] argv An array of pointers to argument strings.
+   * @param argc The number of `argv[]` strings.
+   * @param argv An array of pointers to argument strings.
    * @par Returns
    *  Nothing.
    *

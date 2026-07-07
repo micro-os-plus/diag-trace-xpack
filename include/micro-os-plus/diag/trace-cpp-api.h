@@ -66,10 +66,10 @@
  * - `micro_os_plus::trace::putchar()` / `micro_os_plus_trace_putchar()`
  *
  * The C++ API is implemented as a class template,
- * @ref micro_os_plus::trace::detail::tracer, parameterised on a policy
+ * `micro_os_plus::trace::detail::tracer`, parameterised on a policy
  * class that supplies the low-level primitives. One such policy
  * class is declared here:
- * @ref micro_os_plus::trace::detail::implementation for
+ * `micro_os_plus::trace::detail::implementation` for
  * production use. `tracer<implementation>` is an independent class
  * instantiation: it is already instantiated and is used internally;
  * it shares no mutable state.
@@ -109,7 +109,7 @@ namespace micro_os_plus::trace
 #pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
 #endif
 
-  // Declarations.
+  // Free functions declarations.
 
   /**
    * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
@@ -121,8 +121,9 @@ namespace micro_os_plus::trace
    *
    * @details
    * Thin wrapper over
-   * @ref micro_os_plus::trace::detail::tracer::initialise().
-   * Called during startup to enable the trace channel.
+   * @ref micro_os_plus::trace::detail::tracer::initialise()
+   * "tracer<T>::initialise()". Called during startup to enable the trace
+   * channel.
    */
   void
   initialise (void) noexcept;
@@ -131,13 +132,13 @@ namespace micro_os_plus::trace
    * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
    * @brief Write the given number of bytes to the trace output
    * channel.
-   * @param [in] buf An array of bytes.
-   * @param [in] nbyte The number of bytes in the array.
+   * @param buf An array of bytes.
+   * @param nbyte The number of bytes in the array.
    * @return The number of bytes actually written, or -1 if error.
    *
    * @details
    * Thin wrapper over
-   * @ref micro_os_plus::trace::detail::tracer::write().
+   * @ref micro_os_plus::trace::detail::tracer::write() "tracer<T>::write()".
    */
   ssize_t
   write (const void* buf, std::size_t nbyte) noexcept;
@@ -152,7 +153,7 @@ namespace micro_os_plus::trace
    *
    * @details
    * Thin wrapper over
-   * @ref micro_os_plus::trace::detail::tracer::flush().
+   * @ref micro_os_plus::trace::detail::tracer::flush() "tracer<T>::flush()".
    */
   void
   flush (void) noexcept;
@@ -162,12 +163,13 @@ namespace micro_os_plus::trace
   /**
    * @ingroup micro-os-plus-diag-trace-cpp-api-main
    * @brief Write a formatted string to the trace output channel.
-   * @param [in] format A null terminated string with the format.
+   * @param format A null terminated string with the format.
+   * @param ... Additional arguments matching the format specifiers.
    * @return The number of bytes written, or -1 if an error occurred.
    *
    * @details
    * Thin wrapper over
-   * @ref micro_os_plus::trace::detail::tracer::printf().
+   * @ref micro_os_plus::trace::detail::tracer::printf() "tracer<T>::printf()".
    * Subject to the same fixed-size stack buffer constraint and
    * truncation behaviour.
    */
@@ -178,13 +180,14 @@ namespace micro_os_plus::trace
    * @ingroup micro-os-plus-diag-trace-cpp-api-main
    * @brief Write a formatted variable arguments list to the trace
    * output channel.
-   * @param [in] format A null terminated string with the format.
-   * @param [in] arguments A variable arguments list.
+   * @param format A null terminated string with the format.
+   * @param arguments A variable arguments list.
    * @return The number of bytes written, or -1 if an error occurred.
    *
    * @details
    * Thin wrapper over
-   * @ref micro_os_plus::trace::detail::tracer::vprintf().
+   * @ref micro_os_plus::trace::detail::tracer::vprintf()
+   * "tracer<T>::vprintf()".
    */
   int
   vprintf (const char* format, std::va_list arguments) noexcept;
@@ -193,13 +196,13 @@ namespace micro_os_plus::trace
    * @ingroup micro-os-plus-diag-trace-cpp-api-main
    * @brief Write the string and a line terminator to the trace
    * output channel.
-   * @param [in] s A null terminated string (default: empty string).
+   * @param s A null terminated string (default: empty string).
    * @return The total number of bytes written (string + newline),
    *  or EOF (-1) if an error occurred.
    *
    * @details
    * Thin wrapper over
-   * @ref micro_os_plus::trace::detail::tracer::puts().
+   * @ref micro_os_plus::trace::detail::tracer::puts() "tracer<T>::puts()".
    */
   int
   puts (const char* s = "") noexcept;
@@ -207,13 +210,14 @@ namespace micro_os_plus::trace
   /**
    * @ingroup micro-os-plus-diag-trace-cpp-api-main
    * @brief Write the single character to the trace output channel.
-   * @param [in] c A single byte character, passed as an `int`.
+   * @param c A single byte character, passed as an `int`.
    * @return The written character as an `int`, or EOF (-1) if an
    *  error occurred.
    *
    * @details
    * Thin wrapper over
-   * @ref micro_os_plus::trace::detail::tracer::putchar().
+   * @ref micro_os_plus::trace::detail::tracer::putchar()
+   * "tracer<T>::putchar()".
    */
   int
   putchar (int c) noexcept;
@@ -221,16 +225,17 @@ namespace micro_os_plus::trace
   /**
    * @ingroup micro-os-plus-diag-trace-cpp-api-extra
    * @brief Send the `argv[]` array to the trace output channel.
-   * @param [in] argc The number of `argv[]` strings.
-   * @param [in] argv An array of pointers to argument strings.
-   * @param [in] name A null terminated string used as the
+   * @param argc The number of `argv[]` strings.
+   * @param argv An array of pointers to argument strings.
+   * @param name A null terminated string used as the
    *  function name prefix (default: `"main"`).
    * @par Returns
    *  Nothing.
    *
    * @details
    * Thin wrapper over
-   * @ref micro_os_plus::trace::detail::tracer::dump_args().
+   * @ref micro_os_plus::trace::detail::tracer::dump_args()
+   * "tracer<T>::dump_args()".
    */
   void
   dump_args (int argc, char* argv[], const char* name = "main") noexcept;
@@ -248,16 +253,28 @@ namespace micro_os_plus::trace
 {
 #pragma GCC diagnostic push
 #if defined(__clang__)
-// #pragma clang diagnostic ignored "-Wpre-c++17-compat"
 #pragma clang diagnostic ignored "-Wc++98-compat"
 #endif
 
   // --------------------------------------------------------------------------
 
+  /**
+   * @brief Implementation details namespace.
+   * @details
+   * The `detail` namespace contains internal implementation components
+   * that are not part of the public API. It houses the `tracer` class
+   * template and the `implementation` policy class, along with the
+   * `trace_policy` concept used to constrain policy types.
+   *
+   * User code should not reference this namespace directly. The public
+   * interface is the set of free functions in the enclosing
+   * `micro_os_plus::trace` namespace.
+   */
   namespace detail
   {
     /**
      * @brief Policy class for the production trace instance.
+     * @headerfile trace.h <micro-os-plus/diag/trace.h>
      * @details
      * The user must provide a definition of `initialise()`, `write()`,
      * and `flush()` for this class (typically in a single .cpp file,
@@ -273,7 +290,6 @@ namespace micro_os_plus::trace
     {
     public:
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
        * @brief Initialise the trace output channel.
        * @par Parameters
        *  None.
@@ -283,17 +299,16 @@ namespace micro_os_plus::trace
        * @details
        * The user must provide a definition of this method, called
        * once during startup to configure the underlying output
-       * device (e.g. a UART, semihosting channel, or ITM port).
+       * device (e.g. a semihosting channel, or ITM port).
        */
       static void
       initialise (void) noexcept;
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
        * @brief Write the given number of bytes to the trace output
        * channel.
-       * @param [in] buf An array of bytes.
-       * @param [in] nbyte The number of bytes in the array.
+       * @param buf An array of bytes.
+       * @param nbyte The number of bytes in the array.
        * @return The number of bytes actually transferred, or -1 if
        *  error. May be less than @p nbyte if the device is full.
        *
@@ -306,7 +321,6 @@ namespace micro_os_plus::trace
       write (const void* buf, std::size_t nbyte) noexcept;
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
        * @brief Flush the trace output channel.
        * @par Parameters
        *  None.
@@ -317,7 +331,7 @@ namespace micro_os_plus::trace
        * The user must provide a definition of this method. For
        * buffered output channels, it must drain any internally
        * buffered data to the output device. For unbuffered or
-       * character-mode channels (e.g. UART, ITM), the body can
+       * character-mode channels (e.g. ITM), the body can
        * be left empty.
        */
       static void
@@ -353,7 +367,6 @@ namespace micro_os_plus::trace
     // ------------------------------------------------------------------------
 
     /**
-     * @ingroup micro-os-plus-diag-trace-cpp-api-main
      * @brief Tracing API bound to a given policy class.
      * @headerfile trace.h <micro-os-plus/diag/trace.h>
      * @tparam T Policy class providing the static `initialise()`,
@@ -366,15 +379,29 @@ namespace micro_os_plus::trace
      * methods with no shared state, so `tracer<implementation>`
      * (or any further user-defined policy class)
      * can coexist in the same translation unit and binary.
+     *
+     * The main reason for using a class template rather than a namespace is
+     * that it allows the policy class to be a template parameter, so that
+     * multiple independent instances can coexist in the same binary, each
+     * bound to a different policy class. This is used in testing, where a
+     * `testing_implementation` policy class is defined to capture the output
+     * for verification.
      */
     template <trace_policy T>
     class tracer
     {
     public:
+      /**
+       * @brief Deleted default constructor.
+       * @details
+       * `tracer` is a purely static utility class; all methods are
+       * static and no instance is ever created. The default
+       * constructor is explicitly deleted to enforce this intent and
+       * prevent accidental instantiation.
+       */
       tracer () = delete;
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
        * @brief Initialise the trace output channel.
        * @par Parameters
        *  None.
@@ -382,7 +409,9 @@ namespace micro_os_plus::trace
        *  Nothing.
        *
        * @details
-       * Delegates unconditionally to `T::initialise()`. Called
+       * Delegates unconditionally to `T::initialise()`.
+       *
+       * Called
        * during startup, as early as possible, to enable the trace
        * channel. The `noexcept` specification mirrors that of the
        * policy method.
@@ -394,14 +423,15 @@ namespace micro_os_plus::trace
       }
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
        * @brief Write the given number of bytes to the trace output channel.
-       * @param [in] buf An array of bytes.
-       * @param [in] nbyte The number of bytes in the array.
+       * @param buf An array of bytes.
+       * @param nbyte The number of bytes in the array.
        * @return The number of bytes actually written, or -1 if error.
        *
        * @details
-       * Delegates unconditionally to `T::write()`. The return value
+       * Delegates unconditionally to `T::write()`.
+       *
+       * The return value
        * must reflect the number of bytes actually transferred; a
        * return value of -1 signals an error. The `noexcept`
        * specification mirrors that of the policy method.
@@ -414,7 +444,6 @@ namespace micro_os_plus::trace
       }
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-implementation
        * @brief Flush the trace output channel.
        * @par Parameters
        *  None.
@@ -422,10 +451,12 @@ namespace micro_os_plus::trace
        *  Nothing.
        *
        * @details
-       * Delegates unconditionally to `T::flush()`. For buffered
+       * Delegates unconditionally to `T::flush()`.
+       *
+       * For buffered
        * output channels, the policy method must drain any internally
        * buffered data to the output device. For unbuffered or
-       * character-mode channels (e.g. UART, ITM), the policy method
+       * character-mode channels (e.g. ITM), the policy method
        * body can be left empty. The `noexcept` specification mirrors
        * that of the policy method.
        */
@@ -438,9 +469,9 @@ namespace micro_os_plus::trace
       // ----------------------------------------------------------------------
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-main
        * @brief Write a formatted string to the trace output channel.
-       * @param [in] format A null terminated string with the format.
+       * @param format A null terminated string with the format.
+       * @param ... Additional arguments matching the format specifiers.
        * @return The number of bytes written, or -1 if an error occurred.
        *
        * @details
@@ -456,11 +487,10 @@ namespace micro_os_plus::trace
           __attribute__ ((format (printf, 1, 2)));
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-main
        * @brief Write a formatted variable arguments list to the trace
        * output channel.
-       * @param [in] format A null terminated string with the format.
-       * @param [in] arguments A variable arguments list.
+       * @param format A null terminated string with the format.
+       * @param arguments A variable arguments list.
        * @return The number of bytes written to the output channel,
        *  or -1 if an error occurred.
        *
@@ -477,10 +507,9 @@ namespace micro_os_plus::trace
       vprintf (const char* format, std::va_list arguments) noexcept;
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-main
        * @brief Write the string and a line terminator to the trace
        * output channel.
-       * @param [in] s A null terminated string (default: empty string).
+       * @param s A null terminated string (default: empty string).
        * @return The total number of bytes written (string + newline),
        *  or EOF (-1) if an error occurred.
        *
@@ -495,9 +524,8 @@ namespace micro_os_plus::trace
       puts (const char* s = "") noexcept;
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-main
        * @brief Write the single character to the trace output channel.
-       * @param [in] c A single byte character, passed as an `int`.
+       * @param c A single byte character, passed as an `int`.
        * @return The written character as an `int`, or EOF (-1) if an
        *  error occurred.
        *
@@ -510,11 +538,10 @@ namespace micro_os_plus::trace
       putchar (int c) noexcept;
 
       /**
-       * @ingroup micro-os-plus-diag-trace-cpp-api-extra
        * @brief Send the `argv[]` array to the trace output channel.
-       * @param [in] argc The number of `argv[]` strings.
-       * @param [in] argv An array of pointers to argument strings.
-       * @param [in] name A null terminated string used as the
+       * @param argc The number of `argv[]` strings.
+       * @param argv An array of pointers to argument strings.
+       * @param name A null terminated string used as the
        *  function name prefix (default: `"main"`).
        * @par Returns
        *  Nothing.
