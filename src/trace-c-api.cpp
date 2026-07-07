@@ -41,7 +41,7 @@ micro_os_plus_trace_initialise (void)
 }
 
 ssize_t
-micro_os_plus_trace_write (const void* buf, std::size_t nbyte)
+micro_os_plus_trace_write (const void* buf, size_t nbyte)
 {
   return tracer<implementation>::write (buf, nbyte);
 }
