@@ -9,9 +9,6 @@
  * be obtained from https://opensource.org/licenses/mit.
  */
 
-#ifndef MICRO_OS_PLUS_DIAG_TRACE_C_API_H_
-#define MICRO_OS_PLUS_DIAG_TRACE_C_API_H_
-
 // ----------------------------------------------------------------------------
 
 /**
@@ -24,6 +21,17 @@
  * This file is included by `<micro-os-plus/diag/trace.h>`, which
  * should be used instead of including this file directly.
  */
+
+// ----------------------------------------------------------------------------
+
+#if !defined(MICRO_OS_PLUS_DIAG_TRACE_H_)
+#error "Do not include this file directly; use <micro-os-plus/diag/trace.h>."
+#endif // MICRO_OS_PLUS_DIAG_TRACE_H_
+
+// ----------------------------------------------------------------------------
+
+#ifndef MICRO_OS_PLUS_DIAG_TRACE_C_API_H_
+#define MICRO_OS_PLUS_DIAG_TRACE_C_API_H_
 
 // ----------------------------------------------------------------------------
 

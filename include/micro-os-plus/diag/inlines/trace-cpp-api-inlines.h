@@ -11,10 +11,6 @@
 
 // ----------------------------------------------------------------------------
 
-#if !defined(MICRO_OS_PLUS_DIAG_TRACE_H_)
-#error "Do not include this file directly; use <micro-os-plus/diag/trace.h>."
-#endif // MICRO_OS_PLUS_DIAG_TRACE_H_
-
 /**
  * @file
  * @brief C++ header file with the inline implementations for the
@@ -25,6 +21,14 @@
  * Inline methods are separated into this file to improve project
  * structure and maintainability.
  */
+
+// ----------------------------------------------------------------------------
+
+#if !defined(MICRO_OS_PLUS_DIAG_TRACE_H_)
+#error "Do not include this file directly; use <micro-os-plus/diag/trace.h>."
+#endif // MICRO_OS_PLUS_DIAG_TRACE_H_
+
+// ----------------------------------------------------------------------------
 
 #ifndef MICRO_OS_PLUS_DIAG_TRACE_CPP_API_INLINES_H_
 #define MICRO_OS_PLUS_DIAG_TRACE_CPP_API_INLINES_H_
