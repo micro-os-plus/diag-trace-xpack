@@ -9,13 +9,14 @@ A source code library with the µOS++ trace::printf() tracing infrastructure.
 
 ## Project documentation
 
-For information on how to install and use this project, please refer to the
+For information on how to use this project, please refer to the
 [project website](https://micro-os-plus.github.io/diag-trace-xpack/).
 
 ## Project source
 
 The source code of the current release is available on
-[GitHub tag v4.2.3 tree](https://github.com/micro-os-plus/diag-trace-xpack/tree/v4.2.3).
+GitHub as [micro-os-plus/diag-trace-xpack](https://github.com/micro-os-plus/diag-trace-xpack),
+the [v4.2.3](https://github.com/micro-os-plus/diag-trace-xpack/tree/v4.2.3) tree.
 
 ## License
 
