@@ -7,9 +7,14 @@
     "generate-website-commons": "bash node_modules/@xpack/docusaurus-template-liquid/maintenance-scripts/generate-website-commons.sh --micro-os-plus",
     "npm-outdated": "npm outdated",
     "npm-install": "npm install",
-    "npm-link-helpers": "npm link @xpack/docusaurus-template-liquid @xpack/npm-packages-helper @micro-os-plus/build-helper",
+    "npm-link-helpers": "npm link @xpack/docusaurus-template-liquid @xpack/npm-packages-helper",
     "npm-ci": "npm ci",
     "deep-clean": "del-cli .docusaurus build node_modules package-lock.json",
+    "doxygen": "del-cli static/doxygen doxygen/xml; (cd doxygen; doxygen config.doxyfile)",
+    "browse-doxygen": "open-cli static/doxygen/index.html",
+    "convert-doxygen": "doxygen2docusaurus",
+    "generate-website-doxygen": "npm run doxygen && npm run convert-doxygen",
+    "check-urls": "blc https://micro-os-plus.github.io/diag-trace-xpack/ --recursive --ordered --filter-level 2 --exclude 'https://twitter.com*'",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
@@ -19,15 +24,11 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "generate-typedoc": "docusaurus generate-typedoc",
-    "typecheck": "tsc",
     "import-website-releases": "bash node_modules/@xpack/docusaurus-template-liquid/maintenance-scripts/import-releases.sh --micro-os-plus",
     "generate-website-releases-from-tags": "bash node_modules/@xpack/docusaurus-template-liquid/maintenance-scripts/generate-releases-for-tags.sh --micro-os-plus",
     "generate-website-blog-post": "bash node_modules/@xpack/docusaurus-template-liquid/maintenance-scripts/generate-blog-post.sh --micro-os-plus",
     "generate-dependencies-details": "bash node_modules/@xpack/docusaurus-template-liquid/maintenance-scripts/generate-dependencies-details.sh --micro-os-plus",
-    "doxygen": "del-cli static/reference doxygen/xml; (cd doxygen; doxygen config.doxyfile)",
-    "browser": "open-cli static/reference/index.html",
-    "check-urls": "blc https://micro-os-plus.github.io/diag-trace-xpack/ --recursive --ordered --filter-level 2 --exclude 'https://twitter.com*'"
+    "clean": "del-cli .docusaurus build"
   },
   "author": {
     "name": "Liviu Ionescu",
@@ -36,17 +37,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@docusaurus/core": "3.6.3",
-    "@docusaurus/plugin-client-redirects": "3.6.3",
-    "@docusaurus/plugin-ideal-image": "3.6.3",
-    "@docusaurus/preset-classic": "3.6.3",
-    "@docusaurus/theme-search-algolia": "3.6.3",
-    "@mdx-js/react": "^3.1.0",
+    "@docusaurus/core": "3.10.1",
+    "@docusaurus/plugin-client-redirects": "3.10.1",
+    "@docusaurus/plugin-ideal-image": "3.10.1",
+    "@docusaurus/preset-classic": "3.10.1",
+    "@docusaurus/theme-search-algolia": "3.10.1",
+    "@mdx-js/react": "^3.1.1",
     "clean-css": "~5.3.3",
-    "clsx": "^2.1.1",
-    "prism-react-renderer": "^2.4.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "clsx": "^2.0.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "@docusaurus/faster": "3.10.1"
   },
   "$devDependenciesUrls": [
     "https://www.npmjs.com/package/del-cli",
@@ -55,17 +57,20 @@
     "https://www.npmjs.com/package/typescript"
   ],
   "devDependencies": {
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "open-cli": "^8.0.0",
     "broken-link-checker": "^0.7.8",
     "@jothepro/doxygen-awesome-css": "github:jothepro/doxygen-awesome-css#v2.3.4",
     "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack#xpack-development",
-    "@docusaurus/module-type-aliases": "3.6.3",
-    "@docusaurus/tsconfig": "3.6.3",
-    "@docusaurus/types": "3.6.3",
+    "@docusaurus/module-type-aliases": "3.10.1",
+    "@docusaurus/tsconfig": "3.10.1",
+    "@docusaurus/types": "3.10.1",
     "json": "^11.0.0",
-    "liquidjs": "^10.20.1",
-    "typescript": "~5.6.3"
+    "liquidjs": "^10.25.0",
+    "typescript": "~5.9.3",
+    "@xpack/docusaurus-template-liquid": "github:xpack/docusaurus-template-liquid",
+    "@xpack/npm-packages-helper": "github:xpack/npm-packages-helper",
+    "@xpack/doxygen2docusaurus": "^2.2.0"
   },
   "browserslist": {
     "production": [
@@ -79,16 +84,13 @@
       "last 5 safari version"
     ]
   },
-  "websiteConfig": {
-    "tagline": "A C/C++ source code library with the µOS++ tracing infrastructure",
-    "hasDoxygenReference": "true",
-    "skipAlgolia": "true",
-    "isXpmDependency": "true",
-    "customInstallLabel": "Integration Guide",
-    "hasCustomUser": "true",
-    "customUserTitle": "How to use the µOS++ Tracing Infrastructure"
-  },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=20.0"
+  },
+  "$dependenciesUrls": {
+    "del-cli": "https://www.npmjs.com/package/del-cli",
+    "json": "https://www.npmjs.com/package/json",
+    "liquidjs": "https://www.npmjs.com/package/liquidjs",
+    "typescript": "https://www.npmjs.com/package/typescript"
   }
 }

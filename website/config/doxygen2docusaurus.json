@@ -1,0 +1,24 @@
+{
+  "doxygenXmlInputFolderPath": "doxygen/xml",
+  "docsFolderPath": "docs",
+  "apiFolderPath": "api",
+  "baseUrl": "/diag-trace-xpack/",
+  "docsBaseUrl": "docs",
+  "apiBaseUrl": "api",
+  "imagesFolderPath": "assets/images/doxygen",
+  "$compatibilityRedirectsOutputFolderPath": "",
+  "mainPageTitle": "",
+  "sidebarCategoryFilePath": "sidebar-category-doxygen.json",
+  "sidebarCategoryLabel": "API Reference (Doxygen)",
+  "navbarFilePath": "docusaurus-config-navbar-doxygen.json",
+  "navbarLabel": "API Reference",
+  "customCssFilePath": "src/css/custom-doxygen2docusaurus.css",
+  "verbose": false,
+  "debug": false,
+  "suggestToDoDescriptions": true,
+  "listPagesAtTop": true,
+  "renderProgramListings": true,
+  "renderProgramListingInline": true,
+  "originalPagesNote": "For comparison, the original Doxygen html pages continue to be available via the <a href=\"pathname:///doxygen/topics.html\">.../doxygen/*.html</b></a> URLs."
+}
+        

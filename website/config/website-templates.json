@@ -1,0 +1,10 @@
+{
+  "customInstallLabel": "Integration Guide",
+  "customUserTitle": "How to use the µOS++ Tracing Infrastructure",
+  "tagline": "A C/C++ source code library with the µOS++ tracing infrastructure",
+  "hasCustomUser": true,
+  "hasDoxygenDocusaurusApi": true,
+  "hasDoxygenReference": true,
+  "isXpmDependency": true,
+  "skipAlgolia": true
+}

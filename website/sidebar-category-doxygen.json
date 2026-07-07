@@ -1,0 +1,439 @@
+{
+  "type": "category",
+  "label": "API Reference (Doxygen)",
+  "link": {
+    "type": "doc",
+    "id": "api/index"
+  },
+  "collapsed": false,
+  "items": [
+    {
+      "type": "category",
+      "label": "µOS++ Topics",
+      "link": {
+        "type": "doc",
+        "id": "api/groups/micro-os-plus"
+      },
+      "collapsed": true,
+      "items": [
+        {
+          "type": "category",
+          "label": "µOS++ Tracing Infrastructure",
+          "link": {
+            "type": "doc",
+            "id": "api/groups/micro-os-plus-diag-trace"
+          },
+          "collapsed": true,
+          "items": [
+            {
+              "type": "category",
+              "label": "C++ API",
+              "link": {
+                "type": "doc",
+                "id": "api/groups/micro-os-plus-diag-trace-cpp-api"
+              },
+              "collapsed": true,
+              "items": [
+                {
+                  "type": "doc",
+                  "label": "Implementation functions",
+                  "id": "api/groups/micro-os-plus-diag-trace-cpp-api-implementation"
+                },
+                {
+                  "type": "doc",
+                  "label": "Main functions",
+                  "id": "api/groups/micro-os-plus-diag-trace-cpp-api-main"
+                },
+                {
+                  "type": "doc",
+                  "label": "Utility functions",
+                  "id": "api/groups/micro-os-plus-diag-trace-cpp-api-extra"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "C API",
+              "link": {
+                "type": "doc",
+                "id": "api/groups/micro-os-plus-diag-trace-c-api"
+              },
+              "collapsed": true,
+              "items": [
+                {
+                  "type": "doc",
+                  "label": "Implementation functions",
+                  "id": "api/groups/micro-os-plus-diag-trace-c-api-implementation"
+                },
+                {
+                  "type": "doc",
+                  "label": "Main functions",
+                  "id": "api/groups/micro-os-plus-diag-trace-c-api-main"
+                },
+                {
+                  "type": "doc",
+                  "label": "Utility functions",
+                  "id": "api/groups/micro-os-plus-diag-trace-c-api-extra"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Namespaces",
+      "link": {
+        "type": "doc",
+        "id": "api/indices/namespaces/index"
+      },
+      "collapsed": true,
+      "items": [
+        {
+          "type": "category",
+          "label": "Hierarchy",
+          "link": {
+            "type": "doc",
+            "id": "api/indices/namespaces/index"
+          },
+          "collapsed": true,
+          "items": [
+            {
+              "type": "category",
+              "label": "micro_os_plus",
+              "link": {
+                "type": "doc",
+                "id": "api/namespaces/micro-os-plus"
+              },
+              "className": "doxyEllipsis",
+              "collapsed": true,
+              "items": [
+                {
+                  "type": "category",
+                  "label": "trace",
+                  "link": {
+                    "type": "doc",
+                    "id": "api/namespaces/micro-os-plus-trace"
+                  },
+                  "className": "doxyEllipsis",
+                  "collapsed": true,
+                  "items": [
+                    {
+                      "type": "doc",
+                      "label": "detail",
+                      "id": "api/namespaces/micro-os-plus-trace-detail"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "label": "All",
+          "id": "api/indices/namespaces/all"
+        },
+        {
+          "type": "doc",
+          "label": "Concepts",
+          "id": "api/indices/namespaces/concepts"
+        },
+        {
+          "type": "doc",
+          "label": "Classes",
+          "id": "api/indices/namespaces/classes"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concepts",
+      "link": {
+        "type": "doc",
+        "id": "api/indices/concepts/index"
+      },
+      "collapsed": true,
+      "items": [
+        {
+          "type": "category",
+          "label": "Hierarchy",
+          "link": {
+            "type": "doc",
+            "id": "api/indices/concepts/index"
+          },
+          "collapsed": true,
+          "items": [
+            {
+              "type": "category",
+              "label": "micro_os_plus",
+              "link": {
+                "type": "doc",
+                "id": "api/namespaces/micro-os-plus"
+              },
+              "className": "doxyEllipsis",
+              "collapsed": true,
+              "items": [
+                {
+                  "type": "category",
+                  "label": "trace",
+                  "link": {
+                    "type": "doc",
+                    "id": "api/namespaces/micro-os-plus-trace"
+                  },
+                  "className": "doxyEllipsis",
+                  "collapsed": true,
+                  "items": [
+                    {
+                      "type": "category",
+                      "label": "detail",
+                      "link": {
+                        "type": "doc",
+                        "id": "api/namespaces/micro-os-plus-trace-detail"
+                      },
+                      "className": "doxyEllipsis",
+                      "collapsed": true,
+                      "items": [
+                        {
+                          "type": "category",
+                          "label": "trace_policy",
+                          "link": {
+                            "type": "doc",
+                            "id": "api/concepts/micro-os-plus-trace-detail-trace-policy"
+                          },
+                          "collapsed": true,
+                          "items": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "label": "All",
+          "id": "api/indices/concepts/all"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Classes",
+      "link": {
+        "type": "doc",
+        "id": "api/indices/classes/index"
+      },
+      "collapsed": true,
+      "items": [
+        {
+          "type": "category",
+          "label": "Hierarchy",
+          "link": {
+            "type": "doc",
+            "id": "api/indices/classes/index"
+          },
+          "collapsed": true,
+          "items": [
+            {
+              "type": "doc",
+              "label": "implementation",
+              "className": "doxyEllipsis",
+              "id": "api/classes/micro-os-plus-trace-detail-implementation"
+            },
+            {
+              "type": "doc",
+              "label": "tracer<T>",
+              "className": "doxyEllipsis",
+              "id": "api/classes/micro-os-plus-trace-detail-tracer"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "label": "All",
+          "id": "api/indices/classes/all"
+        },
+        {
+          "type": "doc",
+          "label": "Classes",
+          "id": "api/indices/classes/classes"
+        },
+        {
+          "type": "doc",
+          "label": "Functions",
+          "id": "api/indices/classes/functions"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Files",
+      "link": {
+        "type": "doc",
+        "id": "api/indices/files/index"
+      },
+      "collapsed": true,
+      "items": [
+        {
+          "type": "category",
+          "label": "Hierarchy",
+          "link": {
+            "type": "doc",
+            "id": "api/indices/files/index"
+          },
+          "collapsed": true,
+          "items": [
+            {
+              "type": "category",
+              "label": "include",
+              "link": {
+                "type": "doc",
+                "id": "api/folders/include"
+              },
+              "className": "doxyEllipsis",
+              "collapsed": true,
+              "items": [
+                {
+                  "type": "category",
+                  "label": "micro-os-plus",
+                  "link": {
+                    "type": "doc",
+                    "id": "api/folders/include-micro-os-plus"
+                  },
+                  "className": "doxyEllipsis",
+                  "collapsed": true,
+                  "items": [
+                    {
+                      "type": "category",
+                      "label": "diag",
+                      "link": {
+                        "type": "doc",
+                        "id": "api/folders/include-micro-os-plus-diag"
+                      },
+                      "className": "doxyEllipsis",
+                      "collapsed": true,
+                      "items": [
+                        {
+                          "type": "category",
+                          "label": "inlines",
+                          "link": {
+                            "type": "doc",
+                            "id": "api/folders/include-micro-os-plus-diag-inlines"
+                          },
+                          "className": "doxyEllipsis",
+                          "collapsed": true,
+                          "items": [
+                            {
+                              "type": "doc",
+                              "label": "trace-c-api-inlines.h",
+                              "className": "doxyEllipsis",
+                              "id": "api/files/include-micro-os-plus-diag-inlines-trace-c-api-inlines-h"
+                            },
+                            {
+                              "type": "doc",
+                              "label": "trace-cpp-api-inlines.h",
+                              "className": "doxyEllipsis",
+                              "id": "api/files/include-micro-os-plus-diag-inlines-trace-cpp-api-inlines-h"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "doc",
+                          "label": "trace-c-api.h",
+                          "className": "doxyEllipsis",
+                          "id": "api/files/include-micro-os-plus-diag-trace-c-api-h"
+                        },
+                        {
+                          "type": "doc",
+                          "label": "trace-cpp-api.h",
+                          "className": "doxyEllipsis",
+                          "id": "api/files/include-micro-os-plus-diag-trace-cpp-api-h"
+                        },
+                        {
+                          "type": "doc",
+                          "label": "trace.h",
+                          "className": "doxyEllipsis",
+                          "id": "api/files/include-micro-os-plus-diag-trace-h"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "src",
+              "link": {
+                "type": "doc",
+                "id": "api/folders/src"
+              },
+              "className": "doxyEllipsis",
+              "collapsed": true,
+              "items": [
+                {
+                  "type": "doc",
+                  "label": "trace-c-api.cpp",
+                  "className": "doxyEllipsis",
+                  "id": "api/files/src-trace-c-api-cpp"
+                },
+                {
+                  "type": "doc",
+                  "label": "trace-cpp-api.cpp",
+                  "className": "doxyEllipsis",
+                  "id": "api/files/src-trace-cpp-api-cpp"
+                }
+              ]
+            },
+            {
+              "type": "doc",
+              "label": "top-common.h",
+              "className": "doxyEllipsis",
+              "id": "api/files/top-common-h"
+            },
+            {
+              "type": "doc",
+              "label": "topics.h",
+              "className": "doxyEllipsis",
+              "id": "api/files/topics-h"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "label": "All",
+          "id": "api/indices/files/all"
+        },
+        {
+          "type": "doc",
+          "label": "Concepts",
+          "id": "api/indices/files/concepts"
+        },
+        {
+          "type": "doc",
+          "label": "Classes",
+          "id": "api/indices/files/classes"
+        },
+        {
+          "type": "doc",
+          "label": "Namespaces",
+          "id": "api/indices/files/namespaces"
+        },
+        {
+          "type": "doc",
+          "label": "Functions",
+          "id": "api/indices/files/functions"
+        },
+        {
+          "type": "doc",
+          "label": "Macro Definitions",
+          "id": "api/indices/files/defines"
+        }
+      ]
+    }
+  ]
+}
