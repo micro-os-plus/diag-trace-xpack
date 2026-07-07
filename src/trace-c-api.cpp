@@ -19,13 +19,6 @@
 
 // ----------------------------------------------------------------------------
 
-#if defined(__clang__)
-// #pragma clang diagnostic ignored "-Wunknown-warning-option"
-// #pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
-#endif
-
-// ----------------------------------------------------------------------------
-
 using namespace micro_os_plus;
 using namespace micro_os_plus::trace::detail;
 
