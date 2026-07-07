@@ -1,0 +1,16 @@
+@defgroup micro-os-plus-diag-trace µOS++ Tracing Infrastructure
+@brief Diagnostic trace output channel for µOS++ applications.
+
+@details
+The **µOS++ Tracing Infrastructure** library facilitates the output of 
+trace messages, a widely utilised diagnostic technique during debugging. 
+A notable example is the `trace::printf()` function.
+
+The core implementation is developed in C++, complemented by a minimal 
+C wrapper layer.
+
+The functions are categorised into three distinct groups:
+- Functions that must be implemented by the user to define the channel 
+  for transmitting trace messages from the target.
+- Core tracing functions.
+- Auxiliary utility functions.

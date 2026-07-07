@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>The µOS++ Tracing Infrastructure</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The <bold>µOS++ Tracing Infrastructure</bold> (<computeroutput>@micro-os-plus/diag-trace</computeroutput>) is a lightweight, header-only-friendly C++20 library that provides a dedicated diagnostic output channel for embedded and bare-metal applications. It is part of the broader <ulink url="https://micro-os-plus.github.io/">µOS++ project</ulink>.</para>
+<para>The library exposes an API that closely mirrors the standard C output functions — <computeroutput>printf()</computeroutput>, <computeroutput>puts()</computeroutput>, and <computeroutput>putchar()</computeroutput> — but routes all output through an independent, user-supplied back-end rather than through the standard library&apos;s <computeroutput>stdout</computeroutput>. This separation keeps diagnostic traffic out of the normal I/O path, which is particularly valuable on targets where <computeroutput>stdout</computeroutput> is not available or is connected to application-level data streams.</para>
+<para>The C++ API is built around the <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">micro_os_plus::trace::detail::tracer</ref></computeroutput> class template, parameterised on a <emphasis>policy</emphasis> class that supplies three static primitives: <computeroutput>initialise()</computeroutput>, <computeroutput>write()</computeroutput>, and <computeroutput>flush()</computeroutput>. A default policy, <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">micro_os_plus::trace::detail::implementation</ref></computeroutput>, is declared for production use. The free functions in the <computeroutput><ref refid="namespacemicro__os__plus_1_1trace" kindref="compound">micro_os_plus::trace</ref></computeroutput> namespace — <computeroutput>trace::printf()</computeroutput>, <computeroutput>trace::puts()</computeroutput>, <computeroutput>trace::putchar()</computeroutput>, and so on — are thin wrappers over this default instantiation. A compatible C API, prefixed with <computeroutput>micro_os_plus_trace_</computeroutput>, is also provided for use from plain C translation units.</para>
+<para>Trace support is activated at compile time by defining the <computeroutput>MICRO_OS_PLUS_DIAG_TRACE_ENABLED</computeroutput> preprocessor macro. When the macro is absent, every trace call is replaced by an empty inline function, so application code never needs to be surrounded by <computeroutput>#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</computeroutput> guards. The trade-off is that the trace header must always be included, but this is a minor inconvenience compared with the readability benefit of unconditional call sites.</para>
+<para>To integrate the library into a project, the developer must provide a single translation unit that implements the three static methods of the chosen policy class. Ready-made implementations for common targets — ARM semihosting, Arm ITM, SEGGER RTT, and POSIX file descriptors — are available as separate xPack components.  </para>
+    </detaileddescription>
+    <location file="topics.h"/>
+  </compounddef>
+</doxygen>

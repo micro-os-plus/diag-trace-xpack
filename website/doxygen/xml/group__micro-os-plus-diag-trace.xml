@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="group__micro-os-plus-diag-trace" kind="group">
+    <compoundname>micro-os-plus-diag-trace</compoundname>
+    <title>µOS++ Tracing Infrastructure</title>
+    <innergroup refid="group__micro-os-plus-diag-trace-cpp-api">C++ API</innergroup>
+    <innergroup refid="group__micro-os-plus-diag-trace-c-api">C API</innergroup>
+    <briefdescription>
+<para>Diagnostic trace output channel for µOS++ applications. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <bold>µOS++ Tracing Infrastructure</bold> library facilitates the output of trace messages, a widely utilised diagnostic technique during debugging. A notable example is the <computeroutput>trace::printf()</computeroutput> function.</para>
+<para>The core implementation is developed in C++, complemented by a minimal C wrapper layer.</para>
+<para>The functions are categorised into three distinct groups:<itemizedlist>
+<listitem><para>Functions that must be implemented by the user to define the channel for transmitting trace messages from the target.</para>
+</listitem><listitem><para>Core tracing functions.</para>
+</listitem><listitem><para>Auxiliary utility functions.  </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

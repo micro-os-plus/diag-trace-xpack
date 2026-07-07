@@ -1,0 +1,381 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kind="class" language="C++" prot="public">
+    <compoundname>micro_os_plus::trace::detail::tracer</compoundname>
+    <includes refid="trace_8h" local="no">micro-os-plus/diag/trace.h</includes>
+    <templateparamlist>
+      <param>
+        <type>trace_policy</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7db5bf09d5a4b1b7732dba2477013bc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>micro_os_plus::trace::detail::tracer&lt; T &gt;::tracer</definition>
+        <argsstring>()=delete</argsstring>
+        <name>tracer</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::tracer</qualifiedname>
+        <briefdescription>
+<para>Deleted default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">tracer</ref></computeroutput> is a purely static utility class; all methods are static and no instance is ever created. The default constructor is explicitly deleted to enforce this intent and prevent accidental instantiation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="402" column="7"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void micro_os_plus::trace::detail::tracer&lt; T &gt;::dump_args</definition>
+        <argsstring>(int argc, char *argv[], const char *name=&quot;main&quot;) noexcept</argsstring>
+        <name>dump_args</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::dump_args</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+          <defval>&quot;main&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Send the <computeroutput>argv[]</computeroutput> array to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of <computeroutput>argv[]</computeroutput> strings. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of pointers to argument strings. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A null terminated string used as the function name prefix (default: <computeroutput>"main"</computeroutput>). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+Formats and writes the argument list in the form <computeroutput>name(argc=N, argv=["arg0", "arg1", ...])</computeroutput>, followed by a newline. Intended to be called at the start of <computeroutput>main()</computeroutput> to record the process arguments in the trace output. Each argument string is quoted; no escaping is applied to the string content. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="558" column="7" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" bodystart="193" bodyend="205"/>
+        <references refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga1147fe38ae648cb84a4e668cf68c405b" compoundref="trace-cpp-api-inlines_8h" startline="235" endline="248">micro_os_plus::trace::printf</references>
+        <referencedby refid="group__micro-os-plus-diag-trace-cpp-api-extra_1gad5ebcf3eebf3239a2f572f8640a94c90" compoundref="trace-cpp-api-inlines_8h" startline="279" endline="282">micro_os_plus::trace::dump_args</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-c-api-extra_1ga49bd9637ae06ff570445fbc6830f19a7" compoundref="trace-c-api_8cpp" startline="111" endline="114">micro_os_plus_trace_dump_args</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7c2ce977002993a65bd74ca011f1615f" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="noexcept(T::flush())" virt="non-virtual">
+        <type>void</type>
+        <definition>static void micro_os_plus::trace::detail::tracer&lt; T &gt;::flush</definition>
+        <argsstring>(void)</argsstring>
+        <name>flush</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::flush</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Flush the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None. </para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+Delegates unconditionally to <computeroutput>T::flush()</computeroutput>.</para>
+<para>For buffered output channels, the policy method must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the policy method body can be left empty. The <computeroutput>noexcept</computeroutput> specification mirrors that of the policy method. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="464" column="7" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" bodystart="464" bodyend="467"/>
+        <referencedby refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1gad2196053624765f72c82e983d6d3e512" compoundref="trace-cpp-api-inlines_8h" startline="229" endline="232">micro_os_plus::trace::flush</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-c-api-implementation_1gac34c391936f919c141bc38ec5b5a1db9" compoundref="trace-c-api_8cpp" startline="58" endline="61">micro_os_plus_trace_flush</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aa71a6a7f9d9378f02c48aea3c0d0de90" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="noexcept(T::initialise())" virt="non-virtual">
+        <type>void</type>
+        <definition>static void micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise</definition>
+        <argsstring>(void)</argsstring>
+        <name>initialise</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::initialise</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialise the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None. </para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+Delegates unconditionally to <computeroutput>T::initialise()</computeroutput>.</para>
+<para>Called during startup, as early as possible, to enable the trace channel. The <computeroutput>noexcept</computeroutput> specification mirrors that of the policy method. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="420" column="7" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" bodystart="420" bodyend="423"/>
+        <referencedby refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1ga2eeb0c01fc5d6e432e319950a94acb2c" compoundref="trace-cpp-api-inlines_8h" startline="217" endline="220">micro_os_plus::trace::initialise</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga425f36ab6d5a58a63bc926f4675dc53b" compoundref="trace-c-api_8cpp" startline="46" endline="49">micro_os_plus_trace_initialise</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7fb471958c000ac75290f5cc68522953" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int micro_os_plus::trace::detail::tracer&lt; T &gt;::printf</definition>
+        <argsstring>(const char *format,...) noexcept</argsstring>
+        <name>printf</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::printf</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Write a formatted string to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A null terminated string with the format. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Additional arguments matching the format specifiers. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes written, or -1 if an error occurred.</para>
+</simplesect>
+Formatting is performed into a fixed-size stack buffer of <computeroutput><ref refid="trace-cpp-api-inlines_8h_1a2084a7003aa78ca9574f96fcb9b5ff4e" kindref="member">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</ref></computeroutput> bytes (default: 200). Output that exceeds this limit is silently truncated before being passed to <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a88600a0485aa9c9afa7f306d2a298fdb" kindref="member">write()</ref></computeroutput>. The return value reflects the bytes actually written, not the number that the format string would have produced. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="486" column="7" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" bodystart="79" bodyend="93"/>
+        <references refid="group__micro-os-plus-diag-trace-cpp-api-main_1gafb94817670ea90990b925e71d14ef910" compoundref="trace-cpp-api-inlines_8h" startline="251" endline="259">micro_os_plus::trace::vprintf</references>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1ad0af55a735d06c5c25c8bf38dc3fd4fd" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int micro_os_plus::trace::detail::tracer&lt; T &gt;::putchar</definition>
+        <argsstring>(int c) noexcept</argsstring>
+        <name>putchar</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::putchar</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Write the single character to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A single byte character, passed as an <computeroutput>int</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The written character as an <computeroutput>int</computeroutput>, or EOF (-1) if an error occurred.</para>
+</simplesect>
+Converts <computeroutput>c</computeroutput> to <computeroutput>char</computeroutput> and passes it as a one-byte buffer to <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a88600a0485aa9c9afa7f306d2a298fdb" kindref="member">write()</ref></computeroutput>. On success, returns the original value of <computeroutput>c</computeroutput>; on failure, returns EOF. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="538" column="7" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" bodystart="173" bodyend="185"/>
+        <references refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1gacfbedd8169716b02026a93c948af99c8" compoundref="trace-cpp-api-inlines_8h" startline="223" endline="226">micro_os_plus::trace::write</references>
+        <referencedby refid="group__micro-os-plus-diag-trace-c-api-main_1gaf651ff851996a49b25989c93118142f9" compoundref="trace-c-api_8cpp" startline="105" endline="108">micro_os_plus_trace_putchar</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga8b4745ad9d5b6a65f95f40e70acc518a" compoundref="trace-cpp-api-inlines_8h" startline="273" endline="276">micro_os_plus::trace::putchar</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a2f7941dcb7ddb9f6afd664ad0c1c9979" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int micro_os_plus::trace::detail::tracer&lt; T &gt;::puts</definition>
+        <argsstring>(const char *s=&quot;&quot;) noexcept</argsstring>
+        <name>puts</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::puts</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>s</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Write the string and a line terminator to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A null terminated string (default: empty string). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The total number of bytes written (string + newline), or EOF (-1) if an error occurred.</para>
+</simplesect>
+Writes the characters of <computeroutput>s</computeroutput> followed by a single newline character (<computeroutput>&apos;\n&apos;</computeroutput>). Unlike the standard C <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a2f7941dcb7ddb9f6afd664ad0c1c9979" kindref="member">puts()</ref></computeroutput>, this function returns the total byte count written. If writing the newline fails after the string has been written successfully, EOF is returned. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="524" column="7" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" bodystart="135" bodyend="169"/>
+        <references refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1gacfbedd8169716b02026a93c948af99c8" compoundref="trace-cpp-api-inlines_8h" startline="223" endline="226">micro_os_plus::trace::write</references>
+        <referencedby refid="group__micro-os-plus-diag-trace-c-api-main_1ga378825eb60900b367774de9e76925b0d" compoundref="trace-c-api_8cpp" startline="94" endline="102">micro_os_plus_trace_puts</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga35f7d251803f518a84162208e8165d0a" compoundref="trace-cpp-api-inlines_8h" startline="262" endline="270">micro_os_plus::trace::puts</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</definition>
+        <argsstring>(const char *format, std::va_list arguments) noexcept</argsstring>
+        <name>vprintf</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::vprintf</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>std::va_list</type>
+          <declname>arguments</declname>
+        </param>
+        <briefdescription>
+<para>Write a formatted variable arguments list to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A null terminated string with the format. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>arguments</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A variable arguments list. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes written to the output channel, or -1 if an error occurred.</para>
+</simplesect>
+Equivalent to <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7fb471958c000ac75290f5cc68522953" kindref="member">printf()</ref></computeroutput>, but accepts a <computeroutput>std::va_list</computeroutput> instead of a variadic argument list. Subject to the same fixed-size stack buffer constraint. When the formatted output exceeds the buffer size, the text is truncated silently; the return value then reflects the bytes actually written to the channel, not the total length that <computeroutput>vsnprintf</computeroutput> would have produced. Typically called by <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7fb471958c000ac75290f5cc68522953" kindref="member">printf()</ref></computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="507" column="7" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" bodystart="97" bodyend="131"/>
+        <references refid="trace-cpp-api-inlines_8h_1a2084a7003aa78ca9574f96fcb9b5ff4e" compoundref="trace-cpp-api-inlines_8h" startline="52">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</references>
+        <references refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1gacfbedd8169716b02026a93c948af99c8" compoundref="trace-cpp-api-inlines_8h" startline="223" endline="226">micro_os_plus::trace::write</references>
+        <referencedby refid="group__micro-os-plus-diag-trace-c-api-main_1ga10e8dda4991909bc9b401c4f401f1364" compoundref="trace-c-api_8cpp" startline="66" endline="80">micro_os_plus_trace_printf</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-c-api-main_1ga61e826d87556c899edad6f82d7bd36ef" compoundref="trace-c-api_8cpp" startline="83" endline="91">micro_os_plus_trace_vprintf</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga1147fe38ae648cb84a4e668cf68c405b" compoundref="trace-cpp-api-inlines_8h" startline="235" endline="248">micro_os_plus::trace::printf</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-cpp-api-main_1gafb94817670ea90990b925e71d14ef910" compoundref="trace-cpp-api-inlines_8h" startline="251" endline="259">micro_os_plus::trace::vprintf</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a88600a0485aa9c9afa7f306d2a298fdb" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" noexceptexpression="noexcept(T::write(buf, nbyte))" virt="non-virtual">
+        <type>ssize_t</type>
+        <definition>static ssize_t micro_os_plus::trace::detail::tracer&lt; T &gt;::write</definition>
+        <argsstring>(const void *buf, std::size_t nbyte)</argsstring>
+        <name>write</name>
+        <qualifiedname>micro_os_plus::trace::detail::tracer::write</qualifiedname>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>nbyte</declname>
+        </param>
+        <briefdescription>
+<para>Write the given number of bytes to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nbyte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bytes in the array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes actually written, or -1 if error.</para>
+</simplesect>
+Delegates unconditionally to <computeroutput>T::write()</computeroutput>.</para>
+<para>The return value must reflect the number of bytes actually transferred; a return value of -1 signals an error. The <computeroutput>noexcept</computeroutput> specification mirrors that of the policy method. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="440" column="7" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" bodystart="440" bodyend="444"/>
+        <referencedby refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga80d104ecf38dfcf40cae10bac0d2c562" compoundref="trace-c-api_8cpp" startline="52" endline="55">micro_os_plus_trace_write</referencedby>
+        <referencedby refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1gacfbedd8169716b02026a93c948af99c8" compoundref="trace-cpp-api-inlines_8h" startline="223" endline="226">micro_os_plus::trace::write</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Tracing API bound to a given policy class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Policy class providing the static <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aa71a6a7f9d9378f02c48aea3c0d0de90" kindref="member">initialise()</ref></computeroutput>, <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a88600a0485aa9c9afa7f306d2a298fdb" kindref="member">write()</ref></computeroutput>, and <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7c2ce977002993a65bd74ca011f1615f" kindref="member">flush()</ref></computeroutput> primitives (e.g. <ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">micro_os_plus::trace::detail::implementation</ref>).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+All methods are static; <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">tracer</ref></computeroutput> is never instantiated as an object. Each distinct <computeroutput>T</computeroutput> produces an independent set of methods with no shared state, so <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">tracer</ref>&lt;<ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">implementation</ref>&gt;</computeroutput> (or any further user-defined policy class) can coexist in the same translation unit and binary.</para>
+<para>The main reason for using a class template rather than a namespace is that it allows the policy class to be a template parameter, so that multiple independent instances can coexist in the same binary, each bound to a different policy class. This is used in testing, where a <computeroutput>testing_implementation</computeroutput> policy class is defined to capture the output for verification. </para>
+    </detaileddescription>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="391" column="5" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" bodystart="392" bodyend="559"/>
+    <listofallmembers>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>dump_args</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7c2ce977002993a65bd74ca011f1615f" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>flush</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aa71a6a7f9d9378f02c48aea3c0d0de90" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>initialise</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7fb471958c000ac75290f5cc68522953" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>printf</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1ad0af55a735d06c5c25c8bf38dc3fd4fd" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>putchar</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a2f7941dcb7ddb9f6afd664ad0c1c9979" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>puts</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7db5bf09d5a4b1b7732dba2477013bc4" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>tracer</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>vprintf</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a88600a0485aa9c9afa7f306d2a298fdb" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::tracer</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

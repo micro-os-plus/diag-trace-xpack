@@ -1,0 +1,6 @@
+@defgroup micro-os-plus-diag-trace-c-api C API
+@brief C-linkage wrapper functions for the tracing infrastructure.
+
+@details
+The µOS++ **diag-trace** C API serves as a lightweight wrapper built upon 
+the underlying C++ functions.

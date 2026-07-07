@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="group__micro-os-plus-diag-trace-c-api" kind="group">
+    <compoundname>micro-os-plus-diag-trace-c-api</compoundname>
+    <title>C API</title>
+    <innergroup refid="group__micro-os-plus-diag-trace-c-api-implementation">Implementation functions</innergroup>
+    <innergroup refid="group__micro-os-plus-diag-trace-c-api-main">Main functions</innergroup>
+    <innergroup refid="group__micro-os-plus-diag-trace-c-api-extra">Utility functions</innergroup>
+    <briefdescription>
+<para>C-linkage wrapper functions for the tracing infrastructure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The µOS++ <bold>diag-trace</bold> C API serves as a lightweight wrapper built upon the underlying C++ functions.  </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

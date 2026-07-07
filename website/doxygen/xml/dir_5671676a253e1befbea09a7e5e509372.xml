@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="dir_5671676a253e1befbea09a7e5e509372" kind="dir">
+    <compoundname>diag</compoundname>
+    <innerdir refid="dir_5c9fb8a8c984827e2a8e754fb9a6fef4">inlines</innerdir>
+    <innerfile refid="trace-c-api_8h">trace-c-api.h</innerfile>
+    <innerfile refid="trace-cpp-api_8h">trace-cpp-api.h</innerfile>
+    <innerfile refid="trace_8h">trace.h</innerfile>
+    <briefdescription>
+<para>Folder with C++ header files for the µOS++ Tracing Infrastructure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This folder contains the public headers that declare the full API of the µOS++ Tracing Infrastructure. The primary entry point for user projects is <computeroutput>&lt;<ref refid="trace_8h" kindref="compound">micro-os-plus/diag/trace.h</ref>&gt;</computeroutput>, which aggregates all necessary includes.</para>
+<para>Inline method definitions are kept in the <computeroutput>inlines</computeroutput> sub-folder and are included automatically by their respective headers.  </para>
+    </detaileddescription>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/"/>
+  </compounddef>
+</doxygen>

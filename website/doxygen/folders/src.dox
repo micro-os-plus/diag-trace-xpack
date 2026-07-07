@@ -1,0 +1,12 @@
+@dir src
+@brief Folder with C++ source files.
+
+@details
+This folder contains the `.cpp` implementation files for the
+µOS++ Tracing Infrastructure library. Each file provides the
+non-inline definitions for one layer of the API.
+
+The files are compiled into the library only when
+`MICRO_OS_PLUS_DIAG_TRACE_ENABLED` is defined. When tracing is disabled, all
+calls resolve to empty inline stubs and these files contribute
+no object code.

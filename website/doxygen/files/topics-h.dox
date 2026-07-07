@@ -1,0 +1,12 @@
+@file topics.h
+@brief Project-specific Doxygen group definitions.
+
+@details
+This file defines the documentation groups (topics) for the
+µOS++ Tracing Infrastructure. Although it uses a `.h` extension,
+it is not part of the build; it is processed exclusively by Doxygen.
+The `.h` extension is required because Doxygen does not process
+arbitrary file extensions in the same way as recognised header files.
+
+This file is located in `website/doxygen/` and is referenced via
+`@include{doc}` from `topics.h`.

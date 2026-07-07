@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="namespacemicro__os__plus_1_1trace_1_1detail" kind="namespace" language="C++">
+    <compoundname>micro_os_plus::trace::detail</compoundname>
+    <innerclass refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" prot="public">micro_os_plus::trace::detail::implementation</innerclass>
+    <innerclass refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" prot="public">micro_os_plus::trace::detail::tracer</innerclass>
+    <innerconcept refid="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy">micro_os_plus::trace::detail::trace_policy</innerconcept>
+    <briefdescription>
+<para>Implementation details namespace. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <computeroutput><ref refid="namespacemicro__os__plus_1_1trace_1_1detail" kindref="compound">detail</ref></computeroutput> namespace contains internal implementation components that are not part of the public API. It houses the <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">tracer</ref></computeroutput> class template and the <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">implementation</ref></computeroutput> policy class, along with the <computeroutput><ref refid="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy" kindref="compound">trace_policy</ref></computeroutput> concept used to constrain policy types.</para>
+<para>User code should not reference this namespace directly. The public interface is the set of free functions in the enclosing <computeroutput><ref refid="namespacemicro__os__plus_1_1trace" kindref="compound">micro_os_plus::trace</ref></computeroutput> namespace. </para>
+    </detaileddescription>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" line="65" column="3"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+@dir include/micro-os-plus/diag/inlines
+@brief Folder with C++ header files containing inline method definitions.
+
+@details
+This folder holds the inline implementation headers that complement the
+declarations in `include/micro-os-plus/diag`. Each file corresponds
+directly to one of the main API headers.
+
+Separating inline definitions from their declarations keeps the primary
+headers concise and improves readability. These files are included
+automatically by their parent headers and must not be included directly
+by user code.

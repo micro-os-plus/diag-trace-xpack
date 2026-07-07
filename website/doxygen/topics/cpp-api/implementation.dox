@@ -1,0 +1,6 @@
+@defgroup micro-os-plus-diag-trace-cpp-api-implementation Implementation functions
+@brief User-supplied back-end primitives that define the trace channel.
+
+@details
+The following functions must be implemented by the user and are specific 
+to each individual trace channel.

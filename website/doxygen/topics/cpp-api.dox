@@ -1,0 +1,5 @@
+@defgroup micro-os-plus-diag-trace-cpp-api C++ API
+@brief C++ tracing functions in the `micro_os_plus::trace` namespace.
+
+@details
+The µOS++ **diag-trace** functions are implemented in C++.

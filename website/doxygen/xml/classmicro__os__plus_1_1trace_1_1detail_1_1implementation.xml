@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kind="class" language="C++" prot="public">
+    <compoundname>micro_os_plus::trace::detail::implementation</compoundname>
+    <includes refid="trace_8h" local="no">micro-os-plus/diag/trace.h</includes>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1ab6bc9c127091ba107f059b83a932a590" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void micro_os_plus::trace::detail::implementation::flush</definition>
+        <argsstring>(void) noexcept</argsstring>
+        <name>flush</name>
+        <qualifiedname>micro_os_plus::trace::detail::implementation::flush</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Flush the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None. </para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+The user must provide a definition of this method. For buffered output channels, it must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the body can be left empty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="338" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a85bfae1a60141a8c5df3017e47158fc6" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void micro_os_plus::trace::detail::implementation::initialise</definition>
+        <argsstring>(void) noexcept</argsstring>
+        <name>initialise</name>
+        <qualifiedname>micro_os_plus::trace::detail::implementation::initialise</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialise the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None. </para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+The user must provide a definition of this method, called once during startup to configure the underlying output device (e.g. a semihosting channel, or ITM port). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="305" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a883b0bd506d3612ecf84d1ad604e5949" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>ssize_t</type>
+        <definition>static ssize_t micro_os_plus::trace::detail::implementation::write</definition>
+        <argsstring>(const void *buf, std::size_t nbyte) noexcept</argsstring>
+        <name>write</name>
+        <qualifiedname>micro_os_plus::trace::detail::implementation::write</qualifiedname>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>nbyte</declname>
+        </param>
+        <briefdescription>
+<para>Write the given number of bytes to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nbyte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bytes in the array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes actually transferred, or -1 if error. May be less than <computeroutput>nbyte</computeroutput> if the device is full.</para>
+</simplesect>
+The user must provide a definition of this method. It is the core output primitive; all higher-level functions (<computeroutput><ref refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga1147fe38ae648cb84a4e668cf68c405b" kindref="member">printf</ref></computeroutput>, <computeroutput><ref refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga35f7d251803f518a84162208e8165d0a" kindref="member">puts</ref></computeroutput>, <computeroutput><ref refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga8b4745ad9d5b6a65f95f40e70acc518a" kindref="member">putchar</ref></computeroutput>) ultimately delegate to it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="321" column="7"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Policy class for the production trace instance. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The user must provide a definition of <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a85bfae1a60141a8c5df3017e47158fc6" kindref="member">initialise()</ref></computeroutput>, <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a883b0bd506d3612ecf84d1ad604e5949" kindref="member">write()</ref></computeroutput>, and <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1ab6bc9c127091ba107f059b83a932a590" kindref="member">flush()</ref></computeroutput> for this class (typically in a single .cpp file, once per application/platform).</para>
+<para><computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">implementation</ref></computeroutput> is not a template; it has no member data and is never instantiated as an object. Its static methods are looked up by <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">tracer</ref>&lt;<ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">implementation</ref>&gt;</computeroutput> and are otherwise ordinary, non-template member functions, so there is no instantiation-order hazard between their declaration here and their definition elsewhere. </para>
+    </detaileddescription>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="289" column="5" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" bodystart="290" bodyend="339"/>
+    <listofallmembers>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1ab6bc9c127091ba107f059b83a932a590" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::implementation</scope><name>flush</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a85bfae1a60141a8c5df3017e47158fc6" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::implementation</scope><name>initialise</name></member>
+      <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a883b0bd506d3612ecf84d1ad604e5949" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::implementation</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

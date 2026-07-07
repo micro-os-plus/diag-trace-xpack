@@ -1,0 +1,6 @@
+@defgroup micro-os-plus-diag-trace-cpp-api-extra Utility functions
+@brief Supplementary C++ trace utility functions.
+
+@details
+These are supplementary functions designed to enhance tracing capabilities.
+

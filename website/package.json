@@ -60,7 +60,6 @@
     "del-cli": "^7.0.0",
     "open-cli": "^8.0.0",
     "broken-link-checker": "^0.7.8",
-    "@jothepro/doxygen-awesome-css": "github:jothepro/doxygen-awesome-css#v2.3.4",
     "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack#xpack-development",
     "@docusaurus/module-type-aliases": "3.10.1",
     "@docusaurus/tsconfig": "3.10.1",
@@ -70,7 +69,7 @@
     "typescript": "~5.9.3",
     "@xpack/docusaurus-template-liquid": "github:xpack/docusaurus-template-liquid",
     "@xpack/npm-packages-helper": "github:xpack/npm-packages-helper",
-    "@xpack/doxygen2docusaurus": "^2.2.0"
+    "@xpack/doxygen2docusaurus": "^2.2.1"
   },
   "browserslist": {
     "production": [

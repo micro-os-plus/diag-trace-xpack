@@ -1,0 +1,6 @@
+@defgroup micro-os-plus-diag-trace-c-api-implementation Implementation functions
+@brief C wrappers for the user-supplied back-end primitives.
+
+@details
+These functions may be invoked from C projects to execute actions specific 
+to the implementation.

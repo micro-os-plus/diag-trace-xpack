@@ -1,0 +1,6 @@
+@defgroup micro-os-plus-diag-trace-c-api-main Main functions
+@brief Primary C functions for outputting trace messages.
+
+@details
+These functions constitute the primary methods for outputting trace messages 
+in C projects.

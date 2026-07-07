@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="group__micro-os-plus-diag-trace-c-api-implementation" kind="group">
+    <compoundname>micro-os-plus-diag-trace-c-api-implementation</compoundname>
+    <title>Implementation functions</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__micro-os-plus-diag-trace-c-api-implementation_1gac34c391936f919c141bc38ec5b5a1db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void micro_os_plus_trace_flush</definition>
+        <argsstring>(void)</argsstring>
+        <name>micro_os_plus_trace_flush</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Flush the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None. </para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+For buffered output channels, this function must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the body can be left empty. No assumptions are made about thread safety or re-entrancy; the caller is responsible for ensuring that concurrent calls do not occur. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-c-api.h" line="112" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="58" bodyend="61" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-c-api.h" declline="112" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7c2ce977002993a65bd74ca011f1615f" compoundref="trace-cpp-api_8h" startline="464" endline="467">micro_os_plus::trace::detail::tracer&lt; T &gt;::flush</references>
+      </memberdef>
+      <memberdef kind="function" id="group__micro-os-plus-diag-trace-c-api-implementation_1ga425f36ab6d5a58a63bc926f4675dc53b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void micro_os_plus_trace_initialise</definition>
+        <argsstring>(void)</argsstring>
+        <name>micro_os_plus_trace_initialise</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialise the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None. </para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+This function is called during startup, as early as possible, to enable the trace channel. The user must provide a definition of this function that configures the underlying output device (e.g. a semihosting channel, or an ITM port). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-c-api.h" line="73" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="46" bodyend="49" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-c-api.h" declline="73" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aa71a6a7f9d9378f02c48aea3c0d0de90" compoundref="trace-cpp-api_8h" startline="420" endline="423">micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise</references>
+      </memberdef>
+      <memberdef kind="function" id="group__micro-os-plus-diag-trace-c-api-implementation_1ga80d104ecf38dfcf40cae10bac0d2c562" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ssize_t</type>
+        <definition>ssize_t micro_os_plus_trace_write</definition>
+        <argsstring>(const void *buf, size_t nbyte)</argsstring>
+        <name>micro_os_plus_trace_write</name>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nbyte</declname>
+        </param>
+        <briefdescription>
+<para>Write the given number of bytes to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nbyte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bytes in the array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes actually written, or -1 if error.</para>
+</simplesect>
+This is the core output primitive. The user must provide a definition of this function. The return value must reflect the number of bytes actually transferred to the output device, which may be less than <computeroutput>nbyte</computeroutput> if the device is full or an error occurs. A return value of -1 signals an error; any non-negative value is treated as a byte count by the higher-level functions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-c-api.h" line="92" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="52" bodyend="55" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-c-api.h" declline="92" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a88600a0485aa9c9afa7f306d2a298fdb" compoundref="trace-cpp-api_8h" startline="440" endline="444">micro_os_plus::trace::detail::tracer&lt; T &gt;::write</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>C wrappers for the user-supplied back-end primitives. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>These functions may be invoked from C projects to execute actions specific to the implementation.  </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

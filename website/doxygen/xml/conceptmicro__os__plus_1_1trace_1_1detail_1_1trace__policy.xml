@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy" kind="concept">
+    <compoundname>micro_os_plus::trace::detail::trace_policy</compoundname>
+    <includes refid="trace-cpp-api_8h" local="no">trace-cpp-api.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <initializer>template&lt;typename T&gt;
+concept <ref refid="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy" kindref="compound">micro_os_plus::trace::detail::trace_policy</ref> =  requires (const void* buf, std::size_t n) {
+      { T::initialise () } noexcept -&gt; std::same_as&lt;void&gt;;
+      { T::write (buf, n) } noexcept -&gt; std::same_as&lt;ssize_t&gt;;
+      { T::flush () } noexcept -&gt; std::same_as&lt;void&gt;;
+    }</initializer>
+    <conceptparts>
+      <codepart line="361">    <programlisting>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal">trace_policy<sp/>=<sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buf,<sp/>std::size_t<sp/>n)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>T::initialise<sp/>()<sp/>}<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::same_as&lt;void&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>T::write<sp/>(buf,<sp/>n)<sp/>}<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::same_as&lt;ssize_t&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>T::flush<sp/>()<sp/>}<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>-&gt;<sp/>std::same_as&lt;void&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+    </programlisting>
+</codepart>
+    </conceptparts>
+    <briefdescription>
+<para>Concept constraining the policy class <computeroutput>T</computeroutput> used by <computeroutput>tracer&lt;T&gt;</computeroutput>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The policy class to be constrained.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+A conforming <computeroutput>T</computeroutput> must expose three static, <computeroutput>noexcept</computeroutput> member functions with the following exact signatures:<itemizedlist>
+<listitem><para><computeroutput>static void T::initialise() noexcept</computeroutput></para>
+</listitem><listitem><para><computeroutput>static ssize_t T::write(const void*, std::size_t) noexcept</computeroutput></para>
+</listitem><listitem><para><computeroutput>static void T::flush() noexcept</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+<para>The <computeroutput>noexcept</computeroutput> requirement is enforced by the concept so that a non-conforming policy is rejected at instantiation time rather than silently invoking <computeroutput>std::terminate</computeroutput> through the unconditionally <computeroutput>noexcept</computeroutput> free-function wrappers. A clear diagnostic is emitted at the point of instantiation if any required function is absent, has the wrong signature, or is not <computeroutput>noexcept</computeroutput>. </para>
+    </detaileddescription>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="361" column="5"/>
+  </compounddef>
+</doxygen>

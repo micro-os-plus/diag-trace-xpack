@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="group__micro-os-plus-diag-trace-c-api-extra" kind="group">
+    <compoundname>micro-os-plus-diag-trace-c-api-extra</compoundname>
+    <title>Utility functions</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__micro-os-plus-diag-trace-c-api-extra_1ga49bd9637ae06ff570445fbc6830f19a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void micro_os_plus_trace_dump_args</definition>
+        <argsstring>(int argc, char *argv[])</argsstring>
+        <name>micro_os_plus_trace_dump_args</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+<para>Write the <computeroutput>argv[]</computeroutput> array to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of <computeroutput>argv[]</computeroutput> strings. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of pointers to argument strings. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+Formats and writes the argument list in the form <computeroutput>main(argc=N, argv=["arg0", "arg1", ...])</computeroutput>, followed by a newline. The prefix is always the literal string <computeroutput>"main"</computeroutput>; for a configurable prefix, use the C++ API <computeroutput><ref refid="group__micro-os-plus-diag-trace-cpp-api-extra_1gad5ebcf3eebf3239a2f572f8640a94c90" kindref="member">micro_os_plus::trace::dump_args()</ref></computeroutput>. Intended to be called at the start of <computeroutput>main()</computeroutput> to record the process arguments in the trace output. Each argument string is quoted; no escaping is applied to the string content. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-c-api.h" line="208" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="111" bodyend="114" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-c-api.h" declline="208" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" compoundref="trace-cpp-api-inlines_8h" startline="193" endline="205">micro_os_plus::trace::detail::tracer&lt; T &gt;::dump_args</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Supplementary C trace utility functions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>These are supplementary functions designed to enhance tracing capabilities.   </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,38 @@
+@mainpage The µOS++ Tracing Infrastructure
+
+The **µOS++ Tracing Infrastructure** (`@micro-os-plus/diag-trace`) is a
+lightweight, header-only-friendly C++20 library that provides a dedicated
+diagnostic output channel for embedded and bare-metal applications. It is
+part of the broader [µOS++ project](https://micro-os-plus.github.io/).
+
+The library exposes an API that closely mirrors the standard C output
+functions — `printf()`, `puts()`, and `putchar()` — but routes all
+output through an independent, user-supplied back-end rather than through
+the standard library's `stdout`. This separation keeps diagnostic traffic
+out of the normal I/O path, which is particularly valuable on targets where
+`stdout` is not available or is connected to application-level data streams.
+
+The C++ API is built around the `micro_os_plus::trace::detail::tracer`
+class template, parameterised on a *policy* class that supplies three
+static primitives: `initialise()`, `write()`, and `flush()`. A default
+policy, `micro_os_plus::trace::detail::implementation`, is declared for
+production use. The free functions in the `micro_os_plus::trace` namespace
+— `trace::printf()`, `trace::puts()`, `trace::putchar()`, and so on — are
+thin wrappers over this default instantiation. A compatible C API,
+prefixed with `micro_os_plus_trace_`, is also provided for use from plain
+C translation units.
+
+Trace support is activated at compile time by defining the
+`MICRO_OS_PLUS_DIAG_TRACE_ENABLED` preprocessor macro. When the macro is 
+absent, every trace call is replaced by an empty inline function, so 
+application code never needs to be surrounded by 
+`#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)` guards.
+The trade-off is that the trace header must always be included, but this
+is a minor inconvenience compared with the readability benefit of
+unconditional call sites.
+
+To integrate the library into a project, the developer must provide a
+single translation unit that implements the three static methods of the
+chosen policy class. Ready-made implementations for common targets — ARM
+semihosting, Arm ITM, SEGGER RTT, and POSIX file descriptors — are available as
+separate xPack components.

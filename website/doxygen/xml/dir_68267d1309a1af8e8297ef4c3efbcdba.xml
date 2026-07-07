@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerfile refid="trace-c-api_8cpp">trace-c-api.cpp</innerfile>
+    <innerfile refid="trace-cpp-api_8cpp">trace-cpp-api.cpp</innerfile>
+    <briefdescription>
+<para>Folder with C++ source files. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This folder contains the <computeroutput>.cpp</computeroutput> implementation files for the µOS++ Tracing Infrastructure library. Each file provides the non-inline definitions for one layer of the API.</para>
+<para>The files are compiled into the library only when <computeroutput>MICRO_OS_PLUS_DIAG_TRACE_ENABLED</computeroutput> is defined. When tracing is disabled, all calls resolve to empty inline stubs and these files contribute no object code.   </para>
+    </detaileddescription>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/"/>
+  </compounddef>
+</doxygen>

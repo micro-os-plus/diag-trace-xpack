@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="namespacemicro__os__plus_1_1trace" kind="namespace" language="C++">
+    <compoundname>micro_os_plus::trace</compoundname>
+    <innernamespace refid="namespacemicro__os__plus_1_1trace_1_1detail">micro_os_plus::trace::detail</innernamespace>
+    <sectiondef kind="func">
+      <member refid="group__micro-os-plus-diag-trace-cpp-api-extra_1gad5ebcf3eebf3239a2f572f8640a94c90" kind="function"><name>dump_args</name></member>
+      <member refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1gad2196053624765f72c82e983d6d3e512" kind="function"><name>flush</name></member>
+      <member refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1ga2eeb0c01fc5d6e432e319950a94acb2c" kind="function"><name>initialise</name></member>
+      <member refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga1147fe38ae648cb84a4e668cf68c405b" kind="function"><name>printf</name></member>
+      <member refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga8b4745ad9d5b6a65f95f40e70acc518a" kind="function"><name>putchar</name></member>
+      <member refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga35f7d251803f518a84162208e8165d0a" kind="function"><name>puts</name></member>
+      <member refid="group__micro-os-plus-diag-trace-cpp-api-main_1gafb94817670ea90990b925e71d14ef910" kind="function"><name>vprintf</name></member>
+      <member refid="group__micro-os-plus-diag-trace-cpp-api-implementation_1gacfbedd8169716b02026a93c948af99c8" kind="function"><name>write</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Tracing support namespace. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The trace channel functions as a standalone output device designed specifically for diagnostic purposes.</para>
+<para>The API is straightforward and emulates the standard C output calls:<itemizedlist>
+<listitem><para><computeroutput><ref refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga1147fe38ae648cb84a4e668cf68c405b" kindref="member">micro_os_plus::trace::printf()</ref></computeroutput> / <computeroutput><ref refid="group__micro-os-plus-diag-trace-c-api-main_1ga10e8dda4991909bc9b401c4f401f1364" kindref="member">micro_os_plus_trace_printf()</ref></computeroutput></para>
+</listitem><listitem><para><computeroutput><ref refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga35f7d251803f518a84162208e8165d0a" kindref="member">micro_os_plus::trace::puts()</ref></computeroutput> / <computeroutput><ref refid="group__micro-os-plus-diag-trace-c-api-main_1ga378825eb60900b367774de9e76925b0d" kindref="member">micro_os_plus_trace_puts()</ref></computeroutput></para>
+</listitem><listitem><para><computeroutput><ref refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga8b4745ad9d5b6a65f95f40e70acc518a" kindref="member">micro_os_plus::trace::putchar()</ref></computeroutput> / <computeroutput><ref refid="group__micro-os-plus-diag-trace-c-api-main_1gaf651ff851996a49b25989c93118142f9" kindref="member">micro_os_plus_trace_putchar()</ref></computeroutput></para>
+</listitem></itemizedlist>
+</para>
+<para>The C++ API is implemented as a class template, <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">micro_os_plus::trace::detail::tracer</ref></computeroutput>, parameterised on a policy class that supplies the low-level primitives. One such policy class is declared here: <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">micro_os_plus::trace::detail::implementation</ref></computeroutput> for production use. <computeroutput>tracer&lt;implementation&gt;</computeroutput> is an independent class instantiation: it is already instantiated and is used internally; it shares no mutable state.</para>
+<para>The free functions (<computeroutput><ref refid="group__micro-os-plus-diag-trace-cpp-api-main_1ga1147fe38ae648cb84a4e668cf68c405b" kindref="member">micro_os_plus::trace::printf()</ref></computeroutput> etc.) are a thin alias for <computeroutput>tracer&lt;implementation&gt;</computeroutput>, so existing call sites do not need to change.</para>
+<para>The user is required to provide implementations of the following static methods, once per policy class actually used:<itemizedlist>
+<listitem><para><computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a85bfae1a60141a8c5df3017e47158fc6" kindref="member">micro_os_plus::trace::detail::implementation::initialise()</ref></computeroutput></para>
+</listitem><listitem><para><computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a883b0bd506d3612ecf84d1ad604e5949" kindref="member">micro_os_plus::trace::detail::implementation::write()</ref></computeroutput></para>
+</listitem><listitem><para><computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1ab6bc9c127091ba107f059b83a932a590" kindref="member">micro_os_plus::trace::detail::implementation::flush()</ref></computeroutput></para>
+</listitem></itemizedlist>
+</para>
+<para>Trace support is activated by adding the <computeroutput>MICRO_OS_PLUS_TRACE</computeroutput> macro definition to the compiler line.</para>
+<para>When <computeroutput>MICRO_OS_PLUS_TRACE</computeroutput> is not defined, all functions are inlined to empty bodies. This approach eliminates the need for trace calls to be conditionally compiled using <computeroutput>#if defined(MICRO_OS_PLUS_TRACE)</computeroutput> and <computeroutput>#endif</computeroutput>. However, the drawback is that the associated header file must always be included. </para>
+    </detaileddescription>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" line="63" column="1"/>
+  </compounddef>
+</doxygen>

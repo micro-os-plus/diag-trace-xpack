@@ -1,6 +1,6 @@
 {
   "name": "@micro-os-plus/diag-trace",
-  "version": "4.2.3",
+  "version": "5.0.0-pre",
   "description": "A source code library with the µOS++ trace::printf() tracing infrastructure",
   "repository": {
     "type": "git",

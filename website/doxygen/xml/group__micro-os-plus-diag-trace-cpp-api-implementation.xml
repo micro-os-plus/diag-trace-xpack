@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="group__micro-os-plus-diag-trace-cpp-api-implementation" kind="group">
+    <compoundname>micro-os-plus-diag-trace-cpp-api-implementation</compoundname>
+    <title>Implementation functions</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__micro-os-plus-diag-trace-cpp-api-implementation_1gad2196053624765f72c82e983d6d3e512" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void micro_os_plus::trace::flush</definition>
+        <argsstring>(void) noexcept</argsstring>
+        <name>flush</name>
+        <qualifiedname>micro_os_plus::trace::flush</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Flush the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None. </para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+Thin wrapper over <ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7c2ce977002993a65bd74ca011f1615f" kindref="member">tracer&lt;T&gt;::flush()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" line="229" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" bodystart="229" bodyend="232" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" declline="159" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a7c2ce977002993a65bd74ca011f1615f" compoundref="trace-cpp-api_8h" startline="464" endline="467">micro_os_plus::trace::detail::tracer&lt; T &gt;::flush</references>
+      </memberdef>
+      <memberdef kind="function" id="group__micro-os-plus-diag-trace-cpp-api-implementation_1ga2eeb0c01fc5d6e432e319950a94acb2c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void micro_os_plus::trace::initialise</definition>
+        <argsstring>(void) noexcept</argsstring>
+        <name>initialise</name>
+        <qualifiedname>micro_os_plus::trace::initialise</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialise the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None. </para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>Nothing.</para>
+</simplesect>
+Thin wrapper over <ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aa71a6a7f9d9378f02c48aea3c0d0de90" kindref="member">tracer&lt;T&gt;::initialise()</ref>. Called during startup to enable the trace channel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" line="217" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" bodystart="217" bodyend="220" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" declline="129" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aa71a6a7f9d9378f02c48aea3c0d0de90" compoundref="trace-cpp-api_8h" startline="420" endline="423">micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise</references>
+      </memberdef>
+      <memberdef kind="function" id="group__micro-os-plus-diag-trace-cpp-api-implementation_1gacfbedd8169716b02026a93c948af99c8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>ssize_t</type>
+        <definition>ssize_t micro_os_plus::trace::write</definition>
+        <argsstring>(const void *buf, std::size_t nbyte) noexcept</argsstring>
+        <name>write</name>
+        <qualifiedname>micro_os_plus::trace::write</qualifiedname>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>nbyte</declname>
+        </param>
+        <briefdescription>
+<para>Write the given number of bytes to the trace output channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nbyte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bytes in the array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes actually written, or -1 if error.</para>
+</simplesect>
+Thin wrapper over <ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a88600a0485aa9c9afa7f306d2a298fdb" kindref="member">tracer&lt;T&gt;::write()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" line="223" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" bodystart="223" bodyend="226" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" declline="144" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a88600a0485aa9c9afa7f306d2a298fdb" compoundref="trace-cpp-api_8h" startline="440" endline="444">micro_os_plus::trace::detail::tracer&lt; T &gt;::write</references>
+        <referencedby refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1ad0af55a735d06c5c25c8bf38dc3fd4fd" compoundref="trace-cpp-api-inlines_8h" startline="173" endline="185">micro_os_plus::trace::detail::tracer&lt; T &gt;::putchar</referencedby>
+        <referencedby refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a2f7941dcb7ddb9f6afd664ad0c1c9979" compoundref="trace-cpp-api-inlines_8h" startline="135" endline="169">micro_os_plus::trace::detail::tracer&lt; T &gt;::puts</referencedby>
+        <referencedby refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="trace-cpp-api-inlines_8h" startline="97" endline="131">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>User-supplied back-end primitives that define the trace channel. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The following functions must be implemented by the user and are specific to each individual trace channel.  </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="group__micro-os-plus-diag-trace-cpp-api" kind="group">
+    <compoundname>micro-os-plus-diag-trace-cpp-api</compoundname>
+    <title>C++ API</title>
+    <innergroup refid="group__micro-os-plus-diag-trace-cpp-api-implementation">Implementation functions</innergroup>
+    <innergroup refid="group__micro-os-plus-diag-trace-cpp-api-main">Main functions</innergroup>
+    <innergroup refid="group__micro-os-plus-diag-trace-cpp-api-extra">Utility functions</innergroup>
+    <briefdescription>
+<para>C++ tracing functions in the <computeroutput><ref refid="namespacemicro__os__plus_1_1trace" kindref="compound">micro_os_plus::trace</ref></computeroutput> namespace. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The µOS++ <bold>diag-trace</bold> functions are implemented in C++.  </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

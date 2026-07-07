@@ -1,0 +1,6 @@
+@defgroup micro-os-plus-diag-trace-cpp-api-main Main functions
+@brief Primary C++ functions for outputting trace messages.
+
+@details
+These functions serve as the primary methods for outputting trace messages 
+in C++ projects.
