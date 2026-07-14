@@ -6,9 +6,94 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2026-07-14
+
+* v5.0.0 prepared
+* 52d78fc website update
+* 5a43a00 copilot-instructions.md update
+
+## 2026-07-09
+
+* c5dfe47 website api update
+
+## 2026-07-07
+
+* 2240229 re-generate website commons
+* f7a698b re-generate tests commons
+* 45d6b05 re-generate top commons
+* 50dad8e doxygen adjustments
+* 4b83ca2 cleanup namespace micro_os_plus
+* 0ce71d6 add @file section
+* 9fd9d11 reorder cosmetics
+* 13aa5ba remove // #pragma
+* 9fc8c2a trace-c-api.cpp size_t
+
+## 2026-07-04
+
+* 40b9384 fix doxygen after review
+* e54e811 comments and doxygen updates
+* c9662a2 pragma cleanups
+* 1b3ba5f add noexcept to concepts
+* 7c818ff std::strlen
+* 91dedd1 doxygen @details
+* 9e0dfc4 check MICRO_OS_PLUS_TRACE in trace-defines.h
+* 1b29a6b fix target_link_cross_test_libraries
+* 04badc1 include inlines in each header
+* 61b2cf7 check MICRO_OS_PLUS_DIAG_TRACE_ENABLED
+* d250fbc xcdl-package.jsonc cosmetics
+* eac3983 package.json cosmetics
+* a10aeb8 re-generate tests commons
+
+## 2026-07-03
+
+* d3f5b00 clang-format.sh add tests/platforms
+* 564a042 re-format config.h
+* 929fbc5 rename MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER
+* 454f4ce cleanups
+* bc99b4c meson updates
+* 7e7d4ce fix project url to github.io
+* 48732f0 tests cmake move MICRO_OS_PLUS_TRACE to common
+* 153fd46 tests meson updates
+* d065a23 tests no-trace clean-ups
+* b37508b tests cmake updates
+
+## 2026-06-20
+
+* f9b6e6f cmake tests functional
+* 4e68353 templates add EXCLUDE_FROM_ALL for libraries
+* 34d9030 split c/cpp files
+
+## 2026-06-19
+
+* 620e96a function template version
+
+## 2026-06-18
+
+* 48888d3 add tests/config/tests-templates.json
+* eb9d342 tests/sources add sub-folders
+* 68fa4f3 tests/platforms rename platform-library
+* e654264 re-generate top & xcdl export
+
+## 2026-06-17
+
+* fe65447 re-work with #if __has_include
+
+## 2026-06-12
+
+* d5c5444 re-generate top commons
+
+## 2026-06-11
+
+* c98f480 prefer project-config.h
+
+## 2026-06-06
+
+* 4e8b062 use __has_include(<micro-os-plus/config.h>)
+
 ## 2026-04-11
 
-* v4.2.3 prepared
+* 9023fac 4.2.3
+* b39c53b preapre 4.2.3
 * e0fd16a #7: clip the output of vsnprintf()
 
 ## 2026-03-09
