@@ -8,6 +8,7 @@ and close existing issues and pull requests.
 
 ## 2026-07-14
 
+* v5.0.0 published on npmjs.com
 * v5.0.0 prepared
 * 52d78fc website update
 * 5a43a00 copilot-instructions.md update
