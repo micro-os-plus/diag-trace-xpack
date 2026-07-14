@@ -1,44 +1,330 @@
 
 {/* ------------------------------------------------------------------------ */}
 
-
-{/* ------------------------------------------------------------------------ */}
-
 ## Rationale
 
-TBD
+Temporarily adding `printf()` statements is one of the oldest methods
+of debugging programs. Modern debuggers, which allow single-stepping and
+variable inspection, are very efficient tools, but a carefully crafted
+sequence of trace messages can sometimes reveal more about program
+behaviour than a long debug session.
+
+For embedded applications it is particularly valuable for the trace
+output to use a dedicated channel, separate from any application-level
+I/O, so that diagnostic traffic does not interfere with normal data
+streams. A dedicated channel also enables the highest possible
+throughput, which minimises the impact on the timing of the debugged
+target.
+
+Common output channels for embedded targets include:
+
+- [SEGGER RTT (Real Time Transfer)](https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/),
+  available with J-Link probes — one of the fastest options.
+- [Arm ITM (Instrumentation Trace Macrocell)](https://developer.arm.com/documentation/ddi0314/h/Instrumentation-Trace-Macrocell),
+  available on Cortex-M devices that support it.
+- Semihosting via the DEBUG or OUTPUT channel — slower, but functional
+  on any target with a debug probe.
+
+µOS++ provides implementations for all these channels as separate
+xPack components.
 
 ## Overview
 
-TBD
+The **µOS++ Tracing Infrastructure** (`@micro-os-plus/diag-trace`) is a
+lightweight C++20 library that provides a dedicated diagnostic output
+channel for embedded and bare-metal applications. It is part of the
+broader [µOS++ project](https://micro-os-plus.github.io/).
 
-## Concepts and features
+The library exposes an API that closely mirrors the standard C output
+functions — `printf()`, `puts()`, and `putchar()` — but routes all
+output through an independent, user-supplied back-end rather than
+through the standard library's `stdout`. This separation keeps
+diagnostic traffic out of the normal I/O path, which is particularly
+valuable on targets where `stdout` is not available or is connected to
+application-level data streams.
 
-TBD
+## Design
 
-## Getting started
+The C++ API is built around the
+`micro_os_plus::trace::detail::tracer` class template, parameterised
+on a *policy* class that supplies three static primitives:
+`initialise()`, `write()`, and `flush()`. A default policy,
+`micro_os_plus::trace::detail::implementation`, is declared for
+production use. The free functions in the `micro_os_plus::trace`
+namespace — `trace::printf()`, `trace::puts()`, `trace::putchar()`,
+and so on — are thin wrappers over this default instantiation.
 
-TBD
-
-## C++ API
-
-TBD
+A compatible C API, with every function prefixed with
+`micro_os_plus_trace_`, is also provided for use from plain C
+translation units.
 
 ### Namespaces
 
-TBD
+The definitions are organised within the following namespaces:
 
-...
+- `micro_os_plus` — the primary µOS++ namespace.
+- `micro_os_plus::trace` — the public API for tracing.
+- `micro_os_plus::trace::detail` — internal implementation
+  components; not part of the public API.
+
+## Getting started
+
+### Enabling trace support
+
+Trace support is activated at compile time by defining the
+`MICRO_OS_PLUS_DIAG_TRACE_ENABLED` preprocessor macro, typically 
+in a configuration header file:
+
+```sh
+#define MICRO_OS_PLUS_DIAG_TRACE_ENABLED
+```
+
+When the macro is absent, every trace call is replaced by an empty
+inline function, so application code never needs to be surrounded by
+`#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)` guards. The trade-off is that the
+trace header must always be included, but this is a minor inconvenience
+compared with the readability benefit of unconditional call sites.
+
+The `MICRO_OS_PLUS_DIAG_TRACE_ENABLED` macro activates a platform-specific
+`trace-defines.h` header that derives the internal
+`MICRO_OS_PLUS_DIAG_TRACE_ENABLED` flag and sets the
+`printf` buffer size. The default buffer size is 200 bytes and can be
+overridden by defining:
+
+```c
+#define MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER 1024
+```
+
+### Including the header
+
+All declarations are available through a single umbrella header:
+
+```cpp
+#include <micro-os-plus/diag/trace.h>
+```
+
+### Providing a back-end
+
+To integrate the library, the developer must provide a single
+translation unit that implements the three static methods of the
+`micro_os_plus::trace::detail::implementation` class. Ready-made
+implementations for common targets — Arm semihosting, Arm ITM,
+SEGGER RTT, and POSIX file descriptors — are available as separate
+xPack components.
+
+## C++ API
+
+All C++ functions reside in the `micro_os_plus::trace` namespace.
+The functions are grouped into three categories.
+
+### Output functions
+
+```cpp
+namespace micro_os_plus::trace
+{
+  // Write a formatted string to the trace output channel.
+  int printf (const char* format, ...) noexcept;
+
+  // Write a formatted variable arguments list to the trace output
+  // channel.
+  int vprintf (const char* format, std::va_list arguments) noexcept;
+
+  // Write the string and a line terminator to the trace output
+  // channel.
+  int puts (const char* s = "") noexcept;
+
+  // Write the single character to the trace output channel.
+  int putchar (int c) noexcept;
+}
+```
+
+### Back-end primitives
+
+These functions must be called explicitly where needed (e.g.
+`initialise()` at startup, `flush()` before `exit()`). The `write()`
+function is the low-level primitive used by the higher-level functions.
+
+```cpp
+namespace micro_os_plus::trace
+{
+  // Initialise the trace output channel; call at startup.
+  void initialise (void) noexcept;
+
+  // Write the given number of bytes to the trace output channel.
+  ssize_t write (const void* buf, std::size_t nbyte) noexcept;
+
+  // Flush the trace output channel.
+  void flush (void) noexcept;
+}
+```
+
+### Auxiliary functions
+
+```cpp
+namespace micro_os_plus::trace
+{
+  // Write the argv[] array to the trace output channel.
+  void dump_args (int argc, char* argv[],
+                  const char* name = "main") noexcept;
+}
+```
 
 ## C API
 
-There are no C equivalents for the C++ definitions.
+The C API mirrors the C++ API exactly, with every function prefixed
+with `micro_os_plus_trace_`. It is declared inside `extern "C"` blocks
+and may be called from plain C translation units.
 
-## Command line options
+### Output functions
 
-TBD
+```c
+// Write a formatted string to the trace output channel.
+int micro_os_plus_trace_printf (const char* format, ...);
+
+// Write a formatted variable arguments list to the trace output
+// channel.
+int micro_os_plus_trace_vprintf (const char* format,
+                                  va_list arguments);
+
+// Write the string and a line terminator to the trace output channel.
+int micro_os_plus_trace_puts (const char* s);
+
+// Write the single character to the trace output channel.
+int micro_os_plus_trace_putchar (int c);
+```
+
+### Back-end primitives
+
+```c
+// Initialise the trace output channel; call at startup.
+void micro_os_plus_trace_initialise (void);
+
+// Write the given number of bytes to the trace output channel.
+ssize_t micro_os_plus_trace_write (const void* buf, size_t nbyte);
+
+// Flush the trace output channel.
+void micro_os_plus_trace_flush (void);
+```
+
+### Auxiliary functions
+
+```c
+// Write the argv[] array to the trace output channel.
+void micro_os_plus_trace_dump_args (int argc, char* argv[]);
+```
+
+## Providing a back-end implementation
+
+When `MICRO_OS_PLUS_DIAG_TRACE_ENABLED` is defined, the application must supply
+definitions for the three static methods of the
+`micro_os_plus::trace::detail::implementation` class. 
+
+The required interface is:
+
+```cpp
+namespace micro_os_plus::trace::detail
+{
+  class implementation
+  {
+  public:
+    static void
+    initialise (void) noexcept;
+
+    static ssize_t
+    write (const void* buf, std::size_t nbyte) noexcept;
+
+    static void
+    flush (void) noexcept;
+  };
+}
+```
+
+A minimal skeleton implementation follows:
+
+```cpp
+namespace micro_os_plus::trace::detail
+{
+  void
+  implementation::initialise (void) noexcept
+  {
+    // Open or configure the trace output channel.
+  }
+
+  ssize_t
+  implementation::write (const void* buf,
+                          std::size_t nbyte) noexcept
+  {
+    if (buf == nullptr || nbyte == 0)
+      {
+        return 0;
+      }
+
+    // Write bytes from buf to the trace channel.
+
+    return static_cast<ssize_t> (nbyte);
+  }
+
+  void
+  implementation::flush (void) noexcept
+  {
+    // Drain any buffered output to the trace channel.
+  }
+}
+```
+
+Failing to supply
+definitions for these static methods
+results in unresolved symbols during linking:
+
+```
+/Users/ilg/Library/xPacks/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: platform-bin/CMakeFiles/sample-test.dir/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-cpp-api.cpp.obj: in function `micro_os_plus::trace::detail::tracer<micro_os_plus::trace::detail::implementation>::initialise()':
+/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h:422:(.text._ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE10initialiseEv[_ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE10initialiseEv]+0x4): undefined reference to `micro_os_plus::trace::detail::implementation::initialise()'
+/Users/ilg/Library/xPacks/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: (_ZN13micro_os_plus5trace6detail14implementation10initialiseEv): Unknown destination type (ARM/Thumb) in platform-bin/CMakeFiles/sample-test.dir/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-cpp-api.cpp.obj
+/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h:422:(.text._ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE10initialiseEv[_ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE10initialiseEv]+0x4): dangerous relocation: unsupported relocation
+/Users/ilg/Library/xPacks/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: platform-bin/CMakeFiles/sample-test.dir/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-cpp-api.cpp.obj: in function `micro_os_plus::trace::detail::tracer<micro_os_plus::trace::detail::implementation>::write(void const*, unsigned int)':
+/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h:443:(.text._ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE5writeEPKvj[_ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE5writeEPKvj]+0x12): undefined reference to `micro_os_plus::trace::detail::implementation::write(void const*, unsigned int)'
+/Users/ilg/Library/xPacks/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: (_ZN13micro_os_plus5trace6detail14implementation5writeEPKvj): Unknown destination type (ARM/Thumb) in platform-bin/CMakeFiles/sample-test.dir/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-cpp-api.cpp.obj
+/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h:443:(.text._ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE5writeEPKvj[_ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE5writeEPKvj]+0x12): dangerous relocation: unsupported relocation
+/Users/ilg/Library/xPacks/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: platform-bin/CMakeFiles/sample-test.dir/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-cpp-api.cpp.obj: in function `micro_os_plus::trace::detail::tracer<micro_os_plus::trace::detail::implementation>::flush()':
+/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h:466:(.text._ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE5flushEv[_ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE5flushEv]+0x4): undefined reference to `micro_os_plus::trace::detail::implementation::flush()'
+/Users/ilg/Library/xPacks/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: (_ZN13micro_os_plus5trace6detail14implementation5flushEv): Unknown destination type (ARM/Thumb) in platform-bin/CMakeFiles/sample-test.dir/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-cpp-api.cpp.obj
+/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h:466:(.text._ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE5flushEv[_ZN13micro_os_plus5trace6detail6tracerINS1_14implementationEE5flushEv]+0x4): dangerous relocation: unsupported relocation
+collect2: error: ld returned 1 exit status
+```
+
+## Example
+
+A minimal example using both the C++ and C APIs is shown below. The
+full sample is available in
+[tests/sources/sample/src/main.cpp](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack-development/tests/sources/sample/src/main.cpp).
+
+```cpp
+#include <micro-os-plus/diag/trace.h>
+
+using namespace micro_os_plus;
+
+int
+main (int argc, char* argv[])
+{
+  trace::initialise ();
+  trace::dump_args (argc, argv);
+
+  trace::printf ("Hello %s!\n", "World");
+  trace::puts ("one line");
+  trace::putchar ('*');
+
+  trace::flush ();
+
+  // C API equivalent:
+  micro_os_plus_trace_initialise ();
+  micro_os_plus_trace_printf ("Hello %s!\n", "World");
+  micro_os_plus_trace_flush ();
+
+  return 0;
+}
+```
 
 ## Known problems
 
-- none
-
+- The implementation is not safe for concurrent use: calls must not
+  overlap across threads or between a thread and an interrupt handler.

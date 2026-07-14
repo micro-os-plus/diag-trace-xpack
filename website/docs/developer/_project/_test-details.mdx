@@ -3,27 +3,101 @@
 
 ### Tests details
 
+```console
+> xpm run test --config native-cmake-sys-release
+> ctest -V --test-dir build/native-cmake-sys-release
+Internal ctest changing into directory: /Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release
+UpdateCTestConfiguration  from :/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release/DartConfiguration.tcl
+Test project /Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+```
+
 #### sample-test
 
-The [sample-test.cpp](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/tests/src/sample-test.cpp)
+The [sample/src/main.cpp](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/tests/src/sample/src/main.cpp)
 file is a straightforward application designed to demonstrate
 how to utilise some of the primitives available in the library.
 
 A typical run looks like:
 
 ```console
-...
+test 3
+    Start 3: sample-test
+
+3: Test command: /Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release/platform-bin/sample-test "one" "two"
+3: Working Directory: /Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release/platform-bin
+3: Test timeout computed to be: 10000000
+3: micro_os_plus::trace::initialise()
+3: micro_os_plus::trace::initialise()
+3: main(argc=3, argv=["/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release/platform-bin/sample-test", "one", "two"])
+3: Hello C++ World!
+3: one line
+3: *
+3: micro_os_plus::trace::initialise()
+3: main(argc=3, argv=["/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release/platform-bin/sample-test", "one", "two"])
+3: Hello C World!
+3: one line
+3: *
+3/4 Test #3: sample-test ......................   Passed    0.00 sec
 ```
 
 #### unit-test
 
-The [unit-test.cpp](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/tests/src/unit-test.cpp)
+The [unit/src/main.cpp](https://github.com/micro-os-plus/diag-trace-xpack/blob/xpack/tests/sources/unit/src/main.cpp)
 file is an exhaustive test designed to validate that all the
 library functions operate as expected.
 
 A typical run looks like:
 
 ```console
-...
+test 4
+    Start 4: unit-test
+
+4: Test command: /Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release/platform-bin/unit-test
+4: Working Directory: /Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/tests/build/native-cmake-sys-release/platform-bin
+4: Test timeout computed to be: 10000000
+4: micro_os_plus::trace::initialise()
+4: 
+4: # Running: unit-test
+4: # Built with clang Apple LLVM 17.0.0 (clang-1700.6.4.2), with exceptions, with MICRO_OS_PLUS_TRACE
+4: TAP version 14
+4: # Subtest: diag::trace
+4: 
+4:     # Subtest: Check trace_testing::initialise
+4:         1..0
+4:     ok 1 - Check trace_testing::initialise # { passed, 4 checks }
+4: 
+4:     # Subtest: Check trace_testing::putchar
+4:         1..0
+4:     ok 2 - Check trace_testing::putchar # { passed, 2 checks }
+4: 
+4:     # Subtest: Check trace_testing::puts
+4:         1..0
+4:     ok 3 - Check trace_testing::puts # { passed, 3 checks }
+4: 
+4:     # Subtest: Check trace_testing::printf
+4:         1..0
+4:     ok 4 - Check trace_testing::printf # { passed, 5 checks }
+4: 
+4:     # Subtest: Check trace_testing::dump_args
+4:         1..0
+4:     ok 5 - Check trace_testing::dump_args # { passed, 4 checks }
+4: 
+4:     # Subtest: Check trace_testing::flush
+4:         1..0
+4:     ok 6 - Check trace_testing::flush # { passed, 1 check }
+4: 
+4:     1..6
+4: ok 1 - diag::trace # { passed, 19 checks in 6 test cases, time: 0.125 ms }
+4: 
+4: 1..1
+4: # { total: 19 checks passed, 0 failed, in 6 test cases, 1 test suite, time: 0.211 ms }
+4/4 Test #4: unit-test ........................   Passed    0.01 sec
 ```
 

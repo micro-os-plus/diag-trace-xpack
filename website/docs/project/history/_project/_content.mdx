@@ -1,6 +1,32 @@
 
 {/* ------------------------------------------------------------------------ */}
 
-### Month YYYY
+### July 2026
 
-TODO
+In July 2026, the library was refactored to use a `tracer<T>` class template, 
+parameterised on a policy class that supplies three static member functions 
+(`initialise()`, `write()`, and `flush()`). 
+
+Alternative policy classes can be substituted for testing without modifying 
+application code.
+
+### March 2025
+
+In March 2025, the library was refactored to use a separate namespace for
+testing, instead of using the patched local dependencies.
+
+### February 2022
+
+In February 2022, the library was refactored to use `<micro-os-plus/config.h>` 
+for configuration, conditionally via `MICRO_OS_PLUS_HAS_CONFIG_H`.
+
+### March 2021
+
+In March 2021, the library was refactored to use a modern C++ API in the 
+`micro_os_plus::trace` namespace, while maintaining a compatible C-linkage 
+API (prefixed `micro_os_plus_trace_`) to allow the library to be used from 
+both C++ and plain C translation units within the same application. 
+
+### September 2017
+
+In September 2017, the initial version was extracted from µOS++.

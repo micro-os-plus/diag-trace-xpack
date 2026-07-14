@@ -1,15 +1,28 @@
 
 {/* ------------------------------------------------------------------------ */}
 
-### Install folder hierarchy
-
-After following the links, the result is a structure like this:
-
 ```console
 % tree -l
 .
+├── CHANGELOG.md
+├── CMakeLists.txt
+├── include
+│   └── micro-os-plus
+│       └── diag
+│           ├── inlines
+│           │   ├── trace-c-api-inlines.h
+│           │   └── trace-cpp-api-inlines.h
+│           ├── trace-c-api.h
+│           ├── trace-cpp-api.h
+│           └── trace.h
 ├── LICENSE
+├── meson.build
 ├── package.json
-└── xpacks
-...
+├── README.md
+├── src
+│   ├── trace-c-api.cpp
+│   └── trace-cpp-api.cpp
+└── xcdl-package.jsonc
+
+6 directories, 14 files
 ```

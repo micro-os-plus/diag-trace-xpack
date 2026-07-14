@@ -34,29 +34,30 @@ The header files to be included in user projects are:
 
 The source files to be added to user projects are:
 
-- `src/xxx.cpp`
+- `src/trace-c-api.cpp`
+- `src/trace-cpp-api.cpp`
 
 ### Preprocessor definitions
 
 There are several preprocessor definitions used to configure the build:
 
-- `MICRO_OS_PLUS_INCLUDE_CONFIG_H` - to include `<micro-os-plus/config.h>`
-- `MICRO_OS_PLUS_TRACE` - to include the trace calls
-- `MICRO_OS_PLUS_TRACE_XXX` - to enable some tracing messages
+- `MICRO_OS_PLUS_DIAG_TRACE_ENABLED` - to include the trace calls
+- `MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER` - the size 
+in bytes of the stack buffer used by vsnprintf() to store the diagnostics line
+(default 200)
 
 ### Compiler options
 
 The following options must be passed to the compiler and linker:
 
 - `-std=c++20` or higher for C++ sources
+- `-std=c11` for C sources
 
 ### Dependencies
 
 The library has the following dependencies:
 
-- `@micro-os-plus/diag-trace` - the **µOS++** `trace::printf()` tracing
-  infrastructure (optional, used only if `MICRO_OS_PLUS_TRACE_UTILS_LISTS*`
-  are defined)
+- none
 
 <CommonCmakeIntegration />
 

@@ -1,6 +1,37 @@
 
 {/* ------------------------------------------------------------------------ */}
 
-### vN.x (YYYY-M-DD)
+### v5.0 (2026-07-13)
 
-TBD
+To improve testability, the code was refactored to use a `tracer<T>` 
+class template, parameterised on a policy class that supplies three 
+static primitives (`initialise()`, `write()`, and `flush()`). 
+Alternative policy classes can be substituted for testing without 
+modifying application code.
+
+Projects must provide a single translation unit that implements the three
+policy primitives as the `micro-os-plus::trace::detail::implementation` class. 
+The library itself imposes no dependency on any specific output mechanism; 
+ready-made back-end implementations are provided as separate xPack 
+components for ARM semihosting, Arm ITM, SEGGER RTT, and native platforms.
+
+### v4.0 (2022-07-28)
+
+Rename `MICRO_OS_PLUS_INTEGER_TRACE_PRINTF_BUFFER_ARRAY_SIZE`.
+
+### v3.0 (2022-02-13)
+
+Include `<micro-os-plus/config.h>`, rename MICRO_OS_PLUS_TRACE, 
+update cmake & meson configs, and add support to run all tests 
+on all platforms.
+
+### v2.0 (2021-03-01)
+
+The library was refactored to use a modern C++ API in the 
+`micro_os_plus::trace` namespace, while maintaining a compatible C-linkage 
+API (prefixed `micro_os_plus_trace_`) to allow the library to be used from 
+both C++ and plain C translation units within the same application. 
+
+### v1.0 (2017-09-04)
+
+The initial version, extracted from µOS++.

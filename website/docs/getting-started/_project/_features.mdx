@@ -1,8 +1,44 @@
 
 {/* ------------------------------------------------------------------------ */}
 
-## Features
+## Features & Benefits
 
-The main features of the **µOS++ Tracing Infrastructure** are:
+The main attributes of the **µOS++ Tracing Infrastructure** are:
 
-- TBD
+- **Dedicated diagnostic channel** — trace output is routed through a
+  separate, user-supplied back-end, completely independent of `stdout`;
+  diagnostic traffic never interferes with application-level I/O streams
+- **Familiar, `printf`-style API** — the `trace::printf()`, `trace::puts()`,
+  and `trace::putchar()` functions mirror the standard C output interface,
+  making adoption straightforward for developers already familiar with
+  standard I/O
+- **Dual C++ and C APIs** — a modern C++ API in the
+  `micro_os_plus::trace` namespace and a compatible C-linkage API
+  (prefixed `micro_os_plus_trace_`) allow the library to be used from
+  both C++ and plain C translation units within the same application
+- **Policy-based, testable design** — the C++ API is built on the
+  `tracer<T>` class template, parameterised on a policy class that
+  supplies three static primitives (`initialise()`, `write()`, and
+  `flush()`); alternative policy classes can be substituted for testing
+  without modifying application code
+- **Zero overhead when disabled** — when `MICRO_OS_PLUS_TRACE` is not
+  defined, every trace call is replaced by an empty inline function;
+  no `#if defined(MICRO_OS_PLUS_TRACE)` guards are required at call
+  sites, keeping the source code clean and readable
+- **C++20 concepts enforcement** — the `trace_policy` concept validates
+  the policy class at instantiation time, producing a clear compiler
+  diagnostic if any required method is absent, has the wrong signature,
+  or is not `noexcept`
+- **Portable and target-agnostic** — the library itself imposes no
+  dependency on any specific output mechanism; ready-made back-end
+  implementations for ARM semihosting, Arm ITM, SEGGER RTT, and POSIX
+  file descriptors are available as separate xPack components
+- **Single-header integration** — the entire public API is available by
+  including one header, `<micro-os-plus/diag/trace.h>`; the user need
+  only provide a single translation unit that implements the three
+  policy primitives
+- **Configurable buffer size** — the internal `printf` formatting buffer
+  size is controlled by the
+  `MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER` macro
+  (default: 200 bytes), allowing the trade-off between stack usage and
+  message length to be adjusted per project
