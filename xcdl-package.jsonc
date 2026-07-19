@@ -16,7 +16,7 @@
       ],
       "dependencies": [],
       "generatedFile": {
-        "type": "header",
+        "type": "c-header",
         "filePath": "{{buildFolderPath}}/generated/include/micro-os-plus/diag/trace-defines.h"
       },
       // "customDefine": "MICRO_OS_PLUS_DIAG_TRACE_ENABLED",
