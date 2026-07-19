@@ -65,7 +65,20 @@ endif ()
 
 # -----------------------------------------------------------------------------
 
-{%- for component in xcdl.cdlComponents %}
+# Interface libraries are the main targets, which consumers (like embedded
+# applications) link against. It defines the public API and properties of the
+# library; sources are propagated to and compiled by each consumer.
+
+# They are aliased using namespaced syntax (Project::Target). This is the
+# canonical pattern for consumption via target_link_libraries(), whether the
+# dependency is added via add_subdirectory(), FetchContent, or an installed
+# package via find_package(). Using "::" lets CMake detect an invalid or
+# misspelled target name at configure time, rather than silently passing it
+# through to the linker as a plain string or flag. Note: alias targets are
+# read-only; properties must be set on the underlying target, not on the alias
+# itself.
+
+{% for component in xcdl.cdlComponents %}
 {%- assign nameDash = component.id | replace: '.', '-' %}
 {%- assign nameDoubleColon = component.id | replace_first: '.', '::' | replace: '.', '-' %}
 {%- assign staticArtefacts = component.cdlArtefacts | where: 'type', 'staticLibrary' %}
@@ -74,11 +87,6 @@ endif ()
 {%- assign objectsArtefacts = component.cdlArtefacts | where: 'type', 'objectFiles' %}
 {%- assign objectsArtefact = objectsArtefacts | first %}
 {%- assign objectsSuffix = objectsArtefact.id %}
-
-# The interface library is the main target of this package, which consumers
-# (like embedded applications) link against. It defines the public API and
-# properties of the library; sources are propagated to and compiled by each
-# consumer.
 
 # https://cmake.org/cmake/help/v3.20/command/add_library.html?highlight=interface#interface-libraries
 # Visibility keywords: PRIVATE applies to the target itself; INTERFACE passes
@@ -132,14 +140,6 @@ endif ()
 # -----------------------------------------------------------------------------
 # Alias.
 
-# Export an alias target using namespaced syntax (Project::Target). This is the
-# canonical pattern for consumption via target_link_libraries(), whether the
-# dependency is added via add_subdirectory(), FetchContent, or an installed
-# package via find_package(). Using "::" lets CMake detect an invalid or
-# misspelled target name at configure time, rather than silently passing it
-# through to the linker as a plain string or flag. Note: alias targets are
-# read-only; properties must be set on the underlying target, not on the alias
-# itself.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
   {{nameDoubleColon}} ALIAS {{nameDash}}-interface
@@ -149,9 +149,10 @@ message (
   "> {{nameDoubleColon}} -> {{nameDash}}-interface"
 )
 
-# -----------------------------------------------------------------------------
-{% if component.cdlArtefacts and component.cdlArtefacts.size > 0 %}
+{%- if component.cdlArtefacts and component.cdlArtefacts.size > 0 %}
 {%- if component.dependencies and component.dependencies.size > 0 %}
+
+# -----------------------------------------------------------------------------
 
 {%- for dependency in component.dependencies %}
 {%- assign dependencyDash = dependency | replace: '.', '-' %}
@@ -164,8 +165,9 @@ get_property (
 {%- endfor %}
 {%- endif %}
 
-# -----------------------------------------------------------------------------
 {%- if objectsArtefact %}
+
+# -----------------------------------------------------------------------------
 
 # https://cmake.org/cmake/help/v3.20/command/add_library.html?highlight=interface#object-libraries
 # Optional OBJECT library: compiles the library sources once and shares the
@@ -261,9 +263,6 @@ endif ()
 # -----------------------------------------------------------------------------
 # Alias.
 
-# Namespaced alias for downstream consumption (find_package- and
-# add_subdirectory-compatible). "::" ensures CMake validates the target name at
-# configure time. Aliases are read-only.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
   {{nameDoubleColon}}-{{objectsSuffix}} ALIAS
@@ -274,9 +273,10 @@ message (
   "> {{nameDoubleColon}}-{{objectsSuffix}} -> {{nameDash}}-{{objectsSuffix}}"
 )
 
-# -----------------------------------------------------------------------------
 {%- endif %}
 {%- if staticArtefact %}
+
+# -----------------------------------------------------------------------------
 
 # https://cmake.org/cmake/help/v3.20/command/add_library.html?highlight=interface#normal-libraries
 # Optional STATIC library: compiles the library sources into an archive that is
@@ -366,9 +366,6 @@ endif ()
 # -----------------------------------------------------------------------------
 # Alias.
 
-# Namespaced alias for downstream consumption (find_package- and
-# add_subdirectory-compatible). "::" ensures CMake validates the target name at
-# configure time. Aliases are read-only.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
   {{nameDoubleColon}}-{{staticSuffix}} ALIAS
@@ -378,8 +375,8 @@ message (
   VERBOSE
   "> {{nameDoubleColon}}-{{staticSuffix}} -> {{nameDash}}-{{staticSuffix}}"
 )
+{%- endif %}
+{%- endif %}
 
 # -----------------------------------------------------------------------------
-{%- endif %}
-{%- endif %}
 {% endfor %}

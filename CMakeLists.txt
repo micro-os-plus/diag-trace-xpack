@@ -50,10 +50,18 @@ endif ()
 
 # -----------------------------------------------------------------------------
 
-# The interface library is the main target of this package, which consumers
-# (like embedded applications) link against. It defines the public API and
-# properties of the library; sources are propagated to and compiled by each
-# consumer.
+# Interface libraries are the main targets, which consumers (like embedded
+# applications) link against. It defines the public API and properties of the
+# library; sources are propagated to and compiled by each consumer.
+
+# They are aliased using namespaced syntax (Project::Target). This is the
+# canonical pattern for consumption via target_link_libraries(), whether the
+# dependency is added via add_subdirectory(), FetchContent, or an installed
+# package via find_package(). Using "::" lets CMake detect an invalid or
+# misspelled target name at configure time, rather than silently passing it
+# through to the linker as a plain string or flag. Note: alias targets are
+# read-only; properties must be set on the underlying target, not on the alias
+# itself.
 
 # https://cmake.org/cmake/help/v3.20/command/add_library.html?highlight=interface#interface-libraries
 # Visibility keywords: PRIVATE applies to the target itself; INTERFACE passes
@@ -76,21 +84,11 @@ endif ()
 # -----------------------------------------------------------------------------
 # Alias.
 
-# Export an alias target using namespaced syntax (Project::Target). This is the
-# canonical pattern for consumption via target_link_libraries(), whether the
-# dependency is added via add_subdirectory(), FetchContent, or an installed
-# package via find_package(). Using "::" lets CMake detect an invalid or
-# misspelled target name at configure time, rather than silently passing it
-# through to the linker as a plain string or flag. Note: alias targets are
-# read-only; properties must be set on the underlying target, not on the alias
-# itself.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (micro-os-plus::diag-trace ALIAS micro-os-plus-diag-trace-interface)
 message (VERBOSE
          "> micro-os-plus::diag-trace -> micro-os-plus-diag-trace-interface"
 )
-
-# -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
 
@@ -137,9 +135,6 @@ endif ()
 # -----------------------------------------------------------------------------
 # Alias.
 
-# Namespaced alias for downstream consumption (find_package- and
-# add_subdirectory-compatible). "::" ensures CMake validates the target name at
-# configure time. Aliases are read-only.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
   micro-os-plus::diag-trace-objects-library ALIAS
@@ -188,9 +183,6 @@ endif ()
 # -----------------------------------------------------------------------------
 # Alias.
 
-# Namespaced alias for downstream consumption (find_package- and
-# add_subdirectory-compatible). "::" ensures CMake validates the target name at
-# configure time. Aliases are read-only.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
   micro-os-plus::diag-trace-static-library ALIAS
