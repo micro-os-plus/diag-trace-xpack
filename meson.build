@@ -17,7 +17,7 @@
 #
 # `subdir('xpacks/@micro-os-plus/diag-trace')`
 #
-# This creates a dependency that can be linked to a target with:
+# This creates dependencies that can be linked to a target with:
 #
 # `dependencies: [micro_os_plus_diag_trace_dependency],`
 
@@ -26,7 +26,7 @@
 
 # -----------------------------------------------------------------------------
 
-# The portable trace::printf() code.
+# A source code library with the µOS++ trace::printf() tracing infrastructure.
 message('Processing xPack @micro-os-plus/diag-trace...')
 
 # -----------------------------------------------------------------------------

@@ -16,29 +16,22 @@
 #
 # `add_subdirectory("xpacks/@micro-os-plus/diag-trace")`
 #
-# This creates several libraries that can be linked to a target with one of:
+# This creates libraries that can be linked to a target with:
 #
 # ~~~
 # target_link_libraries(your-target PUBLIC micro-os-plus::diag-trace)
-#
 # target_link_libraries(your-target PUBLIC micro-os-plus::diag-trace-static-library)
-#
 # target_link_libraries(your-target PUBLIC micro-os-plus::diag-trace-objects-library)
 # ~~~
-#
-# Weak symbols in static libraries are not always resolved reliably by the
-# linker. Object libraries are provided as a safer alternative, although they
-# have their own quirks.
 
 # -----------------------------------------------------------------------------
 
 # https://cmake.org/cmake/help/v3.20/
 cmake_minimum_required (VERSION 3.20)
-
-# The portable trace::printf() code.
 project (
   micro-os-plus-diag-trace
-  DESCRIPTION "Diagnostics trace::printf()"
+  DESCRIPTION
+    "A source code library with the µOS++ trace::printf() tracing infrastructure"
   LANGUAGES CXX
 )
 

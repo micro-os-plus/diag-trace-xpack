@@ -15,6 +15,10 @@
         "src/trace-c-api.cpp"
       ],
       "dependencies": [],
+      "generatedFile": {
+        "type": "header",
+        "filePath": "{{buildFolderPath}}/generated/include/micro-os-plus/diag/trace-defines.h"
+      },
       // "customDefine": "MICRO_OS_PLUS_DIAG_TRACE_ENABLED",
       "cdlInterfaces": [
         {
