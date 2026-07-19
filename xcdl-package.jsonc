@@ -19,7 +19,7 @@
         "type": "c-header",
         "filePath": "{{buildFolderPath}}/generated/include/micro-os-plus/diag/trace-defines.h"
       },
-      // "customDefine": "MICRO_OS_PLUS_DIAG_TRACE_ENABLED",
+      // "defaultDefine": "MICRO_OS_PLUS_DIAG_TRACE_ENABLED",
       "cdlInterfaces": [
         {
           "id": "output-channel-interface",
@@ -35,7 +35,7 @@
           "description": "The size in bytes of the stack buffer used by vsnprintf() to store the diagnostics line",
           "valueType": "integer",
           "defaultValue": 200
-          // "customDefine": "MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER"
+          // "defaultDefine": "MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER"
         }
       ],
       "cdlArtefacts": [
