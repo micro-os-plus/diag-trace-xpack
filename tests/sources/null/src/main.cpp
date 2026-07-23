@@ -10,14 +10,14 @@
  */
 
 /*
- * This test checks if the library compiles when MICRO_OS_PLUS_TRACE is not
+ * This test checks if the library compiles when MICRO_OS_PLUS_TRACE_ENABLED is not
  * defined.
  */
 
 // ----------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_TRACE)
-#error "MICRO_OS_PLUS_TRACE should not be defined"
+#if defined(MICRO_OS_PLUS_TRACE_ENABLED)
+#error "MICRO_OS_PLUS_TRACE_ENABLED should not be defined"
 #endif
 
 #include "null.h"

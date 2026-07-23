@@ -84,14 +84,14 @@
  * - `micro_os_plus::trace::detail::implementation::write()`
  * - `micro_os_plus::trace::detail::implementation::flush()`
  *
- * Trace support is activated by adding the `MICRO_OS_PLUS_TRACE`
- * macro definition to the compiler line.
+ * Trace support is activated by adding the `MICRO_OS_PLUS_TRACE_ENABLED`
+ * macro definition to the `micro-os-plus/diag/trace-defines.h` file.
  *
- * When `MICRO_OS_PLUS_TRACE` is not defined, all functions are
+ * When `MICRO_OS_PLUS_TRACE_ENABLED` is not defined, all functions are
  * inlined to empty bodies.
  * This approach eliminates the need for trace calls to be conditionally
  * compiled using
- * `#if defined(MICRO_OS_PLUS_TRACE)` and `#endif`.
+ * `#if defined(MICRO_OS_PLUS_TRACE_ENABLED)` and `#endif`.
  * However, the drawback is that the associated header file must always be
  * included.
  */

@@ -30,8 +30,8 @@
 
 // ----------------------------------------------------------------------------
 
-#ifndef MICRO_OS_PLUS_DIAG_TRACE_C_API_INLINES_H_
-#define MICRO_OS_PLUS_DIAG_TRACE_C_API_INLINES_H_
+#ifndef MICRO_OS_PLUS_DIAG_TRACE_INLINES_C_API_INLINES_H_
+#define MICRO_OS_PLUS_DIAG_TRACE_INLINES_C_API_INLINES_H_
 
 // ----------------------------------------------------------------------------
 
@@ -111,6 +111,6 @@ micro_os_plus_trace_dump_args (int argc, char* argv[])
 
 // ----------------------------------------------------------------------------
 
-#endif // MICRO_OS_PLUS_DIAG_TRACE_C_API_INLINES_H_
+#endif // MICRO_OS_PLUS_DIAG_TRACE_INLINES_C_API_INLINES_H_
 
 // ----------------------------------------------------------------------------

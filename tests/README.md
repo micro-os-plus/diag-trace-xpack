@@ -43,7 +43,7 @@ Not necessary for native builds.
 ## null-test
 
 Test that the build passes when the library is included, but
-`MICRO_OS_PLUS_TRACE` is not defined, which is the usual case for
+`MICRO_OS_PLUS_TRACE_ENABLED` is not defined, which is the usual case for
 release configurations.
 
 ## sample-test

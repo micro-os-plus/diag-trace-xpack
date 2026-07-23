@@ -30,8 +30,8 @@
 
 // ----------------------------------------------------------------------------
 
-#ifndef MICRO_OS_PLUS_DIAG_TRACE_CPP_API_INLINES_H_
-#define MICRO_OS_PLUS_DIAG_TRACE_CPP_API_INLINES_H_
+#ifndef MICRO_OS_PLUS_DIAG_TRACE_INLINES_CPP_API_INLINES_H_
+#define MICRO_OS_PLUS_DIAG_TRACE_INLINES_CPP_API_INLINES_H_
 
 // ----------------------------------------------------------------------------
 
@@ -364,6 +364,6 @@ namespace micro_os_plus::trace
 
 // ----------------------------------------------------------------------------
 
-#endif // MICRO_OS_PLUS_DIAG_TRACE_CPP_API_INLINES_H_
+#endif // MICRO_OS_PLUS_DIAG_TRACE_INLINES_CPP_API_INLINES_H_
 
 // ----------------------------------------------------------------------------

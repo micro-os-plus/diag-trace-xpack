@@ -16,8 +16,8 @@
  * function.
  */
 
-#if !defined(MICRO_OS_PLUS_TRACE)
-#error "MICRO_OS_PLUS_TRACE should be defined"
+#if !defined(MICRO_OS_PLUS_TRACE_ENABLED)
+#error "MICRO_OS_PLUS_TRACE_ENABLED should be defined"
 #endif
 
 #include <stdio.h>

@@ -7,7 +7,7 @@
     {
       "id": "tests.null",
       "display": "Null Test",
-      "description": "Check if the library compiles when MICRO_OS_PLUS_TRACE is not defined",
+      "description": "Check if the library compiles when MICRO_OS_PLUS_TRACE_ENABLED is not defined",
       "publicIncludeFolders": [
         "include"
       ],
