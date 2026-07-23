@@ -23,23 +23,24 @@
 # -----------------------------------------------------------------------------
 
 # Check if the library compiles when MICRO_OS_PLUS_TRACE_ENABLED is not defined.
-message(VERBOSE "Processing 'sources/null'...")
+message (VERBOSE "Processing 'sources/null'...")
 
 # -----------------------------------------------------------------------------
 
 # https://cmake.org/cmake/help/v3.20/command/add_library.html?highlight=interface#interface-libraries
 # Visibility keywords: INTERFACE passes properties up to targets that link
 # against it.
-add_library(tests-null-interface INTERFACE EXCLUDE_FROM_ALL)
+add_library (tests-null-interface INTERFACE EXCLUDE_FROM_ALL)
 
-target_include_directories(tests-null-interface INTERFACE "include")
+target_include_directories (tests-null-interface INTERFACE "include")
 
-target_sources(tests-null-interface INTERFACE "src/main.cpp" "src/c-api.c")
+target_sources (tests-null-interface INTERFACE "src/main.cpp" "src/c-api.c")
 
-target_link_libraries(tests-null-interface
-                      INTERFACE "micro-os-plus::diag-trace")
+target_link_libraries (
+  tests-null-interface INTERFACE "micro-os-plus::diag-trace"
+)
 
-xpack_display_target_lists(tests-null-interface)
+xpack_display_target_lists (tests-null-interface)
 
 # -----------------------------------------------------------------------------
 # Alias.
@@ -53,7 +54,7 @@ xpack_display_target_lists(tests-null-interface)
 # read-only; properties must be set on the underlying target, not on the alias
 # itself.
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
-add_library(tests::null ALIAS tests-null-interface)
-message(VERBOSE "> tests::null -> tests-null-interface")
+add_library (tests::null ALIAS tests-null-interface)
+message (VERBOSE "> tests::null -> tests-null-interface")
 
 # -----------------------------------------------------------------------------

@@ -10,8 +10,8 @@
  */
 
 /*
- * This test checks if the library compiles when MICRO_OS_PLUS_TRACE_ENABLED is not
- * defined.
+ * This test checks if the library compiles when MICRO_OS_PLUS_TRACE_ENABLED is
+ * not defined.
  */
 
 // ----------------------------------------------------------------------------

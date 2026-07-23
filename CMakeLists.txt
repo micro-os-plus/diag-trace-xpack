@@ -32,7 +32,7 @@ project (
   micro-os-plus-diag-trace
   DESCRIPTION
     "A source code library with the µOS++ trace::printf() tracing infrastructure"
-  LANGUAGES CXX
+  LANGUAGES C CXX ASM
 )
 
 # To access the optional functions, include the
