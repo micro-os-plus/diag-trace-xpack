@@ -22,7 +22,7 @@
       // "defaultDefine": "MICRO_OS_PLUS_DIAG_TRACE_ENABLED",
       "cdlInterfaces": [
         {
-          "id": "output-channel-interface",
+          "id": "output-channel",
           "display": "Output channel interface",
           "description": "There must be one and only one implementation of the trace output channel",
           "legalValues": "1"
