@@ -22,7 +22,8 @@
 
 # -----------------------------------------------------------------------------
 
-# Check if the library compiles when MICRO_OS_PLUS_TRACE_ENABLED is not defined.
+# Check if the library compiles when MICRO_OS_PLUS_DIAG_TRACE_ENABLED is not
+# defined.
 message (VERBOSE "Processing 'sources/null'...")
 
 # -----------------------------------------------------------------------------

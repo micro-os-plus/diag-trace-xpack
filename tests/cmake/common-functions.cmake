@@ -36,7 +36,9 @@ function (add_native_test_executable name)
   set_target_properties (${name} PROPERTIES OUTPUT_NAME "${name}")
 
   if (NOT name STREQUAL "null-test")
-    target_compile_definitions (${name} PUBLIC "MICRO_OS_PLUS_TRACE")
+    target_compile_definitions (
+      ${name} PUBLIC "MICRO_OS_PLUS_DIAG_TRACE_ENABLED"
+    )
   endif ()
 
   # https://cmake.org/cmake/help/v3.20/manual/cmake-generator-expressions.7.html
@@ -76,7 +78,9 @@ function (add_cross_test_executable name)
   set_target_properties (${name} PROPERTIES OUTPUT_NAME "${name}")
 
   if (NOT name STREQUAL "null-test")
-    target_compile_definitions (${name} PUBLIC "MICRO_OS_PLUS_TRACE")
+    target_compile_definitions (
+      ${name} PUBLIC "MICRO_OS_PLUS_DIAG_TRACE_ENABLED"
+    )
   endif ()
 
   target_link_options (
