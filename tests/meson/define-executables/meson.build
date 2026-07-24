@@ -82,7 +82,7 @@ foreach test : tests
   _local_link_with = []
 
   if test_name != 'null-test'
-    _local_compile_args += [ '-DMICRO_OS_PLUS_TRACE' ]
+    _local_compile_args += [ '-DMICRO_OS_PLUS_DIAG_TRACE_ENABLED' ]
   endif
 
   _local_compile_c_args += common_options_dependency_compile_c_args
