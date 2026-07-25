@@ -1,4 +1,5 @@
 # -----------------------------------------------------------------------------
+# DO NOT EDIT! Automatically generated from build-helper/templates.
 #
 # This file is part of the µOS++ project (https://micro-os-plus.github.io/).
 # Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.
@@ -19,6 +20,27 @@ message (VERBOSE "Processing 'tests/platforms/qemu-cortex-m0'...")
 
 # -----------------------------------------------------------------------------
 
+# Currently QEMU does not support any M0 board. The mps2-an385 board has a
+# Cortex-M3 CPU, but it is the closest to M0, and it is used for testing the M0
+# code.
+set (XPACK_QEMU_BINARY "qemu-system-arm")
+set (XPACK_QEMU_MACHINE_ARGS --machine mps2-an385 --cpu cortex-m3)
+set (XPACK_QEMU_EXTRA_ARGS --nographic -d unimp,guest_errors)
+
+# -----------------------------------------------------------------------------
+
+if (XPACK_ENABLE_NO_TRACE_TEST)
+  add_cross_test_executable (no-trace-test)
+  target_link_cross_test_libraries (no-trace-test tests::no-trace)
+
+  xpack_display_target_lists (no-trace-test)
+  message (VERBOSE "A> no-trace-test")
+
+  add_qemu_test (NAME "no-trace-test" COMMAND no-trace-test one two)
+endif ()
+
+# -----------------------------------------------------------------------------
+
 if (XPACK_ENABLE_NULL_TEST)
   add_cross_test_executable (null-test)
   target_link_cross_test_libraries (null-test tests::null)
@@ -26,13 +48,7 @@ if (XPACK_ENABLE_NULL_TEST)
   xpack_display_target_lists (null-test)
   message (VERBOSE "A> null-test")
 
-  add_test (
-    NAME "null-test"
-    COMMAND
-      qemu-system-arm${extension} --machine mps2-an385 --cpu cortex-m3 --kernel
-      null-test.elf --nographic -d unimp,guest_errors --semihosting-config
-      enable=on,target=native
-  )
+  add_qemu_test (NAME "null-test" COMMAND null-test one two)
 endif ()
 
 # -----------------------------------------------------------------------------
@@ -44,13 +60,7 @@ if (XPACK_ENABLE_SAMPLE_TEST)
   xpack_display_target_lists (sample-test)
   message (VERBOSE "A> sample-test")
 
-  add_test (
-    NAME "sample-test"
-    COMMAND
-      qemu-system-arm${extension} --machine mps2-an385 --cpu cortex-m3 --kernel
-      sample-test.elf --nographic -d unimp,guest_errors --semihosting-config
-      enable=on,target=native,arg=sample-test,arg=one,arg=two
-  )
+  add_qemu_test (NAME "sample-test" COMMAND sample-test one two)
 endif ()
 
 # -----------------------------------------------------------------------------
@@ -62,14 +72,7 @@ if (XPACK_ENABLE_UNIT_TEST)
   xpack_display_target_lists (unit-test)
   message (VERBOSE "A> unit-test")
 
-  add_test (
-    NAME "unit-test"
-    COMMAND
-      qemu-system-arm${extension} --machine mps2-an385 --cpu cortex-m3 --kernel
-      unit-test.elf --nographic -d unimp,guest_errors --semihosting-config
-      enable=on,target=native,arg=unit-test
-    # --semihosting-config arg=--verbose
-  )
+  add_qemu_test (NAME "unit-test" COMMAND unit-test one two)
 endif ()
 
 # -----------------------------------------------------------------------------
