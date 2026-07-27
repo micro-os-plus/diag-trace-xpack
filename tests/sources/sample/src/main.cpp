@@ -15,7 +15,7 @@
 #error "MICRO_OS_PLUS_DIAG_TRACE_ENABLED should be defined"
 #endif
 
-#include <micro-os-plus/diag/trace.h>
+#include "micro-os-plus/diag/trace.h"
 
 #include <unistd.h>
 

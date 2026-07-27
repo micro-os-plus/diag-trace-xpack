@@ -1,7 +1,7 @@
 # platforms/qemu-cortex-m7f
 
 > DO NOT EDIT!
-> Automatically generated from build-helper/templates/*.
+> Automatically generated from build-helper/templates/.
 
 Support files for building application to run on the QEMU "mps2-an500"
 emulated board.
@@ -15,7 +15,7 @@ The following folders should be passed to the compiler during the build:
 The header files to be included in user projects are:
 
 ```cpp
-#include <micro-os-plus/platform.h>
+#include "micro-os-plus/platform.h"
 ```
 
 ## Source files
