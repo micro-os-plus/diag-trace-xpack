@@ -22,14 +22,14 @@
  * Inline method definitions are located in
  * @ref trace-cpp-api-inlines.h, included at the bottom of this
  * file. This file is included by
- * `<micro-os-plus/diag/trace.h>`, which should be used instead
+ * `"micro-os-plus/diag/trace.h"`, which should be used instead
  * of including this file directly.
  */
 
 // ----------------------------------------------------------------------------
 
 #if !defined(MICRO_OS_PLUS_DIAG_TRACE_H_)
-#error "Do not include this file directly; use <micro-os-plus/diag/trace.h>."
+#error "Do not include this file directly; use "micro-os-plus/diag/trace.h"."
 #endif // MICRO_OS_PLUS_DIAG_TRACE_H_
 
 // ----------------------------------------------------------------------------
@@ -274,7 +274,7 @@ namespace micro_os_plus::trace
   {
     /**
      * @brief Policy class for the production trace instance.
-     * @headerfile trace.h <micro-os-plus/diag/trace.h>
+     * @headerfile trace.h "micro-os-plus/diag/trace.h"
      * @details
      * The user must provide a definition of `initialise()`, `write()`,
      * and `flush()` for this class (typically in a single .cpp file,
@@ -368,7 +368,7 @@ namespace micro_os_plus::trace
 
     /**
      * @brief Tracing API bound to a given policy class.
-     * @headerfile trace.h <micro-os-plus/diag/trace.h>
+     * @headerfile trace.h "micro-os-plus/diag/trace.h"
      * @tparam T Policy class providing the static `initialise()`,
      * `write()`, and `flush()` primitives
      * (e.g. @ref micro_os_plus::trace::detail::implementation).

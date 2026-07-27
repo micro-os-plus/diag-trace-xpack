@@ -18,14 +18,14 @@
  * @details
  * Empty inline stubs (used when tracing is disabled) are located in
  * @ref trace-c-api-inlines.h, included at the bottom of this file.
- * This file is included by `<micro-os-plus/diag/trace.h>`, which
+ * This file is included by `"micro-os-plus/diag/trace.h"`, which
  * should be used instead of including this file directly.
  */
 
 // ----------------------------------------------------------------------------
 
 #if !defined(MICRO_OS_PLUS_DIAG_TRACE_H_)
-#error "Do not include this file directly; use <micro-os-plus/diag/trace.h>."
+#error "Do not include this file directly; use "micro-os-plus/diag/trace.h"."
 #endif // MICRO_OS_PLUS_DIAG_TRACE_H_
 
 // ----------------------------------------------------------------------------
@@ -57,7 +57,7 @@ extern "C"
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
    * @brief Initialise the trace output channel.
-   * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @headerfile trace.h "micro-os-plus/diag/trace.h"
    * @par Parameters
    *  None.
    * @par Returns
@@ -75,7 +75,7 @@ extern "C"
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
    * @brief Write the given number of bytes to the trace output channel.
-   * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @headerfile trace.h "micro-os-plus/diag/trace.h"
    * @param buf An array of bytes.
    * @param nbyte The number of bytes in the array.
    * @return  The number of bytes actually written, or -1 if error.
@@ -94,7 +94,7 @@ extern "C"
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-implementation
    * @brief Flush the trace output channel.
-   * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @headerfile trace.h "micro-os-plus/diag/trace.h"
    * @par Parameters
    *  None.
    * @par Returns
@@ -114,7 +114,7 @@ extern "C"
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
    * @brief Write a formatted string to the trace output channel.
-   * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @headerfile trace.h "micro-os-plus/diag/trace.h"
    * @param format A null terminated string with the format.
    * @param ... Additional arguments matching the format specifiers.
    * @return The number of bytes written, or -1 if an error occurred.
@@ -136,7 +136,7 @@ extern "C"
    * @ingroup micro-os-plus-diag-trace-c-api-main
    * @brief Write a formatted variable arguments list to the trace
    * output channel.
-   * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @headerfile trace.h "micro-os-plus/diag/trace.h"
    * @param format A null terminated string with the format.
    * @param arguments A variable arguments list.
    * @return The number of bytes written, or -1 if an error occurred.
@@ -154,7 +154,7 @@ extern "C"
    * @ingroup micro-os-plus-diag-trace-c-api-main
    * @brief Write the string and a line terminator to the trace
    * output channel.
-   * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @headerfile trace.h "micro-os-plus/diag/trace.h"
    * @param s A null terminated string.
    * @return The total number of bytes written (string + newline),
    *  or EOF (-1) if an error occurred.
@@ -172,7 +172,7 @@ extern "C"
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-main
    * @brief Write the single character to the trace output channel.
-   * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @headerfile trace.h "micro-os-plus/diag/trace.h"
    * @param c A single byte character, passed as an `int`.
    * @return The written character as an `int`, or EOF (-1) if an
    *  error occurred.
@@ -188,7 +188,7 @@ extern "C"
   /**
    * @ingroup micro-os-plus-diag-trace-c-api-extra
    * @brief Write the `argv[]` array to the trace output channel.
-   * @headerfile trace.h <micro-os-plus/diag/trace.h>
+   * @headerfile trace.h "micro-os-plus/diag/trace.h"
    * @param argc The number of `argv[]` strings.
    * @param argv An array of pointers to argument strings.
    * @par Returns
