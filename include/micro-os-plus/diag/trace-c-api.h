@@ -35,9 +35,7 @@
 
 // ----------------------------------------------------------------------------
 
-// #include <stdint.h>
 #include <stdarg.h>
-// #include <stdlib.h>
 
 #include <sys/types.h>
 
