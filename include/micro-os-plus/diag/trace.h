@@ -17,7 +17,7 @@
  * Infrastructure.
  *
  * @details
- * Top-level umbrella header; the only file users need to  include directly.
+ * Top-level umbrella header; the only file users need to include directly.
  *
  * This header file includes the C++ and C API headers, which define the
  * functions that can be used to output trace messages.

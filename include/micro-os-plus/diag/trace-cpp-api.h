@@ -13,7 +13,7 @@
 
 /**
  * @file
- * @brief C++ header file with the declarations for the C++ trace API
+ * @brief C++ header file with the declarations for the C++ trace API.
  *
  * @details
  * Declarations for the `tracer`
@@ -29,7 +29,7 @@
 // ----------------------------------------------------------------------------
 
 #if !defined(MICRO_OS_PLUS_DIAG_TRACE_H_)
-#error "Do not include this file directly; use "micro-os-plus/diag/trace.h"."
+#error "Do not include this file directly; use micro-os-plus/diag/trace.h."
 #endif // MICRO_OS_PLUS_DIAG_TRACE_H_
 
 // ----------------------------------------------------------------------------
