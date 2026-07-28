@@ -596,7 +596,7 @@ namespace micro_os_plus::trace
 // ============================================================================
 // Templates, inlines & constexpr implementations.
 
-#include "inlines/trace-cpp-api-inlines.h"
+#include "inlines/cpp-api-inlines.h"
 
 // ----------------------------------------------------------------------------
 

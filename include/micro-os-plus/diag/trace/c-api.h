@@ -220,7 +220,7 @@ extern "C"
 // ============================================================================
 // Templates, inlines & constexpr implementations.
 
-#include "inlines/trace-c-api-inlines.h"
+#include "inlines/c-api-inlines.h"
 
 // ----------------------------------------------------------------------------
 
