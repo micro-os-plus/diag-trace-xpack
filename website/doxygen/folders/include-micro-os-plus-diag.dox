@@ -1,0 +1,6 @@
+@dir include/micro-os-plus/diag
+@brief Folder with C++ header files for the µOS++ Diagnostics.
+
+@details
+This folder contains the public headers that declare the APIs of
+the µOS++ Diagnostics. 

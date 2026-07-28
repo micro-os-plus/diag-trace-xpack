@@ -1,11 +1,12 @@
-@dir include/micro-os-plus/diag
+@dir include/micro-os-plus/diag/trace
 @brief Folder with C++ header files for the µOS++ Tracing Infrastructure.
 
 @details
-This folder contains the public headers that declare the full API of
-the µOS++ Tracing Infrastructure. The primary entry point for user
-projects is `<micro-os-plus/diag/trace.h>`, which aggregates all
-necessary includes.
+This folder contains the internal headers that declare the full API of
+the µOS++ Tracing Infrastructure. 
+
+These headers should not be included by the user; instead, the
+public `"micro-os-plus/diag/trace.h"` should be used.
 
 Inline method definitions are kept in the `inlines` sub-folder and
 are included automatically by their respective headers.

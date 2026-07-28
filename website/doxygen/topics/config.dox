@@ -2,4 +2,5 @@
 @brief Configuration macros.
 
 @details
-The configuration macros used to enable and configure the library.
+The µOS++ Tracing Infrastructure library uses several preprocessor macros 
+to enable it and to configure various options.

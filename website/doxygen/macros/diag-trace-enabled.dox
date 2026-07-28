@@ -10,7 +10,7 @@ project `micro-os-plus/project-config.h` configuration file.
 
 When `MICRO_OS_PLUS_DIAG_TRACE_ENABLED` is defined, the C++ and C
 trace functions are compiled to their full implementations, declared
-in @ref trace-cpp-api.h and @ref trace-c-api.h, which forward all
+in @ref cpp-api.h and @ref c-api.h, which forward all
 calls to
 `micro_os_plus::trace::detail::tracer<micro_os_plus::trace::detail::implementation>`.
 

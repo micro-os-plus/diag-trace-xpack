@@ -19,6 +19,7 @@
 
 @include{doc} files/topics-h.dox
 
+@include{doc} folders/include-micro-os-plus-diag.dox
 @include{doc} folders/include-micro-os-plus-diag-trace.dox
 @include{doc} folders/include-micro-os-plus-diag-trace-inlines.dox
 
