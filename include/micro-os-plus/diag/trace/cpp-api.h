@@ -20,7 +20,7 @@
  * class template and the `trace_policy` concept.
  *
  * Inline method definitions are located in
- * @ref trace-cpp-api-inlines.h, included at the bottom of this
+ * @ref cpp-api-inlines.h, included at the bottom of this
  * file. This file is included by
  * `"micro-os-plus/diag/trace.h"`, which should be used instead
  * of including this file directly.

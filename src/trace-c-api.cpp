@@ -21,8 +21,8 @@
  * the corresponding C++ internal `tracer<implementation>` functions.
  *
  * The empty inline stubs (used when tracing is disabled) are located in
- * @ref trace-c-api-inlines.h, included at the bottom of
- * @ref trace-c-api.h.
+ * @ref c-api-inlines.h, included at the bottom of
+ * @ref c-api.h.
  */
 
 // ----------------------------------------------------------------------------

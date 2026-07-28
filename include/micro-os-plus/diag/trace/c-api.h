@@ -17,7 +17,7 @@
  *
  * @details
  * Empty inline stubs (used when tracing is disabled) are located in
- * @ref trace-c-api-inlines.h, included at the bottom of this file.
+ * @ref c-api-inlines.h, included at the bottom of this file.
  * This file is included by `"micro-os-plus/diag/trace.h"`, which
  * should be used instead of including this file directly.
  */

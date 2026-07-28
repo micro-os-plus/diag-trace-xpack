@@ -17,7 +17,7 @@
  * API when tracing is disabled.
  *
  * @details
- * Function declarations are located in @ref trace-c-api.h.
+ * Function declarations are located in @ref c-api.h.
  * The stubs are separated into this file to improve project
  * structure and maintainability.
  */

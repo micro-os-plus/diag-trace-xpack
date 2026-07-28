@@ -17,7 +17,7 @@
  * `tracer` class template.
  *
  * @details
- * Class definitions are located in @ref trace-cpp-api.h.
+ * Class definitions are located in @ref cpp-api.h.
  * Inline methods are separated into this file to improve project
  * structure and maintainability.
  */
