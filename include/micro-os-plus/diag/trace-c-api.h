@@ -178,9 +178,9 @@ extern "C"
    *  error occurred.
    *
    * @details
-   * Converts @p c to `char` and passes it as a one-byte buffer to
-   * `micro_os_plus_trace_write`. On success, returns the original
-   * value of @p c; on failure, returns EOF.
+   * Converts @p c to `unsigned char` and passes it as a one-byte
+   * buffer to `micro_os_plus_trace_write`. On success, returns the
+   * original value of @p c; on failure, returns EOF.
    */
   int
   micro_os_plus_trace_putchar (int c);

@@ -534,9 +534,9 @@ namespace micro_os_plus::trace
        *  error occurred.
        *
        * @details
-       * Converts @p c to `char` and passes it as a one-byte buffer
-       * to `write()`. On success, returns the original value of
-       * @p c; on failure, returns EOF.
+       * Converts @p c to `unsigned char` and passes it as a one-byte
+       * buffer to `write()`. On success, returns the original value
+       * of @p c; on failure, returns EOF.
        */
       static int
       putchar (int c) noexcept;

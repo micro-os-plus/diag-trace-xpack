@@ -23,7 +23,6 @@
  * The empty inline stubs (used when tracing is disabled) are located in
  * @ref trace-cpp-api-inlines.h, included at the bottom of
  * @ref trace-cpp-api.h.
-
  */
 // ----------------------------------------------------------------------------
 
