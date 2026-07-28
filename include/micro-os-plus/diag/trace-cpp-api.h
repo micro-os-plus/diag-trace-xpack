@@ -413,11 +413,11 @@ namespace micro_os_plus::trace
        *
        * Called
        * during startup, as early as possible, to enable the trace
-       * channel. The `noexcept` specification mirrors that of the
-       * policy method.
+       * channel. Unconditionally `noexcept`, since the `trace_policy`
+       * concept already requires `T::initialise()` to be `noexcept`.
        */
       static void
-      initialise (void) noexcept (noexcept (T::initialise ()))
+      initialise (void) noexcept
       {
         T::initialise ();
       }
@@ -433,12 +433,12 @@ namespace micro_os_plus::trace
        *
        * The return value
        * must reflect the number of bytes actually transferred; a
-       * return value of -1 signals an error. The `noexcept`
-       * specification mirrors that of the policy method.
+       * return value of -1 signals an error. Unconditionally
+       * `noexcept`, since the `trace_policy` concept already requires
+       * `T::write()` to be `noexcept`.
        */
       static ssize_t
-      write (const void* buf,
-             std::size_t nbyte) noexcept (noexcept (T::write (buf, nbyte)))
+      write (const void* buf, std::size_t nbyte) noexcept
       {
         return T::write (buf, nbyte);
       }
@@ -457,11 +457,12 @@ namespace micro_os_plus::trace
        * output channels, the policy method must drain any internally
        * buffered data to the output device. For unbuffered or
        * character-mode channels (e.g. ITM), the policy method
-       * body can be left empty. The `noexcept` specification mirrors
-       * that of the policy method.
+       * body can be left empty. Unconditionally `noexcept`, since the
+       * `trace_policy` concept already requires `T::flush()` to be
+       * `noexcept`.
        */
       static void
-      flush (void) noexcept (noexcept (T::flush ()))
+      flush (void) noexcept
       {
         T::flush ();
       }
