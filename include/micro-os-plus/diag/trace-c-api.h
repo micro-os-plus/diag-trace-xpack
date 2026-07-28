@@ -124,7 +124,8 @@ extern "C"
    * limit, it is silently truncated before being passed to
    * `micro_os_plus_trace_write`. The return value reflects the
    * number of bytes actually written, not the number that the
-   * format string would have produced.
+   * format string would have produced; it cannot be used to detect
+   * whether truncation occurred.
    */
   int
   micro_os_plus_trace_printf (const char* format, ...)
@@ -142,8 +143,9 @@ extern "C"
    * @details
    * Equivalent to `micro_os_plus_trace_printf`, but accepts a
    * `va_list` instead of a variadic argument list. Subject to the
-   * same fixed-size stack buffer constraint and truncation behaviour.
-   * Typically called by `micro_os_plus_trace_printf`.
+   * same fixed-size stack buffer constraint and truncation behaviour;
+   * the return value cannot be used to detect whether truncation
+   * occurred. Typically called by `micro_os_plus_trace_printf`.
    */
   int
   micro_os_plus_trace_vprintf (const char* format, va_list arguments);

@@ -169,7 +169,8 @@ namespace micro_os_plus::trace
    * Thin wrapper over
    * @ref micro_os_plus::trace::detail::tracer::printf() "tracer<T>::printf()".
    * Subject to the same fixed-size stack buffer constraint and
-   * truncation behaviour.
+   * truncation behaviour; the return value cannot be used to detect
+   * whether truncation occurred.
    */
   int
   printf (const char* format, ...) noexcept;
@@ -185,7 +186,9 @@ namespace micro_os_plus::trace
    * @details
    * Thin wrapper over
    * @ref micro_os_plus::trace::detail::tracer::vprintf()
-   * "tracer<T>::vprintf()".
+   * "tracer<T>::vprintf()". Subject to the same fixed-size stack
+   * buffer constraint and truncation behaviour; the return value
+   * cannot be used to detect whether truncation occurred.
    */
   int
   vprintf (const char* format, std::va_list arguments) noexcept;
@@ -479,7 +482,8 @@ namespace micro_os_plus::trace
        * bytes (default: 200). Output that exceeds this limit is
        * silently truncated before being passed to `write()`. The
        * return value reflects the bytes actually written, not the
-       * number that the format string would have produced.
+       * number that the format string would have produced; it
+       * cannot be used to detect whether truncation occurred.
        */
       static int
       printf (const char* format, ...) noexcept
@@ -500,7 +504,8 @@ namespace micro_os_plus::trace
        * exceeds the buffer size, the text is truncated silently; the
        * return value then reflects the bytes actually written to the
        * channel, not the total length that `vsnprintf` would have
-       * produced. Typically called by `printf()`.
+       * produced, and cannot be used to detect whether truncation
+       * occurred. Typically called by `printf()`.
        */
       static int
       vprintf (const char* format, std::va_list arguments) noexcept;
