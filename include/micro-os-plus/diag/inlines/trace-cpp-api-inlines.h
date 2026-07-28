@@ -48,12 +48,6 @@
 
 // ----------------------------------------------------------------------------
 
-#ifndef MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER
-#define MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER (200)
-#endif
-
-// ----------------------------------------------------------------------------
-
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
