@@ -35,7 +35,7 @@
 
 // ----------------------------------------------------------------------------
 
-using namespace micro_os_plus::trace::detail;
+namespace detail = micro_os_plus::trace::detail;
 
 // The C API is always bound to the `tracer<implementation>` policy class;
 // extern "C" does not support templates, so it cannot expose other
@@ -45,19 +45,19 @@ using namespace micro_os_plus::trace::detail;
 void
 micro_os_plus_trace_initialise (void)
 {
-  tracer<implementation>::initialise ();
+  detail::tracer<detail::implementation>::initialise ();
 }
 
 ssize_t
 micro_os_plus_trace_write (const void* buf, size_t nbyte)
 {
-  return tracer<implementation>::write (buf, nbyte);
+  return detail::tracer<detail::implementation>::write (buf, nbyte);
 }
 
 void
 micro_os_plus_trace_flush (void)
 {
-  tracer<implementation>::flush ();
+  detail::tracer<detail::implementation>::flush ();
 }
 
 // ----------------------------------------------------------------------------
@@ -72,7 +72,8 @@ micro_os_plus_trace_printf (const char* format, ...)
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-  int ret = tracer<implementation>::vprintf (format, arguments);
+  int ret
+      = detail::tracer<detail::implementation>::vprintf (format, arguments);
 #pragma GCC diagnostic pop
 
   va_end (arguments);
@@ -86,7 +87,7 @@ micro_os_plus_trace_vprintf (const char* format, va_list arguments)
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-  return tracer<implementation>::vprintf (format, arguments);
+  return detail::tracer<detail::implementation>::vprintf (format, arguments);
 #pragma GCC diagnostic pop
 }
 
@@ -97,20 +98,20 @@ micro_os_plus_trace_puts (const char* s)
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-  return tracer<implementation>::puts (s);
+  return detail::tracer<detail::implementation>::puts (s);
 #pragma GCC diagnostic pop
 }
 
 int
 micro_os_plus_trace_putchar (int c)
 {
-  return tracer<implementation>::putchar (c);
+  return detail::tracer<detail::implementation>::putchar (c);
 }
 
 void
 micro_os_plus_trace_dump_args (int argc, char* argv[])
 {
-  tracer<implementation>::dump_args (argc, argv);
+  detail::tracer<detail::implementation>::dump_args (argc, argv);
 }
 
 // ----------------------------------------------------------------------------
