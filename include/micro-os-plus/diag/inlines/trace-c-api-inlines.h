@@ -74,13 +74,13 @@ micro_os_plus_trace_flush (void)
 
 // ----------------------------------------------------------------------------
 
-static inline __attribute__ ((always_inline)) int
+static inline __attribute__ ((always_inline, format (printf, 1, 2))) int
 micro_os_plus_trace_printf (const char* format, ...)
 {
   return 0;
 }
 
-static inline __attribute__ ((always_inline)) int
+static inline __attribute__ ((always_inline, format (printf, 1, 0))) int
 micro_os_plus_trace_vprintf (const char* format, va_list arguments)
 {
   return 0;

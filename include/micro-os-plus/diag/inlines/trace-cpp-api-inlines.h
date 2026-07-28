@@ -320,13 +320,13 @@ namespace micro_os_plus::trace
 
   // --------------------------------------------------------------------------
 
-  inline __attribute__ ((always_inline)) int
+  inline __attribute__ ((always_inline, format (printf, 1, 2))) int
   printf (const char* /* format */, ...) noexcept
   {
     return 0;
   }
 
-  inline __attribute__ ((always_inline)) int
+  inline __attribute__ ((always_inline, format (printf, 1, 0))) int
   vprintf (const char* /* format */, std::va_list /* arguments */) noexcept
   {
     return 0;
