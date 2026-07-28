@@ -1,0 +1,17 @@
+@def MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER
+@brief The size, in bytes, of the stack buffer used to format trace
+messages.
+
+@details
+This buffer is allocated on the stack by
+@ref micro_os_plus::trace::detail::tracer::vprintf()
+"tracer<T>::vprintf()" to hold the message formatted by `vsnprintf()`
+before it is forwarded to the trace channel `write()` implementation.
+Output that exceeds this size is silently truncated.
+
+The definition below only supplies the default value (200 bytes),
+used when the macro has not already been defined; the actual value
+may be overridden by the user, typically 
+in the library's own `micro-os-plus/diag/trace-defines.h`
+configuration file or the 
+project `micro-os-plus/project-config.h` configuration file.

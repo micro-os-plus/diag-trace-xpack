@@ -1,0 +1,5 @@
+@defgroup micro-os-plus-diag-trace-config Configuration
+@brief Configuration macros.
+
+@details
+The configuration macros used to enable and configure the library.

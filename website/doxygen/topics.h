@@ -33,6 +33,7 @@
 @{
   @include{doc} topics/cpp-api.dox
   @include{doc} topics/c-api.dox
+  @include{doc} topics/config.dox
 @}
 
 @addtogroup micro-os-plus-diag-trace-cpp-api
@@ -49,4 +50,9 @@
     @include{doc} topics/c-api/extra.dox
 @}
 
+@addtogroup micro-os-plus-diag-trace-config
+@{
+  @include{doc} macros/diag-trace-enabled.dox
+  @include{doc} macros/diag-trace-printf-buffer-array-size-integer.dox
+@}
 */

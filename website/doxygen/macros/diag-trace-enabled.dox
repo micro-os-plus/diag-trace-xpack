@@ -1,0 +1,22 @@
+@def MICRO_OS_PLUS_DIAG_TRACE_ENABLED
+@brief Enables the output of trace messages.
+
+@details
+The macro is intended to be defined by the user, 
+for debug builds, typically in 
+the library's own
+`micro-os-plus/diag/trace-defines.h` configuration file or the 
+project `micro-os-plus/project-config.h` configuration file.
+
+When `MICRO_OS_PLUS_DIAG_TRACE_ENABLED` is defined, the C++ and C
+trace functions are compiled to their full implementations, declared
+in @ref trace-cpp-api.h and @ref trace-c-api.h, which forward all
+calls to
+`micro_os_plus::trace::detail::tracer<micro_os_plus::trace::detail::implementation>`.
+
+When it is not defined, which is the usual case for release builds,
+all trace functions are inlined to empty (or trivial pass-through)
+bodies. This approach allows trace calls to remain in the code
+unconditionally, without being wrapped in
+`#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)` guards, while still
+being fully eliminated from the generated binary.
