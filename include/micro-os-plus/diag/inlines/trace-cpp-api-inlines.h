@@ -138,9 +138,13 @@ namespace micro_os_plus::trace
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
 #endif
-      ssize_t ret = write (s, std::strlen (s));
+      std::size_t len = std::strlen (s);
+      ssize_t ret = write (s, len);
 #pragma GCC diagnostic pop
-      if (ret >= 0)
+      // Only append the line terminator if the string was written in
+      // full; a partial write (including a zero-byte write, which is
+      // not itself an error) must not be followed by a bare newline.
+      if (ret >= 0 && static_cast<std::size_t> (ret) == len)
         {
           ssize_t ret2 = write ("\n", 1); // Add a line terminator
           if (ret2 < 0)
