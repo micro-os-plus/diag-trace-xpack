@@ -1,6 +1,8 @@
-var trace_cpp_api_inlines_8h =
+var cpp_api_8h =
 [
-    [ "MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER", "trace-cpp-api-inlines_8h.html#a2084a7003aa78ca9574f96fcb9b5ff4e", null ],
+    [ "micro_os_plus::trace::detail::implementation", "classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html", "classmicro__os__plus_1_1trace_1_1detail_1_1implementation" ],
+    [ "micro_os_plus::trace::detail::tracer&lt; T &gt;", "classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html", "classmicro__os__plus_1_1trace_1_1detail_1_1tracer" ],
+    [ "micro_os_plus::trace::detail::trace_policy", "conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy.html", null ],
     [ "micro_os_plus::trace::dump_args", "group__micro-os-plus-diag-trace-cpp-api-extra.html#gad5ebcf3eebf3239a2f572f8640a94c90", null ],
     [ "micro_os_plus::trace::flush", "group__micro-os-plus-diag-trace-cpp-api-implementation.html#gad2196053624765f72c82e983d6d3e512", null ],
     [ "micro_os_plus::trace::initialise", "group__micro-os-plus-diag-trace-cpp-api-implementation.html#ga2eeb0c01fc5d6e432e319950a94acb2c", null ],

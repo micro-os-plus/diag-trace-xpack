@@ -118,23 +118,23 @@ keywords:
 </dl>
 
 
-<p>Thin wrapper over <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a7c2ce977002993a65bd74ca011f1615f">tracer&lt;T&gt;::flush()</a>.</p>
+<p>Thin wrapper over <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aca35e085ab85a4e69a6ef41178871484">tracer&lt;T&gt;::flush()</a>.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h/#l00229">229</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h">trace-cpp-api-inlines.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00226">226</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#gad2196053624765f72c82e983d6d3e512">229</a></span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="#gad2196053624765f72c82e983d6d3e512">flush</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">230</span><span class="doxyLineContent"><span class="doxyHighlight">  {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">231</span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a7c2ce977002993a65bd74ca011f1615f">detail::tracer&lt;detail::implementation&gt;::flush</a> ();</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">232</span><span class="doxyLineContent"><span class="doxyHighlight">  }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#gad2196053624765f72c82e983d6d3e512">226</a></span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="#gad2196053624765f72c82e983d6d3e512">flush</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">227</span><span class="doxyLineContent"><span class="doxyHighlight">  {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">228</span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aca35e085ab85a4e69a6ef41178871484">detail::tracer&lt;detail::implementation&gt;::flush</a> ();</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">229</span><span class="doxyLineContent"><span class="doxyHighlight">  }</span></span></div>
 
 </div>
 
 
-<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a7c2ce977002993a65bd74ca011f1615f">micro_os_plus::trace::detail::tracer&lt; T &gt;::flush</a>.</p>
+<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aca35e085ab85a4e69a6ef41178871484">micro_os_plus::trace::detail::tracer&lt; T &gt;::flush</a>.</p>
 
 </div>
 </div>
@@ -178,23 +178,23 @@ keywords:
 </dl>
 
 
-<p>Thin wrapper over <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa71a6a7f9d9378f02c48aea3c0d0de90">tracer&lt;T&gt;::initialise()</a>. Called during startup to enable the trace channel.</p>
+<p>Thin wrapper over <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a0d039b1f2025b3ce6178d4394a785728">tracer&lt;T&gt;::initialise()</a>. Called during startup to enable the trace channel.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h/#l00217">217</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h">trace-cpp-api-inlines.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00214">214</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#ga2eeb0c01fc5d6e432e319950a94acb2c">217</a></span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="#ga2eeb0c01fc5d6e432e319950a94acb2c">initialise</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">218</span><span class="doxyLineContent"><span class="doxyHighlight">  {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">219</span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa71a6a7f9d9378f02c48aea3c0d0de90">detail::tracer&lt;detail::implementation&gt;::initialise</a> ();</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">220</span><span class="doxyLineContent"><span class="doxyHighlight">  }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#ga2eeb0c01fc5d6e432e319950a94acb2c">214</a></span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="#ga2eeb0c01fc5d6e432e319950a94acb2c">initialise</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">215</span><span class="doxyLineContent"><span class="doxyHighlight">  {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">216</span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a0d039b1f2025b3ce6178d4394a785728">detail::tracer&lt;detail::implementation&gt;::initialise</a> ();</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">217</span><span class="doxyLineContent"><span class="doxyHighlight">  }</span></span></div>
 
 </div>
 
 
-<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa71a6a7f9d9378f02c48aea3c0d0de90">micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise</a>.</p>
+<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a0d039b1f2025b3ce6178d4394a785728">micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise</a>.</p>
 
 </div>
 </div>
@@ -248,23 +248,23 @@ keywords:
 </dl>
 
 
-<p>Thin wrapper over <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a88600a0485aa9c9afa7f306d2a298fdb">tracer&lt;T&gt;::write()</a>.</p>
+<p>Thin wrapper over <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa2d6c80ffc49710b88ba91e0c0d6e503">tracer&lt;T&gt;::write()</a>.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h/#l00223">223</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h">trace-cpp-api-inlines.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00220">220</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#gacfbedd8169716b02026a93c948af99c8">223</a></span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="#gacfbedd8169716b02026a93c948af99c8">write</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">* buf, std::size_t nbyte) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">224</span><span class="doxyLineContent"><span class="doxyHighlight">  {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">225</span><span class="doxyLineContent"><span class="doxyHighlight">    </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a88600a0485aa9c9afa7f306d2a298fdb">detail::tracer&lt;detail::implementation&gt;::write</a> (buf, nbyte);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">226</span><span class="doxyLineContent"><span class="doxyHighlight">  }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#gacfbedd8169716b02026a93c948af99c8">220</a></span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="#gacfbedd8169716b02026a93c948af99c8">write</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">* buf, std::size_t nbyte) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">221</span><span class="doxyLineContent"><span class="doxyHighlight">  {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">222</span><span class="doxyLineContent"><span class="doxyHighlight">    </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa2d6c80ffc49710b88ba91e0c0d6e503">detail::tracer&lt;detail::implementation&gt;::write</a> (buf, nbyte);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">223</span><span class="doxyLineContent"><span class="doxyHighlight">  }</span></span></div>
 
 </div>
 
 
-<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a88600a0485aa9c9afa7f306d2a298fdb">micro_os_plus::trace::detail::tracer&lt; T &gt;::write</a>.</p>
+<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa2d6c80ffc49710b88ba91e0c0d6e503">micro_os_plus::trace::detail::tracer&lt; T &gt;::write</a>.</p>
 
 
 <p>Referenced by <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#ad0af55a735d06c5c25c8bf38dc3fd4fd">micro_os_plus::trace::detail::tracer&lt; T &gt;::putchar</a>, <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a2f7941dcb7ddb9f6afd664ad0c1c9979">micro_os_plus::trace::detail::tracer&lt; T &gt;::puts</a> and <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a4176d29127dbd89ba01a79770808d094">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</a>.</p>

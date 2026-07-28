@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classmicro__os
 <p>Tracing API bound to a given policy class.  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="trace_8h_source.html">micro-os-plus/diag/trace.h</a>&gt;</code></p>
+<p><code>#include &quot;<a class="el" href="trace_8h_source.html">micro-os-plus/diag/trace.h</a>&quot;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -136,10 +136,10 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a4e2e2a73a7ec36ac69d94840eb0b52e2" id="r_a4e2e2a73a7ec36ac69d94840eb0b52e2"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a4e2e2a73a7ec36ac69d94840eb0b52e2">dump_args</a> (int argc, char *argv[], const char *name=&quot;main&quot;) noexcept</td></tr>
 <tr class="memdesc:a4e2e2a73a7ec36ac69d94840eb0b52e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send the <span class="tt">argv[]</span> array to the trace output channel.  <br /></td></tr>
-<tr class="memitem:a7c2ce977002993a65bd74ca011f1615f" id="r_a7c2ce977002993a65bd74ca011f1615f"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a7c2ce977002993a65bd74ca011f1615f">flush</a> (void) noexcept(noexcept(T::flush()))</td></tr>
-<tr class="memdesc:a7c2ce977002993a65bd74ca011f1615f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the trace output channel.  <br /></td></tr>
-<tr class="memitem:aa71a6a7f9d9378f02c48aea3c0d0de90" id="r_aa71a6a7f9d9378f02c48aea3c0d0de90"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aa71a6a7f9d9378f02c48aea3c0d0de90">initialise</a> (void) noexcept(noexcept(T::initialise()))</td></tr>
-<tr class="memdesc:aa71a6a7f9d9378f02c48aea3c0d0de90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the trace output channel.  <br /></td></tr>
+<tr class="memitem:aca35e085ab85a4e69a6ef41178871484" id="r_aca35e085ab85a4e69a6ef41178871484"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aca35e085ab85a4e69a6ef41178871484">flush</a> (void) noexcept</td></tr>
+<tr class="memdesc:aca35e085ab85a4e69a6ef41178871484"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the trace output channel.  <br /></td></tr>
+<tr class="memitem:a0d039b1f2025b3ce6178d4394a785728" id="r_a0d039b1f2025b3ce6178d4394a785728"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a0d039b1f2025b3ce6178d4394a785728">initialise</a> (void) noexcept</td></tr>
+<tr class="memdesc:a0d039b1f2025b3ce6178d4394a785728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the trace output channel.  <br /></td></tr>
 <tr class="memitem:a7fb471958c000ac75290f5cc68522953" id="r_a7fb471958c000ac75290f5cc68522953"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (const char *format,...) noexcept</td></tr>
 <tr class="memdesc:a7fb471958c000ac75290f5cc68522953"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a formatted string to the trace output channel.  <br /></td></tr>
 <tr class="memitem:ad0af55a735d06c5c25c8bf38dc3fd4fd" id="r_ad0af55a735d06c5c25c8bf38dc3fd4fd"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#ad0af55a735d06c5c25c8bf38dc3fd4fd">putchar</a> (int c) noexcept</td></tr>
@@ -148,21 +148,21 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2f7941dcb7ddb9f6afd664ad0c1c9979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the string and a line terminator to the trace output channel.  <br /></td></tr>
 <tr class="memitem:a4176d29127dbd89ba01a79770808d094" id="r_a4176d29127dbd89ba01a79770808d094"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a4176d29127dbd89ba01a79770808d094">vprintf</a> (const char *format, std::va_list arguments) noexcept</td></tr>
 <tr class="memdesc:a4176d29127dbd89ba01a79770808d094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a formatted variable arguments list to the trace output channel.  <br /></td></tr>
-<tr class="memitem:a88600a0485aa9c9afa7f306d2a298fdb" id="r_a88600a0485aa9c9afa7f306d2a298fdb"><td class="memItemLeft">static ssize_t&#160;</td><td class="memItemRight"><a class="el" href="#a88600a0485aa9c9afa7f306d2a298fdb">write</a> (const void *buf, std::size_t nbyte) noexcept(noexcept(T::write(buf, nbyte)))</td></tr>
-<tr class="memdesc:a88600a0485aa9c9afa7f306d2a298fdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the given number of bytes to the trace output channel.  <br /></td></tr>
+<tr class="memitem:aa2d6c80ffc49710b88ba91e0c0d6e503" id="r_aa2d6c80ffc49710b88ba91e0c0d6e503"><td class="memItemLeft">static ssize_t&#160;</td><td class="memItemRight"><a class="el" href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write</a> (const void *buf, std::size_t nbyte) noexcept</td></tr>
+<tr class="memdesc:aa2d6c80ffc49710b88ba91e0c0d6e503"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the given number of bytes to the trace output channel.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;trace_policy T&gt;<br />
 class micro_os_plus::trace::detail::tracer&lt; T &gt;</div><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>Policy class providing the static <span class="tt"><a class="el" href="#aa71a6a7f9d9378f02c48aea3c0d0de90" title="Initialise the trace output channel.">initialise()</a></span>, <span class="tt"><a class="el" href="#a88600a0485aa9c9afa7f306d2a298fdb" title="Write the given number of bytes to the trace output channel.">write()</a></span>, and <span class="tt"><a class="el" href="#a7c2ce977002993a65bd74ca011f1615f" title="Flush the trace output channel.">flush()</a></span> primitives (e.g. <a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html" title="micro_os_plus::trace::detail::implementation">micro_os_plus::trace::detail::implementation</a>).</td></tr>
+    <tr><td class="paramname">T</td><td>Policy class providing the static <span class="tt"><a class="el" href="#a0d039b1f2025b3ce6178d4394a785728" title="Initialise the trace output channel.">initialise()</a></span>, <span class="tt"><a class="el" href="#aa2d6c80ffc49710b88ba91e0c0d6e503" title="Write the given number of bytes to the trace output channel.">write()</a></span>, and <span class="tt"><a class="el" href="#aca35e085ab85a4e69a6ef41178871484" title="Flush the trace output channel.">flush()</a></span> primitives (e.g. <a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html" title="micro_os_plus::trace::detail::implementation">micro_os_plus::trace::detail::implementation</a>).</td></tr>
   </table>
   </dd>
 </dl>
 <p>All methods are static; <span class="tt"><a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html" title="Tracing API bound to a given policy class.">tracer</a></span> is never instantiated as an object. Each distinct <span class="tt">T</span> produces an independent set of methods with no shared state, so <span class="tt"><a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html" title="Tracing API bound to a given policy class.">tracer</a>&lt;<a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html" title="Policy class for the production trace instance.">implementation</a>&gt;</span> (or any further user-defined policy class) can coexist in the same translation unit and binary.</p>
 <p>The main reason for using a class template rather than a namespace is that it allows the policy class to be a template parameter, so that multiple independent instances can coexist in the same binary, each bound to a different policy class. This is used in testing, where a <span class="tt">testing_implementation</span> policy class is defined to capture the output for verification. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api_8h_source.html#l00391">391</a> of file <a class="el" href="trace-cpp-api_8h_source.html">trace-cpp-api.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpp-api_8h_source.html#l00392">392</a> of file <a class="el" href="cpp-api_8h_source.html">cpp-api.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7db5bf09d5a4b1b7732dba2477013bc4" name="a7db5bf09d5a4b1b7732dba2477013bc4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7db5bf09d5a4b1b7732dba2477013bc4">&#9670;&#160;</a></span>tracer()</h2>
@@ -237,30 +237,30 @@ template&lt;trace_policy T&gt; </div>
 <dl class="section user"><dt>Returns</dt><dd>Nothing.</dd></dl>
 <p>Formats and writes the argument list in the form <span class="tt">name(argc=N, argv=["arg0", "arg1", ...])</span>, followed by a newline. Intended to be called at the start of <span class="tt">main()</span> to record the process arguments in the trace output. Each argument string is quoted; no escaping is applied to the string content. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00193">193</a> of file <a class="el" href="trace-cpp-api-inlines_8h_source.html">trace-cpp-api-inlines.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  194</span>    {</div>
-<div class="line"><span class="lineno">  195</span>      <a class="code hl_function" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (<span class="stringliteral">&quot;%s(argc=%d, argv=[&quot;</span>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">name</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">argc</a>);</div>
-<div class="line"><span class="lineno">  196</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a> = 0; <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a> &lt; <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">argc</a>; ++<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a>)</div>
-<div class="line"><span class="lineno">  197</span>        {</div>
-<div class="line"><span class="lineno">  198</span>          <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a> != 0)</div>
-<div class="line"><span class="lineno">  199</span>            {</div>
-<div class="line"><span class="lineno">  200</span>              <a class="code hl_function" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (<span class="stringliteral">&quot;, &quot;</span>);</div>
-<div class="line"><span class="lineno">  201</span>            }</div>
-<div class="line"><span class="lineno">  202</span>          <a class="code hl_function" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (<span class="stringliteral">&quot;\&quot;%s\&quot;&quot;</span>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">argv</a>[<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a>]);</div>
-<div class="line"><span class="lineno">  203</span>        }</div>
-<div class="line"><span class="lineno">  204</span>      <a class="code hl_function" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (<span class="stringliteral">&quot;])\n&quot;</span>);</div>
-<div class="line"><span class="lineno">  205</span>    }</div>
-<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">micro_os_plus::trace::detail::tracer</a></div><div class="ttdoc">Tracing API bound to a given policy class.</div><div class="ttdef"><b>Definition</b> <a href="trace-cpp-api_8h_source.html#l00391">trace-cpp-api.h:392</a></div></div>
-<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a7fb471958c000ac75290f5cc68522953"><div class="ttname"><a href="#a7fb471958c000ac75290f5cc68522953">micro_os_plus::trace::detail::tracer::printf</a></div><div class="ttdeci">static int printf(const char *format,...) noexcept</div><div class="ttdoc">Write a formatted string to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-cpp-api-inlines_8h_source.html#l00079">trace-cpp-api-inlines.h:79</a></div></div>
+<p class="definition">Definition at line <a class="el" href="cpp-api-inlines_8h_source.html#l00190">190</a> of file <a class="el" href="cpp-api-inlines_8h_source.html">cpp-api-inlines.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>    {</div>
+<div class="line"><span class="lineno">  192</span>      <a class="code hl_function" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (<span class="stringliteral">&quot;%s(argc=%d, argv=[&quot;</span>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">name</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">argc</a>);</div>
+<div class="line"><span class="lineno">  193</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a> = 0; <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a> &lt; <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">argc</a>; ++<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a>)</div>
+<div class="line"><span class="lineno">  194</span>        {</div>
+<div class="line"><span class="lineno">  195</span>          <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a> != 0)</div>
+<div class="line"><span class="lineno">  196</span>            {</div>
+<div class="line"><span class="lineno">  197</span>              <a class="code hl_function" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><span class="lineno">  198</span>            }</div>
+<div class="line"><span class="lineno">  199</span>          <a class="code hl_function" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (<span class="stringliteral">&quot;\&quot;%s\&quot;&quot;</span>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">argv</a>[<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">i</a>]);</div>
+<div class="line"><span class="lineno">  200</span>        }</div>
+<div class="line"><span class="lineno">  201</span>      <a class="code hl_function" href="#a7fb471958c000ac75290f5cc68522953">printf</a> (<span class="stringliteral">&quot;])\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  202</span>    }</div>
+<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">micro_os_plus::trace::detail::tracer</a></div><div class="ttdoc">Tracing API bound to a given policy class.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00392">cpp-api.h:393</a></div></div>
+<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a7fb471958c000ac75290f5cc68522953"><div class="ttname"><a href="#a7fb471958c000ac75290f5cc68522953">micro_os_plus::trace::detail::tracer::printf</a></div><div class="ttdeci">static int printf(const char *format,...) noexcept</div><div class="ttdoc">Write a formatted string to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api-inlines_8h_source.html#l00072">cpp-api-inlines.h:72</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00235">micro_os_plus::trace::printf()</a>.</p>
+<p class="reference">References <a class="el" href="cpp-api-inlines_8h_source.html#l00232">micro_os_plus::trace::printf()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00279">micro_os_plus::trace::dump_args()</a>, and <a class="el" href="trace-c-api_8cpp_source.html#l00111">micro_os_plus_trace_dump_args()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cpp-api-inlines_8h_source.html#l00276">micro_os_plus::trace::dump_args()</a>, and <a class="el" href="trace-c-api_8cpp_source.html#l00112">micro_os_plus_trace_dump_args()</a>.</p>
 
 </div>
 </div>
-<a id="a7c2ce977002993a65bd74ca011f1615f" name="a7c2ce977002993a65bd74ca011f1615f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c2ce977002993a65bd74ca011f1615f">&#9670;&#160;</a></span>flush()</h2>
+<a id="aca35e085ab85a4e69a6ef41178871484" name="aca35e085ab85a4e69a6ef41178871484"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca35e085ab85a4e69a6ef41178871484">&#9670;&#160;</a></span>flush()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -286,19 +286,19 @@ template&lt;trace_policy T&gt; </div>
 <dl class="section user"><dt>Parameters</dt><dd>None. </dd></dl>
 <dl class="section user"><dt>Returns</dt><dd>Nothing.</dd></dl>
 <p>Delegates unconditionally to <span class="tt">T::flush()</span>.</p>
-<p>For buffered output channels, the policy method must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the policy method body can be left empty. The <span class="tt">noexcept</span> specification mirrors that of the policy method. </p>
+<p>For buffered output channels, the policy method must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the policy method body can be left empty. Unconditionally <span class="tt">noexcept</span>, since the <span class="tt"><a class="el" href="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy.html" title="Concept constraining the policy class T used by tracer&lt;T&gt;.">trace_policy</a></span> concept already requires <span class="tt">T::flush()</span> to be <span class="tt">noexcept</span>. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api_8h_source.html#l00464">464</a> of file <a class="el" href="trace-cpp-api_8h_source.html">trace-cpp-api.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  465</span>      {</div>
-<div class="line"><span class="lineno">  466</span>        <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">T::flush</a> ();</div>
-<div class="line"><span class="lineno">  467</span>      }</div>
+<p class="definition">Definition at line <a class="el" href="cpp-api_8h_source.html#l00466">466</a> of file <a class="el" href="cpp-api_8h_source.html">cpp-api.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  467</span>      {</div>
+<div class="line"><span class="lineno">  468</span>        <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">T::flush</a> ();</div>
+<div class="line"><span class="lineno">  469</span>      }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00229">micro_os_plus::trace::flush()</a>, and <a class="el" href="trace-c-api_8cpp_source.html#l00058">micro_os_plus_trace_flush()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cpp-api-inlines_8h_source.html#l00226">micro_os_plus::trace::flush()</a>, and <a class="el" href="trace-c-api_8cpp_source.html#l00058">micro_os_plus_trace_flush()</a>.</p>
 
 </div>
 </div>
-<a id="aa71a6a7f9d9378f02c48aea3c0d0de90" name="aa71a6a7f9d9378f02c48aea3c0d0de90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa71a6a7f9d9378f02c48aea3c0d0de90">&#9670;&#160;</a></span>initialise()</h2>
+<a id="a0d039b1f2025b3ce6178d4394a785728" name="a0d039b1f2025b3ce6178d4394a785728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d039b1f2025b3ce6178d4394a785728">&#9670;&#160;</a></span>initialise()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,14 +324,14 @@ template&lt;trace_policy T&gt; </div>
 <dl class="section user"><dt>Parameters</dt><dd>None. </dd></dl>
 <dl class="section user"><dt>Returns</dt><dd>Nothing.</dd></dl>
 <p>Delegates unconditionally to <span class="tt">T::initialise()</span>.</p>
-<p>Called during startup, as early as possible, to enable the trace channel. The <span class="tt">noexcept</span> specification mirrors that of the policy method. </p>
+<p>Called during startup, as early as possible, to enable the trace channel. Unconditionally <span class="tt">noexcept</span>, since the <span class="tt"><a class="el" href="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy.html" title="Concept constraining the policy class T used by tracer&lt;T&gt;.">trace_policy</a></span> concept already requires <span class="tt">T::initialise()</span> to be <span class="tt">noexcept</span>. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api_8h_source.html#l00420">420</a> of file <a class="el" href="trace-cpp-api_8h_source.html">trace-cpp-api.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  421</span>      {</div>
-<div class="line"><span class="lineno">  422</span>        <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">T::initialise</a> ();</div>
-<div class="line"><span class="lineno">  423</span>      }</div>
+<p class="definition">Definition at line <a class="el" href="cpp-api_8h_source.html#l00421">421</a> of file <a class="el" href="cpp-api_8h_source.html">cpp-api.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  422</span>      {</div>
+<div class="line"><span class="lineno">  423</span>        <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">T::initialise</a> ();</div>
+<div class="line"><span class="lineno">  424</span>      }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00217">micro_os_plus::trace::initialise()</a>, and <a class="el" href="trace-c-api_8cpp_source.html#l00046">micro_os_plus_trace_initialise()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cpp-api-inlines_8h_source.html#l00214">micro_os_plus::trace::initialise()</a>, and <a class="el" href="trace-c-api_8cpp_source.html#l00046">micro_os_plus_trace_initialise()</a>.</p>
 
 </div>
 </div>
@@ -371,26 +371,26 @@ template&lt;trace_policy T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes written, or -1 if an error occurred.</dd></dl>
-<p>Formatting is performed into a fixed-size stack buffer of <span class="tt"><a class="el" href="trace-cpp-api-inlines_8h.html#a2084a7003aa78ca9574f96fcb9b5ff4e">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a></span> bytes (default: 200). Output that exceeds this limit is silently truncated before being passed to <span class="tt"><a class="el" href="#a88600a0485aa9c9afa7f306d2a298fdb" title="Write the given number of bytes to the trace output channel.">write()</a></span>. The return value reflects the bytes actually written, not the number that the format string would have produced. </p>
+<p>Formatting is performed into a fixed-size stack buffer of <span class="tt"><a class="el" href="group__micro-os-plus-diag-trace-config.html#ga2084a7003aa78ca9574f96fcb9b5ff4e" title="The size, in bytes, of the stack buffer used to format trace messages.">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a></span> bytes (default: 200). Output that exceeds this limit is silently truncated before being passed to <span class="tt"><a class="el" href="#aa2d6c80ffc49710b88ba91e0c0d6e503" title="Write the given number of bytes to the trace output channel.">write()</a></span>. The return value reflects the bytes actually written, not the number that the format string would have produced; it cannot be used to detect whether truncation occurred. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00079">79</a> of file <a class="el" href="trace-cpp-api-inlines_8h_source.html">trace-cpp-api-inlines.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>    {</div>
-<div class="line"><span class="lineno">   81</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">std::va_list</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>;</div>
-<div class="line"><span class="lineno">   82</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">va_start</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">format</a>);</div>
+<p class="definition">Definition at line <a class="el" href="cpp-api-inlines_8h_source.html#l00072">72</a> of file <a class="el" href="cpp-api-inlines_8h_source.html">cpp-api-inlines.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>    {</div>
+<div class="line"><span class="lineno">   74</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">std::va_list</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>;</div>
+<div class="line"><span class="lineno">   75</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">va_start</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">format</a>);</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
+<div class="line"><span class="lineno">   78</span><span class="preprocessor">#if defined(__clang__)</span></div>
+<div class="line"><span class="lineno">   79</span><span class="preprocessor">#pragma clang diagnostic ignored &quot;-Wunsafe-buffer-usage-in-libc-call&quot;</span></div>
+<div class="line"><span class="lineno">   80</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   81</span>      <span class="keywordtype">int</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_function" href="#a4176d29127dbd89ba01a79770808d094">vprintf</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">format</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>);</div>
+<div class="line"><span class="lineno">   82</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
 <div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
-<div class="line"><span class="lineno">   85</span><span class="preprocessor">#if defined(__clang__)</span></div>
-<div class="line"><span class="lineno">   86</span><span class="preprocessor">#pragma clang diagnostic ignored &quot;-Wunsafe-buffer-usage-in-libc-call&quot;</span></div>
-<div class="line"><span class="lineno">   87</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   88</span>      <span class="keywordtype">int</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_function" href="#a4176d29127dbd89ba01a79770808d094">vprintf</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">format</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>);</div>
-<div class="line"><span class="lineno">   89</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
-<div class="line"><span class="lineno">   90</span> </div>
-<div class="line"><span class="lineno">   91</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">va_end</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>);</div>
-<div class="line"><span class="lineno">   92</span>      <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>;</div>
-<div class="line"><span class="lineno">   93</span>    }</div>
-<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a4176d29127dbd89ba01a79770808d094"><div class="ttname"><a href="#a4176d29127dbd89ba01a79770808d094">micro_os_plus::trace::detail::tracer::vprintf</a></div><div class="ttdeci">static int vprintf(const char *format, std::va_list arguments) noexcept</div><div class="ttdoc">Write a formatted variable arguments list to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-cpp-api-inlines_8h_source.html#l00097">trace-cpp-api-inlines.h:97</a></div></div>
+<div class="line"><span class="lineno">   84</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">va_end</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>);</div>
+<div class="line"><span class="lineno">   85</span>      <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>;</div>
+<div class="line"><span class="lineno">   86</span>    }</div>
+<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a4176d29127dbd89ba01a79770808d094"><div class="ttname"><a href="#a4176d29127dbd89ba01a79770808d094">micro_os_plus::trace::detail::tracer::vprintf</a></div><div class="ttdeci">static int vprintf(const char *format, std::va_list arguments) noexcept</div><div class="ttdoc">Write a formatted variable arguments list to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api-inlines_8h_source.html#l00090">cpp-api-inlines.h:90</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00251">micro_os_plus::trace::vprintf()</a>.</p>
+<p class="reference">References <a class="el" href="cpp-api-inlines_8h_source.html#l00248">micro_os_plus::trace::vprintf()</a>.</p>
 
 </div>
 </div>
@@ -425,26 +425,26 @@ template&lt;trace_policy T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The written character as an <span class="tt">int</span>, or EOF (-1) if an error occurred.</dd></dl>
-<p>Converts <code class="param">c</code> to <span class="tt">char</span> and passes it as a one-byte buffer to <span class="tt"><a class="el" href="#a88600a0485aa9c9afa7f306d2a298fdb" title="Write the given number of bytes to the trace output channel.">write()</a></span>. On success, returns the original value of <code class="param">c</code>; on failure, returns EOF. </p>
+<p>Converts <code class="param">c</code> to <span class="tt">unsigned char</span> and passes it as a one-byte buffer to <span class="tt"><a class="el" href="#aa2d6c80ffc49710b88ba91e0c0d6e503" title="Write the given number of bytes to the trace output channel.">write()</a></span>. On success, returns the original value of <code class="param">c</code>; on failure, returns EOF. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00173">173</a> of file <a class="el" href="trace-cpp-api-inlines_8h_source.html">trace-cpp-api-inlines.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  174</span>    {</div>
-<div class="line"><span class="lineno">  175</span>      <span class="keywordtype">char</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ch</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">c</a>);</div>
-<div class="line"><span class="lineno">  176</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_function" href="#a88600a0485aa9c9afa7f306d2a298fdb">write</a> (&amp;<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ch</a>, 1);</div>
-<div class="line"><span class="lineno">  177</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> &gt; 0)</div>
-<div class="line"><span class="lineno">  178</span>        {</div>
-<div class="line"><span class="lineno">  179</span>          <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">c</a>;</div>
-<div class="line"><span class="lineno">  180</span>        }</div>
-<div class="line"><span class="lineno">  181</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  182</span>        {</div>
-<div class="line"><span class="lineno">  183</span>          <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">EOF</a>;</div>
-<div class="line"><span class="lineno">  184</span>        }</div>
-<div class="line"><span class="lineno">  185</span>    }</div>
-<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a88600a0485aa9c9afa7f306d2a298fdb"><div class="ttname"><a href="#a88600a0485aa9c9afa7f306d2a298fdb">micro_os_plus::trace::detail::tracer::write</a></div><div class="ttdeci">static ssize_t write(const void *buf, std::size_t nbyte) noexcept(noexcept(T::write(buf, nbyte)))</div><div class="ttdoc">Write the given number of bytes to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-cpp-api_8h_source.html#l00440">trace-cpp-api.h:440</a></div></div>
+<p class="definition">Definition at line <a class="el" href="cpp-api-inlines_8h_source.html#l00170">170</a> of file <a class="el" href="cpp-api-inlines_8h_source.html">cpp-api-inlines.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  171</span>    {</div>
+<div class="line"><span class="lineno">  172</span>      <span class="keyword">auto</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ch</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">c</a>);</div>
+<div class="line"><span class="lineno">  173</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_function" href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write</a> (&amp;<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ch</a>, 1);</div>
+<div class="line"><span class="lineno">  174</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> &gt; 0)</div>
+<div class="line"><span class="lineno">  175</span>        {</div>
+<div class="line"><span class="lineno">  176</span>          <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">c</a>;</div>
+<div class="line"><span class="lineno">  177</span>        }</div>
+<div class="line"><span class="lineno">  178</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  179</span>        {</div>
+<div class="line"><span class="lineno">  180</span>          <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">EOF</a>;</div>
+<div class="line"><span class="lineno">  181</span>        }</div>
+<div class="line"><span class="lineno">  182</span>    }</div>
+<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_aa2d6c80ffc49710b88ba91e0c0d6e503"><div class="ttname"><a href="#aa2d6c80ffc49710b88ba91e0c0d6e503">micro_os_plus::trace::detail::tracer::write</a></div><div class="ttdeci">static ssize_t write(const void *buf, std::size_t nbyte) noexcept</div><div class="ttdoc">Write the given number of bytes to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00442">cpp-api.h:442</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00223">micro_os_plus::trace::write()</a>.</p>
+<p class="reference">References <a class="el" href="cpp-api-inlines_8h_source.html#l00220">micro_os_plus::trace::write()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="trace-c-api_8cpp_source.html#l00105">micro_os_plus_trace_putchar()</a>, and <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00273">micro_os_plus::trace::putchar()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="trace-c-api_8cpp_source.html#l00106">micro_os_plus_trace_putchar()</a>, and <a class="el" href="cpp-api-inlines_8h_source.html#l00270">micro_os_plus::trace::putchar()</a>.</p>
 
 </div>
 </div>
@@ -481,45 +481,49 @@ template&lt;trace_policy T&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The total number of bytes written (string + newline), or EOF (-1) if an error occurred.</dd></dl>
 <p>Writes the characters of <code class="param">s</code> followed by a single newline character (<span class="tt">'\n'</span>). Unlike the standard C <span class="tt"><a class="el" href="#a2f7941dcb7ddb9f6afd664ad0c1c9979" title="Write the string and a line terminator to the trace output channel.">puts()</a></span>, this function returns the total byte count written. If writing the newline fails after the string has been written successfully, EOF is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00135">135</a> of file <a class="el" href="trace-cpp-api-inlines_8h_source.html">trace-cpp-api-inlines.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  136</span>    {</div>
-<div class="line"><span class="lineno">  137</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
-<div class="line"><span class="lineno">  138</span><span class="preprocessor">#if defined(__clang__)</span></div>
-<div class="line"><span class="lineno">  139</span><span class="preprocessor">#pragma clang diagnostic ignored &quot;-Wunsafe-buffer-usage-in-libc-call&quot;</span></div>
-<div class="line"><span class="lineno">  140</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  141</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_function" href="#a88600a0485aa9c9afa7f306d2a298fdb">write</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">s</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">std::strlen</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">s</a>));</div>
-<div class="line"><span class="lineno">  142</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
-<div class="line"><span class="lineno">  143</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> &gt;= 0)</div>
-<div class="line"><span class="lineno">  144</span>        {</div>
-<div class="line"><span class="lineno">  145</span>          <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret2</a> = <a class="code hl_function" href="#a88600a0485aa9c9afa7f306d2a298fdb">write</a> (<span class="stringliteral">&quot;\n&quot;</span>, 1); <span class="comment">// Add a line terminator</span></div>
-<div class="line"><span class="lineno">  146</span>          <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret2</a> &lt; 0)</div>
-<div class="line"><span class="lineno">  147</span>            {</div>
-<div class="line"><span class="lineno">  148</span>              <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret2</a>; <span class="comment">// Propagate the error.</span></div>
-<div class="line"><span class="lineno">  149</span>            }</div>
-<div class="line"><span class="lineno">  150</span>          <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  151</span>            {</div>
-<div class="line"><span class="lineno">  152</span>              <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> += <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret2</a>; <span class="comment">// Return total bytes written.</span></div>
-<div class="line"><span class="lineno">  153</span>            }</div>
-<div class="line"><span class="lineno">  154</span>        }</div>
-<div class="line"><span class="lineno">  155</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> &gt; 0)</div>
-<div class="line"><span class="lineno">  156</span>        {</div>
-<div class="line"><span class="lineno">  157</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
-<div class="line"><span class="lineno">  158</span><span class="preprocessor">#if defined(__GNUC__) &amp;&amp; !defined(__clang__)</span></div>
-<div class="line"><span class="lineno">  159</span><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wuseless-cast&quot;</span></div>
-<div class="line"><span class="lineno">  160</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  161</span>          <span class="comment">// Cast required on 64-bit.</span></div>
-<div class="line"><span class="lineno">  162</span>          <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>);</div>
-<div class="line"><span class="lineno">  163</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
-<div class="line"><span class="lineno">  164</span>        }</div>
-<div class="line"><span class="lineno">  165</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  166</span>        {</div>
-<div class="line"><span class="lineno">  167</span>          <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">EOF</a>;</div>
-<div class="line"><span class="lineno">  168</span>        }</div>
-<div class="line"><span class="lineno">  169</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="cpp-api-inlines_8h_source.html#l00128">128</a> of file <a class="el" href="cpp-api-inlines_8h_source.html">cpp-api-inlines.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  129</span>    {</div>
+<div class="line"><span class="lineno">  130</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
+<div class="line"><span class="lineno">  131</span><span class="preprocessor">#if defined(__clang__)</span></div>
+<div class="line"><span class="lineno">  132</span><span class="preprocessor">#pragma clang diagnostic ignored &quot;-Wunsafe-buffer-usage-in-libc-call&quot;</span></div>
+<div class="line"><span class="lineno">  133</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  134</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">std::size_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">len</a> = <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">std::strlen</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">s</a>);</div>
+<div class="line"><span class="lineno">  135</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_function" href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">s</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">len</a>);</div>
+<div class="line"><span class="lineno">  136</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
+<div class="line"><span class="lineno">  137</span>      <span class="comment">// Only append the line terminator if the string was written in</span></div>
+<div class="line"><span class="lineno">  138</span>      <span class="comment">// full; a partial write (including a zero-byte write, which is</span></div>
+<div class="line"><span class="lineno">  139</span>      <span class="comment">// not itself an error) must not be followed by a bare newline.</span></div>
+<div class="line"><span class="lineno">  140</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> &gt;= 0 &amp;&amp; <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">std::size_t</a><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>) == <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">len</a>)</div>
+<div class="line"><span class="lineno">  141</span>        {</div>
+<div class="line"><span class="lineno">  142</span>          <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret2</a> = <a class="code hl_function" href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write</a> (<span class="stringliteral">&quot;\n&quot;</span>, 1); <span class="comment">// Add a line terminator</span></div>
+<div class="line"><span class="lineno">  143</span>          <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret2</a> &lt; 0)</div>
+<div class="line"><span class="lineno">  144</span>            {</div>
+<div class="line"><span class="lineno">  145</span>              <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret2</a>; <span class="comment">// Propagate the error.</span></div>
+<div class="line"><span class="lineno">  146</span>            }</div>
+<div class="line"><span class="lineno">  147</span>          <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  148</span>            {</div>
+<div class="line"><span class="lineno">  149</span>              <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> += <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret2</a>; <span class="comment">// Return total bytes written.</span></div>
+<div class="line"><span class="lineno">  150</span>            }</div>
+<div class="line"><span class="lineno">  151</span>        }</div>
+<div class="line"><span class="lineno">  152</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> &gt; 0)</div>
+<div class="line"><span class="lineno">  153</span>        {</div>
+<div class="line"><span class="lineno">  154</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
+<div class="line"><span class="lineno">  155</span><span class="preprocessor">#if defined(__GNUC__) &amp;&amp; !defined(__clang__)</span></div>
+<div class="line"><span class="lineno">  156</span><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wuseless-cast&quot;</span></div>
+<div class="line"><span class="lineno">  157</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  158</span>          <span class="comment">// Cast required on 64-bit.</span></div>
+<div class="line"><span class="lineno">  159</span>          <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>);</div>
+<div class="line"><span class="lineno">  160</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
+<div class="line"><span class="lineno">  161</span>        }</div>
+<div class="line"><span class="lineno">  162</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  163</span>        {</div>
+<div class="line"><span class="lineno">  164</span>          <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">EOF</a>;</div>
+<div class="line"><span class="lineno">  165</span>        }</div>
+<div class="line"><span class="lineno">  166</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00223">micro_os_plus::trace::write()</a>.</p>
+<p class="reference">References <a class="el" href="cpp-api-inlines_8h_source.html#l00220">micro_os_plus::trace::write()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="trace-c-api_8cpp_source.html#l00094">micro_os_plus_trace_puts()</a>, and <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00262">micro_os_plus::trace::puts()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="trace-c-api_8cpp_source.html#l00095">micro_os_plus_trace_puts()</a>, and <a class="el" href="cpp-api-inlines_8h_source.html#l00259">micro_os_plus::trace::puts()</a>.</p>
 
 </div>
 </div>
@@ -559,52 +563,52 @@ template&lt;trace_policy T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes written to the output channel, or -1 if an error occurred.</dd></dl>
-<p>Equivalent to <span class="tt"><a class="el" href="#a7fb471958c000ac75290f5cc68522953" title="Write a formatted string to the trace output channel.">printf()</a></span>, but accepts a <span class="tt">std::va_list</span> instead of a variadic argument list. Subject to the same fixed-size stack buffer constraint. When the formatted output exceeds the buffer size, the text is truncated silently; the return value then reflects the bytes actually written to the channel, not the total length that <span class="tt">vsnprintf</span> would have produced. Typically called by <span class="tt"><a class="el" href="#a7fb471958c000ac75290f5cc68522953" title="Write a formatted string to the trace output channel.">printf()</a></span>. </p>
+<p>Equivalent to <span class="tt"><a class="el" href="#a7fb471958c000ac75290f5cc68522953" title="Write a formatted string to the trace output channel.">printf()</a></span>, but accepts a <span class="tt">std::va_list</span> instead of a variadic argument list. Subject to the same fixed-size stack buffer constraint. When the formatted output exceeds the buffer size, the text is truncated silently; the return value then reflects the bytes actually written to the channel, not the total length that <span class="tt">vsnprintf</span> would have produced, and cannot be used to detect whether truncation occurred. Typically called by <span class="tt"><a class="el" href="#a7fb471958c000ac75290f5cc68522953" title="Write a formatted string to the trace output channel.">printf()</a></span>. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00097">97</a> of file <a class="el" href="trace-cpp-api-inlines_8h_source.html">trace-cpp-api-inlines.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>    {</div>
-<div class="line"><span class="lineno">   99</span>      <span class="comment">// Caution: allocated on the stack!</span></div>
-<div class="line"><span class="lineno">  100</span>      <span class="keywordtype">char</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>[<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a>];</div>
-<div class="line"><span class="lineno">  101</span> </div>
-<div class="line"><span class="lineno">  102</span>      <span class="comment">// TODO: possibly rewrite it to no longer use newlib,</span></div>
-<div class="line"><span class="lineno">  103</span>      <span class="comment">// (although the nano version is no longer very heavy).</span></div>
-<div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>      <span class="comment">// Print to the local buffer</span></div>
-<div class="line"><span class="lineno">  106</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
-<div class="line"><span class="lineno">  107</span><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wformat-nonliteral&quot;</span></div>
-<div class="line"><span class="lineno">  108</span><span class="preprocessor">#if defined(__clang__)</span></div>
-<div class="line"><span class="lineno">  109</span><span class="preprocessor">#pragma clang diagnostic ignored &quot;-Wunsafe-buffer-usage-in-libc-call&quot;</span></div>
-<div class="line"><span class="lineno">  110</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  111</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">::vsnprintf</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>, <span class="keyword">sizeof</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>), <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">format</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>);</div>
-<div class="line"><span class="lineno">  112</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
-<div class="line"><span class="lineno">  113</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> &gt; 0)</div>
-<div class="line"><span class="lineno">  114</span>        {</div>
-<div class="line"><span class="lineno">  115</span>          <span class="comment">// Clamp to actual buffer size if output was truncated.</span></div>
-<div class="line"><span class="lineno">  116</span>          <span class="comment">// Note: on truncation the return value becomes the byte count</span></div>
-<div class="line"><span class="lineno">  117</span>          <span class="comment">// written to the channel, not the total length vsnprintf</span></div>
-<div class="line"><span class="lineno">  118</span>          <span class="comment">// computed. Callers cannot use the return value to detect</span></div>
-<div class="line"><span class="lineno">  119</span>          <span class="comment">// truncation.</span></div>
-<div class="line"><span class="lineno">  120</span>          <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_function" href="#a88600a0485aa9c9afa7f306d2a298fdb">write</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>,</div>
-<div class="line"><span class="lineno">  121</span>                       <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">std::min</a> (</div>
-<div class="line"><span class="lineno">  122</span>                           <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a><span class="keyword">&gt;</span> (<span class="keyword">sizeof</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>) - 1))));</div>
-<div class="line"><span class="lineno">  123</span>        }</div>
-<div class="line"><span class="lineno">  124</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
-<div class="line"><span class="lineno">  125</span><span class="preprocessor">#if defined(__GNUC__) &amp;&amp; !defined(__clang__)</span></div>
-<div class="line"><span class="lineno">  126</span><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wuseless-cast&quot;</span></div>
-<div class="line"><span class="lineno">  127</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  128</span>      <span class="comment">// Cast required on 64-bit.</span></div>
-<div class="line"><span class="lineno">  129</span>      <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>);</div>
-<div class="line"><span class="lineno">  130</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
-<div class="line"><span class="lineno">  131</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="cpp-api-inlines_8h_source.html#l00090">90</a> of file <a class="el" href="cpp-api-inlines_8h_source.html">cpp-api-inlines.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>    {</div>
+<div class="line"><span class="lineno">   92</span>      <span class="comment">// Caution: allocated on the stack!</span></div>
+<div class="line"><span class="lineno">   93</span>      <span class="keywordtype">char</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>[<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a>];</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>      <span class="comment">// TODO: possibly rewrite it to no longer use newlib,</span></div>
+<div class="line"><span class="lineno">   96</span>      <span class="comment">// (although the nano version is no longer very heavy).</span></div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>      <span class="comment">// Print to the local buffer</span></div>
+<div class="line"><span class="lineno">   99</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
+<div class="line"><span class="lineno">  100</span><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wformat-nonliteral&quot;</span></div>
+<div class="line"><span class="lineno">  101</span><span class="preprocessor">#if defined(__clang__)</span></div>
+<div class="line"><span class="lineno">  102</span><span class="preprocessor">#pragma clang diagnostic ignored &quot;-Wunsafe-buffer-usage-in-libc-call&quot;</span></div>
+<div class="line"><span class="lineno">  103</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  104</span>      <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">::vsnprintf</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>, <span class="keyword">sizeof</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>), <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">format</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">arguments</a>);</div>
+<div class="line"><span class="lineno">  105</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
+<div class="line"><span class="lineno">  106</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> &gt; 0)</div>
+<div class="line"><span class="lineno">  107</span>        {</div>
+<div class="line"><span class="lineno">  108</span>          <span class="comment">// Clamp to actual buffer size if output was truncated.</span></div>
+<div class="line"><span class="lineno">  109</span>          <span class="comment">// Note: on truncation the return value becomes the byte count</span></div>
+<div class="line"><span class="lineno">  110</span>          <span class="comment">// written to the channel, not the total length vsnprintf</span></div>
+<div class="line"><span class="lineno">  111</span>          <span class="comment">// computed. Callers cannot use the return value to detect</span></div>
+<div class="line"><span class="lineno">  112</span>          <span class="comment">// truncation.</span></div>
+<div class="line"><span class="lineno">  113</span>          <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a> = <a class="code hl_function" href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>,</div>
+<div class="line"><span class="lineno">  114</span>                       <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">std::min</a> (</div>
+<div class="line"><span class="lineno">  115</span>                           <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ssize_t</a><span class="keyword">&gt;</span> (<span class="keyword">sizeof</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>) - 1))));</div>
+<div class="line"><span class="lineno">  116</span>        }</div>
+<div class="line"><span class="lineno">  117</span><span class="preprocessor">#pragma GCC diagnostic push</span></div>
+<div class="line"><span class="lineno">  118</span><span class="preprocessor">#if defined(__GNUC__) &amp;&amp; !defined(__clang__)</span></div>
+<div class="line"><span class="lineno">  119</span><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wuseless-cast&quot;</span></div>
+<div class="line"><span class="lineno">  120</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  121</span>      <span class="comment">// Cast required on 64-bit.</span></div>
+<div class="line"><span class="lineno">  122</span>      <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">ret</a>);</div>
+<div class="line"><span class="lineno">  123</span><span class="preprocessor">#pragma GCC diagnostic pop</span></div>
+<div class="line"><span class="lineno">  124</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00052">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a>, and <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00223">micro_os_plus::trace::write()</a>.</p>
+<p class="reference">References <a class="el" href="trace_8h_source.html#l00056">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a>, and <a class="el" href="cpp-api-inlines_8h_source.html#l00220">micro_os_plus::trace::write()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="trace-c-api_8cpp_source.html#l00066">micro_os_plus_trace_printf()</a>, <a class="el" href="trace-c-api_8cpp_source.html#l00083">micro_os_plus_trace_vprintf()</a>, <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00235">micro_os_plus::trace::printf()</a>, and <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00251">micro_os_plus::trace::vprintf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="trace-c-api_8cpp_source.html#l00066">micro_os_plus_trace_printf()</a>, <a class="el" href="trace-c-api_8cpp_source.html#l00084">micro_os_plus_trace_vprintf()</a>, <a class="el" href="cpp-api-inlines_8h_source.html#l00232">micro_os_plus::trace::printf()</a>, and <a class="el" href="cpp-api-inlines_8h_source.html#l00248">micro_os_plus::trace::vprintf()</a>.</p>
 
 </div>
 </div>
-<a id="a88600a0485aa9c9afa7f306d2a298fdb" name="a88600a0485aa9c9afa7f306d2a298fdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88600a0485aa9c9afa7f306d2a298fdb">&#9670;&#160;</a></span>write()</h2>
+<a id="aa2d6c80ffc49710b88ba91e0c0d6e503" name="aa2d6c80ffc49710b88ba91e0c0d6e503"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2d6c80ffc49710b88ba91e0c0d6e503">&#9670;&#160;</a></span>write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -640,20 +644,20 @@ template&lt;trace_policy T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes actually written, or -1 if error.</dd></dl>
 <p>Delegates unconditionally to <span class="tt">T::write()</span>.</p>
-<p>The return value must reflect the number of bytes actually transferred; a return value of -1 signals an error. The <span class="tt">noexcept</span> specification mirrors that of the policy method. </p>
+<p>The return value must reflect the number of bytes actually transferred; a return value of -1 signals an error. Unconditionally <span class="tt">noexcept</span>, since the <span class="tt"><a class="el" href="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy.html" title="Concept constraining the policy class T used by tracer&lt;T&gt;.">trace_policy</a></span> concept already requires <span class="tt">T::write()</span> to be <span class="tt">noexcept</span>. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api_8h_source.html#l00440">440</a> of file <a class="el" href="trace-cpp-api_8h_source.html">trace-cpp-api.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  442</span>      {</div>
-<div class="line"><span class="lineno">  443</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">T::write</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">nbyte</a>);</div>
-<div class="line"><span class="lineno">  444</span>      }</div>
+<p class="definition">Definition at line <a class="el" href="cpp-api_8h_source.html#l00442">442</a> of file <a class="el" href="cpp-api_8h_source.html">cpp-api.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  443</span>      {</div>
+<div class="line"><span class="lineno">  444</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">T::write</a> (<a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">buf</a>, <a class="code hl_class" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html">nbyte</a>);</div>
+<div class="line"><span class="lineno">  445</span>      }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="trace-c-api_8cpp_source.html#l00052">micro_os_plus_trace_write()</a>, and <a class="el" href="trace-cpp-api-inlines_8h_source.html#l00223">micro_os_plus::trace::write()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="trace-c-api_8cpp_source.html#l00052">micro_os_plus_trace_write()</a>, and <a class="el" href="cpp-api-inlines_8h_source.html#l00220">micro_os_plus::trace::write()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="trace-cpp-api_8h_source.html">trace-cpp-api.h</a></li>
-<li><a class="el" href="trace-cpp-api-inlines_8h_source.html">trace-cpp-api-inlines.h</a></li>
+<li><a class="el" href="cpp-api_8h_source.html">cpp-api.h</a></li>
+<li><a class="el" href="cpp-api-inlines_8h_source.html">cpp-api-inlines.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

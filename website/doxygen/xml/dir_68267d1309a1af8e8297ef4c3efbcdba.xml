@@ -9,7 +9,7 @@
     </briefdescription>
     <detaileddescription>
 <para>This folder contains the <computeroutput>.cpp</computeroutput> implementation files for the µOS++ Tracing Infrastructure library. Each file provides the non-inline definitions for one layer of the API.</para>
-<para>The files are compiled into the library only when <computeroutput>MICRO_OS_PLUS_DIAG_TRACE_ENABLED</computeroutput> is defined. When tracing is disabled, all calls resolve to empty inline stubs and these files contribute no object code.   </para>
+<para>The files are compiled into the library only when <computeroutput><ref refid="group__micro-os-plus-diag-trace-config_1gac21aa3324300f25da16bf17b95afbd90" kindref="member">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</ref></computeroutput> is defined. When tracing is disabled, all calls resolve to empty inline stubs and these files contribute no object code.   </para>
     </detaileddescription>
     <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/"/>
   </compounddef>

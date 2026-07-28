@@ -367,7 +367,7 @@
     <value><![CDATA[__DOXYGEN__]]></value>
     <value><![CDATA[__cplusplus]]></value>
     <value><![CDATA[__cpp_exceptions]]></value>
-    <value><![CDATA[MICRO_OS_PLUS_TRACE]]></value>
+    <value><![CDATA[MICRO_OS_PLUS_DEBUG_ENABLED]]></value>
     <value><![CDATA[MICRO_OS_PLUS_DIAG_TRACE_ENABLED]]></value>
   </option>
   <option  id='EXPAND_AS_DEFINED' default='yes' type='stringlist'>

@@ -163,8 +163,8 @@ Functions</h2></td></tr>
 <li><span class="tt"><a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html#a883b0bd506d3612ecf84d1ad604e5949" title="Write the given number of bytes to the trace output channel.">micro_os_plus::trace::detail::implementation::write()</a></span></li>
 <li><span class="tt"><a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html#ab6bc9c127091ba107f059b83a932a590" title="Flush the trace output channel.">micro_os_plus::trace::detail::implementation::flush()</a></span></li>
 </ul>
-<p>Trace support is activated by adding the <span class="tt">MICRO_OS_PLUS_TRACE</span> macro definition to the compiler line.</p>
-<p>When <span class="tt">MICRO_OS_PLUS_TRACE</span> is not defined, all functions are inlined to empty bodies. This approach eliminates the need for trace calls to be conditionally compiled using <span class="tt">#if defined(MICRO_OS_PLUS_TRACE)</span> and <span class="tt">#endif</span>. However, the drawback is that the associated header file must always be included. </p>
+<p>Trace support is activated by adding the <span class="tt"><a class="el" href="group__micro-os-plus-diag-trace-config.html#gac21aa3324300f25da16bf17b95afbd90" title="Enables the output of trace messages.">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</a></span> macro definition to the <span class="tt">micro-os-plus/diag/trace-defines.h</span> file.</p>
+<p>When <span class="tt"><a class="el" href="group__micro-os-plus-diag-trace-config.html#gac21aa3324300f25da16bf17b95afbd90" title="Enables the output of trace messages.">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</a></span> is not defined, all functions are inlined to empty bodies. This approach eliminates the need for trace calls to be conditionally compiled using <span class="tt">#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</span> and <span class="tt">#endif</span>. However, the drawback is that the associated header file must always be included. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

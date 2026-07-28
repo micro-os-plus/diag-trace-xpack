@@ -1,4 +1,4 @@
-var trace_c_api_8h =
+var c_api_8h =
 [
     [ "micro_os_plus_trace_dump_args", "group__micro-os-plus-diag-trace-c-api-extra.html#ga49bd9637ae06ff570445fbc6830f19a7", null ],
     [ "micro_os_plus_trace_flush", "group__micro-os-plus-diag-trace-c-api-implementation.html#gac34c391936f919c141bc38ec5b5a1db9", null ],

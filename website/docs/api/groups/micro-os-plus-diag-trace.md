@@ -51,6 +51,20 @@ keywords:
 <td class="doxyMemberIndexSeparator" colspan="2"></td>
 </tr>
 
+<tr class="doxyMemberIndexItem">
+<td class="doxyMemberIndexItemType" align="left" valign="top">&nbsp;</td>
+<td class="doxyMemberIndexItemName" align="left" valign="top"><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config">Configuration</a></td>
+</tr>
+<tr class="doxyMemberIndexDescription">
+<td class="doxyMemberIndexDescriptionLeft"></td>
+<td class="doxyMemberIndexDescriptionRight">
+<p>Configuration macros. <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#details">More...</a></p>
+</td>
+</tr>
+<tr class="doxyMemberIndexSeparator">
+<td class="doxyMemberIndexSeparator" colspan="2"></td>
+</tr>
+
 </table>
 
 ## Description {#details}

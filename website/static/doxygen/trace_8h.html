@@ -125,10 +125,18 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('trace_8h.html'
 <p>C++ header file with the declarations for the µOS++ Tracing Infrastructure.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="trace-cpp-api_8h_source.html">trace-cpp-api.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="trace-c-api_8h_source.html">trace-c-api.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cpp-api_8h_source.html">trace/cpp-api.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="c-api_8h_source.html">trace/c-api.h</a>&quot;</code><br />
 </div>
 <p><a href="trace_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gac21aa3324300f25da16bf17b95afbd90" id="r_gac21aa3324300f25da16bf17b95afbd90"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="group__micro-os-plus-diag-trace-config.html#gac21aa3324300f25da16bf17b95afbd90">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</a></td></tr>
+<tr class="memdesc:gac21aa3324300f25da16bf17b95afbd90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the output of trace messages.  <br /></td></tr>
+<tr class="memitem:ga2084a7003aa78ca9574f96fcb9b5ff4e" id="r_ga2084a7003aa78ca9574f96fcb9b5ff4e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="group__micro-os-plus-diag-trace-config.html#ga2084a7003aa78ca9574f96fcb9b5ff4e">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a>&#160;&#160;&#160;(200)</td></tr>
+<tr class="memdesc:ga2084a7003aa78ca9574f96fcb9b5ff4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size, in bytes, of the stack buffer used to format trace messages.  <br /></td></tr>
+</table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Top-level umbrella header; the only file users need to include directly.</p>
 <p>This header file includes the C++ and C API headers, which define the functions that can be used to output trace messages. </p>

@@ -32,9 +32,9 @@
 </listitem><listitem><para><computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1ab6bc9c127091ba107f059b83a932a590" kindref="member">micro_os_plus::trace::detail::implementation::flush()</ref></computeroutput></para>
 </listitem></itemizedlist>
 </para>
-<para>Trace support is activated by adding the <computeroutput>MICRO_OS_PLUS_TRACE</computeroutput> macro definition to the compiler line.</para>
-<para>When <computeroutput>MICRO_OS_PLUS_TRACE</computeroutput> is not defined, all functions are inlined to empty bodies. This approach eliminates the need for trace calls to be conditionally compiled using <computeroutput>#if defined(MICRO_OS_PLUS_TRACE)</computeroutput> and <computeroutput>#endif</computeroutput>. However, the drawback is that the associated header file must always be included. </para>
+<para>Trace support is activated by adding the <computeroutput><ref refid="group__micro-os-plus-diag-trace-config_1gac21aa3324300f25da16bf17b95afbd90" kindref="member">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</ref></computeroutput> macro definition to the <computeroutput>micro-os-plus/diag/trace-defines.h</computeroutput> file.</para>
+<para>When <computeroutput><ref refid="group__micro-os-plus-diag-trace-config_1gac21aa3324300f25da16bf17b95afbd90" kindref="member">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</ref></computeroutput> is not defined, all functions are inlined to empty bodies. This approach eliminates the need for trace calls to be conditionally compiled using <computeroutput>#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</computeroutput> and <computeroutput>#endif</computeroutput>. However, the drawback is that the associated header file must always be included. </para>
     </detaileddescription>
-    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h" line="63" column="1"/>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" line="102" column="1"/>
   </compounddef>
 </doxygen>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>diag-trace: trace-c-api.h Source File</title>
+<title>diag-trace: c-api.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="codefolding.js"></script>
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded',() => { initNavTree('trace-c-api_8h_source.html','',''); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('c-api_8h_source.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -118,18 +118,18 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('trace-c-api_8h
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">trace-c-api.h</div></div>
+  <div class="headertitle"><div class="title">c-api.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="trace-c-api_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<a href="c-api_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * This file is part of the µOS++ project (https://micro-os-plus.github.io/).</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * Copyright (c) 2015-2026 Liviu Ionescu. All rights reserved.</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Permission to use, copy, modify, and/or distribute this software</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * for any purpose is hereby granted, under the terms of the MIT license.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Permission to use, copy, modify, and/or distribute this software for any</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * purpose is hereby granted, under the terms of the MIT license.</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * If a copy of the license was not distributed with this file, it can</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * be obtained from https://opensource.org/licenses/mit.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * If a copy of the license was not distributed with this file, it can be</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * obtained from https://opensource.org/licenses/mit.</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('trace-c-api_8h
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#if !defined(MICRO_OS_PLUS_DIAG_TRACE_H_)</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#error &quot;Do not include this file directly; use &lt;micro-os-plus/diag/trace.h&gt;.&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#error &quot;Do not include this file directly; use micro-os-plus/diag/trace.h.&quot;</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif </span><span class="comment">// MICRO_OS_PLUS_DIAG_TRACE_H_</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
@@ -148,38 +148,36 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('trace-c-api_8h
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// #include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// #include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;sys/types.h&gt;</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;sys/types.h&gt;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</span></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#if defined(__cplusplus)</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif </span><span class="comment">// defined(__cplusplus)</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="comment">// --------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-implementation.html#ga425f36ab6d5a58a63bc926f4675dc53b">micro_os_plus_trace_initialise</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  ssize_t</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-implementation.html#ga80d104ecf38dfcf40cae10bac0d2c562">micro_os_plus_trace_write</a> (<span class="keyword">const</span> <span class="keywordtype">void</span>* buf, <span class="keywordtype">size_t</span> nbyte);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-implementation.html#gac34c391936f919c141bc38ec5b5a1db9">micro_os_plus_trace_flush</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  <span class="keywordtype">int</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-main.html#ga10e8dda4991909bc9b401c4f401f1364">micro_os_plus_trace_printf</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* format, ...)</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      __attribute__ ((format (printf, 1, 2)));</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#if defined(__cplusplus)</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif </span><span class="comment">// defined(__cplusplus)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="comment">// --------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-implementation.html#ga425f36ab6d5a58a63bc926f4675dc53b">micro_os_plus_trace_initialise</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  ssize_t</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-implementation.html#ga80d104ecf38dfcf40cae10bac0d2c562">micro_os_plus_trace_write</a> (<span class="keyword">const</span> <span class="keywordtype">void</span>* buf, <span class="keywordtype">size_t</span> nbyte);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-implementation.html#gac34c391936f919c141bc38ec5b5a1db9">micro_os_plus_trace_flush</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keywordtype">int</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-main.html#ga10e8dda4991909bc9b401c4f401f1364">micro_os_plus_trace_printf</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* format, ...)</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      __attribute__ ((format (printf, 1, 2)));</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span></div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="keywordtype">int</span></div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <a class="code hl_function" href="group__micro-os-plus-diag-trace-c-api-main.html#ga61e826d87556c899edad6f82d7bd36ef">micro_os_plus_trace_vprintf</a> (const <span class="keywordtype">char</span>* format, va_list arguments);</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span></div>
@@ -205,29 +203,29 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('trace-c-api_8h
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">// ============================================================================</span></div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">// Templates, inlines &amp; constexpr implementations.</span></div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="preprocessor">#include &quot;<a class="code" href="trace-c-api-inlines_8h.html">inlines/trace-c-api-inlines.h</a>&quot;</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="preprocessor">#include &quot;<a class="code" href="c-api-inlines_8h.html">inlines/c-api-inlines.h</a>&quot;</span></div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="preprocessor">#endif </span><span class="comment">// MICRO_OS_PLUS_DIAG_TRACE_C_API_H_</span></div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-extra_html_ga49bd9637ae06ff570445fbc6830f19a7"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-extra.html#ga49bd9637ae06ff570445fbc6830f19a7">micro_os_plus_trace_dump_args</a></div><div class="ttdeci">void micro_os_plus_trace_dump_args(int argc, char *argv[])</div><div class="ttdoc">Write the argv[] array to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00111">trace-c-api.cpp:111</a></div></div>
+<div class="ttc" id="ac-api-inlines_8h_html"><div class="ttname"><a href="c-api-inlines_8h.html">c-api-inlines.h</a></div><div class="ttdoc">C header file with the empty inline stubs for the C trace API when tracing is disabled.</div></div>
+<div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-extra_html_ga49bd9637ae06ff570445fbc6830f19a7"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-extra.html#ga49bd9637ae06ff570445fbc6830f19a7">micro_os_plus_trace_dump_args</a></div><div class="ttdeci">void micro_os_plus_trace_dump_args(int argc, char *argv[])</div><div class="ttdoc">Write the argv[] array to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00112">trace-c-api.cpp:112</a></div></div>
 <div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-implementation_html_ga425f36ab6d5a58a63bc926f4675dc53b"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-implementation.html#ga425f36ab6d5a58a63bc926f4675dc53b">micro_os_plus_trace_initialise</a></div><div class="ttdeci">void micro_os_plus_trace_initialise(void)</div><div class="ttdoc">Initialise the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00046">trace-c-api.cpp:46</a></div></div>
 <div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-implementation_html_ga80d104ecf38dfcf40cae10bac0d2c562"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-implementation.html#ga80d104ecf38dfcf40cae10bac0d2c562">micro_os_plus_trace_write</a></div><div class="ttdeci">ssize_t micro_os_plus_trace_write(const void *buf, size_t nbyte)</div><div class="ttdoc">Write the given number of bytes to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00052">trace-c-api.cpp:52</a></div></div>
 <div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-implementation_html_gac34c391936f919c141bc38ec5b5a1db9"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-implementation.html#gac34c391936f919c141bc38ec5b5a1db9">micro_os_plus_trace_flush</a></div><div class="ttdeci">void micro_os_plus_trace_flush(void)</div><div class="ttdoc">Flush the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00058">trace-c-api.cpp:58</a></div></div>
 <div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-main_html_ga10e8dda4991909bc9b401c4f401f1364"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-main.html#ga10e8dda4991909bc9b401c4f401f1364">micro_os_plus_trace_printf</a></div><div class="ttdeci">int micro_os_plus_trace_printf(const char *format,...)</div><div class="ttdoc">Write a formatted string to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00066">trace-c-api.cpp:66</a></div></div>
-<div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-main_html_ga378825eb60900b367774de9e76925b0d"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-main.html#ga378825eb60900b367774de9e76925b0d">micro_os_plus_trace_puts</a></div><div class="ttdeci">int micro_os_plus_trace_puts(const char *s)</div><div class="ttdoc">Write the string and a line terminator to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00094">trace-c-api.cpp:94</a></div></div>
-<div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-main_html_ga61e826d87556c899edad6f82d7bd36ef"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-main.html#ga61e826d87556c899edad6f82d7bd36ef">micro_os_plus_trace_vprintf</a></div><div class="ttdeci">int micro_os_plus_trace_vprintf(const char *format, va_list arguments)</div><div class="ttdoc">Write a formatted variable arguments list to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00083">trace-c-api.cpp:83</a></div></div>
-<div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-main_html_gaf651ff851996a49b25989c93118142f9"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-main.html#gaf651ff851996a49b25989c93118142f9">micro_os_plus_trace_putchar</a></div><div class="ttdeci">int micro_os_plus_trace_putchar(int c)</div><div class="ttdoc">Write the single character to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00105">trace-c-api.cpp:105</a></div></div>
-<div class="ttc" id="atrace-c-api-inlines_8h_html"><div class="ttname"><a href="trace-c-api-inlines_8h.html">trace-c-api-inlines.h</a></div><div class="ttdoc">C header file with the empty inline stubs for the C trace API when tracing is disabled.</div></div>
+<div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-main_html_ga378825eb60900b367774de9e76925b0d"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-main.html#ga378825eb60900b367774de9e76925b0d">micro_os_plus_trace_puts</a></div><div class="ttdeci">int micro_os_plus_trace_puts(const char *s)</div><div class="ttdoc">Write the string and a line terminator to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00095">trace-c-api.cpp:95</a></div></div>
+<div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-main_html_ga61e826d87556c899edad6f82d7bd36ef"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-main.html#ga61e826d87556c899edad6f82d7bd36ef">micro_os_plus_trace_vprintf</a></div><div class="ttdeci">int micro_os_plus_trace_vprintf(const char *format, va_list arguments)</div><div class="ttdoc">Write a formatted variable arguments list to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00084">trace-c-api.cpp:84</a></div></div>
+<div class="ttc" id="agroup__micro-os-plus-diag-trace-c-api-main_html_gaf651ff851996a49b25989c93118142f9"><div class="ttname"><a href="group__micro-os-plus-diag-trace-c-api-main.html#gaf651ff851996a49b25989c93118142f9">micro_os_plus_trace_putchar</a></div><div class="ttdeci">int micro_os_plus_trace_putchar(int c)</div><div class="ttdoc">Write the single character to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="trace-c-api_8cpp_source.html#l00106">trace-c-api.cpp:106</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="dir_816a891db8c947b8e5a0cc7ac535aed5.html">micro-os-plus</a></li><li class="navelem"><a href="dir_5671676a253e1befbea09a7e5e509372.html">diag</a></li><li class="navelem"><a href="trace-c-api_8h.html">trace-c-api.h</a></li>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="dir_816a891db8c947b8e5a0cc7ac535aed5.html">micro-os-plus</a></li><li class="navelem"><a href="dir_5671676a253e1befbea09a7e5e509372.html">diag</a></li><li class="navelem"><a href="dir_c57ccfe7c3dd92ca255ba5bc420a70f7.html">trace</a></li><li class="navelem"><a href="c-api_8h.html">c-api.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
   </ul>
 </div>

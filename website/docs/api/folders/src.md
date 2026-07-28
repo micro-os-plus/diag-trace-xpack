@@ -61,7 +61,7 @@ keywords:
 <p>This folder contains the <span class="doxyComputerOutput">.cpp</span> implementation files for the µOS++ Tracing Infrastructure library. Each file provides the non-inline definitions for one layer of the API.</p>
 
 
-<p>The files are compiled into the library only when <span class="doxyComputerOutput">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</span> is defined. When tracing is disabled, all calls resolve to empty inline stubs and these files contribute no object code.</p>
+<p>The files are compiled into the library only when <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#gac21aa3324300f25da16bf17b95afbd90">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</a></span> is defined. When tracing is disabled, all calls resolve to empty inline stubs and these files contribute no object code.</p>
 
 
 <hr/>

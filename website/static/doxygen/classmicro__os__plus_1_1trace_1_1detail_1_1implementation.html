@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classmicro__os
 <p>Policy class for the production trace instance.  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="trace_8h_source.html">micro-os-plus/diag/trace.h</a>&gt;</code></p>
+<p><code>#include &quot;<a class="el" href="trace_8h_source.html">micro-os-plus/diag/trace.h</a>&quot;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -140,7 +140,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="textblock"><p>The user must provide a definition of <span class="tt"><a class="el" href="#a85bfae1a60141a8c5df3017e47158fc6" title="Initialise the trace output channel.">initialise()</a></span>, <span class="tt"><a class="el" href="#a883b0bd506d3612ecf84d1ad604e5949" title="Write the given number of bytes to the trace output channel.">write()</a></span>, and <span class="tt"><a class="el" href="#ab6bc9c127091ba107f059b83a932a590" title="Flush the trace output channel.">flush()</a></span> for this class (typically in a single .cpp file, once per application/platform).</p>
 <p><span class="tt"><a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html" title="Policy class for the production trace instance.">implementation</a></span> is not a template; it has no member data and is never instantiated as an object. Its static methods are looked up by <span class="tt"><a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html" title="Tracing API bound to a given policy class.">tracer</a>&lt;<a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html" title="Policy class for the production trace instance.">implementation</a>&gt;</span> and are otherwise ordinary, non-template member functions, so there is no instantiation-order hazard between their declaration here and their definition elsewhere. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-cpp-api_8h_source.html#l00289">289</a> of file <a class="el" href="trace-cpp-api_8h_source.html">trace-cpp-api.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpp-api_8h_source.html#l00290">290</a> of file <a class="el" href="cpp-api_8h_source.html">cpp-api.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ab6bc9c127091ba107f059b83a932a590" name="ab6bc9c127091ba107f059b83a932a590"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6bc9c127091ba107f059b83a932a590">&#9670;&#160;</a></span>flush()</h2>
@@ -237,7 +237,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="trace-cpp-api_8h_source.html">trace-cpp-api.h</a></li>
+<li><a class="el" href="cpp-api_8h_source.html">cpp-api.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

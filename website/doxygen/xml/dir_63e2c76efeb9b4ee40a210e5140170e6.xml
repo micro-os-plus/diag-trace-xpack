@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
-  <compounddef id="dir_5c9fb8a8c984827e2a8e754fb9a6fef4" kind="dir">
+  <compounddef id="dir_63e2c76efeb9b4ee40a210e5140170e6" kind="dir">
     <compoundname>inlines</compoundname>
-    <innerfile refid="trace-c-api-inlines_8h">trace-c-api-inlines.h</innerfile>
-    <innerfile refid="trace-cpp-api-inlines_8h">trace-cpp-api-inlines.h</innerfile>
+    <innerfile refid="c-api-inlines_8h">c-api-inlines.h</innerfile>
+    <innerfile refid="cpp-api-inlines_8h">cpp-api-inlines.h</innerfile>
     <briefdescription>
 <para>Folder with C++ header files containing inline method definitions. </para>
     </briefdescription>
     <detaileddescription>
-<para>This folder holds the inline implementation headers that complement the declarations in <computeroutput>include/micro-os-plus/diag</computeroutput>. Each file corresponds directly to one of the main API headers.</para>
+<para>This folder holds the inline implementation headers that complement the declarations in <computeroutput>include/micro-os-plus/diag/trace</computeroutput>. Each file corresponds directly to one of the main API headers.</para>
 <para>Separating inline definitions from their declarations keeps the primary headers concise and improves readability. These files are included automatically by their parent headers and must not be included directly by user code.  </para>
     </detaileddescription>
-    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/inlines/"/>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/inlines/"/>
   </compounddef>
 </doxygen>

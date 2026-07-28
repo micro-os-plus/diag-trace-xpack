@@ -195,10 +195,10 @@ namespace micro_os_plus::trace { ... }
 <li><span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation/#ab6bc9c127091ba107f059b83a932a590">micro_os_plus::trace::detail::implementation::flush()</a></span></li>
 </ul>
 
-<p>Trace support is activated by adding the <span class="doxyComputerOutput">MICRO_OS_PLUS_TRACE</span> macro definition to the compiler line.</p>
+<p>Trace support is activated by adding the <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#gac21aa3324300f25da16bf17b95afbd90">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</a></span> macro definition to the <span class="doxyComputerOutput">micro-os-plus/diag/trace-defines.h</span> file.</p>
 
 
-<p>When <span class="doxyComputerOutput">MICRO_OS_PLUS_TRACE</span> is not defined, all functions are inlined to empty bodies. This approach eliminates the need for trace calls to be conditionally compiled using <span class="doxyComputerOutput">#if defined(MICRO_OS_PLUS_TRACE)</span> and <span class="doxyComputerOutput">#endif</span>. However, the drawback is that the associated header file must always be included.</p>
+<p>When <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#gac21aa3324300f25da16bf17b95afbd90">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</a></span> is not defined, all functions are inlined to empty bodies. This approach eliminates the need for trace calls to be conditionally compiled using <span class="doxyComputerOutput">#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</span> and <span class="doxyComputerOutput">#endif</span>. However, the drawback is that the associated header file must always be included.</p>
 
 
 <hr/>

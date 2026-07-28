@@ -20,10 +20,12 @@ keywords:
 ## - M -
 
 <ul>
-<li><a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h/#a2084a7003aa78ca9574f96fcb9b5ff4e"><b>MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</b></a>: as macro definition in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h">include/micro-os-plus/diag/inlines/trace-cpp-api-inlines.h</a></li>
+<li><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#gac21aa3324300f25da16bf17b95afbd90"><b>MICRO_OS_PLUS_DIAG_TRACE_ENABLED</b></a>: as macro definition in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h">include/micro-os-plus/diag/trace.h</a></li>
+<li><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#ga2084a7003aa78ca9574f96fcb9b5ff4e"><b>MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</b></a>: as macro definition in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h">include/micro-os-plus/diag/trace.h</a></li>
 </ul>
+<p>2 entries</p>
 <br/>
-<p>Total: 1 entries.</p>
+<p>Total: 2 entries.</p>
 
 <hr/>
 

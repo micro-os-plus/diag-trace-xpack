@@ -115,20 +115,20 @@ keywords:
 <p>For buffered output channels, this function must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the body can be left empty. No assumptions are made about thread safety or re-entrancy; the caller is responsible for ensuring that concurrent calls do not occur.</p>
 
 
-<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-c-api-h/#l00112">112</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-c-api-h">trace-c-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp/#l00058">58</a> of file <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp">trace-c-api.cpp</a>.</p>
+<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/c-api-h/#l00110">110</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/c-api-h">c-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp/#l00058">58</a> of file <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp">trace-c-api.cpp</a>.</p>
 
 
 <div class="doxyProgramListing">
 
 <div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#gac34c391936f919c141bc38ec5b5a1db9">58</a></span><span class="doxyLineContent"><span class="doxyHighlight"><a href="#gac34c391936f919c141bc38ec5b5a1db9">micro_os_plus_trace_flush</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">)</span></span></div>
 <div class="doxyCodeLine"><span class="doxyLineNumber">59</span><span class="doxyLineContent"><span class="doxyHighlight">{</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">60</span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a7c2ce977002993a65bd74ca011f1615f">tracer&lt;implementation&gt;::flush</a> ();</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">60</span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aca35e085ab85a4e69a6ef41178871484">detail::tracer&lt;detail::implementation&gt;::flush</a> ();</span></span></div>
 <div class="doxyCodeLine"><span class="doxyLineNumber">61</span><span class="doxyLineContent"><span class="doxyHighlight">}</span></span></div>
 
 </div>
 
 
-<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a7c2ce977002993a65bd74ca011f1615f">micro_os_plus::trace::detail::tracer&lt; T &gt;::flush</a>.</p>
+<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aca35e085ab85a4e69a6ef41178871484">micro_os_plus::trace::detail::tracer&lt; T &gt;::flush</a>.</p>
 
 </div>
 </div>
@@ -169,20 +169,20 @@ keywords:
 <p>This function is called during startup, as early as possible, to enable the trace channel. The user must provide a definition of this function that configures the underlying output device (e.g. a semihosting channel, or an ITM port).</p>
 
 
-<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-c-api-h/#l00073">73</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-c-api-h">trace-c-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp/#l00046">46</a> of file <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp">trace-c-api.cpp</a>.</p>
+<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/c-api-h/#l00071">71</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/c-api-h">c-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp/#l00046">46</a> of file <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp">trace-c-api.cpp</a>.</p>
 
 
 <div class="doxyProgramListing">
 
 <div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#ga425f36ab6d5a58a63bc926f4675dc53b">46</a></span><span class="doxyLineContent"><span class="doxyHighlight"><a href="#ga425f36ab6d5a58a63bc926f4675dc53b">micro_os_plus_trace_initialise</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">)</span></span></div>
 <div class="doxyCodeLine"><span class="doxyLineNumber">47</span><span class="doxyLineContent"><span class="doxyHighlight">{</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">48</span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa71a6a7f9d9378f02c48aea3c0d0de90">tracer&lt;implementation&gt;::initialise</a> ();</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">48</span><span class="doxyLineContent"><span class="doxyHighlight">  <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a0d039b1f2025b3ce6178d4394a785728">detail::tracer&lt;detail::implementation&gt;::initialise</a> ();</span></span></div>
 <div class="doxyCodeLine"><span class="doxyLineNumber">49</span><span class="doxyLineContent"><span class="doxyHighlight">}</span></span></div>
 
 </div>
 
 
-<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa71a6a7f9d9378f02c48aea3c0d0de90">micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise</a>.</p>
+<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a0d039b1f2025b3ce6178d4394a785728">micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise</a>.</p>
 
 </div>
 </div>
@@ -233,20 +233,20 @@ keywords:
 <p>This is the core output primitive. The user must provide a definition of this function. The return value must reflect the number of bytes actually transferred to the output device, which may be less than <span class="doxyComputerOutput">nbyte</span> if the device is full or an error occurs. A return value of -1 signals an error; any non-negative value is treated as a byte count by the higher-level functions.</p>
 
 
-<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-c-api-h/#l00092">92</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-c-api-h">trace-c-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp/#l00052">52</a> of file <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp">trace-c-api.cpp</a>.</p>
+<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/c-api-h/#l00090">90</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/c-api-h">c-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp/#l00052">52</a> of file <a href="/diag-trace-xpack/docs/api/files/src/trace-c-api-cpp">trace-c-api.cpp</a>.</p>
 
 
 <div class="doxyProgramListing">
 
 <div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#ga80d104ecf38dfcf40cae10bac0d2c562">52</a></span><span class="doxyLineContent"><span class="doxyHighlight"><a href="#ga80d104ecf38dfcf40cae10bac0d2c562">micro_os_plus_trace_write</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">* buf, </span><span class="doxyHighlightKeywordType">size_t</span><span class="doxyHighlight"> nbyte)</span></span></div>
 <div class="doxyCodeLine"><span class="doxyLineNumber">53</span><span class="doxyLineContent"><span class="doxyHighlight">{</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">54</span><span class="doxyLineContent"><span class="doxyHighlight">  </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a88600a0485aa9c9afa7f306d2a298fdb">tracer&lt;implementation&gt;::write</a> (buf, nbyte);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">54</span><span class="doxyLineContent"><span class="doxyHighlight">  </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa2d6c80ffc49710b88ba91e0c0d6e503">detail::tracer&lt;detail::implementation&gt;::write</a> (buf, nbyte);</span></span></div>
 <div class="doxyCodeLine"><span class="doxyLineNumber">55</span><span class="doxyLineContent"><span class="doxyHighlight">}</span></span></div>
 
 </div>
 
 
-<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a88600a0485aa9c9afa7f306d2a298fdb">micro_os_plus::trace::detail::tracer&lt; T &gt;::write</a>.</p>
+<p>Reference <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa2d6c80ffc49710b88ba91e0c0d6e503">micro_os_plus::trace::detail::tracer&lt; T &gt;::write</a>.</p>
 
 </div>
 </div>

@@ -30,7 +30,7 @@ keywords:
 <tr class="doxyMemberIndexDescription">
 <td class="doxyMemberIndexDescriptionLeft"></td>
 <td class="doxyMemberIndexDescriptionRight">
-<p>Folder with C++ header files for the µOS++ Tracing Infrastructure. <a href="/diag-trace-xpack/docs/api/folders/include/micro-os-plus/diag/#details">More...</a></p>
+<p>Folder with C++ header files for the µOS++ Diagnostics. <a href="/diag-trace-xpack/docs/api/folders/include/micro-os-plus/diag/#details">More...</a></p>
 </td>
 </tr>
 <tr class="doxyMemberIndexSeparator">

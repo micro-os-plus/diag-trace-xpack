@@ -20,7 +20,7 @@ keywords:
 ## - T -
 
 <ul>
-<li><a href="/diag-trace-xpack/docs/api/concepts/micro-os-plus/trace/detail/trace-policy"><b>trace_policy</b></a>: as concept in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-cpp-api-h">include/micro-os-plus/diag/trace-cpp-api.h</a></li>
+<li><a href="/diag-trace-xpack/docs/api/concepts/micro-os-plus/trace/detail/trace-policy"><b>trace_policy</b></a>: as concept in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">include/micro-os-plus/diag/trace/cpp-api.h</a></li>
 </ul>
 <br/>
 <p>Total: 1 entries.</p>

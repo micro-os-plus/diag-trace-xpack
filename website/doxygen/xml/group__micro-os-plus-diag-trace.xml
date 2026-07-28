@@ -5,6 +5,7 @@
     <title>µOS++ Tracing Infrastructure</title>
     <innergroup refid="group__micro-os-plus-diag-trace-cpp-api">C++ API</innergroup>
     <innergroup refid="group__micro-os-plus-diag-trace-c-api">C API</innergroup>
+    <innergroup refid="group__micro-os-plus-diag-trace-config">Configuration</innergroup>
     <briefdescription>
 <para>Diagnostic trace output channel for µOS++ applications. </para>
     </briefdescription>

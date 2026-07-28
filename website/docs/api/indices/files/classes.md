@@ -20,13 +20,13 @@ keywords:
 ## - I -
 
 <ul>
-<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation"><b>implementation</b></a>: as class in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-cpp-api-h">include/micro-os-plus/diag/trace-cpp-api.h</a></li>
+<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation"><b>implementation</b></a>: as class in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">include/micro-os-plus/diag/trace/cpp-api.h</a></li>
 </ul>
 
 ## - T -
 
 <ul>
-<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer"><b>tracer&lt;T&gt;</b></a>: as class in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-cpp-api-h">include/micro-os-plus/diag/trace-cpp-api.h</a></li>
+<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer"><b>tracer&lt;T&gt;</b></a>: as class in file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">include/micro-os-plus/diag/trace/cpp-api.h</a></li>
 </ul>
 <br/>
 <p>Total: 2 entries.</p>

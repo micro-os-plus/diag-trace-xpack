@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
   <compounddef id="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kind="class" language="C++" prot="public">
     <compoundname>micro_os_plus::trace::detail::implementation</compoundname>
-    <includes refid="trace_8h" local="no">micro-os-plus/diag/trace.h</includes>
+    <includes refid="trace_8h" local="yes">micro-os-plus/diag/trace.h</includes>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1ab6bc9c127091ba107f059b83a932a590" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -25,7 +25,7 @@ The user must provide a definition of this method. For buffered output channels,
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="338" column="7"/>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" line="339" column="7"/>
       </memberdef>
       <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a85bfae1a60141a8c5df3017e47158fc6" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -48,7 +48,7 @@ The user must provide a definition of this method, called once during startup to
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="305" column="7"/>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" line="306" column="7"/>
       </memberdef>
       <memberdef kind="function" id="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a883b0bd506d3612ecf84d1ad604e5949" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>ssize_t</type>
@@ -91,7 +91,7 @@ The user must provide a definition of this method. It is the core output primiti
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="321" column="7"/>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" line="322" column="7"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -101,7 +101,7 @@ The user must provide a definition of this method. It is the core output primiti
 <para>The user must provide a definition of <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a85bfae1a60141a8c5df3017e47158fc6" kindref="member">initialise()</ref></computeroutput>, <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a883b0bd506d3612ecf84d1ad604e5949" kindref="member">write()</ref></computeroutput>, and <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1ab6bc9c127091ba107f059b83a932a590" kindref="member">flush()</ref></computeroutput> for this class (typically in a single .cpp file, once per application/platform).</para>
 <para><computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">implementation</ref></computeroutput> is not a template; it has no member data and is never instantiated as an object. Its static methods are looked up by <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">tracer</ref>&lt;<ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">implementation</ref>&gt;</computeroutput> and are otherwise ordinary, non-template member functions, so there is no instantiation-order hazard between their declaration here and their definition elsewhere. </para>
     </detaileddescription>
-    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" line="289" column="5" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace-cpp-api.h" bodystart="290" bodyend="339"/>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" line="290" column="5" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" bodystart="291" bodyend="340"/>
     <listofallmembers>
       <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1ab6bc9c127091ba107f059b83a932a590" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::implementation</scope><name>flush</name></member>
       <member refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation_1a85bfae1a60141a8c5df3017e47158fc6" prot="public" virt="non-virtual"><scope>micro_os_plus::trace::detail::implementation</scope><name>initialise</name></member>

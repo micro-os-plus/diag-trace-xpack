@@ -27,7 +27,7 @@ keywords:
 
 <ul>
 <li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation/#ab6bc9c127091ba107f059b83a932a590"><b>flush()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation">micro_os_plus::trace::detail::implementation</a></li>
-<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a7c2ce977002993a65bd74ca011f1615f"><b>flush()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer">micro_os_plus::trace::detail::tracer&lt;T&gt;</a></li>
+<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aca35e085ab85a4e69a6ef41178871484"><b>flush()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer">micro_os_plus::trace::detail::tracer&lt;T&gt;</a></li>
 </ul>
 <p>2 entries</p>
 
@@ -35,7 +35,7 @@ keywords:
 
 <ul>
 <li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation/#a85bfae1a60141a8c5df3017e47158fc6"><b>initialise()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation">micro_os_plus::trace::detail::implementation</a></li>
-<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa71a6a7f9d9378f02c48aea3c0d0de90"><b>initialise()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer">micro_os_plus::trace::detail::tracer&lt;T&gt;</a></li>
+<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a0d039b1f2025b3ce6178d4394a785728"><b>initialise()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer">micro_os_plus::trace::detail::tracer&lt;T&gt;</a></li>
 </ul>
 <p>2 entries</p>
 
@@ -64,7 +64,7 @@ keywords:
 
 <ul>
 <li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation/#a883b0bd506d3612ecf84d1ad604e5949"><b>write()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation">micro_os_plus::trace::detail::implementation</a></li>
-<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#a88600a0485aa9c9afa7f306d2a298fdb"><b>write()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer">micro_os_plus::trace::detail::tracer&lt;T&gt;</a></li>
+<li><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer/#aa2d6c80ffc49710b88ba91e0c0d6e503"><b>write()</b></a>: as function in class <a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer">micro_os_plus::trace::detail::tracer&lt;T&gt;</a></li>
 </ul>
 <p>2 entries</p>
 <br/>

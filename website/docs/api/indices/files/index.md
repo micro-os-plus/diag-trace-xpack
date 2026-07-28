@@ -48,14 +48,24 @@ Folder with C/C++ header files for the µOS++ libraries
 <a href="/diag-trace-xpack/docs/api/folders/include/micro-os-plus/diag"><span class="doxyIconFolder">diag</span></a>
 </td>
 <td class="doxyTreeItemRight" align="left" valign="top">
-Folder with C++ header files for the µOS++ Tracing Infrastructure
+Folder with C++ header files for the µOS++ Diagnostics
 </td>
 </tr>
 
 <tr class="doxyTreeItem">
 <td class="doxyTreeItemLeft" align="left" valign="top">
 <span style="width: 36px; display: inline-block;"></span>
-<a href="/diag-trace-xpack/docs/api/folders/include/micro-os-plus/diag/inlines"><span class="doxyIconFolder">inlines</span></a>
+<a href="/diag-trace-xpack/docs/api/folders/include/micro-os-plus/diag/trace"><span class="doxyIconFolder">trace</span></a>
+</td>
+<td class="doxyTreeItemRight" align="left" valign="top">
+Folder with C++ header files for the µOS++ Tracing Infrastructure
+</td>
+</tr>
+
+<tr class="doxyTreeItem">
+<td class="doxyTreeItemLeft" align="left" valign="top">
+<span style="width: 48px; display: inline-block;"></span>
+<a href="/diag-trace-xpack/docs/api/folders/include/micro-os-plus/diag/trace/inlines"><span class="doxyIconFolder">inlines</span></a>
 </td>
 <td class="doxyTreeItemRight" align="left" valign="top">
 Folder with C++ header files containing inline method definitions
@@ -64,8 +74,8 @@ Folder with C++ header files containing inline method definitions
 
 <tr class="doxyTreeItem">
 <td class="doxyTreeItemLeft" align="left" valign="top">
-<span style="width: 48px; display: inline-block;"></span>
-<a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-c-api-inlines-h"><span class="doxyIconFile">trace-c-api-inlines.h</span></a>
+<span style="width: 60px; display: inline-block;"></span>
+<a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/c-api-inlines-h"><span class="doxyIconFile">c-api-inlines.h</span></a>
 </td>
 <td class="doxyTreeItemRight" align="left" valign="top">
 C header file with the empty inline stubs for the C trace API when tracing is disabled
@@ -74,8 +84,8 @@ C header file with the empty inline stubs for the C trace API when tracing is di
 
 <tr class="doxyTreeItem">
 <td class="doxyTreeItemLeft" align="left" valign="top">
-<span style="width: 48px; display: inline-block;"></span>
-<a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/inlines/trace-cpp-api-inlines-h"><span class="doxyIconFile">trace-cpp-api-inlines.h</span></a>
+<span style="width: 60px; display: inline-block;"></span>
+<a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h"><span class="doxyIconFile">cpp-api-inlines.h</span></a>
 </td>
 <td class="doxyTreeItemRight" align="left" valign="top">
 C++ header file with the inline implementations for the <span class="doxyComputerOutput">tracer</span> class template
@@ -84,8 +94,8 @@ C++ header file with the inline implementations for the <span class="doxyCompute
 
 <tr class="doxyTreeItem">
 <td class="doxyTreeItemLeft" align="left" valign="top">
-<span style="width: 36px; display: inline-block;"></span>
-<a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-c-api-h"><span class="doxyIconFile">trace-c-api.h</span></a>
+<span style="width: 48px; display: inline-block;"></span>
+<a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/c-api-h"><span class="doxyIconFile">c-api.h</span></a>
 </td>
 <td class="doxyTreeItemRight" align="left" valign="top">
 C header file with the declarations for the C trace API
@@ -94,8 +104,8 @@ C header file with the declarations for the C trace API
 
 <tr class="doxyTreeItem">
 <td class="doxyTreeItemLeft" align="left" valign="top">
-<span style="width: 36px; display: inline-block;"></span>
-<a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-cpp-api-h"><span class="doxyIconFile">trace-cpp-api.h</span></a>
+<span style="width: 48px; display: inline-block;"></span>
+<a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h"><span class="doxyIconFile">cpp-api.h</span></a>
 </td>
 <td class="doxyTreeItemRight" align="left" valign="top">
 C++ header file with the declarations for the C++ trace API

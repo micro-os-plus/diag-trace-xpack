@@ -3,12 +3,11 @@ var indexSectionsWithContent =
   0: "acdfimptuvwµ",
   1: "it",
   2: "m",
-  3: "t",
+  3: "ct",
   4: "dfimptvw",
-  5: "m",
-  6: "acfimtuµ",
-  7: "ditµ",
-  8: "t"
+  5: "acfimtuµ",
+  6: "ditµ",
+  7: "t"
 };
 
 var indexSectionNames =
@@ -18,10 +17,9 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "defines",
-  6: "groups",
-  7: "pages",
-  8: "concepts"
+  5: "groups",
+  6: "pages",
+  7: "concepts"
 };
 
 var indexSectionLabels =
@@ -31,9 +29,8 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Files",
   4: "Functions",
-  5: "Macros",
-  6: "Modules",
-  7: "Pages",
-  8: "Concepts"
+  5: "Modules",
+  6: "Pages",
+  7: "Concepts"
 };
 
