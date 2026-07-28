@@ -176,7 +176,7 @@ namespace micro_os_plus::trace
     int
     tracer<T>::putchar (int c) noexcept
     {
-      char ch = static_cast<char> (c);
+      auto ch = static_cast<unsigned char> (c);
       ssize_t ret = write (&ch, 1);
       if (ret > 0)
         {
