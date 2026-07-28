@@ -18,7 +18,7 @@
 
 // ----------------------------------------------------------------------------
 
-#ifdef __cplusplus
+#if defined(__cplusplus)
 extern "C"
 {
 #endif // defined(__cplusplus)
@@ -30,7 +30,7 @@ extern "C"
 
   // ----------------------------------------------------------------------------
 
-#ifdef __cplusplus
+#if defined(__cplusplus)
 }
 #endif // defined(__cplusplus)
 
