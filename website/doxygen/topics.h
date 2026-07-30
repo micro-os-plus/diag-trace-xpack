@@ -56,4 +56,5 @@
   @include{doc} macros/diag-trace-enabled.dox
   @include{doc} macros/diag-trace-printf-buffer-array-size-integer.dox
 @}
+
 */
