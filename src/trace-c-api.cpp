@@ -35,6 +35,12 @@
 
 // ----------------------------------------------------------------------------
 
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif // defined(__clang__)
+
+// ----------------------------------------------------------------------------
+
 namespace detail = micro_os_plus::trace::detail;
 
 // The C API is always bound to the `tracer<implementation>` policy class;
@@ -68,13 +74,8 @@ micro_os_plus_trace_printf (const char* format, ...)
   std::va_list arguments;
   va_start (arguments, format);
 
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
   int ret
       = detail::tracer<detail::implementation>::vprintf (format, arguments);
-#pragma GCC diagnostic pop
 
   va_end (arguments);
   return ret;
@@ -83,23 +84,13 @@ micro_os_plus_trace_printf (const char* format, ...)
 int
 micro_os_plus_trace_vprintf (const char* format, va_list arguments)
 {
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
   return detail::tracer<detail::implementation>::vprintf (format, arguments);
-#pragma GCC diagnostic pop
 }
 
 int
 micro_os_plus_trace_puts (const char* s)
 {
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
   return detail::tracer<detail::implementation>::puts (s);
-#pragma GCC diagnostic pop
 }
 
 int

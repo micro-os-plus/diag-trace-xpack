@@ -48,10 +48,13 @@
 
 // ----------------------------------------------------------------------------
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
-#endif
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
 
 namespace micro_os_plus::trace
 {
@@ -74,12 +77,7 @@ namespace micro_os_plus::trace
       std::va_list arguments;
       va_start (arguments, format);
 
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
       int ret = vprintf (format, arguments);
-#pragma GCC diagnostic pop
 
       va_end (arguments);
       return ret;
@@ -95,14 +93,18 @@ namespace micro_os_plus::trace
       // TODO: possibly rewrite it to no longer use newlib,
       // (although the nano version is no longer very heavy).
 
-      // Print to the local buffer
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
+#endif // defined(__GNUC__)
+
+      // Print to the local buffer
       ssize_t ret = ::vsnprintf (buf, sizeof (buf), format, arguments);
+
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
+
       if (ret > 0)
         {
           // Clamp to actual buffer size if output was truncated.
@@ -114,26 +116,29 @@ namespace micro_os_plus::trace
                        static_cast<size_t> (std::min (
                            ret, static_cast<ssize_t> (sizeof (buf) - 1))));
         }
+
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
-#if defined(__GNUC__) && !defined(__clang__)
+#if defined(__clang__)
+#elif defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wuseless-cast"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
+
       // Cast required on 64-bit.
       return static_cast<int> (ret);
+
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
     }
 
     template <trace_policy T>
     int
     tracer<T>::puts (const char* s) noexcept
     {
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
       std::size_t len = std::strlen (s);
       ssize_t ret = write (s, len);
-#pragma GCC diagnostic pop
       // Only append the line terminator if the string was written in
       // full; a partial write (including a zero-byte write, which is
       // not itself an error) must not be followed by a bare newline.
@@ -151,13 +156,20 @@ namespace micro_os_plus::trace
         }
       if (ret > 0)
         {
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
-#if defined(__GNUC__) && !defined(__clang__)
+#if defined(__clang__)
+#elif defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wuseless-cast"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
+
           // Cast required on 64-bit.
           return static_cast<int> (ret);
+
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
         }
       else
         {
@@ -181,10 +193,13 @@ namespace micro_os_plus::trace
         }
     }
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
+
     template <trace_policy T>
     void
     tracer<T>::dump_args (int argc, char* argv[], const char* name) noexcept
@@ -200,8 +215,10 @@ namespace micro_os_plus::trace
         }
       printf ("])\n");
     }
-#pragma GCC diagnostic pop
 
+#if defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
   } // namespace detail
 
   // --------------------------------------------------------------------------
@@ -233,13 +250,10 @@ namespace micro_os_plus::trace
   {
     std::va_list arguments;
     va_start (arguments, format);
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
+
     int ret
         = detail::tracer<detail::implementation>::vprintf (format, arguments);
-#pragma GCC diagnostic pop
+
     va_end (arguments);
     return ret;
   }
@@ -247,23 +261,13 @@ namespace micro_os_plus::trace
   inline int
   vprintf (const char* format, std::va_list arguments) noexcept
   {
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
     return detail::tracer<detail::implementation>::vprintf (format, arguments);
-#pragma GCC diagnostic pop
   }
 
   inline int
   puts (const char* s) noexcept
   {
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
     return detail::tracer<detail::implementation>::puts (s);
-#pragma GCC diagnostic pop
   }
 
   inline int
@@ -288,10 +292,12 @@ namespace micro_os_plus::trace
 
 // ----------------------------------------------------------------------------
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
 
 namespace micro_os_plus::trace
 {
@@ -348,7 +354,9 @@ namespace micro_os_plus::trace
 
 } // namespace micro_os_plus::trace
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
 
 // ----------------------------------------------------------------------------
 

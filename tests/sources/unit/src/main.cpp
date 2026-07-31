@@ -25,15 +25,17 @@ using namespace micro_os_plus;
 
 // ----------------------------------------------------------------------------
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Waggregate-return"
-#if defined(__GNUC__) && !defined(__clang__)
-#pragma GCC diagnostic ignored "-Wunused-value"
-#elif defined(__clang__)
+#if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunknown-warning-option"
 #pragma clang diagnostic ignored "-Wc++98-compat"
 // Silence warnings on buffer[], they are asserted.
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-#endif
+#elif defined(__GNUC__)
+#pragma GCC diagnostic ignored "-Wunused-value"
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
 
 // Ensure the asserts are always enabled.
 #undef NDEBUG
@@ -319,7 +321,7 @@ main (int argc, char* argv[])
       assert (count < sizeof (buffer));
       t.expect (mt::eq (buffer[count], flush_mark)) << "flush mark found";
     });
-#endif
+#endif // 0-1
 
   return tr.exit_code ();
 }

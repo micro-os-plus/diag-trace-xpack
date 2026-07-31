@@ -36,7 +36,7 @@
 
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
-#endif
+#endif // defined(__clang__)
 
 namespace micro_os_plus::trace::detail
 {

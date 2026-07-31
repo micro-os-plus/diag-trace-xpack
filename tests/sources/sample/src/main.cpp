@@ -13,7 +13,7 @@
 
 #if !defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 #error "MICRO_OS_PLUS_DIAG_TRACE_ENABLED should be defined"
-#endif
+#endif // defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
 #include "micro-os-plus/diag/trace.h"
 
@@ -30,15 +30,23 @@ main (int argc, char* argv[])
   trace::dump_args (argc, argv);
 
   trace::printf ("Hello %s!\n", "C++ World");
+
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
+
   trace::puts ("one line");
   trace::putchar ('*');
 
   trace::puts ();
+
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
+
   trace::flush ();
 
   // --------------------------------------------------------------------------

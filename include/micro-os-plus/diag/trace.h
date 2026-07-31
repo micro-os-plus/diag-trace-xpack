@@ -33,7 +33,7 @@
 #if defined(__cplusplus)
 #if !(__cplusplus >= 202002L || (defined(_MSVC_LANG) && _MSVC_LANG >= 202002L))
 #error "C++20 or higher is required"
-#endif
+#endif // !(__cplusplus >= 202002L || (defined(_MSVC_LANG) && _MSVC_LANG >= 202002L))
 #endif // defined(__cplusplus)
 
 #if __has_include("micro-os-plus/project-config.h")
@@ -47,10 +47,9 @@
 // ----------------------------------------------------------------------------
 
 #if defined(__DOXYGEN__)
+// Present here solely for Doxygen, to document the macros.
 #define MICRO_OS_PLUS_DIAG_TRACE_ENABLED
 #endif // defined(__DOXYGEN__)
-
-// ----------------------------------------------------------------------------
 
 #if !defined(MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER)
 #define MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER (200)

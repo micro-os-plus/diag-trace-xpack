@@ -18,7 +18,7 @@
 
 #if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 #error "MICRO_OS_PLUS_DIAG_TRACE_ENABLED should not be defined"
-#endif
+#endif // defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)
 
 #include "null.h"
 

@@ -94,18 +94,22 @@
  * included.
  */
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wpre-c++17-compat"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
 
 namespace micro_os_plus::trace
 {
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
 
   // Free functions declarations.
 
@@ -241,7 +245,9 @@ namespace micro_os_plus::trace
   void
   dump_args (int argc, char* argv[], const char* name = "main") noexcept;
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
 } // namespace micro_os_plus::trace
 
 // ----------------------------------------------------------------------------
@@ -252,10 +258,12 @@ namespace micro_os_plus::trace
 
 namespace micro_os_plus::trace
 {
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
 
   // --------------------------------------------------------------------------
 
@@ -568,17 +576,23 @@ namespace micro_os_plus::trace
     // trace.cpp are the sole ODR-defining instances.
     // ------------------------------------------------------------------------
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-#endif
+#endif // defined(__clang__)
+#endif // defined(__GNUC__)
 
     extern template class tracer<implementation>;
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
   } // namespace detail
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
 } // namespace micro_os_plus::trace
 
 // ----------------------------------------------------------------------------
