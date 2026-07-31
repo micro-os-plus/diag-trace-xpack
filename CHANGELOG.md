@@ -6,10 +6,89 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2026-07-31
+
+* a5176f0 website update
+* db759c1 re-generate doxygen
+* f850f21 cosmetise #endif // ...
+
+## 2026-07-30
+
+* 00a0b63 website regenerate doxygen
+* 0a581f6 re-generate website commons
+* e3efece website cosmetics
+
+## 2026-07-28
+
+* f171e17 re-generate website commons for fromFilePath
+* 3cb8958 website update
+* 0570429 re-generate website commons & update
+* 36b7e8a doxygen updates
+* 57a2585 fix doxygen references for new include folders
+* 69f652a move internal headers to trace folder
+* b83404a move macros doxygen to separate files
+* e12a47c re-generate doxygen configs
+* b188b6f website updates
+* daa217e document macros
+* 17ddbd8 doxygen updates
+* 20ceddc trace-c-api.cpp detail::
+* b5af756 cosmetise #if defined(__cplusplus)
+* de54e50 improve doxygen for printf return value
+* d9ebbd0 includes cosmetics
+* 2715f3d remove unused pragmas
+* 10fde41 includes cleanups
+* e520956 cleanup conditional noexcept
+* 6379677 fix putchar() unsigned char
+* 570b94b fix puts() newline when empty
+* 6c14b09 add attribute format (printf,...) consistently
+* f164d00 re-generate tests commons for {{fromFilePath}}
+* 02734d5 re-generate top commons for {{fromFilePath}}
+
+## 2026-07-27
+
+* bfb859e include & src header updates
+* 94cc4f7 re-generate tests commons
+
+## 2026-07-25
+
+* 6ed1c77 cosmetise automatically generated notices
+* b6c47a7 re-generate top commons
+* 038b6d5 re-generate tests commons
+
+## 2026-07-24
+
+* 06aec96 trace-cpp-api.h update for MICRO_OS_PLUS_DIAG_TRACE_ENABLED
+* 6108eb4 re-generate tests commons for xcdl
+* dc9027b trace-cpp-api.h update for MICRO_OS_PLUS_DIAG_TRACE_ENABLED
+
+## 2026-07-23
+
+* e38cf89 re-generate top commons and xcdl export
+* d607e3d fix xcdl "id":
+* d1b0696 semihosting-defines.h updates
+* 30a5ec8 update macros to xcdl names
+* 9b2728e fix copyright notices
+
+## 2026-07-19
+
+* bb162dc tests update for startup-defines.h
+* 9ba8445 re-generate top commons
+* 3bec2cb xcdl defaultDefine
+* 971395b xcdl c-header
+* b599f36 tests update for semihosting-defines.h
+* 235e78e test/package.json update with buildVerbose
+* e21e656 re-generate top commons
+
+## 2026-07-15
+
+* 32f2606 re-generate tests commons
+
 ## 2026-07-14
 
-* v5.0.0 published on npmjs.com
-* v5.0.0 prepared
+* f0cb81d website: blog post release 5.0.0 published
+* d2e1894 5.0.0
+* 15ca445 CHANGELOG: publish npm v5.0.0
+* 062b8b6 prepare v5.0.0
 * 52d78fc website update
 * 5a43a00 copilot-instructions.md update
 
