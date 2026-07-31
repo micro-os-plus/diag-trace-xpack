@@ -43,8 +43,8 @@ Formatting is performed into a fixed-size stack buffer of <computeroutput><ref r
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="131" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="66" bodyend="81" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="131" declcolumn="3"/>
-        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="cpp-api-inlines_8h" startline="90" endline="124">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</references>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="131" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="72" bodyend="82" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="131" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="cpp-api-inlines_8h" startline="88" endline="134">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</references>
       </memberdef>
       <memberdef kind="function" id="group__micro-os-plus-diag-trace-c-api-main_1gaf651ff851996a49b25989c93118142f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -74,8 +74,8 @@ Converts <computeroutput>c</computeroutput> to <computeroutput>unsigned char</co
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="186" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="106" bodyend="109" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="186" declcolumn="3"/>
-        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1ad0af55a735d06c5c25c8bf38dc3fd4fd" compoundref="cpp-api-inlines_8h" startline="170" endline="182">micro_os_plus::trace::detail::tracer&lt; T &gt;::putchar</references>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="186" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="97" bodyend="100" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="186" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1ad0af55a735d06c5c25c8bf38dc3fd4fd" compoundref="cpp-api-inlines_8h" startline="182" endline="194">micro_os_plus::trace::detail::tracer&lt; T &gt;::putchar</references>
       </memberdef>
       <memberdef kind="function" id="group__micro-os-plus-diag-trace-c-api-main_1ga378825eb60900b367774de9e76925b0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -105,8 +105,8 @@ Writes the characters of <computeroutput>s</computeroutput> followed by a single
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="170" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="95" bodyend="103" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="170" declcolumn="3"/>
-        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a2f7941dcb7ddb9f6afd664ad0c1c9979" compoundref="cpp-api-inlines_8h" startline="128" endline="166">micro_os_plus::trace::detail::tracer&lt; T &gt;::puts</references>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="170" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="91" bodyend="94" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="170" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a2f7941dcb7ddb9f6afd664ad0c1c9979" compoundref="cpp-api-inlines_8h" startline="138" endline="178">micro_os_plus::trace::detail::tracer&lt; T &gt;::puts</references>
       </memberdef>
       <memberdef kind="function" id="group__micro-os-plus-diag-trace-c-api-main_1ga61e826d87556c899edad6f82d7bd36ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -148,8 +148,8 @@ Equivalent to <computeroutput><ref refid="group__micro-os-plus-diag-trace-c-api-
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="151" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="84" bodyend="92" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="151" declcolumn="3"/>
-        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="cpp-api-inlines_8h" startline="90" endline="124">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</references>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="151" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="85" bodyend="88" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="151" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="cpp-api-inlines_8h" startline="88" endline="134">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</references>
       </memberdef>
     </sectiondef>
     <briefdescription>

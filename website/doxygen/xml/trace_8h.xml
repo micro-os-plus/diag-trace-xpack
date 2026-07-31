@@ -133,7 +133,7 @@
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__cplusplus)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!(__cplusplus<sp/>&gt;=<sp/>202002L<sp/>||<sp/>(defined(_MSVC_LANG)<sp/>&amp;&amp;<sp/>_MSVC_LANG<sp/>&gt;=<sp/>202002L))</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;C++20<sp/>or<sp/>higher<sp/>is<sp/>required&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>!(__cplusplus<sp/>&gt;=<sp/>202002L<sp/>||<sp/>(defined(_MSVC_LANG)<sp/>&amp;&amp;<sp/>_MSVC_LANG<sp/>&gt;=<sp/>202002L))</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>defined(__cplusplus)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__has_include(&quot;micro-os-plus/project-config.h&quot;)</highlight><highlight class="normal"></highlight></codeline>
@@ -147,42 +147,41 @@
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__DOXYGEN__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="group__micro-os-plus-diag-trace-config_1gac21aa3324300f25da16bf17b95afbd90" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MICRO_OS_PLUS_DIAG_TRACE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>defined(__DOXYGEN__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="group__micro-os-plus-diag-trace-config_1ga2084a7003aa78ca9574f96fcb9b5ff4e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER<sp/>(200)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>!defined(MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>`putchar()`<sp/>hack.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>To<sp/>be<sp/>effective,<sp/>&lt;stdio.h&gt;<sp/>must<sp/>be<sp/>included<sp/>*before*<sp/>the<sp/>putchar<sp/>patch.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>very<sp/>annoying<sp/>issue,<sp/>some<sp/>very<sp/>old<sp/>libraries<sp/>still</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>define<sp/>putchar()<sp/>as<sp/>a<sp/>macro.<sp/>This<sp/>is<sp/>abusive,<sp/>since<sp/>it<sp/>prevents</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>use<sp/>of<sp/>putchar()<sp/>in<sp/>other<sp/>name<sp/>spaces.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(putchar)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>putchar</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>defined(putchar)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>headers<sp/>are<sp/>included<sp/>even<sp/>when<sp/>tracing<sp/>is<sp/>disabled,<sp/>as<sp/>they<sp/>define<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>empty<sp/>inline<sp/>functions<sp/>needed<sp/>for<sp/>the<sp/>trace<sp/>calls<sp/>to<sp/>compile<sp/>without</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>requiring<sp/>conditional<sp/>compilation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="cpp-api_8h" kindref="compound">trace/cpp-api.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="c-api_8h" kindref="compound">trace/c-api.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MICRO_OS_PLUS_DIAG_TRACE_H_</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Present<sp/>here<sp/>solely<sp/>for<sp/>Doxygen,<sp/>to<sp/>document<sp/>the<sp/>macros.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="group__micro-os-plus-diag-trace-config_1gac21aa3324300f25da16bf17b95afbd90" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MICRO_OS_PLUS_DIAG_TRACE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>defined(__DOXYGEN__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="group__micro-os-plus-diag-trace-config_1ga2084a7003aa78ca9574f96fcb9b5ff4e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER<sp/>(200)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>!defined(MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>`putchar()`<sp/>hack.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>To<sp/>be<sp/>effective,<sp/>&lt;stdio.h&gt;<sp/>must<sp/>be<sp/>included<sp/>*before*<sp/>the<sp/>putchar<sp/>patch.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>very<sp/>annoying<sp/>issue,<sp/>some<sp/>very<sp/>old<sp/>libraries<sp/>still</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>define<sp/>putchar()<sp/>as<sp/>a<sp/>macro.<sp/>This<sp/>is<sp/>abusive,<sp/>since<sp/>it<sp/>prevents</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>use<sp/>of<sp/>putchar()<sp/>in<sp/>other<sp/>name<sp/>spaces.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(putchar)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>putchar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>defined(putchar)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>headers<sp/>are<sp/>included<sp/>even<sp/>when<sp/>tracing<sp/>is<sp/>disabled,<sp/>as<sp/>they<sp/>define<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>empty<sp/>inline<sp/>functions<sp/>needed<sp/>for<sp/>the<sp/>trace<sp/>calls<sp/>to<sp/>compile<sp/>without</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>requiring<sp/>conditional<sp/>compilation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="cpp-api_8h" kindref="compound">trace/cpp-api.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="c-api_8h" kindref="compound">trace/c-api.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MICRO_OS_PLUS_DIAG_TRACE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h"/>
   </compounddef>

@@ -150,7 +150,7 @@ Macros</h2></td></tr>
 <p>When <span class="tt"><a class="el" href="#gac21aa3324300f25da16bf17b95afbd90" title="Enables the output of trace messages.">MICRO_OS_PLUS_DIAG_TRACE_ENABLED</a></span> is defined, the C++ and C trace functions are compiled to their full implementations, declared in <a class="el" href="cpp-api_8h.html" title="cpp-api.h">cpp-api.h</a> and <a class="el" href="c-api_8h.html" title="c-api.h">c-api.h</a>, which forward all calls to <span class="tt"><a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html" title="Tracing API bound to a given policy class.">micro_os_plus::trace::detail::tracer</a>&lt;<a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1implementation.html" title="Policy class for the production trace instance.">micro_os_plus::trace::detail::implementation</a>&gt;</span>.</p>
 <p>When it is not defined, which is the usual case for release builds, all trace functions are inlined to empty (or trivial pass-through) bodies. This approach allows trace calls to remain in the code unconditionally, without being wrapped in <span class="tt">#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</span> guards, while still being fully eliminated from the generated binary.  </p>
 
-<p class="definition">Definition at line <a class="el" href="trace_8h_source.html#l00050">50</a> of file <a class="el" href="trace_8h_source.html">trace.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="trace_8h_source.html#l00051">51</a> of file <a class="el" href="trace_8h_source.html">trace.h</a>.</p>
 
 </div>
 </div>
@@ -168,9 +168,9 @@ Macros</h2></td></tr>
 <p>This buffer is allocated on the stack by <a class="el" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a4176d29127dbd89ba01a79770808d094" title="micro_os_plus::trace::detail::tracer::vprintf()">tracer&lt;T&gt;::vprintf()</a> to hold the message formatted by <span class="tt">vsnprintf()</span> before it is forwarded to the trace channel <span class="tt">write()</span> implementation. Output that exceeds this size is silently truncated.</p>
 <p>The definition below only supplies the default value (200 bytes), used when the macro has not already been defined; the actual value may be overridden by the user, typically in the library's own <span class="tt">micro-os-plus/diag/trace-defines.h</span> configuration file or the project <span class="tt">micro-os-plus/project-config.h</span> configuration file.   </p>
 
-<p class="definition">Definition at line <a class="el" href="trace_8h_source.html#l00056">56</a> of file <a class="el" href="trace_8h_source.html">trace.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="trace_8h_source.html#l00055">55</a> of file <a class="el" href="trace_8h_source.html">trace.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cpp-api-inlines_8h_source.html#l00090">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cpp-api-inlines_8h_source.html#l00088">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf()</a>.</p>
 
 </div>
 </div>

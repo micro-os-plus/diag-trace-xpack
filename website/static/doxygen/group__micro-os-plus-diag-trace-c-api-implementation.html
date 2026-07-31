@@ -155,13 +155,13 @@ Functions</h2></td></tr>
 <dl class="section user"><dt>Returns</dt><dd>Nothing.</dd></dl>
 <p>For buffered output channels, this function must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the body can be left empty. No assumptions are made about thread safety or re-entrancy; the caller is responsible for ensuring that concurrent calls do not occur. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-c-api_8cpp_source.html#l00058">58</a> of file <a class="el" href="trace-c-api_8cpp_source.html">trace-c-api.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>{</div>
-<div class="line"><span class="lineno">   60</span>  <a class="code hl_function" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#aca35e085ab85a4e69a6ef41178871484">detail::tracer&lt;detail::implementation&gt;::flush</a> ();</div>
-<div class="line"><span class="lineno">   61</span>}</div>
-<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_aca35e085ab85a4e69a6ef41178871484"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#aca35e085ab85a4e69a6ef41178871484">micro_os_plus::trace::detail::tracer::flush</a></div><div class="ttdeci">static void flush(void) noexcept</div><div class="ttdoc">Flush the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00466">cpp-api.h:466</a></div></div>
+<p class="definition">Definition at line <a class="el" href="trace-c-api_8cpp_source.html#l00064">64</a> of file <a class="el" href="trace-c-api_8cpp_source.html">trace-c-api.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
+<div class="line"><span class="lineno">   66</span>  <a class="code hl_function" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#aca35e085ab85a4e69a6ef41178871484">detail::tracer&lt;detail::implementation&gt;::flush</a> ();</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_aca35e085ab85a4e69a6ef41178871484"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#aca35e085ab85a4e69a6ef41178871484">micro_os_plus::trace::detail::tracer::flush</a></div><div class="ttdeci">static void flush(void) noexcept</div><div class="ttdoc">Flush the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00474">cpp-api.h:474</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="cpp-api_8h_source.html#l00466">micro_os_plus::trace::detail::tracer&lt; T &gt;::flush()</a>.</p>
+<p class="reference">References <a class="el" href="cpp-api_8h_source.html#l00474">micro_os_plus::trace::detail::tracer&lt; T &gt;::flush()</a>.</p>
 
 </div>
 </div>
@@ -183,13 +183,13 @@ Functions</h2></td></tr>
 <dl class="section user"><dt>Returns</dt><dd>Nothing.</dd></dl>
 <p>This function is called during startup, as early as possible, to enable the trace channel. The user must provide a definition of this function that configures the underlying output device (e.g. a semihosting channel, or an ITM port). </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-c-api_8cpp_source.html#l00046">46</a> of file <a class="el" href="trace-c-api_8cpp_source.html">trace-c-api.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>{</div>
-<div class="line"><span class="lineno">   48</span>  <a class="code hl_function" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a0d039b1f2025b3ce6178d4394a785728">detail::tracer&lt;detail::implementation&gt;::initialise</a> ();</div>
-<div class="line"><span class="lineno">   49</span>}</div>
-<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a0d039b1f2025b3ce6178d4394a785728"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a0d039b1f2025b3ce6178d4394a785728">micro_os_plus::trace::detail::tracer::initialise</a></div><div class="ttdeci">static void initialise(void) noexcept</div><div class="ttdoc">Initialise the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00421">cpp-api.h:421</a></div></div>
+<p class="definition">Definition at line <a class="el" href="trace-c-api_8cpp_source.html#l00052">52</a> of file <a class="el" href="trace-c-api_8cpp_source.html">trace-c-api.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
+<div class="line"><span class="lineno">   54</span>  <a class="code hl_function" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a0d039b1f2025b3ce6178d4394a785728">detail::tracer&lt;detail::implementation&gt;::initialise</a> ();</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a0d039b1f2025b3ce6178d4394a785728"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a0d039b1f2025b3ce6178d4394a785728">micro_os_plus::trace::detail::tracer::initialise</a></div><div class="ttdeci">static void initialise(void) noexcept</div><div class="ttdoc">Initialise the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00429">cpp-api.h:429</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="cpp-api_8h_source.html#l00421">micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise()</a>.</p>
+<p class="reference">References <a class="el" href="cpp-api_8h_source.html#l00429">micro_os_plus::trace::detail::tracer&lt; T &gt;::initialise()</a>.</p>
 
 </div>
 </div>
@@ -221,13 +221,13 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes actually written, or -1 if error.</dd></dl>
 <p>This is the core output primitive. The user must provide a definition of this function. The return value must reflect the number of bytes actually transferred to the output device, which may be less than <code class="param">nbyte</code> if the device is full or an error occurs. A return value of -1 signals an error; any non-negative value is treated as a byte count by the higher-level functions. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-c-api_8cpp_source.html#l00052">52</a> of file <a class="el" href="trace-c-api_8cpp_source.html">trace-c-api.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
-<div class="line"><span class="lineno">   54</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#aa2d6c80ffc49710b88ba91e0c0d6e503">detail::tracer&lt;detail::implementation&gt;::write</a> (buf, nbyte);</div>
-<div class="line"><span class="lineno">   55</span>}</div>
-<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_aa2d6c80ffc49710b88ba91e0c0d6e503"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#aa2d6c80ffc49710b88ba91e0c0d6e503">micro_os_plus::trace::detail::tracer::write</a></div><div class="ttdeci">static ssize_t write(const void *buf, std::size_t nbyte) noexcept</div><div class="ttdoc">Write the given number of bytes to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00442">cpp-api.h:442</a></div></div>
+<p class="definition">Definition at line <a class="el" href="trace-c-api_8cpp_source.html#l00058">58</a> of file <a class="el" href="trace-c-api_8cpp_source.html">trace-c-api.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#aa2d6c80ffc49710b88ba91e0c0d6e503">detail::tracer&lt;detail::implementation&gt;::write</a> (buf, nbyte);</div>
+<div class="line"><span class="lineno">   61</span>}</div>
+<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_aa2d6c80ffc49710b88ba91e0c0d6e503"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#aa2d6c80ffc49710b88ba91e0c0d6e503">micro_os_plus::trace::detail::tracer::write</a></div><div class="ttdeci">static ssize_t write(const void *buf, std::size_t nbyte) noexcept</div><div class="ttdoc">Write the given number of bytes to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00450">cpp-api.h:450</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="cpp-api_8h_source.html#l00442">micro_os_plus::trace::detail::tracer&lt; T &gt;::write()</a>.</p>
+<p class="reference">References <a class="el" href="cpp-api_8h_source.html#l00450">micro_os_plus::trace::detail::tracer&lt; T &gt;::write()</a>.</p>
 
 </div>
 </div>

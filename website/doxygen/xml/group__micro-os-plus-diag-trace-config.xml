@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" line="50" column="9" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" bodystart="50" bodyend="-1"/>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" line="51" column="9" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__micro-os-plus-diag-trace-config_1ga2084a7003aa78ca9574f96fcb9b5ff4e" prot="public" static="no">
         <name>MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</name>
@@ -30,8 +30,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" line="56" column="9" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" bodystart="56" bodyend="-1"/>
-        <referencedby refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="cpp-api-inlines_8h" startline="90" endline="124">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</referencedby>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" line="55" column="9" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" bodystart="55" bodyend="-1"/>
+        <referencedby refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="cpp-api-inlines_8h" startline="88" endline="134">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>

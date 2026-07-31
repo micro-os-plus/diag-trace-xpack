@@ -95,12 +95,12 @@ keywords:
 <p>When it is not defined, which is the usual case for release builds, all trace functions are inlined to empty (or trivial pass-through) bodies. This approach allows trace calls to remain in the code unconditionally, without being wrapped in <span class="doxyComputerOutput">#if defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</span> guards, while still being fully eliminated from the generated binary.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h/#l00050">50</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h">trace.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h/#l00051">51</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h">trace.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#gac21aa3324300f25da16bf17b95afbd90">50</a></span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#define MICRO_OS_PLUS_DIAG_TRACE_ENABLED</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#gac21aa3324300f25da16bf17b95afbd90">51</a></span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#define MICRO_OS_PLUS_DIAG_TRACE_ENABLED</span></span></div>
 
 </div>
 
@@ -134,12 +134,12 @@ keywords:
 <p>The definition below only supplies the default value (200 bytes), used when the macro has not already been defined; the actual value may be overridden by the user, typically in the library's own <span class="doxyComputerOutput">micro-os-plus/diag/trace-defines.h</span> configuration file or the project <span class="doxyComputerOutput">micro-os-plus/project-config.h</span> configuration file.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h/#l00056">56</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h">trace.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h/#l00055">55</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace-h">trace.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#ga2084a7003aa78ca9574f96fcb9b5ff4e">56</a></span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#define MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER (200)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#ga2084a7003aa78ca9574f96fcb9b5ff4e">55</a></span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#define MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER (200)</span></span></div>
 
 </div>
 

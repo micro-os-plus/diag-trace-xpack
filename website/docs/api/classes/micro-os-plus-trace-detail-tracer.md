@@ -218,7 +218,7 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>The main reason for using a class template rather than a namespace is that it allows the policy class to be a template parameter, so that multiple independent instances can coexist in the same binary, each bound to a different policy class. This is used in testing, where a <span class="doxyComputerOutput">testing_implementation</span> policy class is defined to capture the output for verification.</p>
 
 
-<p>Definition at line 392 of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line 400 of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 
 <div class="doxySectionDef">
@@ -255,7 +255,7 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p><span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer">tracer</a></span> is a purely static utility class; all methods are static and no instance is ever created. The default constructor is explicitly deleted to enforce this intent and prevent accidental instantiation.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00403">403</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00411">411</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 </div>
 </div>
@@ -323,24 +323,24 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>Formats and writes the argument list in the form <span class="doxyComputerOutput">name(argc=N, argv=["arg0", "arg1", ...])</span>, followed by a newline. Intended to be called at the start of <span class="doxyComputerOutput">main()</span> to record the process arguments in the trace output. Each argument string is quoted; no escaping is applied to the string content.</p>
 
 
-<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00562">562</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00190">190</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
+<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00570">570</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00205">205</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a4e2e2a73a7ec36ac69d94840eb0b52e2">190</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#a4e2e2a73a7ec36ac69d94840eb0b52e2">tracer&lt;T&gt;::dump_args</a> (</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlight"> argc, </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* argv[], </span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* name) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">191</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">192</span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a> (</span><span class="doxyHighlightStringLiteral">"%s(argc=%d, argv=["</span><span class="doxyHighlight">, name, argc);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">193</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">for</span><span class="doxyHighlight"> (</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlight"> i = 0; i &lt; argc; ++i)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">194</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">195</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (i != 0)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">196</span><span class="doxyLineContent"><span class="doxyHighlight">            {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">197</span><span class="doxyLineContent"><span class="doxyHighlight">              <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a> (</span><span class="doxyHighlightStringLiteral">", "</span><span class="doxyHighlight">);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">198</span><span class="doxyLineContent"><span class="doxyHighlight">            }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">199</span><span class="doxyLineContent"><span class="doxyHighlight">          <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a> (</span><span class="doxyHighlightStringLiteral">"\"%s\""</span><span class="doxyHighlight">, argv[i]);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">200</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">201</span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a> (</span><span class="doxyHighlightStringLiteral">"])\n"</span><span class="doxyHighlight">);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">202</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a4e2e2a73a7ec36ac69d94840eb0b52e2">205</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#a4e2e2a73a7ec36ac69d94840eb0b52e2">tracer&lt;T&gt;::dump_args</a> (</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlight"> argc, </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* argv[], </span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* name) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">206</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">207</span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a> (</span><span class="doxyHighlightStringLiteral">"%s(argc=%d, argv=["</span><span class="doxyHighlight">, name, argc);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">208</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">for</span><span class="doxyHighlight"> (</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlight"> i = 0; i &lt; argc; ++i)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">209</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">210</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (i != 0)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">211</span><span class="doxyLineContent"><span class="doxyHighlight">            {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">212</span><span class="doxyLineContent"><span class="doxyHighlight">              <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a> (</span><span class="doxyHighlightStringLiteral">", "</span><span class="doxyHighlight">);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">213</span><span class="doxyLineContent"><span class="doxyHighlight">            }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">214</span><span class="doxyLineContent"><span class="doxyHighlight">          <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a> (</span><span class="doxyHighlightStringLiteral">"\"%s\""</span><span class="doxyHighlight">, argv[i]);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">215</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">216</span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a> (</span><span class="doxyHighlightStringLiteral">"])\n"</span><span class="doxyHighlight">);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">217</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
 
 </div>
 
@@ -400,15 +400,15 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>For buffered output channels, the policy method must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the policy method body can be left empty. Unconditionally <span class="doxyComputerOutput">noexcept</span>, since the <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/concepts/micro-os-plus/trace/detail/trace-policy">trace_policy</a></span> concept already requires <span class="doxyComputerOutput">T::flush()</span> to be <span class="doxyComputerOutput">noexcept</span>.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00466">466</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00474">474</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#aca35e085ab85a4e69a6ef41178871484">466</a></span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="#aca35e085ab85a4e69a6ef41178871484">flush</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">467</span><span class="doxyLineContent"><span class="doxyHighlight">      {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">468</span><span class="doxyLineContent"><span class="doxyHighlight">        T::flush ();</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">469</span><span class="doxyLineContent"><span class="doxyHighlight">      }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#aca35e085ab85a4e69a6ef41178871484">474</a></span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="#aca35e085ab85a4e69a6ef41178871484">flush</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">475</span><span class="doxyLineContent"><span class="doxyHighlight">      {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">476</span><span class="doxyLineContent"><span class="doxyHighlight">        T::flush ();</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">477</span><span class="doxyLineContent"><span class="doxyHighlight">      }</span></span></div>
 
 </div>
 
@@ -465,15 +465,15 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>Called during startup, as early as possible, to enable the trace channel. Unconditionally <span class="doxyComputerOutput">noexcept</span>, since the <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/concepts/micro-os-plus/trace/detail/trace-policy">trace_policy</a></span> concept already requires <span class="doxyComputerOutput">T::initialise()</span> to be <span class="doxyComputerOutput">noexcept</span>.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00421">421</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00429">429</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a0d039b1f2025b3ce6178d4394a785728">421</a></span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="#a0d039b1f2025b3ce6178d4394a785728">initialise</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">422</span><span class="doxyLineContent"><span class="doxyHighlight">      {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">423</span><span class="doxyLineContent"><span class="doxyHighlight">        T::initialise ();</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">424</span><span class="doxyLineContent"><span class="doxyHighlight">      }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a0d039b1f2025b3ce6178d4394a785728">429</a></span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="#a0d039b1f2025b3ce6178d4394a785728">initialise</a> (</span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">430</span><span class="doxyLineContent"><span class="doxyHighlight">      {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">431</span><span class="doxyLineContent"><span class="doxyHighlight">        T::initialise ();</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">432</span><span class="doxyLineContent"><span class="doxyHighlight">      }</span></span></div>
 
 </div>
 
@@ -536,26 +536,21 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>Formatting is performed into a fixed-size stack buffer of <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#ga2084a7003aa78ca9574f96fcb9b5ff4e">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a></span> bytes (default: 200). Output that exceeds this limit is silently truncated before being passed to <span class="doxyComputerOutput"><a href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write()</a></span>. The return value reflects the bytes actually written, not the number that the format string would have produced; it cannot be used to detect whether truncation occurred.</p>
 
 
-<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00489">489</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00072">72</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
+<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00497">497</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00075">75</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a7fb471958c000ac75290f5cc68522953">72</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#a7fb471958c000ac75290f5cc68522953">tracer&lt;T&gt;::printf</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* format, ...) noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">73</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">74</span><span class="doxyLineContent"><span class="doxyHighlight">      std::va_list arguments;</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">75</span><span class="doxyLineContent"><span class="doxyHighlight">      va_start (arguments, format);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">76</span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">77</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic push</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">78</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__clang__)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">79</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">80</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">81</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlight"> ret = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#gafb94817670ea90990b925e71d14ef910">vprintf</a> (format, arguments);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">82</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic pop</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">83</span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">84</span><span class="doxyLineContent"><span class="doxyHighlight">      va_end (arguments);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">85</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> ret;</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">86</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a7fb471958c000ac75290f5cc68522953">75</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#a7fb471958c000ac75290f5cc68522953">tracer&lt;T&gt;::printf</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* format, ...) noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">76</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">77</span><span class="doxyLineContent"><span class="doxyHighlight">      std::va_list arguments;</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">78</span><span class="doxyLineContent"><span class="doxyHighlight">      va_start (arguments, format);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">79</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">80</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlight"> ret = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#gafb94817670ea90990b925e71d14ef910">vprintf</a> (format, arguments);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">81</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">82</span><span class="doxyLineContent"><span class="doxyHighlight">      va_end (arguments);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">83</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> ret;</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">84</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
 
 </div>
 
@@ -614,24 +609,24 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>Converts <span class="doxyComputerOutput">c</span> to <span class="doxyComputerOutput">unsigned char</span> and passes it as a one-byte buffer to <span class="doxyComputerOutput"><a href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write()</a></span>. On success, returns the original value of <span class="doxyComputerOutput">c</span>; on failure, returns EOF.</p>
 
 
-<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00542">542</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00170">170</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
+<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00550">550</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00182">182</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#ad0af55a735d06c5c25c8bf38dc3fd4fd">170</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#ad0af55a735d06c5c25c8bf38dc3fd4fd">tracer&lt;T&gt;::putchar</a> (</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlight"> c) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">171</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">172</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeyword">auto</span><span class="doxyHighlight"> ch = </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlightKeywordType">unsigned</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (c);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">173</span><span class="doxyLineContent"><span class="doxyHighlight">      ssize_t ret = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-implementation/#gacfbedd8169716b02026a93c948af99c8">write</a> (&amp;ch, 1);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">174</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret &gt; 0)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">175</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">176</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> c;</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">177</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">178</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">else</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">179</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">180</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> EOF;</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">181</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">182</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#ad0af55a735d06c5c25c8bf38dc3fd4fd">182</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#ad0af55a735d06c5c25c8bf38dc3fd4fd">tracer&lt;T&gt;::putchar</a> (</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlight"> c) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">183</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">184</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeyword">auto</span><span class="doxyHighlight"> ch = </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlightKeywordType">unsigned</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (c);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">185</span><span class="doxyLineContent"><span class="doxyHighlight">      ssize_t ret = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-implementation/#gacfbedd8169716b02026a93c948af99c8">write</a> (&amp;ch, 1);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">186</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret &gt; 0)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">187</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">188</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> c;</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">189</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">190</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">else</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">191</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">192</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> EOF;</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">193</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">194</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
 
 </div>
 
@@ -693,50 +688,52 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>Writes the characters of <span class="doxyComputerOutput">s</span> followed by a single newline character (<span class="doxyComputerOutput">'\n'</span>). Unlike the standard C <span class="doxyComputerOutput"><a href="#a2f7941dcb7ddb9f6afd664ad0c1c9979">puts()</a></span>, this function returns the total byte count written. If writing the newline fails after the string has been written successfully, EOF is returned.</p>
 
 
-<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00528">528</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00128">128</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
+<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00536">536</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00138">138</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a2f7941dcb7ddb9f6afd664ad0c1c9979">128</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#a2f7941dcb7ddb9f6afd664ad0c1c9979">tracer&lt;T&gt;::puts</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* s) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">129</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">130</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic push</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">131</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__clang__)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">132</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">133</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">134</span><span class="doxyLineContent"><span class="doxyHighlight">      std::size_t len = std::strlen (s);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">135</span><span class="doxyLineContent"><span class="doxyHighlight">      ssize_t ret = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-implementation/#gacfbedd8169716b02026a93c948af99c8">write</a> (s, len);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">136</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic pop</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">137</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// Only append the line terminator if the string was written in</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">138</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// full; a partial write (including a zero-byte write, which is</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">139</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// not itself an error) must not be followed by a bare newline.</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">140</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret &gt;= 0 &amp;&amp; </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlight">std::size_t</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (ret) == len)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">141</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">142</span><span class="doxyLineContent"><span class="doxyHighlight">          ssize_t ret2 = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-implementation/#gacfbedd8169716b02026a93c948af99c8">write</a> (</span><span class="doxyHighlightStringLiteral">"\n"</span><span class="doxyHighlight">, 1); </span><span class="doxyHighlightComment">// Add a line terminator</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">143</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret2 &lt; 0)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">144</span><span class="doxyLineContent"><span class="doxyHighlight">            {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">145</span><span class="doxyLineContent"><span class="doxyHighlight">              ret = ret2; </span><span class="doxyHighlightComment">// Propagate the error.</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">146</span><span class="doxyLineContent"><span class="doxyHighlight">            }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">147</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">else</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">148</span><span class="doxyLineContent"><span class="doxyHighlight">            {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">149</span><span class="doxyLineContent"><span class="doxyHighlight">              ret += ret2; </span><span class="doxyHighlightComment">// Return total bytes written.</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">150</span><span class="doxyLineContent"><span class="doxyHighlight">            }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">151</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">152</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret &gt; 0)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">153</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">154</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic push</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">155</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__GNUC__) &amp;&amp; !defined(__clang__)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">156</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic ignored "-Wuseless-cast"</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">157</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">158</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// Cast required on 64-bit.</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">159</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (ret);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">160</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic pop</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">161</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">162</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">else</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">163</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">164</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> EOF;</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">165</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">166</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a2f7941dcb7ddb9f6afd664ad0c1c9979">138</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#a2f7941dcb7ddb9f6afd664ad0c1c9979">tracer&lt;T&gt;::puts</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* s) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">139</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">140</span><span class="doxyLineContent"><span class="doxyHighlight">      std::size_t len = std::strlen (s);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">141</span><span class="doxyLineContent"><span class="doxyHighlight">      ssize_t ret = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-implementation/#gacfbedd8169716b02026a93c948af99c8">write</a> (s, len);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">142</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// Only append the line terminator if the string was written in</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">143</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// full; a partial write (including a zero-byte write, which is</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">144</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// not itself an error) must not be followed by a bare newline.</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">145</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret &gt;= 0 &amp;&amp; </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlight">std::size_t</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (ret) == len)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">146</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">147</span><span class="doxyLineContent"><span class="doxyHighlight">          ssize_t ret2 = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-implementation/#gacfbedd8169716b02026a93c948af99c8">write</a> (</span><span class="doxyHighlightStringLiteral">"\n"</span><span class="doxyHighlight">, 1); </span><span class="doxyHighlightComment">// Add a line terminator</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">148</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret2 &lt; 0)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">149</span><span class="doxyLineContent"><span class="doxyHighlight">            {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">150</span><span class="doxyLineContent"><span class="doxyHighlight">              ret = ret2; </span><span class="doxyHighlightComment">// Propagate the error.</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">151</span><span class="doxyLineContent"><span class="doxyHighlight">            }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">152</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">else</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">153</span><span class="doxyLineContent"><span class="doxyHighlight">            {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">154</span><span class="doxyLineContent"><span class="doxyHighlight">              ret += ret2; </span><span class="doxyHighlightComment">// Return total bytes written.</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">155</span><span class="doxyLineContent"><span class="doxyHighlight">            }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">156</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">157</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret &gt; 0)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">158</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">159</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">160</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic push</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">161</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__clang__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">162</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#elif defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">163</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic ignored "-Wuseless-cast"</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">164</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif </span><span class="doxyHighlightComment">// defined(__clang__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">165</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif </span><span class="doxyHighlightComment">// defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">166</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">167</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// Cast required on 64-bit.</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">168</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (ret);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">169</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">170</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">171</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic pop</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">172</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif </span><span class="doxyHighlightComment">// defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">173</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">174</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">else</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">175</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">176</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> EOF;</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">177</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">178</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
 
 </div>
 
@@ -802,46 +799,58 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>Equivalent to <span class="doxyComputerOutput"><a href="#a7fb471958c000ac75290f5cc68522953">printf()</a></span>, but accepts a <span class="doxyComputerOutput">std::va_list</span> instead of a variadic argument list. Subject to the same fixed-size stack buffer constraint. When the formatted output exceeds the buffer size, the text is truncated silently; the return value then reflects the bytes actually written to the channel, not the total length that <span class="doxyComputerOutput">vsnprintf</span> would have produced, and cannot be used to detect whether truncation occurred. Typically called by <span class="doxyComputerOutput"><a href="#a7fb471958c000ac75290f5cc68522953">printf()</a></span>.</p>
 
 
-<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00511">511</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00090">90</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
+<p>Declaration at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00519">519</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>, definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h/#l00088">88</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines-h">cpp-api-inlines.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a4176d29127dbd89ba01a79770808d094">90</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#a4176d29127dbd89ba01a79770808d094">tracer&lt;T&gt;::vprintf</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* format, std::va_list arguments) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">91</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">92</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// Caution: allocated on the stack!</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">93</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight"> buf[<a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#ga2084a7003aa78ca9574f96fcb9b5ff4e">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a>];</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">94</span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">95</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// TODO: possibly rewrite it to no longer use newlib,</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">96</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// (although the nano version is no longer very heavy).</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">97</span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">98</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// Print to the local buffer</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">99</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic push</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">100</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic ignored "-Wformat-nonliteral"</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">101</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__clang__)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">102</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">103</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">104</span><span class="doxyLineContent"><span class="doxyHighlight">      ssize_t ret = ::vsnprintf (buf, </span><span class="doxyHighlightKeyword">sizeof</span><span class="doxyHighlight"> (buf), format, arguments);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#a4176d29127dbd89ba01a79770808d094">88</a></span><span class="doxyLineContent"><span class="doxyHighlight">    <a href="#a4176d29127dbd89ba01a79770808d094">tracer&lt;T&gt;::vprintf</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight">* format, std::va_list arguments) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">89</span><span class="doxyLineContent"><span class="doxyHighlight">    {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">90</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// Caution: allocated on the stack!</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">91</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordType">char</span><span class="doxyHighlight"> buf[<a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-config/#ga2084a7003aa78ca9574f96fcb9b5ff4e">MICRO_OS_PLUS_DIAG_TRACE_PRINTF_BUFFER_ARRAY_SIZE_INTEGER</a>];</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">92</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">93</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// TODO: possibly rewrite it to no longer use newlib,</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">94</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// (although the nano version is no longer very heavy).</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">95</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">96</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">97</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic push</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">98</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic ignored "-Wformat-nonliteral"</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">99</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif </span><span class="doxyHighlightComment">// defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">100</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">101</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// Print to the local buffer</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">102</span><span class="doxyLineContent"><span class="doxyHighlight">      ssize_t ret = ::vsnprintf (buf, </span><span class="doxyHighlightKeyword">sizeof</span><span class="doxyHighlight"> (buf), format, arguments);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">103</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">104</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__GNUC__)</span></span></div>
 <div class="doxyCodeLine"><span class="doxyLineNumber">105</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic pop</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">106</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret &gt; 0)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">107</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">108</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// Clamp to actual buffer size if output was truncated.</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">109</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// Note: on truncation the return value becomes the byte count</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">110</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// written to the channel, not the total length vsnprintf</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">111</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// computed. Callers cannot use the return value to detect</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">112</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// truncation.</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">113</span><span class="doxyLineContent"><span class="doxyHighlight">          ret = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-implementation/#gacfbedd8169716b02026a93c948af99c8">write</a> (buf,</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">114</span><span class="doxyLineContent"><span class="doxyHighlight">                       </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlightKeywordType">size_t</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (std::min (</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">115</span><span class="doxyLineContent"><span class="doxyHighlight">                           ret, </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlight">ssize_t</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (</span><span class="doxyHighlightKeyword">sizeof</span><span class="doxyHighlight"> (buf) - 1))));</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">116</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">117</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic push</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">118</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__GNUC__) &amp;&amp; !defined(__clang__)</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">119</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic ignored "-Wuseless-cast"</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">120</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">121</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// Cast required on 64-bit.</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">122</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (ret);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">123</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic pop</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">124</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">106</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif </span><span class="doxyHighlightComment">// defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">107</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">108</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">if</span><span class="doxyHighlight"> (ret &gt; 0)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">109</span><span class="doxyLineContent"><span class="doxyHighlight">        {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">110</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// Clamp to actual buffer size if output was truncated.</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">111</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// Note: on truncation the return value becomes the byte count</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">112</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// written to the channel, not the total length vsnprintf</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">113</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// computed. Callers cannot use the return value to detect</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">114</span><span class="doxyLineContent"><span class="doxyHighlight">          </span><span class="doxyHighlightComment">// truncation.</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">115</span><span class="doxyLineContent"><span class="doxyHighlight">          ret = <a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-implementation/#gacfbedd8169716b02026a93c948af99c8">write</a> (buf,</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">116</span><span class="doxyLineContent"><span class="doxyHighlight">                       </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlightKeywordType">size_t</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (std::min (</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">117</span><span class="doxyLineContent"><span class="doxyHighlight">                           ret, </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlight">ssize_t</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (</span><span class="doxyHighlightKeyword">sizeof</span><span class="doxyHighlight"> (buf) - 1))));</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">118</span><span class="doxyLineContent"><span class="doxyHighlight">        }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">119</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">120</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">121</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic push</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">122</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__clang__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">123</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#elif defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">124</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic ignored "-Wuseless-cast"</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">125</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif </span><span class="doxyHighlightComment">// defined(__clang__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">126</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif </span><span class="doxyHighlightComment">// defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">127</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">128</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightComment">// Cast required on 64-bit.</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">129</span><span class="doxyLineContent"><span class="doxyHighlight">      </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeyword">static_cast&lt;</span><span class="doxyHighlightKeywordType">int</span><span class="doxyHighlightKeyword">&gt;</span><span class="doxyHighlight"> (ret);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">130</span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">131</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#if defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">132</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#pragma GCC diagnostic pop</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">133</span><span class="doxyLineContent"><span class="doxyHighlightPreprocessor">#endif </span><span class="doxyHighlightComment">// defined(__GNUC__)</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">134</span><span class="doxyLineContent"><span class="doxyHighlight">    }</span></span></div>
 
 </div>
 
@@ -911,15 +920,15 @@ class micro_os_plus::trace::detail::tracer&lt;T&gt; { ... }
 <p>The return value must reflect the number of bytes actually transferred; a return value of -1 signals an error. Unconditionally <span class="doxyComputerOutput">noexcept</span>, since the <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/concepts/micro-os-plus/trace/detail/trace-policy">trace_policy</a></span> concept already requires <span class="doxyComputerOutput">T::write()</span> to be <span class="doxyComputerOutput">noexcept</span>.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00442">442</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00450">450</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 
 <div class="doxyProgramListing">
 
-<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#aa2d6c80ffc49710b88ba91e0c0d6e503">442</a></span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">* buf, std::size_t nbyte) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">443</span><span class="doxyLineContent"><span class="doxyHighlight">      {</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">444</span><span class="doxyLineContent"><span class="doxyHighlight">        </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> T::write (buf, nbyte);</span></span></div>
-<div class="doxyCodeLine"><span class="doxyLineNumber">445</span><span class="doxyLineContent"><span class="doxyHighlight">      }</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber"><a href="#aa2d6c80ffc49710b88ba91e0c0d6e503">450</a></span><span class="doxyLineContent"><span class="doxyHighlight">      <a href="#aa2d6c80ffc49710b88ba91e0c0d6e503">write</a> (</span><span class="doxyHighlightKeyword">const</span><span class="doxyHighlight"> </span><span class="doxyHighlightKeywordType">void</span><span class="doxyHighlight">* buf, std::size_t nbyte) </span><span class="doxyHighlightKeyword">noexcept</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">451</span><span class="doxyLineContent"><span class="doxyHighlight">      {</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">452</span><span class="doxyLineContent"><span class="doxyHighlight">        </span><span class="doxyHighlightKeywordFlow">return</span><span class="doxyHighlight"> T::write (buf, nbyte);</span></span></div>
+<div class="doxyCodeLine"><span class="doxyLineNumber">453</span><span class="doxyLineContent"><span class="doxyHighlight">      }</span></span></div>
 
 </div>
 

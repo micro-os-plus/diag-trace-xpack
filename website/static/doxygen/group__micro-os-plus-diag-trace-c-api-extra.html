@@ -161,13 +161,13 @@ Functions</h2></td></tr>
 <dl class="section user"><dt>Returns</dt><dd>Nothing.</dd></dl>
 <p>Formats and writes the argument list in the form <span class="tt">main(argc=N, argv=["arg0", "arg1", ...])</span>, followed by a newline. The prefix is always the literal string <span class="tt">"main"</span>; for a configurable prefix, use the C++ API <span class="tt"><a class="el" href="group__micro-os-plus-diag-trace-cpp-api-extra.html#gad5ebcf3eebf3239a2f572f8640a94c90" title="Send the argv[] array to the trace output channel.">micro_os_plus::trace::dump_args()</a></span>. Intended to be called at the start of <span class="tt">main()</span> to record the process arguments in the trace output. Each argument string is quoted; no escaping is applied to the string content. </p>
 
-<p class="definition">Definition at line <a class="el" href="trace-c-api_8cpp_source.html#l00112">112</a> of file <a class="el" href="trace-c-api_8cpp_source.html">trace-c-api.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  113</span>{</div>
-<div class="line"><span class="lineno">  114</span>  <a class="code hl_function" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a4e2e2a73a7ec36ac69d94840eb0b52e2">detail::tracer&lt;detail::implementation&gt;::dump_args</a> (argc, argv);</div>
-<div class="line"><span class="lineno">  115</span>}</div>
-<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a4e2e2a73a7ec36ac69d94840eb0b52e2"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a4e2e2a73a7ec36ac69d94840eb0b52e2">micro_os_plus::trace::detail::tracer::dump_args</a></div><div class="ttdeci">static void dump_args(int argc, char *argv[], const char *name=&quot;main&quot;) noexcept</div><div class="ttdoc">Send the argv[] array to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api-inlines_8h_source.html#l00190">cpp-api-inlines.h:190</a></div></div>
+<p class="definition">Definition at line <a class="el" href="trace-c-api_8cpp_source.html#l00103">103</a> of file <a class="el" href="trace-c-api_8cpp_source.html">trace-c-api.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>{</div>
+<div class="line"><span class="lineno">  105</span>  <a class="code hl_function" href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a4e2e2a73a7ec36ac69d94840eb0b52e2">detail::tracer&lt;detail::implementation&gt;::dump_args</a> (argc, argv);</div>
+<div class="line"><span class="lineno">  106</span>}</div>
+<div class="ttc" id="aclassmicro__os__plus_1_1trace_1_1detail_1_1tracer_html_a4e2e2a73a7ec36ac69d94840eb0b52e2"><div class="ttname"><a href="classmicro__os__plus_1_1trace_1_1detail_1_1tracer.html#a4e2e2a73a7ec36ac69d94840eb0b52e2">micro_os_plus::trace::detail::tracer::dump_args</a></div><div class="ttdeci">static void dump_args(int argc, char *argv[], const char *name=&quot;main&quot;) noexcept</div><div class="ttdoc">Send the argv[] array to the trace output channel.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api-inlines_8h_source.html#l00205">cpp-api-inlines.h:205</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="cpp-api-inlines_8h_source.html#l00190">micro_os_plus::trace::detail::tracer&lt; T &gt;::dump_args()</a>.</p>
+<p class="reference">References <a class="el" href="cpp-api-inlines_8h_source.html#l00205">micro_os_plus::trace::detail::tracer&lt; T &gt;::dump_args()</a>.</p>
 
 </div>
 </div>

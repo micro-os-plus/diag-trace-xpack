@@ -59,8 +59,8 @@ Thin wrapper over <ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines.h" line="276" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines.h" bodystart="276" bodyend="279" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" declline="242" declcolumn="3"/>
-        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" compoundref="cpp-api-inlines_8h" startline="190" endline="202">micro_os_plus::trace::detail::tracer&lt; T &gt;::dump_args</references>
+        <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines.h" line="280" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/inlines/cpp-api-inlines.h" bodystart="280" bodyend="283" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" declline="246" declcolumn="3"/>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" compoundref="cpp-api-inlines_8h" startline="205" endline="217">micro_os_plus::trace::detail::tracer&lt; T &gt;::dump_args</references>
       </memberdef>
     </sectiondef>
     <briefdescription>

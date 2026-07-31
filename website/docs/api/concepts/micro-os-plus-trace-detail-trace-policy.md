@@ -59,7 +59,7 @@ concept <a href="/diag-trace-xpack/docs/api/concepts/micro-os-plus/trace/detail/
 <p>The <span class="doxyComputerOutput">noexcept</span> requirement is enforced by the concept so that a non-conforming policy is rejected at instantiation time rather than silently invoking <span class="doxyComputerOutput">std::terminate</span> through the unconditionally <span class="doxyComputerOutput">noexcept</span> free-function wrappers. A clear diagnostic is emitted at the point of instantiation if any required function is absent, has the wrong signature, or is not <span class="doxyComputerOutput">noexcept</span>.</p>
 
 
-<p>Definition at line 362 of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line 370 of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 
 <div class="doxyProgramListing">

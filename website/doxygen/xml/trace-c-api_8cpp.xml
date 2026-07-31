@@ -123,90 +123,81 @@
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemicro__os__plus_1_1trace_1_1detail" kindref="compound">detail</ref><sp/>=<sp/><ref refid="namespacemicro__os__plus_1_1trace_1_1detail" kindref="compound">micro_os_plus::trace::detail</ref>;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>C<sp/>API<sp/>is<sp/>always<sp/>bound<sp/>to<sp/>the<sp/>`tracer&lt;implementation&gt;`<sp/>policy<sp/>class;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;<sp/>does<sp/>not<sp/>support<sp/>templates,<sp/>so<sp/>it<sp/>cannot<sp/>expose<sp/>other</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>instances.<sp/>Code<sp/>that<sp/>needs<sp/>custom<sp/>instances<sp/>must<sp/>call<sp/>the<sp/>C++</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>API<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46" refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga425f36ab6d5a58a63bc926f4675dc53b" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga425f36ab6d5a58a63bc926f4675dc53b" kindref="member">micro_os_plus_trace_initialise</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a0d039b1f2025b3ce6178d4394a785728" kindref="member">detail::tracer&lt;detail::implementation&gt;::initialise</ref><sp/>();</highlight></codeline>
-<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__clang__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>clang<sp/>diagnostic<sp/>ignored<sp/>&quot;-Wunsafe-buffer-usage-in-libc-call&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>defined(__clang__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemicro__os__plus_1_1trace_1_1detail" kindref="compound">detail</ref><sp/>=<sp/><ref refid="namespacemicro__os__plus_1_1trace_1_1detail" kindref="compound">micro_os_plus::trace::detail</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>C<sp/>API<sp/>is<sp/>always<sp/>bound<sp/>to<sp/>the<sp/>`tracer&lt;implementation&gt;`<sp/>policy<sp/>class;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;<sp/>does<sp/>not<sp/>support<sp/>templates,<sp/>so<sp/>it<sp/>cannot<sp/>expose<sp/>other</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>instances.<sp/>Code<sp/>that<sp/>needs<sp/>custom<sp/>instances<sp/>must<sp/>call<sp/>the<sp/>C++</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>API<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal">ssize_t</highlight></codeline>
-<codeline lineno="52" refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga80d104ecf38dfcf40cae10bac0d2c562" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga80d104ecf38dfcf40cae10bac0d2c562" kindref="member">micro_os_plus_trace_write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buf,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nbyte)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga425f36ab6d5a58a63bc926f4675dc53b" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga425f36ab6d5a58a63bc926f4675dc53b" kindref="member">micro_os_plus_trace_initialise</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aa2d6c80ffc49710b88ba91e0c0d6e503" kindref="member">detail::tracer&lt;detail::implementation&gt;::write</ref><sp/>(buf,<sp/>nbyte);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a0d039b1f2025b3ce6178d4394a785728" kindref="member">detail::tracer&lt;detail::implementation&gt;::initialise</ref><sp/>();</highlight></codeline>
 <codeline lineno="55"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58" refid="group__micro-os-plus-diag-trace-c-api-implementation_1gac34c391936f919c141bc38ec5b5a1db9" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-implementation_1gac34c391936f919c141bc38ec5b5a1db9" kindref="member">micro_os_plus_trace_flush</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">ssize_t</highlight></codeline>
+<codeline lineno="58" refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga80d104ecf38dfcf40cae10bac0d2c562" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-implementation_1ga80d104ecf38dfcf40cae10bac0d2c562" kindref="member">micro_os_plus_trace_write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buf,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nbyte)</highlight></codeline>
 <codeline lineno="59"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aca35e085ab85a4e69a6ef41178871484" kindref="member">detail::tracer&lt;detail::implementation&gt;::flush</ref><sp/>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aa2d6c80ffc49710b88ba91e0c0d6e503" kindref="member">detail::tracer&lt;detail::implementation&gt;::write</ref><sp/>(buf,<sp/>nbyte);</highlight></codeline>
 <codeline lineno="61"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="group__micro-os-plus-diag-trace-c-api-main_1ga10e8dda4991909bc9b401c4f401f1364" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-main_1ga10e8dda4991909bc9b401c4f401f1364" kindref="member">micro_os_plus_trace_printf</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)</highlight></codeline>
-<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/>std::va_list<sp/>arguments;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/>va_start<sp/>(arguments,<sp/>format);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="group__micro-os-plus-diag-trace-c-api-implementation_1gac34c391936f919c141bc38ec5b5a1db9" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-implementation_1gac34c391936f919c141bc38ec5b5a1db9" kindref="member">micro_os_plus_trace_flush</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1aca35e085ab85a4e69a6ef41178871484" kindref="member">detail::tracer&lt;detail::implementation&gt;::flush</ref><sp/>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>push</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__clang__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>clang<sp/>diagnostic<sp/>ignored<sp/>&quot;-Wunsafe-buffer-usage-in-libc-call&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" kindref="member">detail::tracer&lt;detail::implementation&gt;::vprintf</ref><sp/>(format,<sp/>arguments);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>pop</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/>va_end<sp/>(arguments);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84" refid="group__micro-os-plus-diag-trace-c-api-main_1ga61e826d87556c899edad6f82d7bd36ef" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-main_1ga61e826d87556c899edad6f82d7bd36ef" kindref="member">micro_os_plus_trace_vprintf</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>va_list<sp/>arguments)</highlight></codeline>
-<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>push</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__clang__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>clang<sp/>diagnostic<sp/>ignored<sp/>&quot;-Wunsafe-buffer-usage-in-libc-call&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" kindref="member">detail::tracer&lt;detail::implementation&gt;::vprintf</ref><sp/>(format,<sp/>arguments);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>pop</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95" refid="group__micro-os-plus-diag-trace-c-api-main_1ga378825eb60900b367774de9e76925b0d" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-main_1ga378825eb60900b367774de9e76925b0d" kindref="member">micro_os_plus_trace_puts</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>s)</highlight></codeline>
-<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>push</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__clang__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>clang<sp/>diagnostic<sp/>ignored<sp/>&quot;-Wunsafe-buffer-usage-in-libc-call&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a2f7941dcb7ddb9f6afd664ad0c1c9979" kindref="member">detail::tracer&lt;detail::implementation&gt;::puts</ref><sp/>(s);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>pop</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106" refid="group__micro-os-plus-diag-trace-c-api-main_1gaf651ff851996a49b25989c93118142f9" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-main_1gaf651ff851996a49b25989c93118142f9" kindref="member">micro_os_plus_trace_putchar</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>c)</highlight></codeline>
-<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1ad0af55a735d06c5c25c8bf38dc3fd4fd" kindref="member">detail::tracer&lt;detail::implementation&gt;::putchar</ref><sp/>(c);</highlight></codeline>
-<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112" refid="group__micro-os-plus-diag-trace-c-api-extra_1ga49bd9637ae06ff570445fbc6830f19a7" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-extra_1ga49bd9637ae06ff570445fbc6830f19a7" kindref="member">micro_os_plus_trace_dump_args</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[])</highlight></codeline>
-<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" kindref="member">detail::tracer&lt;detail::implementation&gt;::dump_args</ref><sp/>(argc,<sp/>argv);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="group__micro-os-plus-diag-trace-c-api-main_1ga10e8dda4991909bc9b401c4f401f1364" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-main_1ga10e8dda4991909bc9b401c4f401f1364" kindref="member">micro_os_plus_trace_printf</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>std::va_list<sp/>arguments;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>va_start<sp/>(arguments,<sp/>format);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" kindref="member">detail::tracer&lt;detail::implementation&gt;::vprintf</ref><sp/>(format,<sp/>arguments);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>va_end<sp/>(arguments);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="group__micro-os-plus-diag-trace-c-api-main_1ga61e826d87556c899edad6f82d7bd36ef" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-main_1ga61e826d87556c899edad6f82d7bd36ef" kindref="member">micro_os_plus_trace_vprintf</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>va_list<sp/>arguments)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" kindref="member">detail::tracer&lt;detail::implementation&gt;::vprintf</ref><sp/>(format,<sp/>arguments);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="group__micro-os-plus-diag-trace-c-api-main_1ga378825eb60900b367774de9e76925b0d" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-main_1ga378825eb60900b367774de9e76925b0d" kindref="member">micro_os_plus_trace_puts</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>s)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a2f7941dcb7ddb9f6afd664ad0c1c9979" kindref="member">detail::tracer&lt;detail::implementation&gt;::puts</ref><sp/>(s);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="group__micro-os-plus-diag-trace-c-api-main_1gaf651ff851996a49b25989c93118142f9" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-main_1gaf651ff851996a49b25989c93118142f9" kindref="member">micro_os_plus_trace_putchar</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>c)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1ad0af55a735d06c5c25c8bf38dc3fd4fd" kindref="member">detail::tracer&lt;detail::implementation&gt;::putchar</ref><sp/>(c);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="group__micro-os-plus-diag-trace-c-api-extra_1ga49bd9637ae06ff570445fbc6830f19a7" refkind="member"><highlight class="normal"><ref refid="group__micro-os-plus-diag-trace-c-api-extra_1ga49bd9637ae06ff570445fbc6830f19a7" kindref="member">micro_os_plus_trace_dump_args</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[])</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" kindref="member">detail::tracer&lt;detail::implementation&gt;::dump_args</ref><sp/>(argc,<sp/>argv);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>defined(MICRO_OS_PLUS_DIAG_TRACE_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp"/>
   </compounddef>
