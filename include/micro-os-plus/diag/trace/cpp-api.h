@@ -96,6 +96,7 @@
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wpre-c++17-compat"
 #endif // defined(__clang__)
@@ -105,6 +106,7 @@ namespace micro_os_plus::trace
 {
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wc++98-c++11-c++14-compat"
@@ -260,6 +262,7 @@ namespace micro_os_plus::trace
 {
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
 #endif // defined(__clang__)
@@ -578,6 +581,7 @@ namespace micro_os_plus::trace
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #endif // defined(__clang__)

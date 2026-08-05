@@ -48,6 +48,7 @@
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif // defined(__GNUC__)
 
@@ -58,6 +59,7 @@ micro_os_plus_trace_initialise (void)
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__cplusplus)
 #pragma GCC diagnostic ignored "-Wold-style-cast"
 #endif // defined(__cplusplus)

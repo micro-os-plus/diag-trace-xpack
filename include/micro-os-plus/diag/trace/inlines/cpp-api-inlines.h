@@ -50,6 +50,7 @@
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage-in-libc-call"
@@ -95,6 +96,7 @@ namespace micro_os_plus::trace
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
 #endif // defined(__GNUC__)
 
@@ -119,6 +121,7 @@ namespace micro_os_plus::trace
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #elif defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wuseless-cast"
@@ -158,6 +161,7 @@ namespace micro_os_plus::trace
         {
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #elif defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wuseless-cast"
@@ -195,6 +199,7 @@ namespace micro_os_plus::trace
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #endif // defined(__clang__)
@@ -296,6 +301,7 @@ namespace micro_os_plus::trace
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
+
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wc++98-compat"
 #endif // defined(__clang__)
