@@ -92,7 +92,7 @@ related to the new version.
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _* v4.2.3_
+- add a new entry like _\* v4.2.3_
 - commit with a message like _prepare v4.2.3_
 
 ### Push changes
@@ -117,7 +117,7 @@ xpm run test-all -C ~/Work/micro-os-plus/diag-trace-xpack.git
   only `package.json`, `README.md`, `LICENSE`, `CHANGELOG.md`,
   the sources and CMake/meson files;
   possibly adjust `.npmignore`
-- `npm version patch`, `npm version minor`, `npm version major`
+- `npm version 4.2.3`
 - push the `xpack-development` branch to GitHub
 - the `postversion` npm script should also update tags via `git push origin --tags`
 - wait for the CI job to complete
@@ -139,7 +139,7 @@ For this:
 
 ### Publish
 
-- `npm publish --tag next` (use `npm publish --access public` when
+- `npm publish --tag test` (use `npm publish --access public` when
   publishing for the first time)
 
 The version is visible at:
