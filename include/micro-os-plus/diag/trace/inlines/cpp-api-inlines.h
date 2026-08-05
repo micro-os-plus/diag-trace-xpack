@@ -284,7 +284,9 @@ namespace micro_os_plus::trace
 
 } // namespace micro_os_plus::trace
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
 
 // ----------------------------------------------------------------------------
 

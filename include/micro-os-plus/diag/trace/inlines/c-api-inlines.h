@@ -46,18 +46,22 @@
 // ----------------------------------------------------------------------------
 // Empty definitions.
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif // defined(__GNUC__)
 
 static inline __attribute__ ((always_inline)) void
 micro_os_plus_trace_initialise (void)
 {
 }
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #if defined(__cplusplus)
 #pragma GCC diagnostic ignored "-Wold-style-cast"
 #endif // defined(__cplusplus)
+#endif // defined(__GNUC__)
 
 static inline __attribute__ ((always_inline)) ssize_t
 micro_os_plus_trace_write (const void* buf, size_t nbyte)
@@ -70,7 +74,9 @@ micro_os_plus_trace_flush (void)
 {
 }
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
 
 // ----------------------------------------------------------------------------
 
@@ -103,7 +109,9 @@ micro_os_plus_trace_dump_args (int argc, char* argv[])
 {
 }
 
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
 
 // ----------------------------------------------------------------------------
 
