@@ -32,7 +32,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="wall-e-icon-64.png"/></td>
   <td id="projectalign">
-   <div id="projectname">diag-trace<span id="projectnumber">&#160;5.0.0</span>
+   <div id="projectname">diag-trace<span id="projectnumber">&#160;5.0.1</span>
    </div>
    <div id="projectbrief">µOS++ Tracing Infrastructure</div>
   </td>
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('conceptmicro__
 <div class="line">      { T::write (buf, n) } <span class="keyword">noexcept</span> -&gt; std::same_as&lt;ssize_t&gt;;</div>
 <div class="line">      { T::flush () } <span class="keyword">noexcept</span> -&gt; std::same_as&lt;void&gt;;</div>
 <div class="line">    }</div>
-<div class="ttc" id="aconceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy_html"><div class="ttname"><a href="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy.html">micro_os_plus::trace::detail::trace_policy</a></div><div class="ttdoc">Concept constraining the policy class T used by tracer&lt;T&gt;.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00370">cpp-api.h:370</a></div></div>
+<div class="ttc" id="aconceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy_html"><div class="ttname"><a href="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy.html">micro_os_plus::trace::detail::trace_policy</a></div><div class="ttdoc">Concept constraining the policy class T used by tracer&lt;T&gt;.</div><div class="ttdef"><b>Definition</b> <a href="cpp-api_8h_source.html#l00373">cpp-api.h:373</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('conceptmicro__
 </ul>
 <p>The <span class="tt">noexcept</span> requirement is enforced by the concept so that a non-conforming policy is rejected at instantiation time rather than silently invoking <span class="tt">std::terminate</span> through the unconditionally <span class="tt">noexcept</span> free-function wrappers. A clear diagnostic is emitted at the point of instantiation if any required function is absent, has the wrong signature, or is not <span class="tt">noexcept</span>. </p>
 
-<p class="definition">Definition at line <a class="el" href="cpp-api_8h_source.html#l00370">370</a> of file <a class="el" href="cpp-api_8h_source.html">cpp-api.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cpp-api_8h_source.html#l00373">373</a> of file <a class="el" href="cpp-api_8h_source.html">cpp-api.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

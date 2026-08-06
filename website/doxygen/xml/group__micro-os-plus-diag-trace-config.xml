@@ -31,7 +31,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" line="55" column="9" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace.h" bodystart="55" bodyend="-1"/>
-        <referencedby refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="cpp-api-inlines_8h" startline="88" endline="134">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</referencedby>
+        <referencedby refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4176d29127dbd89ba01a79770808d094" compoundref="cpp-api-inlines_8h" startline="89" endline="137">micro_os_plus::trace::detail::tracer&lt; T &gt;::vprintf</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>

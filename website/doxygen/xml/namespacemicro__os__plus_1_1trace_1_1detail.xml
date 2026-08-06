@@ -12,6 +12,6 @@
 <para>The <computeroutput><ref refid="namespacemicro__os__plus_1_1trace_1_1detail" kindref="compound">detail</ref></computeroutput> namespace contains internal implementation components that are not part of the public API. It houses the <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer" kindref="compound">tracer</ref></computeroutput> class template and the <computeroutput><ref refid="classmicro__os__plus_1_1trace_1_1detail_1_1implementation" kindref="compound">implementation</ref></computeroutput> policy class, along with the <computeroutput><ref refid="conceptmicro__os__plus_1_1trace_1_1detail_1_1trace__policy" kindref="compound">trace_policy</ref></computeroutput> concept used to constrain policy types.</para>
 <para>User code should not reference this namespace directly. The public interface is the set of free functions in the enclosing <computeroutput><ref refid="namespacemicro__os__plus_1_1trace" kindref="compound">micro_os_plus::trace</ref></computeroutput> namespace. </para>
     </detaileddescription>
-    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" line="282" column="3"/>
+    <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/cpp-api.h" line="285" column="3"/>
   </compounddef>
 </doxygen>

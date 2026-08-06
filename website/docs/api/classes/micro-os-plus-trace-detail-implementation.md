@@ -89,7 +89,7 @@ class micro_os_plus::trace::detail::implementation { ... }
 <p><span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation">implementation</a></span> is not a template; it has no member data and is never instantiated as an object. Its static methods are looked up by <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/tracer">tracer</a>&lt;<a href="/diag-trace-xpack/docs/api/classes/micro-os-plus/trace/detail/implementation">implementation</a>&gt;</span> and are otherwise ordinary, non-template member functions, so there is no instantiation-order hazard between their declaration here and their definition elsewhere.</p>
 
 
-<p>Definition at line 298 of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line 301 of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 
 <div class="doxySectionDef">
@@ -138,7 +138,7 @@ class micro_os_plus::trace::detail::implementation { ... }
 <p>The user must provide a definition of this method. For buffered output channels, it must drain any internally buffered data to the output device. For unbuffered or character-mode channels (e.g. ITM), the body can be left empty.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00347">347</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00350">350</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 </div>
 </div>
@@ -185,7 +185,7 @@ class micro_os_plus::trace::detail::implementation { ... }
 <p>The user must provide a definition of this method, called once during startup to configure the underlying output device (e.g. a semihosting channel, or ITM port).</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00314">314</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00317">317</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 </div>
 </div>
@@ -242,7 +242,7 @@ class micro_os_plus::trace::detail::implementation { ... }
 <p>The user must provide a definition of this method. It is the core output primitive; all higher-level functions (<span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga1147fe38ae648cb84a4e668cf68c405b">printf</a></span>, <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga35f7d251803f518a84162208e8165d0a">puts</a></span>, <span class="doxyComputerOutput"><a href="/diag-trace-xpack/docs/api/groups/micro-os-plus-diag-trace-cpp-api-main/#ga8b4745ad9d5b6a65f95f40e70acc518a">putchar</a></span>) ultimately delegate to it.</p>
 
 
-<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00330">330</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
+<p>Definition at line <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h/#l00333">333</a> of file <a href="/diag-trace-xpack/docs/api/files/include/micro-os-plus/diag/trace/cpp-api-h">cpp-api.h</a>.</p>
 
 </div>
 </div>

@@ -46,7 +46,7 @@ Formats and writes the argument list in the form <computeroutput>main(argc=N, ar
         <inbodydescription>
         </inbodydescription>
         <location file="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" line="208" column="3" bodyfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/src/trace-c-api.cpp" bodystart="103" bodyend="106" declfile="/Users/ilg/MyProjects/micro-os-plus.github/xPacks/diag-trace-xpack.git/include/micro-os-plus/diag/trace/c-api.h" declline="208" declcolumn="3"/>
-        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" compoundref="cpp-api-inlines_8h" startline="205" endline="217">micro_os_plus::trace::detail::tracer&lt; T &gt;::dump_args</references>
+        <references refid="classmicro__os__plus_1_1trace_1_1detail_1_1tracer_1a4e2e2a73a7ec36ac69d94840eb0b52e2" compoundref="cpp-api-inlines_8h" startline="210" endline="222">micro_os_plus::trace::detail::tracer&lt; T &gt;::dump_args</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
