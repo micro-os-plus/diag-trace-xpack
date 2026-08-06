@@ -6,8 +6,29 @@ Please check
 [GitHub](https://github.com/micro-os-plus/diag-trace-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2026-08-06
+
+* v5.0.1 prepared
+* dcc030d re-generate tests commons
+* c354841 re-generate top commons
+* e936377 re-generate website commons
+
+## 2026-08-05
+
+* 3926c41 #pragma ... push cosmetics
+* 207e70b re-generate tests commons
+* 263a43e README cosmetics
+* 6dc1278 #if defined() 
+
+## 2026-08-04
+
+* 9f03ff7 re-generate tests commons
+* 4df3c5a re-generate website commons
+* 5ad4921 re-generate top commons
+
 ## 2026-07-31
 
+* 1f031c2 CHANGELOG update
 * a5176f0 website update
 * db759c1 re-generate doxygen
 * f850f21 cosmetise #endif // ...
