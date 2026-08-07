@@ -6,5 +6,6 @@
   "hasDoxygenDocusaurusApi": true,
   "hasDoxygenReference": true,
   "isXpmDependency": true,
+  "shareOnTwitter": true,
   "skipAlgolia": true
 }
